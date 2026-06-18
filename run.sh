@@ -154,14 +154,18 @@ Rscript R/prepare_report_inputs.R
 
 cd "${REPORT_DIR}"
 quarto render "${REPORT_QMD}" --to html --output bet-2026-report.html
+quarto render "${REPORT_QMD}" --to pdf --output bet-2026-report.pdf
 cd "${ROOT}"
 
-cp "${REPORT_DIR}/bet-2026-report.html" "${OUT_DIR}/bet-2026-report.html"
 mkdir -p "${OUT_DIR}/report" "${OUT_DIR}/figures" "${OUT_DIR}/tables"
 cp "${REPORT_DIR}/bet-2026-report.html" "${OUT_DIR}/report/bet-2026-report.html"
+cp "${REPORT_DIR}/bet-2026-report.pdf" "${OUT_DIR}/report/bet-2026-report.pdf"
 
 if [[ -d "${REPORT_DIR}/Figures/generated" ]]; then
-  find "${REPORT_DIR}/Figures/generated" -maxdepth 1 -type f \( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.pdf' -o -name '*.csv' \) -exec cp {} "${OUT_DIR}/figures/" \;
+  find "${REPORT_DIR}/Figures/generated" -maxdepth 1 -type f \( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.pdf' \) -exec cp {} "${OUT_DIR}/figures/" \;
+  if [[ -f "${REPORT_DIR}/Figures/generated/figure-index.csv" ]]; then
+    cp "${REPORT_DIR}/Figures/generated/figure-index.csv" "${OUT_DIR}/tables/figure-index.csv"
+  fi
 fi
 if [[ -d "${REPORT_DIR}/tables/generated" ]]; then
   find "${REPORT_DIR}/tables/generated" -maxdepth 1 -type f -name '*.csv' -exec cp {} "${OUT_DIR}/tables/" \;
@@ -175,7 +179,7 @@ out <- Sys.getenv("OUTPUT_DIR", "outputs")
 files <- list.files(out, recursive = TRUE, full.names = FALSE)
 summary <- data.frame(
   output = files,
-  type = ifelse(grepl("[.]html$", files), "html", ifelse(grepl("[.](png|jpg|jpeg|pdf)$", files, ignore.case = TRUE), "figure", "table")),
+  type = ifelse(grepl("^report/.*[.](html|pdf)$", files, ignore.case = TRUE), "report", ifelse(grepl("[.](png|jpg|jpeg|pdf)$", files, ignore.case = TRUE), "figure", "table")),
   stringsAsFactors = FALSE
 )
 utils::write.csv(summary, file.path(out, "report-output-index.csv"), row.names = FALSE)

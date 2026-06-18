@@ -47,6 +47,19 @@ regex_escape <- function(x) {
   gsub("([][{}()+*^$|\\\\?.])", "\\\\\\1", x)
 }
 
+is_absolute_path <- function(path) {
+  grepl("^(/|[A-Za-z]:[\\\\/])", path)
+}
+
+resolve_path <- function(path, root = getwd()) {
+  path <- as.character(path %||% "")
+  if (!nzchar(path)) return(root)
+  if (is_absolute_path(path)) {
+    return(normalizePath(path, winslash = "/", mustWork = FALSE))
+  }
+  normalizePath(file.path(root, path), winslash = "/", mustWork = FALSE)
+}
+
 relative_to_input <- function(paths, input_root) {
   sub(paste0("^", regex_escape(normalizePath(input_root, mustWork = FALSE)), "/?"), "", normalizePath(paths, mustWork = FALSE))
 }
@@ -74,18 +87,19 @@ update_report_config <- function(path) {
 root <- getwd()
 input_dir <- env("INPUT_DIR", "inputs")
 report_dir <- env("REPORT_DIR", "bet-2026-report")
-report_path <- file.path(root, report_dir)
+report_path <- resolve_path(report_dir, root)
 
 if (!dir.exists(report_path)) stop("Report directory not found: ", report_path, call. = FALSE)
 
 figure_dest <- file.path(report_path, "Figures", "generated")
 table_dest <- file.path(report_path, "tables", "generated")
 pipeline_dest <- file.path(report_path, "pipeline-inputs")
+unlink(c(figure_dest, table_dest, pipeline_dest), recursive = TRUE, force = TRUE)
 dir.create(figure_dest, recursive = TRUE, showWarnings = FALSE)
 dir.create(table_dest, recursive = TRUE, showWarnings = FALSE)
 dir.create(pipeline_dest, recursive = TRUE, showWarnings = FALSE)
 
-input_root <- file.path(root, input_dir)
+input_root <- resolve_path(input_dir, root)
 all_files <- if (dir.exists(input_root)) list.files(input_root, recursive = TRUE, full.names = TRUE) else character()
 if (!length(all_files)) warning("No Kflow input artifact files found at ", input_root)
 
