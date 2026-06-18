@@ -35,10 +35,16 @@ older BET jobs. New renders should use
 ## Kflow Task
 
 `run.sh` prepares upstream plot outputs for the report, renders
-`assessment-report.qmd` to HTML, and writes compact deliverables under
+`assessment-report.qmd` to HTML/PDF, and writes organized deliverables under
 `outputs/`:
 
-- `outputs/report/bet-2026-report.html`
-- `outputs/figures/`
-- `outputs/tables/`
-- `outputs/report-output-index.csv`
+- `outputs/final-report/bet-2026-report.pdf`
+- `outputs/final-report/bet-2026-report.html`
+- `outputs/figures/<figure-id>/`: one folder per report figure, with the
+  figure file plus `caption.txt` and `metadata.csv` when available.
+- `outputs/tables/<table-id>/`: one folder per generated/report table.
+- `outputs/indices/`: figure/table indices and `report-output-index.csv`.
+
+The report render still uses the normal Quarto folders inside
+`bet-2026-report/`; the organized `outputs/` layout is for Kflow browsing and
+downloads.

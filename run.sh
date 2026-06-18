@@ -157,30 +157,141 @@ quarto render "${REPORT_QMD}" --to html --output bet-2026-report.html
 quarto render "${REPORT_QMD}" --to pdf --output bet-2026-report.pdf
 cd "${ROOT}"
 
-mkdir -p "${OUT_DIR}/report" "${OUT_DIR}/figures" "${OUT_DIR}/tables"
-cp "${REPORT_DIR}/bet-2026-report.html" "${OUT_DIR}/report/bet-2026-report.html"
-cp "${REPORT_DIR}/bet-2026-report.pdf" "${OUT_DIR}/report/bet-2026-report.pdf"
-
-if [[ -d "${REPORT_DIR}/Figures/generated" ]]; then
-  find "${REPORT_DIR}/Figures/generated" -maxdepth 1 -type f \( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.pdf' \) -exec cp {} "${OUT_DIR}/figures/" \;
-  if [[ -f "${REPORT_DIR}/Figures/generated/figure-index.csv" ]]; then
-    cp "${REPORT_DIR}/Figures/generated/figure-index.csv" "${OUT_DIR}/tables/figure-index.csv"
-  fi
-fi
-if [[ -d "${REPORT_DIR}/tables/generated" ]]; then
-  find "${REPORT_DIR}/tables/generated" -maxdepth 1 -type f -name '*.csv' -exec cp {} "${OUT_DIR}/tables/" \;
-fi
-if [[ -d "${REPORT_DIR}/pipeline-inputs" ]]; then
-  find "${REPORT_DIR}/pipeline-inputs" -maxdepth 1 -type f -name '*.csv' -exec cp {} "${OUT_DIR}/tables/" \;
-fi
-
 Rscript - <<'RS'
-out <- Sys.getenv("OUTPUT_DIR", "outputs")
+env <- function(name, default = "") {
+  value <- Sys.getenv(name, unset = NA_character_)
+  if (is.na(value) || !nzchar(value)) default else value
+}
+
+slug <- function(x) {
+  x <- tolower(trimws(as.character(x)))
+  x <- gsub("[^a-z0-9]+", "-", x)
+  x <- gsub("(^-+|-+$)", "", x)
+  ifelse(nzchar(x), x, "item")
+}
+
+read_csv_safe <- function(path) {
+  tryCatch(utils::read.csv(path, stringsAsFactors = FALSE, check.names = FALSE), error = function(e) data.frame())
+}
+
+bind_rows_fill <- function(rows) {
+  rows <- rows[vapply(rows, function(x) is.data.frame(x) && nrow(x), logical(1))]
+  if (!length(rows)) return(data.frame(stringsAsFactors = FALSE))
+  cols <- unique(unlist(lapply(rows, names), use.names = FALSE))
+  rows <- lapply(rows, function(x) {
+    for (name in setdiff(cols, names(x))) x[[name]] <- NA
+    x[, cols, drop = FALSE]
+  })
+  do.call(rbind, rows)
+}
+
+write_sidecar <- function(folder, row, caption_field = "caption") {
+  if (is.data.frame(row) && nrow(row)) {
+    utils::write.csv(row, file.path(folder, "metadata.csv"), row.names = FALSE)
+    caption <- row[[caption_field]]
+    if (!is.null(caption) && length(caption) && nzchar(as.character(caption[[1]]))) {
+      writeLines(as.character(caption[[1]]), file.path(folder, "caption.txt"))
+    }
+  }
+}
+
+copy_file <- function(from, to) {
+  dir.create(dirname(to), recursive = TRUE, showWarnings = FALSE)
+  file.copy(from, to, overwrite = TRUE)
+}
+
+match_index_row <- function(index, file, id_col) {
+  if (!is.data.frame(index) || !nrow(index)) return(index[0, , drop = FALSE])
+  base <- basename(file)
+  candidates <- unique(c("file", "relative_path", "path", "output", "table", "figure"))
+  candidates <- intersect(candidates, names(index))
+  for (col in candidates) {
+    hit <- basename(as.character(index[[col]])) == base
+    if (any(hit, na.rm = TRUE)) return(index[which(hit)[[1]], , drop = FALSE])
+  }
+  if (id_col %in% names(index)) {
+    stem <- tools::file_path_sans_ext(base)
+    hit <- slug(index[[id_col]]) == slug(stem)
+    if (any(hit, na.rm = TRUE)) return(index[which(hit)[[1]], , drop = FALSE])
+  }
+  index[0, , drop = FALSE]
+}
+
+out <- env("OUTPUT_DIR", "outputs")
+report_dir <- env("REPORT_DIR", "bet-2026-report")
+
+dirs <- file.path(out, c("final-report", "figures", "tables", "indices"))
+unlink(dirs, recursive = TRUE, force = TRUE)
+dir.create(out, recursive = TRUE, showWarnings = FALSE)
+invisible(lapply(dirs, dir.create, recursive = TRUE, showWarnings = FALSE))
+
+final_files <- file.path(report_dir, c("bet-2026-report.pdf", "bet-2026-report.html"))
+final_files <- final_files[file.exists(final_files)]
+for (file in final_files) {
+  copy_file(file, file.path(out, "final-report", basename(file)))
+}
+
+figure_dir <- file.path(report_dir, "Figures", "generated")
+figure_index_path <- file.path(figure_dir, "figure-index.csv")
+figure_index <- read_csv_safe(figure_index_path)
+if (file.exists(figure_index_path)) {
+  copy_file(figure_index_path, file.path(out, "indices", "figure-index.csv"))
+}
+figure_files <- if (dir.exists(figure_dir)) {
+  list.files(figure_dir, pattern = "[.](png|jpg|jpeg|pdf)$", full.names = TRUE, ignore.case = TRUE)
+} else {
+  character()
+}
+for (file in figure_files) {
+  row <- match_index_row(figure_index, file, "figure")
+  id <- if (nrow(row) && "figure" %in% names(row) && nzchar(as.character(row$figure[[1]]))) {
+    slug(row$figure[[1]])
+  } else {
+    slug(tools::file_path_sans_ext(basename(file)))
+  }
+  folder <- file.path(out, "figures", id)
+  copy_file(file, file.path(folder, basename(file)))
+  write_sidecar(folder, row, "caption")
+}
+
+table_dirs <- c(file.path(report_dir, "tables", "generated"), file.path(report_dir, "pipeline-inputs"))
+table_files <- unlist(lapply(table_dirs[dir.exists(table_dirs)], function(dir) {
+  list.files(dir, pattern = "[.]csv$", full.names = TRUE, ignore.case = TRUE)
+}), use.names = FALSE)
+table_index_files <- table_files[basename(table_files) %in% c("table-index.csv", "generated-table-index.csv", "mfclshiny-table-index.csv")]
+table_index <- bind_rows_fill(lapply(table_index_files, read_csv_safe))
+if (length(table_index_files)) {
+  copy_file(table_index_files[[1]], file.path(out, "indices", "table-index.csv"))
+}
+for (file in setdiff(table_files, table_index_files)) {
+  base <- basename(file)
+  row <- match_index_row(table_index, file, "table")
+  id <- if (nrow(row) && "table" %in% names(row) && nzchar(as.character(row$table[[1]]))) {
+    slug(row$table[[1]])
+  } else {
+    slug(tools::file_path_sans_ext(base))
+  }
+  folder <- file.path(out, "tables", id)
+  copy_file(file, file.path(folder, base))
+  write_sidecar(folder, row, "caption")
+}
+
 files <- list.files(out, recursive = TRUE, full.names = FALSE)
 summary <- data.frame(
   output = files,
-  type = ifelse(grepl("^report/.*[.](html|pdf)$", files, ignore.case = TRUE), "report", ifelse(grepl("[.](png|jpg|jpeg|pdf)$", files, ignore.case = TRUE), "figure", "table")),
+  type = ifelse(
+    grepl("^final-report/.*[.](html|pdf)$", files, ignore.case = TRUE),
+    "final-report",
+    ifelse(grepl("^figures/", files), "figure",
+      ifelse(grepl("^tables/", files), "table", "index")
+    )
+  ),
+  size_bytes = suppressWarnings(file.info(file.path(out, files))$size),
   stringsAsFactors = FALSE
 )
-utils::write.csv(summary, file.path(out, "report-output-index.csv"), row.names = FALSE)
+utils::write.csv(summary, file.path(out, "indices", "report-output-index.csv"), row.names = FALSE)
+message("Organized report outputs under ", out, ": ",
+        sum(summary$type == "final-report"), " final files, ",
+        length(unique(dirname(summary$output[summary$type == "figure"]))), " figure folders, ",
+        length(unique(dirname(summary$output[summary$type == "table"]))), " table folders.")
 RS
