@@ -465,6 +465,7 @@ emit_kable <- function(x,
       table$data,
       format = format,
       caption = render_report_text(caption),
+      label = NA,
       booktabs = identical(format, "latex"),
       longtable = identical(format, "latex"),
       escape = TRUE

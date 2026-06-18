@@ -171,6 +171,7 @@ slug <- function(x) {
 }
 
 read_csv_safe <- function(path) {
+  if (!file.exists(path)) return(data.frame())
   tryCatch(utils::read.csv(path, stringsAsFactors = FALSE, check.names = FALSE), error = function(e) data.frame())
 }
 
