@@ -53,7 +53,8 @@ load_report_context <- function(config_file = "report-config.yml") {
     table_catalog = metadata_value("table_catalog", "catalog/tables.csv"),
     figure_roots = metadata_value("figure_roots", "Figures/generated;Figures/static;Figures"),
     extra_figure_roots = metadata_value("extra_figure_roots", "Figures/generated"),
-    table_roots = metadata_value("table_roots", "pipeline-inputs;tables;Tables"),
+    table_roots = metadata_value("table_roots", "tables/generated;tables;Tables"),
+    extra_table_roots = metadata_value("extra_table_roots", ""),
     assessment_name = paste(species_label, assessment_year, "assessment")
   )
 

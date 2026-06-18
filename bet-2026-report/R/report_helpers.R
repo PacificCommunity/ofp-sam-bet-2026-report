@@ -21,6 +21,19 @@ bind_report_rows <- function(rows) {
   do.call(rbind, rows)
 }
 
+is_internal_report_table <- function(path) {
+  base <- tolower(basename(path))
+  grepl(
+    paste(
+      "^(payload-index(-[0-9]+)?|model-index|plot-summary|report-files|",
+      "report-input-.*|report-prep-summary|figure-index|table-index|",
+      "generated-table-index|mfclshiny-.*|.*build-log.*|.*report-summary)[.]csv$",
+      sep = ""
+    ),
+    base
+  )
+}
+
 split_catalog_paths <- function(x) {
   x <- as.character(x %||% "")
   x <- unlist(strsplit(x, ";", fixed = TRUE), use.names = FALSE)
@@ -495,7 +508,7 @@ emit_kable <- function(x,
 }
 
 emit_catalog_tables <- function(catalog,
-                                roots = c("pipeline-inputs", "tables/generated", "tables", "Tables")) {
+                                roots = c("tables/generated", "tables", "Tables")) {
   if (!nrow(catalog)) {
     emit_todo("Add table catalog rows to catalog/tables.csv.")
     return(invisible(FALSE))
@@ -541,6 +554,7 @@ emit_extra_generated_tables <- function(catalog,
     list.files(root, pattern = "[.]csv$", recursive = TRUE, full.names = TRUE, ignore.case = TRUE)
   }), use.names = FALSE))
   files <- files[!grepl("(^|/)(mfclshiny-)?table-index[.]csv$|(^|/)generated-table-index[.]csv$", files, ignore.case = TRUE)]
+  files <- files[!is_internal_report_table(files)]
   if (!length(files)) {
     return(invisible(FALSE))
   }

@@ -44,10 +44,10 @@ This section should present selectivity, movement, natural mortality, growth,
 recruitment, spawning potential, depletion, fishing mortality, and other key
 derived quantities.
 
-Report-ready mfclshiny figures are inserted in the Figures section when the
-report is rendered from selected analysis outputs. The key-quantity figure
-should be generated from the same plotting code and visual style used by the
-mfclshiny app for the combined harvest plot, then saved at report resolution.
+Report-ready figures are inserted in the Figures section when the report is
+rendered from selected analysis outputs. The key-quantity figure should use
+the same accepted plotting definitions as the interactive review figures, then
+be saved at report resolution.
 
 The `r assessment_year` results should be compared against the
 `r previous_assessment_year` baseline only after equivalent quantities have

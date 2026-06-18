@@ -1,16 +1,11 @@
 # Tables
 
-This section is driven by `catalog/tables.csv`. Pipeline-rendered reports
-receive compact input registries and summaries; final assessment tables can be
-added as CSV files under `tables/` or `Tables/` using the names listed in the
-catalog.
+This section is driven by `catalog/tables.csv`. Final assessment tables can be
+added as CSV files under `tables/`, `Tables/`, or generated table folders using
+the names listed in the catalog.
 
 ```{r table-catalog, echo=FALSE, results='asis', message=FALSE, warning=FALSE}
 table_catalog <- read_catalog("tables")
-table_roots <- report_paths("table_roots", c("pipeline-inputs", "tables/generated", "tables", "Tables"))
+table_roots <- report_paths("table_roots", c("tables/generated", "tables", "Tables"))
 emit_catalog_tables(table_catalog, roots = table_roots)
-emit_extra_generated_tables(
-  table_catalog,
-  roots = report_paths("extra_table_roots", c("tables/generated"))
-)
 ```

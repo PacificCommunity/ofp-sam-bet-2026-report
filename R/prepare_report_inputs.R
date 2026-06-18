@@ -43,6 +43,19 @@ bind_rows_fill <- function(rows) {
   do.call(rbind, rows)
 }
 
+is_internal_report_table <- function(path) {
+  base <- tolower(basename(path))
+  grepl(
+    paste(
+      "^(payload-index(-[0-9]+)?|model-index|plot-summary|report-files|",
+      "report-input-.*|report-prep-summary|figure-index|table-index|",
+      "generated-table-index|mfclshiny-.*|.*build-log.*|.*report-summary)[.]csv$",
+      sep = ""
+    ),
+    base
+  )
+}
+
 regex_escape <- function(x) {
   gsub("([][{}()+*^$|\\\\?.])", "\\\\\\1", x)
 }
@@ -109,7 +122,9 @@ figure_index_files <- table_files[grepl("(^|/)figure-index[.]csv$|(^|/)mfclshiny
 table_index_files <- table_files[grepl("(^|/)table-index[.]csv$|(^|/)mfclshiny-table-index[.]csv$|(^|/)generated-table-index[.]csv$", table_files, ignore.case = TRUE)]
 
 copied_figures <- copy_unique(figure_files, figure_dest)
-copied_tables <- copy_unique(setdiff(table_files, c(figure_index_files, table_index_files)), table_dest)
+report_table_files <- setdiff(table_files, c(figure_index_files, table_index_files))
+report_table_files <- report_table_files[!is_internal_report_table(report_table_files)]
+copied_tables <- copy_unique(report_table_files, table_dest)
 
 figure_index <- bind_rows_fill(lapply(figure_index_files, read_csv_safe))
 if (nrow(figure_index)) utils::write.csv(figure_index, file.path(figure_dest, "figure-index.csv"), row.names = FALSE)

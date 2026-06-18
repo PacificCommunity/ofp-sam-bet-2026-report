@@ -20,8 +20,8 @@ figure_catalog: "catalog/figures.csv"
 table_catalog: "catalog/tables.csv"
 figure_roots: "Figures/generated;Figures/static;Figures"
 extra_figure_roots: "Figures/generated"
-table_roots: "pipeline-inputs;tables/generated;tables;Tables"
-extra_table_roots: "tables/generated"
+table_roots: "tables/generated;tables;Tables"
+extra_table_roots: ""
 
 date: last-modified
 date-format: "DD MMMM YYYY"

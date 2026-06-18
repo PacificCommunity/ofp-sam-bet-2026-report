@@ -37,7 +37,7 @@ assignment, index-fishery grouping, selectivity grouping, and tag-recapture or
 reporting-rate groupings.
 
 > **TODO:** Insert the final fishery definition table from the input-preparation
-> pipeline.
+> workflow.
 
 ## Abundance Indices
 

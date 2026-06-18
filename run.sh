@@ -186,6 +186,19 @@ bind_rows_fill <- function(rows) {
   do.call(rbind, rows)
 }
 
+is_internal_report_table <- function(path) {
+  base <- tolower(basename(path))
+  grepl(
+    paste(
+      "^(payload-index(-[0-9]+)?|model-index|plot-summary|report-files|",
+      "report-input-.*|report-prep-summary|figure-index|table-index|",
+      "generated-table-index|mfclshiny-.*|.*build-log.*|.*report-summary)[.]csv$",
+      sep = ""
+    ),
+    base
+  )
+}
+
 write_sidecar <- function(folder, row, caption_field = "caption") {
   if (is.data.frame(row) && nrow(row)) {
     utils::write.csv(row, file.path(folder, "metadata.csv"), row.names = FALSE)
@@ -255,7 +268,7 @@ for (file in figure_files) {
   write_sidecar(folder, row, "caption")
 }
 
-table_dirs <- c(file.path(report_dir, "tables", "generated"), file.path(report_dir, "pipeline-inputs"))
+table_dirs <- c(file.path(report_dir, "tables", "generated"), file.path(report_dir, "tables"), file.path(report_dir, "Tables"))
 table_files <- unlist(lapply(table_dirs[dir.exists(table_dirs)], function(dir) {
   list.files(dir, pattern = "[.]csv$", full.names = TRUE, ignore.case = TRUE)
 }), use.names = FALSE)
@@ -264,7 +277,9 @@ table_index <- bind_rows_fill(lapply(table_index_files, read_csv_safe))
 if (length(table_index_files)) {
   copy_file(table_index_files[[1]], file.path(out, "indices", "table-index.csv"))
 }
-for (file in setdiff(table_files, table_index_files)) {
+report_table_files <- setdiff(table_files, table_index_files)
+report_table_files <- report_table_files[!is_internal_report_table(report_table_files)]
+for (file in report_table_files) {
   base <- basename(file)
   row <- match_index_row(table_index, file, "table")
   id <- if (nrow(row) && "table" %in% names(row) && nzchar(as.character(row$table[[1]]))) {

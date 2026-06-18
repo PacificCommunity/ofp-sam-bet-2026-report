@@ -31,7 +31,7 @@ weighting; selectivity penalty settings; and extensive jitter/Hessian
 screening of diagnostic and grid models.
 
 > **TODO:** Compare against the previous assessment only after equivalent
-> quantities are recomputed from the `r assessment_year` analysis pipeline.
+> quantities are recomputed from the accepted `r assessment_year` model set.
 
 ## Remaining Uncertainties
 
