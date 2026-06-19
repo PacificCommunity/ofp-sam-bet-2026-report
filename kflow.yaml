@@ -1,7 +1,7 @@
 name: ofp-sam-bet-2026-report
 description: Render the BET 2026 assessment report from generated plot outputs.
 command: bash run.sh
-docker_image: ghcr.io/pacificcommunity/tuna-flow:v1.5
+docker_image: ghcr.io/pacificcommunity/tuna-flow:v1.6
 resources:
   cpus: 2
   memory: 12GB
@@ -9,7 +9,7 @@ resources:
 env:
   KFLOW_RUNTIME_REQUIRE_PRIVATE_PACKAGES: "true"
   KFLOW_RUNTIME_UPDATE: auto
-  KFLOW_RUNTIME_PACKAGES: mfclshiny=PacificCommunity/mfclshiny@36bb10e
+  KFLOW_RUNTIME_PACKAGES: mfclshiny=PacificCommunity/mfclshiny@1fc3156
   KFLOW_RUNTIME_GITHUB_AUTH: "true"
   KFLOW_FORWARD_GITHUB_TOKEN_TO_RUNTIME: "true"
 output_patterns:

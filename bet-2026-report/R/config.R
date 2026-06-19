@@ -50,12 +50,16 @@ load_report_context <- function(config_file = "report-config.yml") {
     draft_watermark = tolower(metadata_value("draft_watermark", "true")) %in% c("true", "yes", "1", "on"),
     watermark_text = metadata_value("watermark_text", "DRAFT - DO NOT CITE OR REDISTRIBUTE"),
     figure_catalog = metadata_value("figure_catalog", "catalog/figures.csv"),
-    figure_curation = metadata_value("figure_curation", "catalog/figure-curation.csv"),
+    curation = metadata_value("curation", "catalog/curation.yml"),
+    figure_curation = metadata_value("figure_curation", metadata_value("curation", "catalog/curation.yml")),
     table_catalog = metadata_value("table_catalog", "catalog/tables.csv"),
+    table_curation = metadata_value("table_curation", metadata_value("curation", "catalog/curation.yml")),
     figure_roots = metadata_value("figure_roots", "Figures/generated;Figures/static;Figures"),
     extra_figure_roots = metadata_value("extra_figure_roots", "Figures/generated"),
     table_roots = metadata_value("table_roots", "tables/generated;tables;Tables"),
     extra_table_roots = metadata_value("extra_table_roots", ""),
+    use_webp_figures = tolower(metadata_value("use_webp_figures", "true")) %in% c("true", "yes", "1", "on"),
+    use_pdf_jpeg_figures = tolower(metadata_value("use_pdf_jpeg_figures", "true")) %in% c("true", "yes", "1", "on"),
     assessment_name = paste(species_label, assessment_year, "assessment")
   )
 

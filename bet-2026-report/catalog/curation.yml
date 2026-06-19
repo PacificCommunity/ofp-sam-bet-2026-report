@@ -1,0 +1,20 @@
+# Human curation overlay for the BET 2026 report.
+#
+# Most figures and tables are inserted automatically from catalog/figures.csv
+# and catalog/tables.csv. Add short entries here only when the automatic
+# placement needs manual review:
+#
+# placement: main | appendix | exclude
+# target_type: key for catalog rows, file for generated filenames
+
+figures:
+  - target_type: file
+    target: tag-recapture-pressure-release-group.png
+    placement: exclude
+    notes: Not used in the BET 2026 report-ready figure set.
+  - target_type: file
+    target: tag-recapture-pressure-release-group-by-fishery.png
+    placement: exclude
+    notes: Not used in the BET 2026 report-ready figure set.
+
+tables: []

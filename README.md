@@ -31,3 +31,19 @@ files already exist.
 `bet-2026-report/bet-2026.qmd` is kept only as a compatibility entrypoint for
 older BET jobs. New renders should use
 `bet-2026-report/assessment-report.qmd`.
+
+## Report Curation
+
+The plot task should create the broad figure/table bundle. The report task then
+uses `bet-2026-report/catalog/curation.yml` to decide which generated assets go
+in the main report, appendix, or excluded set.
+
+Each render writes `outputs/curation/report-curation-review.html`. Open that
+page first, then edit `catalog/curation.yml` for final human choices such as
+placement, section, title, caption override, and order. See
+`bet-2026-report/vignettes/report-curation.md` for the beginner workflow.
+
+For file size, plot jobs create optimized PNGs for PDF output and WebP sidecars
+for HTML output. The report automatically uses JPEG sidecars for PDF when they
+are smaller, WebP sidecars for HTML when available, and the original optimized
+PNG as the fallback.

@@ -8,10 +8,20 @@ the catalog.
 
 ```{r table-catalog, echo=FALSE, results='asis', message=FALSE, warning=FALSE}
 table_catalog <- read_catalog("tables")
+table_curation <- read_table_curation()
 table_roots <- report_paths("table_roots", c("pipeline-inputs", "tables/generated", "tables", "Tables"))
-emit_catalog_tables(table_catalog, roots = table_roots)
+emit_catalog_tables(table_catalog, roots = table_roots, curation = table_curation, placements = "main")
+emit_curated_file_tables(table_curation, catalog = table_catalog, roots = table_roots, placements = "main", default_section = "Curated generated tables")
+curated_table_catalog <- apply_table_curation(table_catalog, table_curation)
+appendix_table_catalog <- filter_catalog_tables(curated_table_catalog, placements = "appendix")
+if (nrow(appendix_table_catalog)) {
+  cat("\n# Appendix: Curated Supplemental Tables\n\n")
+  emit_catalog_tables(appendix_table_catalog, roots = table_roots, placements = "appendix", empty_todo = FALSE)
+}
+emit_curated_file_tables(table_curation, catalog = table_catalog, roots = table_roots, placements = "appendix", default_section = "Curated supplemental generated tables")
 emit_extra_generated_tables(
   table_catalog,
-  roots = report_paths("extra_table_roots", c("tables/generated"))
+  roots = report_paths("extra_table_roots", c("tables/generated")),
+  curation = table_curation
 )
 ```

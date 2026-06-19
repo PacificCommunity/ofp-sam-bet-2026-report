@@ -17,12 +17,16 @@ report_status: "Working draft"
 draft_watermark: true
 watermark_text: "DRAFT - DO NOT CITE OR REDISTRIBUTE"
 figure_catalog: "catalog/figures.csv"
-figure_curation: "catalog/figure-curation.csv"
+curation: "catalog/curation.yml"
+figure_curation: "catalog/curation.yml"
 table_catalog: "catalog/tables.csv"
+table_curation: "catalog/curation.yml"
 figure_roots: "Figures/generated;Figures/static;Figures"
 extra_figure_roots: "Figures/generated"
 table_roots: "tables/generated;tables;Tables"
 extra_table_roots: ""
+use_pdf_jpeg_figures: true
+use_webp_figures: true
 
 date: last-modified
 date-format: "DD MMMM YYYY"

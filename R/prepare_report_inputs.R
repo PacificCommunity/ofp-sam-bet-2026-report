@@ -116,7 +116,7 @@ input_root <- resolve_path(input_dir, root)
 all_files <- if (dir.exists(input_root)) list.files(input_root, recursive = TRUE, full.names = TRUE) else character()
 if (!length(all_files)) warning("No Kflow input artifact files found at ", input_root)
 
-figure_files <- all_files[grepl("[.](png|jpg|jpeg|pdf)$", all_files, ignore.case = TRUE)]
+figure_files <- all_files[grepl("[.](png|jpg|jpeg|webp|pdf)$", all_files, ignore.case = TRUE)]
 table_files <- all_files[grepl("[.]csv$", all_files, ignore.case = TRUE)]
 figure_index_files <- table_files[grepl("(^|/)figure-index[.]csv$|(^|/)mfclshiny-figure-index[.]csv$", table_files, ignore.case = TRUE)]
 table_index_files <- table_files[grepl("(^|/)table-index[.]csv$|(^|/)mfclshiny-table-index[.]csv$|(^|/)generated-table-index[.]csv$", table_files, ignore.case = TRUE)]
