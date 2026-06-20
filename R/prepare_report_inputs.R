@@ -278,14 +278,55 @@ kflow_record_refs <- function(records) {
   }, character(1))
 }
 
+kflow_record_tasks <- function(records) {
+  if (!is.data.frame(records) || !nrow(records)) return(character())
+  vapply(seq_len(nrow(records)), function(i) {
+    task <- ""
+    if ("task" %in% names(records)) task <- records$task[[i]]
+    if (!nzchar(clean_metadata_value(task)[1] %||% "") && "task_name" %in% names(records)) {
+      task <- records$task_name[[i]]
+    }
+    clean_metadata_value(task)[1] %||% ""
+  }, character(1))
+}
+
+kflow_record_task_refs <- function(records) {
+  refs <- kflow_record_refs(records)
+  tasks <- kflow_record_tasks(records)
+  if (!length(refs)) return(character())
+  ifelse(nzchar(tasks) & nzchar(refs), paste(tasks, refs), refs)
+}
+
+kflow_record_match <- function(records, id) {
+  if (!is.data.frame(records) || !nrow(records)) return(integer())
+  id <- as.character(id %||% "")
+  hits <- integer()
+  if ("job_id" %in% names(records)) {
+    hits <- union(hits, which(as.character(records$job_id) == id))
+  }
+  if ("job_number" %in% names(records)) {
+    hits <- union(hits, which(as.character(records$job_number) == id))
+  }
+  hits
+}
+
 kflow_job_refs_for_ids <- function(ids, records) {
   ids <- split_metadata(ids)
   if (!length(ids)) return("")
   refs <- vapply(ids, function(id) {
-    if (is.data.frame(records) && nrow(records) && "job_id" %in% names(records)) {
-      hit <- which(as.character(records$job_id) == id)
-      if (length(hit)) return(kflow_record_refs(records[hit[[1]], , drop = FALSE]))
-    }
+    hit <- kflow_record_match(records, id)
+    if (length(hit)) return(kflow_record_refs(records[hit[[1]], , drop = FALSE]))
+    id
+  }, character(1))
+  collapse_metadata(refs)
+}
+
+kflow_job_task_refs_for_ids <- function(ids, records) {
+  ids <- split_metadata(ids)
+  if (!length(ids)) return("")
+  refs <- vapply(ids, function(id) {
+    hit <- kflow_record_match(records, id)
+    if (length(hit)) return(kflow_record_task_refs(records[hit[[1]], , drop = FALSE]))
     id
   }, character(1))
   collapse_metadata(refs)
@@ -391,7 +432,7 @@ report_provenance <- data.frame(
   ),
   report_input_job_ids = collapse_metadata(input_job_ids),
   results_job_ids = results_job_ids,
-  results_job_refs = kflow_job_refs_for_ids(results_job_ids, kflow_records),
+  results_job_refs = kflow_job_task_refs_for_ids(results_job_ids, kflow_records),
   results_bundle = if (nzchar(results_bundle)) relative_to_input(results_bundle, input_root) else "",
   outputs_job_ids = results_job_ids,
   outputs_bundle = if (nzchar(results_bundle)) relative_to_input(results_bundle, input_root) else "",
@@ -401,6 +442,7 @@ report_provenance <- data.frame(
   kflow_lineage_job_ids = if (nrow(kflow_lineage) && "job_id" %in% names(kflow_lineage)) collapse_metadata(kflow_lineage$job_id) else "",
   kflow_lineage_job_numbers = if (nrow(kflow_lineage) && "job_number" %in% names(kflow_lineage)) collapse_metadata(kflow_lineage$job_number) else "",
   kflow_lineage_job_refs = collapse_metadata(kflow_record_refs(kflow_lineage)),
+  kflow_lineage_task_refs = collapse_metadata(kflow_record_task_refs(kflow_lineage)),
   kflow_lineage_tasks = if (nrow(kflow_lineage) && "task" %in% names(kflow_lineage)) collapse_metadata(kflow_lineage$task) else "",
   report_repo_commit = git_metadata(c("rev-parse", "HEAD"), root),
   report_repo_remote = git_metadata(c("config", "--get", "remote.origin.url"), root),

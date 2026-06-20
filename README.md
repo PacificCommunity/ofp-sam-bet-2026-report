@@ -1,5 +1,15 @@
 # BET 2026 Assessment Report
 
+![Report status: draft scaffold](https://img.shields.io/badge/report%20status-draft%20scaffold-f59e0b)
+![Generated inputs: placeholders](https://img.shields.io/badge/generated%20inputs-placeholder%20figures%20%26%20captions-64748b)
+
+> **Current status:** this repository is a draft report scaffold, not the final
+> 2026 assessment report. Many figures, tables, captions, and narrative blocks
+> are generated placeholders or review seeds from the current workflow. Treat
+> them as material to check, edit, replace, or remove before release. When the
+> assessment is finalized, update this badge and note to mark the repository as
+> the final report source.
+
 This repository contains the BET 2026 report source in `bet-2026-report/`.
 The report is set up for automated insertion of
 report-ready figures and tables from the BET 2026 assessment workflow,
@@ -75,9 +85,10 @@ are smaller, WebP sidecars for HTML when available, and the original optimized
 PNG as the fallback.
 
 Each Kflow render writes `outputs/provenance/report-provenance.csv`, including
-the report job id, upstream results job ids, copied results bundle, Kflow
-lineage, and report repo commit. This replaces the need for git submodules
-while keeping the artifact chain reproducible.
+the report job, upstream results jobs, and full Kflow lineage as task-aware job
+refs such as `ofp-sam-bet-2026-stepwise Job 247 (...)`. It also records the
+copied results bundle and report repo commit. This replaces the need for git
+submodules while keeping the artifact chain reproducible.
 
 ## Common Job Config
 

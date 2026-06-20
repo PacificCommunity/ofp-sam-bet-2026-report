@@ -140,14 +140,16 @@ for key in ("job", "inputs", "lineage"):
 for record in records:
     if str(record.get("job_id", "")) != target:
         continue
+    task = str(record.get("task") or record.get("task_name") or "").strip()
     label = str(record.get("job_label") or "").strip()
     number = str(record.get("job_number") or "").strip()
     if not label and number:
         label = f"Job {number}"
     if label:
-        print(f"{label} ({target})")
+        ref = f"{label} ({target})"
     else:
-        print(target)
+        ref = target
+    print(f"{task} {ref}" if task else ref)
     break
 PY
     )"
@@ -240,17 +242,22 @@ labels = []
 for item in items:
     if not isinstance(item, dict):
         continue
+    task = str(item.get("task") or item.get("task_name") or "").strip()
     job_id = str(item.get("job_id") or "").strip()
     label = str(item.get("job_label") or "").strip()
     number = str(item.get("job_number") or "").strip()
     if not label and number:
         label = f"Job {number}"
     if label and job_id:
-        labels.append(f"{label} ({job_id})")
+        ref = f"{label} ({job_id})"
     elif label:
-        labels.append(label)
+        ref = label
     elif job_id:
-        labels.append(job_id)
+        ref = job_id
+    else:
+        ref = ""
+    if ref:
+        labels.append(f"{task} {ref}" if task else ref)
 print(", ".join(labels) if labels else "unknown")
 PY
 }
