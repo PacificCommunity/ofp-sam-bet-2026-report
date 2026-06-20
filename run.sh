@@ -332,7 +332,7 @@ is_internal_report_table <- function(path) {
   base <- tolower(basename(path))
   grepl(
     paste(
-      "^(payload-index(-[0-9]+)?|model-index|plot-summary|report-files|",
+      "^(payload-index(-[0-9]+)?|model-index|plot-summary|report-files|report-ready-files|",
       "report-input-.*|report-prep-summary|figure-index|table-index|",
       "generated-table-index|figure-optimization|mfclshiny-.*|",
       ".*build-log.*|.*report-summary)[.]csv$",
