@@ -284,6 +284,97 @@ card_html <- function(rows) {
   }, character(1))
 }
 
+qmd_caption_text <- function(x) {
+  x <- clean_text(x)
+  x <- gsub("\\s+", " ", x)
+  x <- gsub("\\[", "\\\\[", x)
+  x <- gsub("\\]", "\\\\]", x)
+  x
+}
+
+r_string <- function(x) {
+  paste(deparse(as.character(x), control = "keepNA"), collapse = "")
+}
+
+qmd_preferred_figure_path <- function(path) {
+  sprintf("`r markdown_path(preferred_figure_file(%s))`", r_string(path))
+}
+
+write_figure_qmd_draft <- function(rows, path) {
+  rows <- rows[rows$kind == "figure", , drop = FALSE]
+  if (nrow(rows)) {
+    placement <- vapply(rows$placement, normalize_figure_placement, character(1), default = "appendix")
+    status <- clean_text(rows$status)
+    keep <- placement %in% c("main", "appendix") & status != "missing" & nzchar(clean_text(rows$file))
+    rows <- rows[keep, , drop = FALSE]
+  }
+
+  lines <- c(
+    "<!--",
+    "Generated figure-caption draft.",
+    "",
+    "Edit this file only when you want full manual control over figure text and ordering.",
+    "To use it in the report, copy it to sections/Figures_manual.qmd and set",
+    'manual_figures_qmd: "sections/Figures_manual.qmd" in report-config.yml.',
+    "",
+    "The image paths still call preferred_figure_file(), so HTML/PDF renders can use",
+    "the compact sidecar images when they are available.",
+    "-->",
+    ""
+  )
+
+  if (!nrow(rows)) {
+    writeLines(c(lines, "<!-- No generated figures were available for this run. -->"), path)
+    return(invisible(FALSE))
+  }
+
+  rows$.original_order <- seq_len(nrow(rows))
+  rows <- rows[order(match(rows$placement, c("main", "appendix")), rows$section, rows$title, rows$.original_order), , drop = FALSE]
+  labels <- make.unique(vapply(rows$file, function(file) {
+    slug_id(paste("manual", tools::file_path_sans_ext(basename(file))))
+  }, character(1)), sep = "-")
+  last_section <- ""
+  wrote_appendix <- FALSE
+
+  for (i in seq_len(nrow(rows))) {
+    placement <- normalize_figure_placement(rows$placement[[i]], default = "appendix")
+    if (identical(placement, "appendix") && !wrote_appendix) {
+      lines <- c(lines, "", "# Appendix: Supplemental Figures", "")
+      last_section <- ""
+      wrote_appendix <- TRUE
+    }
+    section <- clean_text(rows$section[[i]])
+    if (!nzchar(section)) {
+      section <- if (identical(placement, "main")) "Curated figures" else "Supplemental figures"
+    }
+    if (!identical(section, last_section)) {
+      lines <- c(lines, sprintf("## %s", section), "")
+      last_section <- section
+    }
+    title <- clean_text(rows$title[[i]])
+    if (!nzchar(title)) {
+      title <- gsub("[-_]+", " ", tools::file_path_sans_ext(basename(rows$file[[i]])))
+      title <- paste0(toupper(substr(title, 1, 1)), substr(title, 2, nchar(title)))
+    }
+    caption <- clean_text(rows$caption_override[[i]])
+    if (!nzchar(caption)) {
+      caption <- rows$current_caption[[i]]
+    }
+    caption <- qmd_caption_text(caption)
+    file <- clean_text(rows$file[[i]])
+    lines <- c(
+      lines,
+      sprintf("### %s", title),
+      "",
+      sprintf("![%s](%s){#fig-%s fig-align=\"center\" width=100%%}", caption, qmd_preferred_figure_path(file), labels[[i]]),
+      ""
+    )
+  }
+
+  writeLines(lines, path)
+  invisible(TRUE)
+}
+
 write_review_html <- function(rows, path) {
   rows <- rows[order(rows$kind, match(rows$placement, c("main", "appendix", "exclude")), rows$section, rows$title, rows$target), , drop = FALSE]
   figure_count <- sum(rows$kind == "figure")
@@ -317,11 +408,11 @@ write_review_html <- function(rows, path) {
     "</head>",
     "<body>",
     '<main class="shell">',
-    "<header><div><h1>Report curation</h1><p class=\"sub\">Review generated figures and tables, then edit <code>catalog/curation.yml</code> for final placement and captions.</p></div>",
+    "<header><div><h1>Report curation</h1><p class=\"sub\">Review generated figures and tables, then edit <code>catalog/curation.yml</code> or the generated QMD caption draft for final placement and captions.</p></div>",
     sprintf('<div class="summary"><div class="stat">%s<small>Figures</small></div><div class="stat">%s<small>Tables</small></div><div class="stat">%s<small>Available</small></div><div class="stat">%s<small>Main</small></div><div class="stat">%s<small>Appendix</small></div><div class="stat">%s<small>Needs source</small></div></div>',
             figure_count, table_count, available_count, counts[["main"]] %||% 0, counts[["appendix"]] %||% 0, status_counts[["missing"]] %||% 0),
     "</header>",
-    '<section class="guide">Most report items come from the catalogs automatically. Use <code>target_type: key</code> for a catalog row or <code>target_type: file</code> for a generated filename, then set <code>placement</code> to <code>main</code>, <code>appendix</code>, or <code>exclude</code>. Optional <code>section</code>, <code>title</code>, <code>caption_override</code>, and <code>order</code> values let a human make final report edits without touching R code.</section>',
+    '<section class="guide">Most report items come from the catalogs automatically. For targeted edits, use <code>catalog/curation.yml</code> with <code>placement</code>, <code>section</code>, <code>title</code>, <code>caption_override</code>, and <code>order</code>. For full manual caption editing, open <code>curation/figure-caption-draft.qmd</code>, copy it to <code>sections/Figures_manual.qmd</code>, edit the QMD text, and set <code>manual_figures_qmd</code> in <code>report-config.yml</code>.</section>',
     '<div class="toolbar"><input id="search" type="search" placeholder="Search title, file, section, caption..."><button class="filter is-active" data-filter-kind="all" data-filter-placement="all" data-filter-status="available">Available</button><button class="filter" data-filter-kind="all" data-filter-placement="all" data-filter-status="all">All</button><button class="filter" data-filter-kind="figure" data-filter-placement="all" data-filter-status="available">Figures</button><button class="filter" data-filter-kind="table" data-filter-placement="all" data-filter-status="available">Tables</button><button class="filter" data-filter-kind="all" data-filter-placement="main" data-filter-status="available">Main</button><button class="filter" data-filter-kind="all" data-filter-placement="appendix" data-filter-status="available">Appendix</button><button class="filter" data-filter-kind="all" data-filter-placement="exclude" data-filter-status="all">Excluded</button><button class="filter" data-filter-kind="all" data-filter-placement="all" data-filter-status="missing">Needs source</button></div>',
     '<section class="grid" id="grid">',
     card_html(rows),
@@ -399,5 +490,6 @@ if (!nrow(all_rows)) {
 }
 review_path <- file.path(curation_dir, "report-curation-review.html")
 write_review_html(all_rows, review_path)
+write_figure_qmd_draft(all_rows, file.path(curation_dir, "figure-caption-draft.qmd"))
 invisible(file.copy(review_path, file.path(curation_dir, "figure-curation-review.html"), overwrite = TRUE))
 message("Wrote report curation review: ", review_path)

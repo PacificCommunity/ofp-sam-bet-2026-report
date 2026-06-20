@@ -193,15 +193,59 @@ is_internal_report_table <- function(path) {
     paste(
       "^(payload-index(-[0-9]+)?|model-index|plot-summary|report-files|",
       "report-input-.*|report-prep-summary|figure-index|table-index|",
-      "generated-table-index|mfclshiny-.*|.*build-log.*|.*report-summary)[.]csv$",
+      "generated-table-index|figure-optimization|mfclshiny-.*|",
+      ".*build-log.*|.*report-summary)[.]csv$",
       sep = ""
     ),
     base
   )
 }
 
+polish_output_caption <- function(x) {
+  x <- as.character(x)
+  x[is.na(x)] <- ""
+  x <- gsub("\\s+", " ", x)
+  x <- gsub(
+    "\\s+(for|in|from|of|used in) the [0-9]{4}\\s+bigeye tuna\\s*(\\(BET\\))?\\s+assessment\\b",
+    "",
+    x,
+    ignore.case = TRUE,
+    perl = TRUE
+  )
+  x <- gsub(
+    "^the [0-9]{4}\\s+bigeye tuna\\s*(\\(BET\\))?\\s+assessment\\s+",
+    "",
+    x,
+    ignore.case = TRUE,
+    perl = TRUE
+  )
+  x <- gsub(
+    "\\bthe [0-9]{4}\\s+bigeye tuna\\s*(\\(BET\\))?\\s+assessment\\b",
+    "",
+    x,
+    ignore.case = TRUE,
+    perl = TRUE
+  )
+  x <- gsub("\\s+([.,;:])", "\\1", x, perl = TRUE)
+  x <- trimws(gsub("\\s+", " ", x))
+  ifelse(nzchar(x), paste0(toupper(substr(x, 1, 1)), substr(x, 2, nchar(x))), x)
+}
+
+is_default_excluded_figure <- function(path) {
+  stem <- tools::file_path_sans_ext(tolower(basename(path)))
+  stem <- gsub("_", "-", stem, fixed = TRUE)
+  stem %in% c(
+    "hessian-diagnostics",
+    "tag-recapture-pressure-release-group",
+    "tag-recapture-pressure-release-group-by-fishery"
+  )
+}
+
 write_sidecar <- function(folder, row, caption_field = "caption") {
   if (is.data.frame(row) && nrow(row)) {
+    if (caption_field %in% names(row)) {
+      row[[caption_field]] <- polish_output_caption(row[[caption_field]])
+    }
     utils::write.csv(row, file.path(folder, "metadata.csv"), row.names = FALSE)
     caption <- row[[caption_field]]
     if (!is.null(caption) && length(caption) && nzchar(as.character(caption[[1]]))) {
@@ -282,22 +326,36 @@ if (dir.exists(curation_dir)) {
     copy_file(file, file.path(out, "curation", rel))
   }
 }
-curation_catalog <- file.path(report_dir, "catalog", "figure-curation.csv")
-if (file.exists(curation_catalog)) {
-  copy_file(curation_catalog, file.path(out, "curation", "figure-curation.csv"))
+for (curation_catalog in file.path(report_dir, "catalog", c("curation.yml", "figure-curation.csv"))) {
+  if (file.exists(curation_catalog)) {
+    copy_file(curation_catalog, file.path(out, "curation", basename(curation_catalog)))
+  }
 }
 
 figure_dir <- file.path(report_dir, "Figures", "generated")
 figure_index_path <- file.path(figure_dir, "figure-index.csv")
 figure_index <- read_csv_safe(figure_index_path)
 if (file.exists(figure_index_path)) {
-  copy_file(figure_index_path, file.path(out, "indices", "figure-index.csv"))
+  if (is.data.frame(figure_index) && nrow(figure_index)) {
+    path_cols <- intersect(c("file", "relative_path", "path", "output", "figure"), names(figure_index))
+    if (length(path_cols)) {
+      excluded <- Reduce(`|`, lapply(path_cols, function(col) is_default_excluded_figure(figure_index[[col]])))
+      figure_index <- figure_index[!excluded, , drop = FALSE]
+    }
+  }
+  if (is.data.frame(figure_index) && nrow(figure_index) && "caption" %in% names(figure_index)) {
+    figure_index$caption <- polish_output_caption(figure_index$caption)
+    utils::write.csv(figure_index, file.path(out, "indices", "figure-index.csv"), row.names = FALSE)
+  } else {
+    utils::write.csv(figure_index, file.path(out, "indices", "figure-index.csv"), row.names = FALSE)
+  }
 }
 figure_files <- if (dir.exists(figure_dir)) {
   list.files(figure_dir, pattern = "[.](png|jpg|jpeg|pdf)$", full.names = TRUE, ignore.case = TRUE)
 } else {
   character()
 }
+figure_files <- figure_files[!is_default_excluded_figure(figure_files)]
 review_replacements <- data.frame(from = character(), to = character(), stringsAsFactors = FALSE)
 for (file in figure_files) {
   row <- match_index_row(figure_index, file, "figure")

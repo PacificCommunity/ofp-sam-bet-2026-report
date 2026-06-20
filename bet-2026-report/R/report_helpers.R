@@ -27,7 +27,8 @@ is_internal_report_table <- function(path) {
     paste(
       "^(payload-index(-[0-9]+)?|model-index|plot-summary|report-files|",
       "report-input-.*|report-prep-summary|figure-index|table-index|",
-      "generated-table-index|mfclshiny-.*|.*build-log.*|.*report-summary)[.]csv$",
+      "generated-table-index|figure-optimization|mfclshiny-.*|",
+      ".*build-log.*|.*report-summary)[.]csv$",
       sep = ""
     ),
     base
@@ -142,9 +143,32 @@ polish_report_caption <- function(x) {
   for (from in names(replacements)) {
     x <- gsub(from, replacements[[from]], x, fixed = TRUE)
   }
+  x <- gsub(
+    "\\s+(for|in|from|of|used in) the [0-9]{4}\\s+bigeye tuna\\s*(\\(BET\\))?\\s+assessment\\b",
+    "",
+    x,
+    ignore.case = TRUE,
+    perl = TRUE
+  )
+  x <- gsub(
+    "^the [0-9]{4}\\s+bigeye tuna\\s*(\\(BET\\))?\\s+assessment\\s+",
+    "",
+    x,
+    ignore.case = TRUE,
+    perl = TRUE
+  )
+  x <- gsub(
+    "\\bthe [0-9]{4}\\s+bigeye tuna\\s*(\\(BET\\))?\\s+assessment\\b",
+    "",
+    x,
+    ignore.case = TRUE,
+    perl = TRUE
+  )
   x <- gsub("\\b(for|in) the ([0-9]{4} [^.,;]+?) assessment results\\b", "\\1 the \\2 assessment", x, perl = TRUE)
   x <- gsub("\\bthe ([0-9]{4} [^.,;]+?) assessment results\\b", "the \\1 assessment", x, perl = TRUE)
-  trimws(gsub("\\s+", " ", x))
+  x <- gsub("\\s+([.,;:])", "\\1", x, perl = TRUE)
+  x <- trimws(gsub("\\s+", " ", x))
+  ifelse(nzchar(x), paste0(toupper(substr(x, 1, 1)), substr(x, 2, nchar(x))), x)
 }
 
 latex_escape <- function(x) {
@@ -763,6 +787,7 @@ is_default_excluded_figure <- function(path) {
   stem <- tools::file_path_sans_ext(tolower(basename(path)))
   stem <- gsub("_", "-", stem, fixed = TRUE)
   stem %in% c(
+    "hessian-diagnostics",
     "tag-recapture-pressure-release-group",
     "tag-recapture-pressure-release-group-by-fishery"
   )

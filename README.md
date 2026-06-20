@@ -38,10 +38,11 @@ The plot task should create the broad figure/table bundle. The report task then
 uses `bet-2026-report/catalog/curation.yml` to decide which generated assets go
 in the main report, appendix, or excluded set.
 
-Each render writes `outputs/curation/report-curation-review.html`. Open that
-page first, then edit `catalog/curation.yml` for final human choices such as
-placement, section, title, caption override, and order. See
-`bet-2026-report/vignettes/report-curation.md` for the beginner workflow.
+Each render writes `outputs/curation/report-curation-review.html` and
+`outputs/curation/figure-caption-draft.qmd`. Open the review page first. Use
+`catalog/curation.yml` for small placement/caption overrides, or use the QMD
+draft when the Figures section needs full manual caption and ordering control.
+See `bet-2026-report/vignettes/report-curation.md` for the beginner workflow.
 
 For file size, plot jobs create optimized PNGs for PDF output and WebP sidecars
 for HTML output. The report automatically uses JPEG sidecars for PDF when they

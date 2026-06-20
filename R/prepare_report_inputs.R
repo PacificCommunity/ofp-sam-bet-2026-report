@@ -57,7 +57,8 @@ is_internal_report_table <- function(path) {
     paste(
       "^(payload-index(-[0-9]+)?|model-index|plot-summary|report-files|",
       "report-input-.*|report-prep-summary|figure-index|table-index|",
-      "generated-table-index|mfclshiny-.*|.*build-log.*|.*report-summary)[.]csv$",
+      "generated-table-index|figure-optimization|mfclshiny-.*|",
+      ".*build-log.*|.*report-summary)[.]csv$",
       sep = ""
     ),
     base

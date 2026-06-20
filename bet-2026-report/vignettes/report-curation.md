@@ -11,12 +11,30 @@ The BET workflow has two separate jobs:
 2. The report task decides where those files appear in the draft.
 
 That means you usually do not need to rerun the plot task just to move a figure,
-move a table, exclude something, or improve a caption. Edit
-`catalog/curation.yml`, then rerun the report task.
+move a table, exclude something, or improve a caption. Edit the report curation
+files, then rerun the report task.
 
-## The Main File To Edit
+## Recommended Workflow
 
-Use:
+1. Open the review page from the report output:
+
+```text
+outputs/curation/report-curation-review.html
+```
+
+2. Decide which figures belong in the main report, appendix, or excluded set.
+3. Choose one editing style:
+
+- For small changes, edit `catalog/curation.yml`.
+- For full manual caption and ordering control, edit a QMD figure draft.
+
+4. Rerun only the report task. The plot task does not need to run again unless
+   the figure files themselves changed.
+
+## Small Edits: Curation YAML
+
+Use `catalog/curation.yml` when you only need to move, exclude, retitle, or
+override the caption for selected items:
 
 ```yaml
 catalog/curation.yml
@@ -56,18 +74,42 @@ Optional fields:
 - `order`: numeric order within curated rows.
 - `notes`: reviewer notes; these do not print in the report.
 
-## Review Page
+## Full Caption Edits: QMD Draft
 
-Every report render writes:
+Every report render also writes:
 
 ```text
-outputs/curation/report-curation-review.html
+outputs/curation/figure-caption-draft.qmd
 ```
 
-Open that page first. It shows figures, tables, current placement, current
-caption, and the target value to copy into `catalog/curation.yml`.
+This file is a plain Quarto draft containing the generated figure blocks and the
+current captions. It is useful when you want to read the selected figures in
+report order and edit the caption text directly.
 
-The same folder also contains:
+To use it:
+
+1. Copy `outputs/curation/figure-caption-draft.qmd` to:
+
+```yaml
+bet-2026-report/sections/Figures_manual.qmd
+```
+
+2. Edit the headings, order, and caption text in `Figures_manual.qmd`.
+3. Set this in `bet-2026-report/report-config.yml`:
+
+```yaml
+manual_figures_qmd: "sections/Figures_manual.qmd"
+```
+
+4. Rerun the report task.
+
+When `manual_figures_qmd` is blank, the report uses automatic catalog insertion.
+When it points to a non-empty QMD file, that QMD is used for the Figures section
+instead. This lets a human fully control report wording without changing R code.
+
+## Review Aids
+
+The curation output folder also contains:
 
 ```text
 outputs/curation/figure-curation-template.csv
@@ -75,26 +117,5 @@ outputs/curation/table-curation-template.csv
 outputs/curation/curation-template.yml
 ```
 
-These are review aids. Do not treat them as the source of truth; the source of
-truth is `catalog/curation.yml`.
-
-## File Size Optimization
-
-The plot task writes optimized report assets:
-
-- PDF renders use optimized PNGs, or JPEG sidecars when they are smaller.
-- HTML renders use WebP sidecars when they are available.
-- Original generated filenames still appear in the catalog and review page so
-  curation remains simple.
-
-If the report is still too large, make the plot task more aggressive before
-rerunning plot and report:
-
-```yaml
-PLOT_PNGQUANT_QUALITY: "55-82"
-PLOT_JPEG_QUALITY: "78"
-PLOT_WEBP_QUALITY: "68"
-```
-
-Lower numbers make smaller files with more visible loss. The defaults are set
-for a light but still report-quality draft.
+These are review aids. Do not treat them as the final source of truth unless you
+copy their contents into `catalog/curation.yml` or the manual QMD file.

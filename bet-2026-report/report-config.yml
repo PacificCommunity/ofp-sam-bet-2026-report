@@ -25,6 +25,7 @@ figure_roots: "Figures/generated;Figures/static;Figures"
 extra_figure_roots: "Figures/generated"
 table_roots: "tables/generated;tables;Tables"
 extra_table_roots: ""
+manual_figures_qmd: ""
 use_pdf_jpeg_figures: true
 use_webp_figures: true
 
