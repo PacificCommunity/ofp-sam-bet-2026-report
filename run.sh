@@ -6,7 +6,7 @@ OUT_DIR="${OUTPUT_DIR:-outputs}"
 INPUT_DIR="${INPUT_DIR:-inputs}"
 REPORT_DIR="${REPORT_DIR:-bet-2026-report}"
 REPORT_QMD="${REPORT_QMD:-assessment-report.qmd}"
-REPORT_FILE_STEM="${REPORT_FILE_STEM:-bet-2026-draft}"
+REPORT_FILE_STEM="${REPORT_FILE_STEM:-bet-2026-report}"
 
 runtime_packages_disabled() {
   case "${KFLOW_RUNTIME_PACKAGES:-}" in
@@ -145,7 +145,7 @@ prepare_runtime_packages() {
 
 mkdir -p "${OUT_DIR}"
 
-echo "BET 2026 draft task"
+echo "BET 2026 report task"
 echo "Input artifacts: ${INPUT_DIR}"
 echo "Report directory: ${REPORT_DIR}"
 echo "Report entrypoint: ${REPORT_QMD}"
@@ -156,7 +156,7 @@ Rscript R/prepare_report_inputs.R
 
 cd "${REPORT_DIR}"
 if [[ -f "sections/Figures_curated.qmd" || -f "sections/Tables_curated.qmd" ]]; then
-  echo "Curated QMD sections detected; skipping legacy draft curation review."
+  echo "Curated QMD sections detected; skipping legacy report curation review."
 else
   Rscript R/figure_curation.R review
 fi
@@ -322,11 +322,11 @@ match_index_row <- function(index, file, id_col) {
 
 out <- env("OUTPUT_DIR", "outputs")
 report_dir <- env("REPORT_DIR", "bet-2026-report")
-report_file_stem <- env("REPORT_FILE_STEM", "bet-2026-draft")
+report_file_stem <- env("REPORT_FILE_STEM", "bet-2026-report")
 has_curated_qmd <- file.exists(file.path(report_dir, "sections", "Figures_curated.qmd")) ||
   file.exists(file.path(report_dir, "sections", "Tables_curated.qmd"))
 
-dirs <- file.path(out, c("final-report", "figures", "tables", "indices"))
+dirs <- file.path(out, c("final-report", "figures", "tables", "indices", "provenance"))
 unlink(dirs, recursive = TRUE, force = TRUE)
 dir.create(out, recursive = TRUE, showWarnings = FALSE)
 invisible(lapply(dirs, dir.create, recursive = TRUE, showWarnings = FALSE))
@@ -348,6 +348,14 @@ if (!has_curated_qmd && dir.exists(curation_dir)) {
 curation_catalog <- file.path(report_dir, "catalog", "curation.yml")
 if (!has_curated_qmd && file.exists(curation_catalog)) {
   copy_file(curation_catalog, file.path(out, "curation", basename(curation_catalog)))
+}
+
+pipeline_dir <- file.path(report_dir, "pipeline-inputs")
+if (dir.exists(pipeline_dir)) {
+  provenance_files <- list.files(pipeline_dir, pattern = "provenance[.](csv|json)$", full.names = TRUE, ignore.case = TRUE)
+  for (file in provenance_files) {
+    copy_file(file, file.path(out, "provenance", basename(file)))
+  }
 }
 
 figure_dir <- file.path(report_dir, "Figures", "generated")
@@ -436,8 +444,10 @@ summary <- data.frame(
     grepl("^final-report/.*[.](html|pdf)$", files, ignore.case = TRUE),
     "final-report",
     ifelse(grepl("^curation/", files), "curation",
+    ifelse(grepl("^provenance/", files), "provenance",
       ifelse(grepl("^figures/", files), "figure",
       ifelse(grepl("^tables/", files), "table", "index")
+      )
       )
     )
   ),
@@ -449,5 +459,6 @@ message("Organized report outputs under ", out, ": ",
         sum(summary$type == "final-report"), " final files, ",
         length(unique(dirname(summary$output[summary$type == "figure"]))), " figure folders, ",
         length(unique(dirname(summary$output[summary$type == "table"]))), " table folders, ",
+        sum(summary$type == "provenance"), " provenance files, ",
         sum(summary$type == "curation"), " curation files.")
 RS

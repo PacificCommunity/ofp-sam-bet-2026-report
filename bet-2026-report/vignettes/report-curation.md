@@ -74,7 +74,7 @@ Optional fields:
 - `order`: numeric order within curated rows.
 - `notes`: reviewer notes; these do not print in the report.
 
-## Full Caption Edits: QMD Draft
+## Full Caption Edits: QMD Sections
 
 Every report render also writes:
 
@@ -82,7 +82,7 @@ Every report render also writes:
 outputs/curation/figure-caption-draft.qmd
 ```
 
-This file is a plain Quarto draft containing the generated figure blocks and the
+This file is a plain Quarto section containing the generated figure blocks and the
 current captions. It is useful when you want to read the selected figures in
 report order and edit the caption text directly.
 

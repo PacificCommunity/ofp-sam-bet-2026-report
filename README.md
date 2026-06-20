@@ -1,7 +1,7 @@
-# BET 2026 Assessment Draft
+# BET 2026 Assessment Report
 
-This repository contains the automatic BET 2026 report draft in
-`bet-2026-report/`. The draft is set up for automated insertion of
+This repository contains the BET 2026 report source in `bet-2026-report/`.
+The report is set up for automated insertion of
 curated report-ready figures and tables from the BET 2026 assessment workflow,
 while leaving interpretation, final values, and management advice clearly
 marked for analyst review.
@@ -35,8 +35,8 @@ older BET jobs. New renders should use
 ## Report Curation
 
 The outputs task creates the broad figure/table bundle. The curation task then
-selects and orders the generated assets and writes draft-ready QMD sections.
-This draft task consumes those curated sections. When curated QMD is present in
+selects and orders the generated assets and writes report-ready QMD sections.
+This report task consumes those curated sections. When curated QMD is present in
 the Kflow input artifact, it is copied into `bet-2026-report/sections/` and
 used in preference to the automatic catalogs.
 
@@ -55,7 +55,7 @@ for HTML output. The report automatically uses JPEG sidecars for PDF when they
 are smaller, WebP sidecars for HTML when available, and the original optimized
 PNG as the fallback.
 
-Later, the final human-owned `ofp-sam-bet-2026-report` repository can be
-created by copying this draft source. The curation contract is intentionally the
-same, so `curation -> draft` can be changed to `curation -> report` when the
-manual report replaces the draft.
+Each Kflow render writes `outputs/provenance/report-provenance.csv`, including
+the curation input job id, upstream output job ids, curation repo commit, and
+report repo commit. This replaces the need for git submodules while keeping the
+artifact chain reproducible.

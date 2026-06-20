@@ -1,7 +1,7 @@
-# BET 2026 Report Draft
+# BET 2026 Report Source
 
 Use `assessment-report.qmd` as the main Quarto document for the BET 2026
-working draft. The folder contains the BET 2026 report configuration,
+assessment report. The folder contains the BET 2026 report configuration,
 assessment narrative, catalogs, references, and helper code used to insert
 workflow-generated figures and tables.
 
@@ -21,7 +21,7 @@ Edit these first as 2026 results become available:
   rewriting the generated figure index.
 - `catalog/tables.csv`: table order, matching CSV filenames, captions, and TODO
   text.
-- `references.bib`: report references for the BET assessment draft.
+- `references.bib`: report references for the BET assessment.
 
 Draft protection is on by default through `draft_watermark` and
 `watermark_text` in `report-config.yml`. Keep it enabled until the report is
@@ -51,17 +51,15 @@ To add figures:
    generated figures are rendered in the appendix so they are still visible
    during drafting without crowding the main figure catalog.
 
-To curate generated figures after a plot run:
+To curate generated figures and tables after an outputs run:
 
-1. Open `curation/figure-curation-review.html` from the report outputs or from
-   the local `bet-2026-report/curation/` folder.
-2. For small edits, use `catalog/curation.yml` to set `placement` to `main`,
+1. Open `outputs/curation/curation-board.html` from the curation job.
+2. For small edits, use the curation repo `catalog/curation.yml` to set `placement` to `main`,
    `appendix`, or `exclude`, and use `caption_override` for final report wording.
-3. For full manual caption editing, use `curation/figure-caption-draft.qmd` as a
-   Quarto draft for `sections/Figures_manual.qmd`, then set `manual_figures_qmd`
-   in `report-config.yml`.
-4. Re-render the report; the same generated figures are inserted according to
-   the curation overlay or the manual QMD section.
+3. Rerun curation. It writes `outputs/report/sections/Figures.qmd` and
+   `outputs/report/sections/Tables.qmd`.
+4. Rerender the report from the curation job. The curated QMD sections are copied
+   into `sections/` and used directly.
 
 To add tables, write the table as CSV under `tables/` or `Tables/` and add a
 row to `catalog/tables.csv`.

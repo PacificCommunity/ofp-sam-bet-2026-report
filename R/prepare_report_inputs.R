@@ -58,6 +58,7 @@ is_internal_report_table <- function(path) {
       "^(payload-index(-[0-9]+)?|model-index|plot-summary|report-files|",
       "report-input-.*|report-prep-summary|figure-index|table-index|",
       "generated-table-index|figure-optimization|curation-summary|",
+      ".*provenance.*|",
       "report-selection|mfclshiny-.*|",
       ".*build-log.*|.*report-summary)[.]csv$",
       sep = ""
@@ -85,6 +86,42 @@ resolve_path <- function(path, root = getwd()) {
 
 relative_to_input <- function(paths, input_root) {
   sub(paste0("^", regex_escape(normalizePath(input_root, mustWork = FALSE)), "/?"), "", normalizePath(paths, mustWork = FALSE))
+}
+
+clean_metadata_value <- function(x) {
+  x <- trimws(as.character(x %||% ""))
+  x <- x[nzchar(x) & !grepl("\\{\\{", x)]
+  x
+}
+
+collapse_metadata <- function(x) {
+  paste(unique(clean_metadata_value(x)), collapse = ",")
+}
+
+top_level_input_job_ids <- function(input_root) {
+  if (!dir.exists(input_root)) return(character())
+  dirs <- list.dirs(input_root, full.names = TRUE, recursive = FALSE)
+  ids <- basename(dirs)
+  keep <- grepl("^[0-9A-Fa-f]{8,}$", ids) | dir.exists(file.path(dirs, "outputs"))
+  ids[keep]
+}
+
+metadata_field <- function(x, names) {
+  if (!is.data.frame(x) || !nrow(x)) return(character())
+  cols <- intersect(names, colnames(x))
+  if (!length(cols)) return(character())
+  unlist(x[cols], use.names = FALSE)
+}
+
+git_metadata <- function(args, path = getwd()) {
+  old <- getwd()
+  on.exit(setwd(old), add = TRUE)
+  setwd(path)
+  value <- tryCatch(
+    suppressWarnings(system2("git", args, stdout = TRUE, stderr = FALSE)),
+    error = function(e) character()
+  )
+  collapse_metadata(value[1])
 }
 
 update_report_config <- function(path) {
@@ -122,7 +159,7 @@ set_report_config_value <- function(path, name, value) {
 }
 
 copy_curated_section <- function(all_files, input_root, report_path, name) {
-  pattern <- paste0("(^|/)draft/sections/", name, "[.]qmd$")
+  pattern <- paste0("(^|/)(report|draft)/sections/", name, "[.]qmd$")
   source <- all_files[grepl(pattern, all_files, ignore.case = TRUE)]
   source <- source[file.exists(source)]
   if (!length(source)) return("")
@@ -155,11 +192,12 @@ figure_files <- all_files[grepl("[.](png|jpg|jpeg|webp|pdf)$", all_files, ignore
 table_files <- all_files[grepl("[.]csv$", all_files, ignore.case = TRUE)]
 figure_index_files <- table_files[grepl("(^|/)figure-index[.]csv$|(^|/)mfclshiny-figure-index[.]csv$", table_files, ignore.case = TRUE)]
 table_index_files <- table_files[grepl("(^|/)table-index[.]csv$|(^|/)mfclshiny-table-index[.]csv$|(^|/)generated-table-index[.]csv$", table_files, ignore.case = TRUE)]
+provenance_files <- table_files[grepl("(^|/)provenance/.*provenance[.]csv$", table_files, ignore.case = TRUE)]
 
 copied_figures <- copy_unique(figure_files, figure_dest)
 report_table_files <- setdiff(table_files, c(figure_index_files, table_index_files))
 report_table_files <- report_table_files[!is_internal_report_table(report_table_files)]
-if (any(grepl("(^|/)draft/sections/", all_files, ignore.case = TRUE))) {
+if (any(grepl("(^|/)(report|draft)/sections/", all_files, ignore.case = TRUE))) {
   report_table_files <- report_table_files[grepl("(^|/)tables/", relative_to_input(report_table_files, input_root), ignore.case = TRUE)]
 }
 copied_tables <- copy_unique(report_table_files, table_dest)
@@ -179,6 +217,43 @@ summary_rows <- lapply(summary_files, function(file) {
 })
 summaries <- bind_rows_fill(summary_rows)
 if (nrow(summaries)) utils::write.csv(summaries, file.path(pipeline_dest, "report-input-summaries.csv"), row.names = FALSE)
+
+input_job_ids <- top_level_input_job_ids(input_root)
+upstream_provenance <- bind_rows_fill(lapply(provenance_files, read_csv_safe))
+curation_job_ids <- collapse_metadata(c(env("CURATION_JOB_ID", ""), input_job_ids))
+outputs_job_ids <- collapse_metadata(c(
+  env("OUTPUTS_JOB_IDS", ""),
+  env("OUTPUTS_JOB_ID", ""),
+  metadata_field(upstream_provenance, c("outputs_job_ids", "upstream_job_ids"))
+))
+report_provenance <- data.frame(
+  stage = "report",
+  generated_at_utc = format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"),
+  report_input_job_ids = collapse_metadata(input_job_ids),
+  curation_job_ids = curation_job_ids,
+  outputs_job_ids = outputs_job_ids,
+  curation_repo_commit = collapse_metadata(metadata_field(upstream_provenance, "curation_repo_commit")),
+  curation_repo_remote = collapse_metadata(metadata_field(upstream_provenance, "curation_repo_remote")),
+  report_repo_commit = git_metadata(c("rev-parse", "HEAD"), root),
+  report_repo_remote = git_metadata(c("config", "--get", "remote.origin.url"), root),
+  upstream_provenance_files = collapse_metadata(relative_to_input(provenance_files, input_root)),
+  copied_figures = length(copied_figures),
+  copied_tables = length(copied_tables),
+  figure_index_rows = nrow(figure_index),
+  table_index_rows = nrow(table_index),
+  input_files = length(all_files),
+  stringsAsFactors = FALSE
+)
+utils::write.csv(report_provenance, file.path(pipeline_dest, "report-provenance.csv"), row.names = FALSE)
+if (requireNamespace("jsonlite", quietly = TRUE)) {
+  jsonlite::write_json(
+    report_provenance,
+    file.path(pipeline_dest, "report-provenance.json"),
+    dataframe = "rows",
+    auto_unbox = TRUE,
+    pretty = TRUE
+  )
+}
 
 registry <- data.frame(
   input_file = if (length(all_files)) relative_to_input(all_files, input_root) else character(),
