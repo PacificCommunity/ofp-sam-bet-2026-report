@@ -187,6 +187,35 @@ kflow_job_refs() {
   printf "%s" "$joined"
 }
 
+kflow_input_job_ids() {
+  local provenance
+  provenance="$(kflow_provenance_path)"
+  if [[ ! -f "$provenance" ]] || ! command -v python3 >/dev/null 2>&1; then
+    return 0
+  fi
+  python3 - "$provenance" <<'PY' 2>/dev/null || true
+import json
+import sys
+
+try:
+    with open(sys.argv[1], "r", encoding="utf-8") as handle:
+        data = json.load(handle)
+except Exception:
+    data = {}
+
+items = data.get("inputs") or []
+if isinstance(items, dict):
+    items = [items]
+ids = []
+for item in items:
+    if isinstance(item, dict):
+        job_id = str(item.get("job_id") or "").strip()
+        if job_id and job_id not in ids:
+            ids.append(job_id)
+print(",".join(ids))
+PY
+}
+
 kflow_lineage_refs() {
   local provenance
   provenance="$(kflow_provenance_path)"
@@ -303,6 +332,9 @@ publish_generated_report_inputs() {
   fi
   local report_job_subject="${report_job%% (*}"
   local results_jobs="${RESULTS_JOB_IDS:-${RESULTS_JOB_ID:-${OUTPUTS_JOB_IDS:-${OUTPUTS_JOB_ID:-}}}}"
+  if [[ -z "$results_jobs" ]]; then
+    results_jobs="$(kflow_input_job_ids)"
+  fi
   results_jobs="$(kflow_job_refs "$results_jobs")"
   local lineage_jobs
   lineage_jobs="$(kflow_lineage_refs)"

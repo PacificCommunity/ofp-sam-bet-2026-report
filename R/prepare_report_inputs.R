@@ -373,6 +373,9 @@ kflow_job <- provenance_section_table(kflow_provenance, "job")
 kflow_inputs <- provenance_section_table(kflow_provenance, "inputs")
 kflow_lineage <- provenance_lineage_table(kflow_provenance)
 kflow_records <- bind_rows_fill(list(kflow_job, kflow_inputs, kflow_lineage))
+if (!nzchar(results_job_ids)) {
+  results_job_ids <- collapse_metadata(c(metadata_field(kflow_inputs, "job_id"), input_job_ids))
+}
 if (nrow(kflow_lineage)) {
   utils::write.csv(kflow_lineage, file.path(pipeline_dest, "kflow-lineage.csv"), row.names = FALSE)
 }
