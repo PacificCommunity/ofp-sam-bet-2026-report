@@ -219,23 +219,11 @@ url_path <- function(path) {
   gsub(" ", "%20", gsub("\\\\", "/", path))
 }
 
-copy_figure_with_sidecars <- function(file, folder) {
-  copied <- character()
-  copy_one <- function(from) {
-    if (!file.exists(from)) return()
-    to <- file.path(folder, basename(from))
-    copy_file(from, to)
-    copied <<- c(copied, to)
-  }
-  copy_one(file)
-  stem <- sub("[.][^.]+$", "", file)
-  for (ext in c(".webp", ".jpg", ".jpeg")) {
-    sidecar <- paste0(stem, ext)
-    if (!identical(normalizePath(sidecar, mustWork = FALSE), normalizePath(file, mustWork = FALSE))) {
-      copy_one(sidecar)
-    }
-  }
-  unique(copied)
+copy_figure_for_output <- function(file, folder) {
+  if (!file.exists(file)) return("")
+  to <- file.path(folder, basename(file))
+  copy_file(file, to)
+  to
 }
 
 rewrite_curation_review_links <- function(out, replacements) {
@@ -319,13 +307,20 @@ for (file in figure_files) {
     slug(tools::file_path_sans_ext(basename(file)))
   }
   folder <- file.path(out, "figures", id)
-  copied <- copy_figure_with_sidecars(file, folder)
-  if (length(copied)) {
+  copied <- copy_figure_for_output(file, folder)
+  if (nzchar(copied)) {
+    target <- file.path("..", "figures", id, basename(copied))
+    source_stem <- tools::file_path_sans_ext(basename(file))
     review_replacements <- rbind(
       review_replacements,
       data.frame(
-        from = file.path("..", "Figures", "generated", basename(copied)),
-        to = file.path("..", "figures", id, basename(copied)),
+        from = c(
+          file.path("..", "Figures", "generated", basename(file)),
+          file.path("..", "Figures", "generated", paste0(source_stem, ".webp")),
+          file.path("..", "Figures", "generated", paste0(source_stem, ".jpg")),
+          file.path("..", "Figures", "generated", paste0(source_stem, ".jpeg"))
+        ),
+        to = target,
         stringsAsFactors = FALSE
       )
     )
