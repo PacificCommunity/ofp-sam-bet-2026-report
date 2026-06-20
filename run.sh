@@ -89,6 +89,143 @@ first_runtime_token() {
   return 1
 }
 
+kflow_provenance_path() {
+  local path="${KFLOW_PROVENANCE_FILE:-}"
+  if [[ -z "$path" ]]; then
+    path="${INPUT_DIR}/kflow-provenance.json"
+  fi
+  printf "%s" "$path"
+}
+
+kflow_job_ref() {
+  local job_id="${1:-}"
+  local job_number="${2:-}"
+  if [[ -n "$job_number" ]]; then
+    if [[ -n "$job_id" ]]; then
+      printf "Job %s (%s)" "$job_number" "$job_id"
+    else
+      printf "Job %s" "$job_number"
+    fi
+    return 0
+  fi
+  if [[ -z "$job_id" ]]; then
+    printf "unknown"
+    return 0
+  fi
+
+  local provenance
+  provenance="$(kflow_provenance_path)"
+  if [[ -f "$provenance" ]] && command -v python3 >/dev/null 2>&1; then
+    local label
+    label="$(
+      python3 - "$provenance" "$job_id" <<'PY' 2>/dev/null || true
+import json
+import sys
+
+path, target = sys.argv[1:3]
+try:
+    with open(path, "r", encoding="utf-8") as handle:
+        data = json.load(handle)
+except Exception:
+    data = {}
+
+records = []
+for key in ("job", "inputs", "lineage"):
+    value = data.get(key)
+    if isinstance(value, dict):
+        records.append(value)
+    elif isinstance(value, list):
+        records.extend(item for item in value if isinstance(item, dict))
+
+for record in records:
+    if str(record.get("job_id", "")) != target:
+        continue
+    label = str(record.get("job_label") or "").strip()
+    number = str(record.get("job_number") or "").strip()
+    if not label and number:
+        label = f"Job {number}"
+    if label:
+        print(f"{label} ({target})")
+    else:
+        print(target)
+    break
+PY
+    )"
+    if [[ -n "$label" ]]; then
+      printf "%s" "$label"
+      return 0
+    fi
+  fi
+
+  printf "%s" "$job_id"
+}
+
+kflow_job_refs() {
+  local raw="${1:-}"
+  if [[ -z "$raw" ]]; then
+    printf "unknown"
+    return 0
+  fi
+  local -a parts labels
+  local part
+  IFS=',' read -r -a parts <<< "$raw"
+  for part in "${parts[@]}"; do
+    part="${part#"${part%%[![:space:]]*}"}"
+    part="${part%"${part##*[![:space:]]}"}"
+    [[ -n "$part" ]] || continue
+    labels+=("$(kflow_job_ref "$part")")
+  done
+  if [[ "${#labels[@]}" -eq 0 ]]; then
+    printf "unknown"
+    return 0
+  fi
+  local joined="${labels[0]}"
+  local i
+  for ((i = 1; i < ${#labels[@]}; i++)); do
+    joined+=", ${labels[$i]}"
+  done
+  printf "%s" "$joined"
+}
+
+kflow_lineage_refs() {
+  local provenance
+  provenance="$(kflow_provenance_path)"
+  if [[ ! -f "$provenance" ]] || ! command -v python3 >/dev/null 2>&1; then
+    printf "unknown"
+    return 0
+  fi
+  python3 - "$provenance" <<'PY' 2>/dev/null || printf "unknown"
+import json
+import sys
+
+try:
+    with open(sys.argv[1], "r", encoding="utf-8") as handle:
+        data = json.load(handle)
+except Exception:
+    data = {}
+
+items = data.get("lineage") or []
+if isinstance(items, dict):
+    items = [items]
+labels = []
+for item in items:
+    if not isinstance(item, dict):
+        continue
+    job_id = str(item.get("job_id") or "").strip()
+    label = str(item.get("job_label") or "").strip()
+    number = str(item.get("job_number") or "").strip()
+    if not label and number:
+        label = f"Job {number}"
+    if label and job_id:
+        labels.append(f"{label} ({job_id})")
+    elif label:
+        labels.append(label)
+    elif job_id:
+        labels.append(job_id)
+print(", ".join(labels) if labels else "unknown")
+PY
+}
+
 publish_generated_report_inputs() {
   truthy_env KFLOW_REPORT_COMMIT_GENERATED false || return 0
   if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -135,9 +272,16 @@ publish_generated_report_inputs() {
     return 0
   fi
 
-  local report_job="${KFLOW_JOB_ID:-manual}"
+  local report_job="manual"
+  if [[ -n "${KFLOW_JOB_ID:-}${KFLOW_JOB_NUMBER:-}" ]]; then
+    report_job="$(kflow_job_ref "${KFLOW_JOB_ID:-}" "${KFLOW_JOB_NUMBER:-}")"
+  fi
+  local report_job_subject="${report_job%% (*}"
   local results_jobs="${RESULTS_JOB_IDS:-${RESULTS_JOB_ID:-${OUTPUTS_JOB_IDS:-${OUTPUTS_JOB_ID:-}}}}"
-  local subject="Update generated report inputs from Kflow job ${report_job}"
+  results_jobs="$(kflow_job_refs "$results_jobs")"
+  local lineage_jobs
+  lineage_jobs="$(kflow_lineage_refs)"
+  local subject="Update generated report inputs from Kflow ${report_job_subject}"
   local body
   body=$(
     cat <<EOF
@@ -145,6 +289,7 @@ Kflow:
 - report task: ${KFLOW_REPORT_CODE:-${GITHUB_REPOSITORY:-unknown}}
 - report job: ${report_job}
 - results job(s): ${results_jobs:-unknown}
+- upstream lineage: ${lineage_jobs:-unknown}
 - branch: ${branch}
 
 Generated paths:

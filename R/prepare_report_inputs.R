@@ -163,6 +163,10 @@ collapse_metadata <- function(x) {
   paste(unique(clean_metadata_value(x)), collapse = ",")
 }
 
+split_metadata <- function(x) {
+  unique(clean_metadata_value(unlist(strsplit(paste(x, collapse = ","), ",", fixed = TRUE), use.names = FALSE)))
+}
+
 top_level_input_job_ids <- function(input_root) {
   if (!dir.exists(input_root)) return(character())
   dirs <- list.dirs(input_root, full.names = TRUE, recursive = FALSE)
@@ -235,14 +239,56 @@ read_kflow_provenance <- function(path) {
   tryCatch(jsonlite::fromJSON(path, simplifyDataFrame = TRUE), error = function(e) list())
 }
 
-provenance_lineage_table <- function(provenance) {
-  lineage <- provenance$lineage
-  if (is.null(lineage)) return(data.frame())
-  if (is.data.frame(lineage)) return(lineage)
-  if (is.list(lineage) && length(lineage)) {
-    return(bind_rows_fill(lapply(lineage, function(x) as.data.frame(x, stringsAsFactors = FALSE))))
+provenance_section_table <- function(provenance, name) {
+  section <- provenance[[name]]
+  if (is.null(section)) return(data.frame(stringsAsFactors = FALSE))
+  if (is.data.frame(section)) return(section)
+  if (is.list(section) && length(section)) {
+    if (!all(vapply(section, is.list, logical(1)))) {
+      return(as.data.frame(section, stringsAsFactors = FALSE, check.names = FALSE))
+    }
+    return(bind_rows_fill(lapply(section, function(x) as.data.frame(x, stringsAsFactors = FALSE, check.names = FALSE))))
   }
-  data.frame()
+  data.frame(stringsAsFactors = FALSE)
+}
+
+provenance_lineage_table <- function(provenance) {
+  provenance_section_table(provenance, "lineage")
+}
+
+kflow_job_ref <- function(job_id = "", job_number = "", job_label = "") {
+  job_id <- clean_metadata_value(job_id)[1] %||% ""
+  job_number <- clean_metadata_value(job_number)[1] %||% ""
+  job_label <- clean_metadata_value(job_label)[1] %||% ""
+  if (!nzchar(job_label) && nzchar(job_number)) job_label <- paste("Job", job_number)
+  if (nzchar(job_label) && nzchar(job_id)) return(paste0(job_label, " (", job_id, ")"))
+  if (nzchar(job_label)) return(job_label)
+  if (nzchar(job_id)) return(job_id)
+  ""
+}
+
+kflow_record_refs <- function(records) {
+  if (!is.data.frame(records) || !nrow(records)) return(character())
+  vapply(seq_len(nrow(records)), function(i) {
+    kflow_job_ref(
+      if ("job_id" %in% names(records)) records$job_id[[i]] else "",
+      if ("job_number" %in% names(records)) records$job_number[[i]] else "",
+      if ("job_label" %in% names(records)) records$job_label[[i]] else ""
+    )
+  }, character(1))
+}
+
+kflow_job_refs_for_ids <- function(ids, records) {
+  ids <- split_metadata(ids)
+  if (!length(ids)) return("")
+  refs <- vapply(ids, function(id) {
+    if (is.data.frame(records) && nrow(records) && "job_id" %in% names(records)) {
+      hit <- which(as.character(records$job_id) == id)
+      if (length(hit)) return(kflow_record_refs(records[hit[[1]], , drop = FALSE]))
+    }
+    id
+  }, character(1))
+  collapse_metadata(refs)
 }
 
 root <- getwd()
@@ -323,7 +369,10 @@ if (file.exists(kflow_provenance_file)) {
   file.copy(kflow_provenance_file, file.path(pipeline_dest, "kflow-provenance.json"), overwrite = TRUE)
 }
 kflow_provenance <- read_kflow_provenance(kflow_provenance_file)
+kflow_job <- provenance_section_table(kflow_provenance, "job")
+kflow_inputs <- provenance_section_table(kflow_provenance, "inputs")
 kflow_lineage <- provenance_lineage_table(kflow_provenance)
+kflow_records <- bind_rows_fill(list(kflow_job, kflow_inputs, kflow_lineage))
 if (nrow(kflow_lineage)) {
   utils::write.csv(kflow_lineage, file.path(pipeline_dest, "kflow-lineage.csv"), row.names = FALSE)
 }
@@ -331,8 +380,15 @@ report_provenance <- data.frame(
   stage = "report",
   generated_at_utc = format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"),
   report_job_id = env("KFLOW_JOB_ID", ""),
+  report_job_number = env("KFLOW_JOB_NUMBER", collapse_metadata(metadata_field(kflow_job, "job_number"))),
+  report_job_ref = kflow_job_ref(
+    env("KFLOW_JOB_ID", collapse_metadata(metadata_field(kflow_job, "job_id"))),
+    env("KFLOW_JOB_NUMBER", collapse_metadata(metadata_field(kflow_job, "job_number"))),
+    collapse_metadata(metadata_field(kflow_job, "job_label"))
+  ),
   report_input_job_ids = collapse_metadata(input_job_ids),
   results_job_ids = results_job_ids,
+  results_job_refs = kflow_job_refs_for_ids(results_job_ids, kflow_records),
   results_bundle = if (nzchar(results_bundle)) relative_to_input(results_bundle, input_root) else "",
   outputs_job_ids = results_job_ids,
   outputs_bundle = if (nzchar(results_bundle)) relative_to_input(results_bundle, input_root) else "",
@@ -340,6 +396,8 @@ report_provenance <- data.frame(
   figures_section = figures_section_status,
   tables_section = tables_section_status,
   kflow_lineage_job_ids = if (nrow(kflow_lineage) && "job_id" %in% names(kflow_lineage)) collapse_metadata(kflow_lineage$job_id) else "",
+  kflow_lineage_job_numbers = if (nrow(kflow_lineage) && "job_number" %in% names(kflow_lineage)) collapse_metadata(kflow_lineage$job_number) else "",
+  kflow_lineage_job_refs = collapse_metadata(kflow_record_refs(kflow_lineage)),
   kflow_lineage_tasks = if (nrow(kflow_lineage) && "task" %in% names(kflow_lineage)) collapse_metadata(kflow_lineage$task) else "",
   report_repo_commit = git_metadata(c("rev-parse", "HEAD"), root),
   report_repo_remote = git_metadata(c("config", "--get", "remote.origin.url"), root),
