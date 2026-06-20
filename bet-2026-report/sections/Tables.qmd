@@ -7,21 +7,35 @@ purposes but are not shown as report tables unless they are explicitly added to
 the catalog.
 
 ```{r table-catalog, echo=FALSE, results='asis', message=FALSE, warning=FALSE}
-table_catalog <- read_catalog("tables")
-table_curation <- read_table_curation()
-table_roots <- report_paths("table_roots", c("pipeline-inputs", "tables/generated", "tables", "Tables"))
-emit_catalog_tables(table_catalog, roots = table_roots, curation = table_curation, placements = "main")
-emit_curated_file_tables(table_curation, catalog = table_catalog, roots = table_roots, placements = "main", default_section = "Curated generated tables")
-curated_table_catalog <- apply_table_curation(table_catalog, table_curation)
-appendix_table_catalog <- filter_catalog_tables(curated_table_catalog, placements = "appendix")
-if (nrow(appendix_table_catalog)) {
-  cat("\n# Appendix: Curated Supplemental Tables\n\n")
-  emit_catalog_tables(appendix_table_catalog, roots = table_roots, placements = "appendix", empty_todo = FALSE)
+manual_tables_qmd_path <- clean_text(get0("manual_tables_qmd", ifnotfound = ""))
+manual_tables_qmd_active <- FALSE
+if (nzchar(manual_tables_qmd_path) && file.exists(manual_tables_qmd_path)) {
+  manual_tables_qmd_lines <- readLines(manual_tables_qmd_path, warn = FALSE)
+  manual_tables_qmd_text <- trimws(manual_tables_qmd_lines)
+  manual_tables_qmd_text <- manual_tables_qmd_text[nzchar(manual_tables_qmd_text)]
+  manual_tables_qmd_text <- manual_tables_qmd_text[!grepl("^<!--|-->$", manual_tables_qmd_text)]
+  manual_tables_qmd_active <- length(manual_tables_qmd_text) > 0
 }
-emit_curated_file_tables(table_curation, catalog = table_catalog, roots = table_roots, placements = "appendix", default_section = "Curated supplemental generated tables")
-emit_extra_generated_tables(
-  table_catalog,
-  roots = report_paths("extra_table_roots", c("tables/generated")),
-  curation = table_curation
-)
+
+if (manual_tables_qmd_active) {
+  cat(knitr::knit_child(manual_tables_qmd_path, quiet = TRUE), sep = "\n")
+} else {
+  table_catalog <- read_catalog("tables")
+  table_curation <- read_table_curation()
+  table_roots <- report_paths("table_roots", c("pipeline-inputs", "tables/generated", "tables", "Tables"))
+  emit_catalog_tables(table_catalog, roots = table_roots, curation = table_curation, placements = "main")
+  emit_curated_file_tables(table_curation, catalog = table_catalog, roots = table_roots, placements = "main", default_section = "Curated generated tables")
+  curated_table_catalog <- apply_table_curation(table_catalog, table_curation)
+  appendix_table_catalog <- filter_catalog_tables(curated_table_catalog, placements = "appendix")
+  if (nrow(appendix_table_catalog)) {
+    cat("\n# Appendix: Curated Supplemental Tables\n\n")
+    emit_catalog_tables(appendix_table_catalog, roots = table_roots, placements = "appendix", empty_todo = FALSE)
+  }
+  emit_curated_file_tables(table_curation, catalog = table_catalog, roots = table_roots, placements = "appendix", default_section = "Curated supplemental generated tables")
+  emit_extra_generated_tables(
+    table_catalog,
+    roots = report_paths("extra_table_roots", c("tables/generated")),
+    curation = table_curation
+  )
+}
 ```

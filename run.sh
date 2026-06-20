@@ -6,6 +6,7 @@ OUT_DIR="${OUTPUT_DIR:-outputs}"
 INPUT_DIR="${INPUT_DIR:-inputs}"
 REPORT_DIR="${REPORT_DIR:-bet-2026-report}"
 REPORT_QMD="${REPORT_QMD:-assessment-report.qmd}"
+REPORT_FILE_STEM="${REPORT_FILE_STEM:-bet-2026-draft}"
 
 runtime_packages_disabled() {
   case "${KFLOW_RUNTIME_PACKAGES:-}" in
@@ -144,18 +145,19 @@ prepare_runtime_packages() {
 
 mkdir -p "${OUT_DIR}"
 
-echo "BET 2026 report task"
+echo "BET 2026 draft task"
 echo "Input artifacts: ${INPUT_DIR}"
 echo "Report directory: ${REPORT_DIR}"
 echo "Report entrypoint: ${REPORT_QMD}"
+echo "Report file stem: ${REPORT_FILE_STEM}"
 
 prepare_runtime_packages
 Rscript R/prepare_report_inputs.R
 
 cd "${REPORT_DIR}"
 Rscript R/figure_curation.R review
-quarto render "${REPORT_QMD}" --to html --output bet-2026-report.html
-quarto render "${REPORT_QMD}" --to pdf --output bet-2026-report.pdf
+quarto render "${REPORT_QMD}" --to html --output "${REPORT_FILE_STEM}.html"
+quarto render "${REPORT_QMD}" --to pdf --output "${REPORT_FILE_STEM}.pdf"
 cd "${ROOT}"
 
 Rscript - <<'RS'
@@ -316,13 +318,14 @@ match_index_row <- function(index, file, id_col) {
 
 out <- env("OUTPUT_DIR", "outputs")
 report_dir <- env("REPORT_DIR", "bet-2026-report")
+report_file_stem <- env("REPORT_FILE_STEM", "bet-2026-draft")
 
 dirs <- file.path(out, c("final-report", "figures", "tables", "indices"))
 unlink(dirs, recursive = TRUE, force = TRUE)
 dir.create(out, recursive = TRUE, showWarnings = FALSE)
 invisible(lapply(dirs, dir.create, recursive = TRUE, showWarnings = FALSE))
 
-final_files <- file.path(report_dir, c("bet-2026-report.pdf", "bet-2026-report.html"))
+final_files <- file.path(report_dir, paste0(report_file_stem, c(".pdf", ".html")))
 final_files <- final_files[file.exists(final_files)]
 for (file in final_files) {
   copy_file(file, file.path(out, "final-report", basename(file)))

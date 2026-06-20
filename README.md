@@ -1,10 +1,10 @@
-# BET 2026 Assessment Report
+# BET 2026 Assessment Draft
 
-This repository contains the working BET 2026 report draft in
+This repository contains the automatic BET 2026 report draft in
 `bet-2026-report/`. The draft is set up for automated insertion of
-report-ready figures and tables from the BET 2026 assessment workflow, while
-leaving interpretation, final values, and management advice clearly marked for
-analyst review.
+curated report-ready figures and tables from the BET 2026 assessment workflow,
+while leaving interpretation, final values, and management advice clearly
+marked for analyst review.
 
 The BET draft keeps assessment-year results and management advice as TODO items
 until they are generated from the accepted 2026 assessment model set. Draft sharing
@@ -34,9 +34,11 @@ older BET jobs. New renders should use
 
 ## Report Curation
 
-The plot task should create the broad figure/table bundle. The report task then
-uses `bet-2026-report/catalog/curation.yml` to decide which generated assets go
-in the main report, appendix, or excluded set.
+The outputs task creates the broad figure/table bundle. The curation task then
+selects and orders the generated assets and writes draft-ready QMD sections.
+This draft task consumes those curated sections. When curated QMD is present in
+the Kflow input artifact, it is copied into `bet-2026-report/sections/` and
+used in preference to the automatic catalogs.
 
 Each render writes `outputs/curation/report-curation-review.html` and
 `outputs/curation/figure-caption-draft.qmd`. Open the review page first. For
@@ -52,3 +54,8 @@ For file size, plot jobs create optimized PNGs for PDF output and WebP sidecars
 for HTML output. The report automatically uses JPEG sidecars for PDF when they
 are smaller, WebP sidecars for HTML when available, and the original optimized
 PNG as the fallback.
+
+Later, the final human-owned `ofp-sam-bet-2026-report` repository can be
+created by copying this draft source. The curation contract is intentionally the
+same, so `curation -> draft` can be changed to `curation -> report` when the
+manual report replaces the draft.

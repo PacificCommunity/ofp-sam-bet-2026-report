@@ -57,7 +57,8 @@ is_internal_report_table <- function(path) {
     paste(
       "^(payload-index(-[0-9]+)?|model-index|plot-summary|report-files|",
       "report-input-.*|report-prep-summary|figure-index|table-index|",
-      "generated-table-index|figure-optimization|mfclshiny-.*|",
+      "generated-table-index|figure-optimization|curation-summary|",
+      "report-selection|mfclshiny-.*|",
       ".*build-log.*|.*report-summary)[.]csv$",
       sep = ""
     ),
@@ -106,6 +107,31 @@ update_report_config <- function(path) {
   invisible(TRUE)
 }
 
+set_report_config_value <- function(path, name, value) {
+  if (!file.exists(path) || !nzchar(value)) return(invisible(FALSE))
+  lines <- readLines(path, warn = FALSE)
+  rendered <- paste0(name, ": \"", value, "\"")
+  hit <- grepl(paste0("^", name, "\\s*:"), lines)
+  if (any(hit)) {
+    lines[which(hit)[[1]]] <- rendered
+  } else {
+    lines <- c(lines, rendered)
+  }
+  writeLines(lines, path)
+  invisible(TRUE)
+}
+
+copy_curated_section <- function(all_files, input_root, report_path, name) {
+  pattern <- paste0("(^|/)draft/sections/", name, "[.]qmd$")
+  source <- all_files[grepl(pattern, all_files, ignore.case = TRUE)]
+  source <- source[file.exists(source)]
+  if (!length(source)) return("")
+  target <- file.path(report_path, "sections", paste0(name, "_curated.qmd"))
+  dir.create(dirname(target), recursive = TRUE, showWarnings = FALSE)
+  file.copy(source[[1]], target, overwrite = TRUE)
+  paste0("sections/", basename(target))
+}
+
 root <- getwd()
 input_dir <- env("INPUT_DIR", "inputs")
 report_dir <- env("REPORT_DIR", "bet-2026-report")
@@ -133,6 +159,9 @@ table_index_files <- table_files[grepl("(^|/)table-index[.]csv$|(^|/)mfclshiny-t
 copied_figures <- copy_unique(figure_files, figure_dest)
 report_table_files <- setdiff(table_files, c(figure_index_files, table_index_files))
 report_table_files <- report_table_files[!is_internal_report_table(report_table_files)]
+if (any(grepl("(^|/)draft/sections/", all_files, ignore.case = TRUE))) {
+  report_table_files <- report_table_files[grepl("(^|/)tables/", relative_to_input(report_table_files, input_root), ignore.case = TRUE)]
+}
 copied_tables <- copy_unique(report_table_files, table_dest)
 
 figure_index <- dedupe_index_rows(bind_rows_fill(lapply(figure_index_files, read_csv_safe)))
@@ -170,4 +199,12 @@ prep_summary <- data.frame(
 utils::write.csv(prep_summary, file.path(pipeline_dest, "report-prep-summary.csv"), row.names = FALSE)
 
 update_report_config(file.path(report_path, "report-config.yml"))
+manual_figures_qmd <- copy_curated_section(all_files, input_root, report_path, "Figures")
+manual_tables_qmd <- copy_curated_section(all_files, input_root, report_path, "Tables")
+if (nzchar(manual_figures_qmd)) {
+  set_report_config_value(file.path(report_path, "report-config.yml"), "manual_figures_qmd", manual_figures_qmd)
+}
+if (nzchar(manual_tables_qmd)) {
+  set_report_config_value(file.path(report_path, "report-config.yml"), "manual_tables_qmd", manual_tables_qmd)
+}
 message("Prepared report inputs: ", length(copied_figures), " figures, ", length(copied_tables), " tables.")
