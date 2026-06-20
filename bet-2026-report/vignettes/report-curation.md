@@ -1,11 +1,11 @@
 # Editing Generated Figures And Tables
 
-The current BET workflow does not use a separate curation task. The outputs task
+The current BET workflow does not use a separate curation task. The results task
 creates the figure/table bundle and the report task copies it into the report.
 
 ## What The Outputs Job Provides
 
-After `ofp-sam-bet-2026-outputs` runs, open:
+After `ofp-sam-bet-2026-results` runs, open:
 
 ```text
 outputs/report-ready/report-map.html
@@ -14,7 +14,7 @@ outputs/report-ready/report-map.html
 That read-only map shows every generated figure and table, the default section
 placement, the item id, and the marker to search for in QMD.
 
-The same outputs job also writes:
+The same results job also writes:
 
 ```text
 outputs/report-ready/figures.qmd
@@ -75,5 +75,5 @@ The report job writes:
 outputs/provenance/report-provenance.csv
 ```
 
-That file records the report job id, upstream outputs job id, copied output
+That file records the report job id, upstream results job id, copied output
 bundle, Kflow lineage, and report repository commit.

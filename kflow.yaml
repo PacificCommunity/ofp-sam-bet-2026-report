@@ -1,5 +1,5 @@
 name: ofp-sam-bet-2026-report
-description: Render the BET 2026 report directly from generated output figures and tables.
+description: Render the BET 2026 report directly from generated result figures and tables.
 command: bash run.sh
 docker_image: ghcr.io/pacificcommunity/tuna-flow:v1.6
 resources:
@@ -33,6 +33,8 @@ job_config:
     - FLOW_SPECIES
     - FLOW_SPECIES_LABEL
     - FLOW_ASSESSMENT_YEAR
+    - RESULTS_JOB_ID
+    - RESULTS_JOB_IDS
     - OUTPUTS_JOB_ID
     - OUTPUTS_JOB_IDS
     - REPORT_QMD

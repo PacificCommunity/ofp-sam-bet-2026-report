@@ -209,7 +209,7 @@ update_report_config <- function(path) {
   invisible(TRUE)
 }
 
-find_outputs_bundle <- function(input_root) {
+find_results_bundle <- function(input_root) {
   if (!dir.exists(input_root)) return("")
   dirs <- list.dirs(input_root, recursive = TRUE, full.names = TRUE)
   dirs <- dirs[file.exists(file.path(dirs, "report-ready", "figures.qmd")) |
@@ -266,8 +266,8 @@ input_root <- resolve_path(input_dir, root)
 all_files <- if (dir.exists(input_root)) list.files(input_root, recursive = TRUE, full.names = TRUE) else character()
 if (!length(all_files)) warning("No Kflow input artifact files found at ", input_root)
 
-outputs_bundle <- find_outputs_bundle(input_root)
-copied_generated_outputs <- copy_report_generated_outputs(outputs_bundle, generated_outputs_dest)
+results_bundle <- find_results_bundle(input_root)
+copied_generated_outputs <- copy_report_generated_outputs(results_bundle, generated_outputs_dest)
 figures_section_status <- seed_report_section(
   report_path,
   "Figures",
@@ -311,10 +311,12 @@ if (nrow(summaries)) utils::write.csv(summaries, file.path(pipeline_dest, "repor
 
 input_job_ids <- top_level_input_job_ids(input_root)
 upstream_provenance <- bind_rows_fill(lapply(provenance_files, read_csv_safe))
-outputs_job_ids <- collapse_metadata(c(
+results_job_ids <- collapse_metadata(c(
+  env("RESULTS_JOB_IDS", ""),
+  env("RESULTS_JOB_ID", ""),
   env("OUTPUTS_JOB_IDS", ""),
   env("OUTPUTS_JOB_ID", ""),
-  metadata_field(upstream_provenance, c("outputs_job_ids", "upstream_job_ids"))
+  metadata_field(upstream_provenance, c("results_job_ids", "outputs_job_ids", "upstream_job_ids"))
 ))
 kflow_provenance_file <- env("KFLOW_PROVENANCE_FILE", file.path(input_root, "kflow-provenance.json"))
 if (file.exists(kflow_provenance_file)) {
@@ -330,8 +332,10 @@ report_provenance <- data.frame(
   generated_at_utc = format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"),
   report_job_id = env("KFLOW_JOB_ID", ""),
   report_input_job_ids = collapse_metadata(input_job_ids),
-  outputs_job_ids = outputs_job_ids,
-  outputs_bundle = if (nzchar(outputs_bundle)) relative_to_input(outputs_bundle, input_root) else "",
+  results_job_ids = results_job_ids,
+  results_bundle = if (nzchar(results_bundle)) relative_to_input(results_bundle, input_root) else "",
+  outputs_job_ids = results_job_ids,
+  outputs_bundle = if (nzchar(results_bundle)) relative_to_input(results_bundle, input_root) else "",
   generated_outputs_files = length(copied_generated_outputs),
   figures_section = figures_section_status,
   tables_section = tables_section_status,

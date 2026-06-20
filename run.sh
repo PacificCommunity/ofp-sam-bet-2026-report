@@ -136,7 +136,7 @@ publish_generated_report_inputs() {
   fi
 
   local report_job="${KFLOW_JOB_ID:-manual}"
-  local outputs_jobs="${OUTPUTS_JOB_IDS:-${OUTPUTS_JOB_ID:-}}"
+  local results_jobs="${RESULTS_JOB_IDS:-${RESULTS_JOB_ID:-${OUTPUTS_JOB_IDS:-${OUTPUTS_JOB_ID:-}}}}"
   local subject="Update generated report inputs from Kflow job ${report_job}"
   local body
   body=$(
@@ -144,7 +144,7 @@ publish_generated_report_inputs() {
 Kflow:
 - report task: ${KFLOW_REPORT_CODE:-${GITHUB_REPOSITORY:-unknown}}
 - report job: ${report_job}
-- outputs job(s): ${outputs_jobs:-unknown}
+- results job(s): ${results_jobs:-unknown}
 - branch: ${branch}
 
 Generated paths:

@@ -34,7 +34,7 @@ older BET jobs. New renders should use
 
 ## Output Sections
 
-The outputs task creates the broad figure/table bundle and writes report-ready
+The results task creates the broad figure/table bundle and writes report-ready
 QMD seeds:
 
 - `generated/outputs/report-ready/figures.qmd`
@@ -66,7 +66,7 @@ Set `KFLOW_REPORT_COMMIT_GENERATED=false` for local renders that should not
 write a generated-input commit.
 
 Open `outputs/generated/outputs/report-ready/report-map.html` from a report job,
-or `outputs/report-ready/report-map.html` from an outputs job, to browse the
+or `outputs/report-ready/report-map.html` from a results job, to browse the
 generated figure/table map before editing the QMD.
 
 For file size, plot jobs create optimized PNGs for PDF output and WebP sidecars
