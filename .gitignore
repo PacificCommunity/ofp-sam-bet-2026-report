@@ -8,9 +8,9 @@ report/Figures
 *.Rproj
 *.pdf
 /.luarc.json
-outputs/
-inputs/
-.R-library/
-.kflow-runtime-cache/
+/outputs/
+/inputs/
+/.R-library/
+/.kflow-runtime-cache/
 .Rhistory
 .RData

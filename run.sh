@@ -50,6 +50,147 @@ drop_runtime_tokens() {
   unset GIT_PAT GITHUB_PAT GH_TOKEN KFLOW_GITHUB_TOKEN KFLOW_PERSONAL_TOKEN
 }
 
+truthy_value() {
+  case "${1:-}" in
+    1|true|TRUE|yes|YES|y|Y|on|ON|always|ALWAYS) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+truthy_env() {
+  local name="$1"
+  local default="${2:-false}"
+  local value="${!name:-$default}"
+  truthy_value "$value"
+}
+
+publish_required() {
+  truthy_env KFLOW_REPORT_PUBLISH_REQUIRED true
+}
+
+publish_fail() {
+  local message="$1"
+  if publish_required; then
+    echo "[kflow-report-publish] ${message}" >&2
+    return 1
+  fi
+  echo "[kflow-report-publish] ${message}; continuing because publish is not required." >&2
+  return 0
+}
+
+first_runtime_token() {
+  local name
+  for name in GITHUB_PAT GIT_PAT GH_TOKEN KFLOW_GITHUB_TOKEN KFLOW_PERSONAL_TOKEN; do
+    if [[ -n "${!name:-}" ]]; then
+      printf "%s" "${!name}"
+      return 0
+    fi
+  done
+  return 1
+}
+
+publish_generated_report_inputs() {
+  truthy_env KFLOW_REPORT_COMMIT_GENERATED false || return 0
+  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    publish_fail "Cannot commit generated report inputs because this is not a git checkout."
+    return $?
+  fi
+
+  local branch="${GITHUB_BRANCH:-}"
+  if [[ -z "$branch" ]]; then
+    branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || true)"
+  fi
+  if [[ -z "$branch" || "$branch" == "HEAD" ]]; then
+    publish_fail "Cannot publish generated report inputs because the target branch is unknown."
+    return $?
+  fi
+
+  git config user.name >/dev/null 2>&1 || git config user.name "${KFLOW_GIT_AUTHOR_NAME:-Kflow Bot}"
+  git config user.email >/dev/null 2>&1 || git config user.email "${KFLOW_GIT_AUTHOR_EMAIL:-kflow@localhost}"
+  if [[ -n "${GITHUB_REPOSITORY:-}" ]]; then
+    git remote set-url origin "https://github.com/${GITHUB_REPOSITORY}.git" >/dev/null 2>&1 || true
+  fi
+
+  local stage_paths=()
+  local path
+  for path in \
+    "${REPORT_DIR}/generated/outputs/report-ready/figures.qmd" \
+    "${REPORT_DIR}/generated/outputs/report-ready/tables.qmd" \
+    "${REPORT_DIR}/generated/outputs/figures" \
+    "${REPORT_DIR}/generated/outputs/tables" \
+    "${REPORT_DIR}/pipeline-inputs" \
+    "${REPORT_DIR}/sections/Figures.qmd" \
+    "${REPORT_DIR}/sections/Tables.qmd" \
+    "${REPORT_DIR}/report-config.yml"; do
+    [[ -e "$path" ]] && stage_paths+=("$path")
+  done
+  if [[ "${#stage_paths[@]}" -eq 0 ]]; then
+    publish_fail "No generated report inputs were found to commit."
+    return $?
+  fi
+
+  git add -A -- "${stage_paths[@]}"
+  if git diff --cached --quiet; then
+    echo "[kflow-report-publish] Generated report inputs are already committed."
+    return 0
+  fi
+
+  local report_job="${KFLOW_JOB_ID:-manual}"
+  local outputs_jobs="${OUTPUTS_JOB_IDS:-${OUTPUTS_JOB_ID:-}}"
+  local subject="Update generated report inputs from Kflow job ${report_job}"
+  local body
+  body=$(
+    cat <<EOF
+Kflow:
+- report task: ${KFLOW_REPORT_CODE:-${GITHUB_REPOSITORY:-unknown}}
+- report job: ${report_job}
+- outputs job(s): ${outputs_jobs:-unknown}
+- branch: ${branch}
+
+Generated paths:
+- ${REPORT_DIR}/generated/outputs/report-ready/figures.qmd
+- ${REPORT_DIR}/generated/outputs/report-ready/tables.qmd
+- ${REPORT_DIR}/generated/outputs/figures
+- ${REPORT_DIR}/generated/outputs/tables
+- ${REPORT_DIR}/pipeline-inputs
+- ${REPORT_DIR}/sections/Figures.qmd
+- ${REPORT_DIR}/sections/Tables.qmd
+EOF
+  )
+  git commit -m "$subject" -m "$body"
+
+  truthy_env KFLOW_REPORT_PUSH_GENERATED true || {
+    echo "[kflow-report-publish] Generated report inputs committed locally; push disabled."
+    return 0
+  }
+
+  local token=""
+  token="$(first_runtime_token || true)"
+  if [[ -z "$token" ]]; then
+    publish_fail "Cannot push generated report inputs because no GitHub token is available."
+    return $?
+  fi
+
+  local askpass
+  askpass="$(mktemp)"
+  cat > "$askpass" <<'EOF'
+#!/usr/bin/env bash
+case "$1" in
+  *Username*) printf "%s\n" "x-access-token" ;;
+  *Password*) printf "%s\n" "${KFLOW_REPORT_GIT_TOKEN:-}" ;;
+  *) printf "\n" ;;
+esac
+EOF
+  chmod 700 "$askpass"
+  if KFLOW_REPORT_GIT_TOKEN="$token" GIT_ASKPASS="$askpass" GIT_TERMINAL_PROMPT=0 git push origin "HEAD:${branch}"; then
+    rm -f "$askpass"
+    echo "[kflow-report-publish] Pushed generated report inputs to ${GITHUB_REPOSITORY:-origin}:${branch}."
+    return 0
+  fi
+  rm -f "$askpass"
+  publish_fail "Generated report input commit was created, but git push failed."
+}
+
 install_missing_runtime_packages() {
   runtime_packages_disabled && return 0
   runtime_updates_disabled && return 0
@@ -140,7 +281,6 @@ prepare_runtime_packages() {
     echo "[kflow-runtime-update] Runtime updater not found; using bundled packages." >&2
   fi
   install_missing_runtime_packages
-  drop_runtime_tokens
 }
 
 mkdir -p "${OUT_DIR}"
@@ -413,3 +553,6 @@ message("Organized report outputs under ", out, ": ",
         sum(summary$type == "provenance"), " provenance files, ",
         sum(summary$type == "generated"), " generated-map files.")
 RS
+
+publish_generated_report_inputs
+drop_runtime_tokens

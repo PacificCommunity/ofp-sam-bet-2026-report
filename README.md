@@ -48,6 +48,23 @@ bundle into `bet-2026-report/generated/outputs/`. If `sections/Figures.qmd` or
 section has been seeded, edit the section directly to include, remove, reorder,
 or rewrite captions. Later renders preserve existing section files.
 
+By default the Kflow report job commits and pushes only the generated files
+needed to render the report back to this repository:
+
+- `bet-2026-report/generated/outputs/report-ready/figures.qmd`
+- `bet-2026-report/generated/outputs/report-ready/tables.qmd`
+- `bet-2026-report/generated/outputs/figures/`
+- `bet-2026-report/generated/outputs/tables/`, only when referenced by QMD
+- `bet-2026-report/pipeline-inputs/`
+- `bet-2026-report/sections/Figures.qmd`
+- `bet-2026-report/sections/Tables.qmd`
+
+Large review HTML files and diagnostics are kept in Kflow artifacts, not in the
+report repository. This keeps the report checkout standalone without committing
+unneeded output clutter after each successful workflow run.
+Set `KFLOW_REPORT_COMMIT_GENERATED=false` for local renders that should not
+write a generated-input commit.
+
 Open `outputs/generated/outputs/report-ready/report-map.html` from a report job,
 or `outputs/report-ready/report-map.html` from an outputs job, to browse the
 generated figure/table map before editing the QMD.

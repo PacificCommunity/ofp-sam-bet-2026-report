@@ -17,6 +17,13 @@ The workflow-generated output bundle is copied into:
 generated/outputs/
 ```
 
+In Kflow, the report job also commits and pushes the generated QMD plus the
+figure/table files referenced by that QMD back to this repository, together with
+`pipeline-inputs/` and the seeded `sections/Figures.qmd` and
+`sections/Tables.qmd` when they change. Review HTML and diagnostics stay in
+Kflow artifacts. That means a fresh checkout can be rendered locally without
+needing Kflow artifacts.
+
 The files that usually need human editing are:
 
 ```text

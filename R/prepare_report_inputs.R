@@ -45,6 +45,54 @@ copy_tree <- function(source, dest) {
   copied
 }
 
+qmd_reference_paths <- function(path) {
+  if (!file.exists(path)) return(character())
+  lines <- readLines(path, warn = FALSE)
+  text <- paste(lines, collapse = "\n")
+  matches <- gregexpr("\\]\\(([^)]+)\\)", text, perl = TRUE)
+  refs <- regmatches(text, matches)[[1]]
+  if (!length(refs) || identical(refs, character(0))) return(character())
+  refs <- sub("^\\]\\(", "", refs)
+  refs <- sub("\\)$", "", refs)
+  refs <- sub("\\{.*$", "", refs)
+  refs <- trimws(refs)
+  refs <- refs[nzchar(refs) & !grepl("^(https?:|mailto:|#)", refs, ignore.case = TRUE)]
+  refs
+}
+
+copy_report_generated_outputs <- function(source, dest) {
+  if (!nzchar(source) || !dir.exists(source)) return(character())
+  dir.create(dest, recursive = TRUE, showWarnings = FALSE)
+  copied <- character()
+
+  report_ready <- file.path(source, "report-ready")
+  for (name in c("figures.qmd", "tables.qmd")) {
+    src <- file.path(report_ready, name)
+    if (!file.exists(src)) next
+    target <- file.path(dest, "report-ready", name)
+    dir.create(dirname(target), recursive = TRUE, showWarnings = FALSE)
+    file.copy(src, target, overwrite = TRUE)
+    copied <- c(copied, target)
+  }
+
+  refs <- unique(c(
+    qmd_reference_paths(file.path(report_ready, "figures.qmd")),
+    qmd_reference_paths(file.path(report_ready, "tables.qmd"))
+  ))
+  refs <- sub("^generated/outputs/", "", refs)
+  refs <- refs[grepl("^(figures|tables)/", refs)]
+  for (rel in refs) {
+    src <- file.path(source, rel)
+    if (!file.exists(src) || dir.exists(src)) next
+    target <- file.path(dest, rel)
+    dir.create(dirname(target), recursive = TRUE, showWarnings = FALSE)
+    file.copy(src, target, overwrite = TRUE)
+    copied <- c(copied, target)
+  }
+
+  copied
+}
+
 read_csv_safe <- function(path) {
   tryCatch(utils::read.csv(path, stringsAsFactors = FALSE, check.names = FALSE), error = function(e) data.frame())
 }
@@ -219,7 +267,7 @@ all_files <- if (dir.exists(input_root)) list.files(input_root, recursive = TRUE
 if (!length(all_files)) warning("No Kflow input artifact files found at ", input_root)
 
 outputs_bundle <- find_outputs_bundle(input_root)
-copied_generated_outputs <- copy_tree(outputs_bundle, generated_outputs_dest)
+copied_generated_outputs <- copy_report_generated_outputs(outputs_bundle, generated_outputs_dest)
 figures_section_status <- seed_report_section(
   report_path,
   "Figures",
