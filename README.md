@@ -86,6 +86,33 @@ cd bet-2026-report
 quarto render assessment-report.qmd --to pdf
 ```
 
+## Zotero References
+
+The report bibliography is:
+
+```text
+bet-2026-report/references.bib
+```
+
+Recommended Zotero workflow:
+
+1. Keep report references in one Zotero collection, for example `BET`.
+2. Export that collection as `Better BibLaTeX` if Better BibTeX is installed, or
+   `BibLaTeX`/`BibTeX` otherwise.
+3. Save or import the export into `bet-2026-report/references.bib`.
+4. Commit the updated `.bib` with any report text that uses the new citation
+   keys.
+
+If Better BibTeX is available, use its automatic export with "Keep updated" and
+write directly to `bet-2026-report/references.bib`. That gives stable citation
+keys and keeps the file synchronized when Zotero changes.
+
+To import an exported file manually:
+
+```bash
+bash scripts/import-zotero-bib.sh /path/to/exported.bib
+```
+
 ## Common Kflow Config
 
 | Field | Typical value | Purpose |

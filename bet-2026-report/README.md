@@ -60,3 +60,20 @@ quarto render assessment-report.qmd --to pdf
 
 Keep the draft watermark enabled in `report-config.yml` until the report is
 approved for wider release.
+
+## References
+
+This folder uses:
+
+```text
+references.bib
+```
+
+The cleanest workflow is to keep a Zotero collection for the report and export
+it to this file. Prefer Better BibTeX / Better BibLaTeX automatic export when
+available because it keeps citation keys stable. For a manual export from
+Zotero, run this from the repository root:
+
+```bash
+bash scripts/import-zotero-bib.sh /path/to/exported.bib
+```
