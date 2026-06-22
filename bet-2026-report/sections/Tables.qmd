@@ -6,3 +6,4 @@ If this section file is deleted, the next report job will seed a fresh copy from
 -->
 
 No report-ready tables were produced.
+
