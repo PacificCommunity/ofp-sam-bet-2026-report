@@ -324,6 +324,186 @@ If this section file is deleted, the next report job will seed a fresh copy from
 <!-- figure: length-frequency-residuals-fishery-18-18-ps-ph-2 -->
 ![Length-frequency bubble residuals for 18.PS.PH.2. Bubble size and sign show observed-minus-fitted residual structure by length bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/length-frequency-residuals-fishery-18-18-ps-ph-2.png){#fig-length-frequency-residuals-fishery-18-18-ps-ph-2 fig-align="center" width=100%}
 
+### Weight-frequency fits
+
+<!-- figure: weight-frequency -->
+![Observed and fitted weight-frequency samples. Bars show observed sample counts and fitted overlays show model predictions; panels identify selected fisheries and years, and legends identify assessment models.](generated/outputs/figures/weight-frequency.png){#fig-weight-frequency fig-align="center" width=100%}
+
+### Weight-frequency residuals
+
+<!-- figure: weight-frequency-residuals -->
+![Weight-frequency bubble residuals. Bubble size and sign show observed-minus-fitted residual structure by weight bin, fishery, and year for the selected assessment models.](generated/outputs/figures/weight-frequency-residuals.png){#fig-weight-frequency-residuals fig-align="center" width=100%}
+
+### Weight-frequency fits: 01.LL.WEST.1
+
+<!-- figure: weight-frequency-fishery-1-01-ll-west-1 -->
+![Observed and fitted weight-frequency samples for 01.LL.WEST.1. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-1-01-ll-west-1.png){#fig-weight-frequency-fishery-1-01-ll-west-1 fig-align="center" width=100%}
+
+### Weight-frequency fits: 02.LL.EAST.1
+
+<!-- figure: weight-frequency-fishery-2-02-ll-east-1 -->
+![Observed and fitted weight-frequency samples for 02.LL.EAST.1. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-2-02-ll-east-1.png){#fig-weight-frequency-fishery-2-02-ll-east-1 fig-align="center" width=100%}
+
+### Weight-frequency fits: 03.LL.US.1
+
+<!-- figure: weight-frequency-fishery-3-03-ll-us-1 -->
+![Observed and fitted weight-frequency samples for 03.LL.US.1. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-3-03-ll-us-1.png){#fig-weight-frequency-fishery-3-03-ll-us-1 fig-align="center" width=100%}
+
+### Weight-frequency fits: 04.LL.ALL.2
+
+<!-- figure: weight-frequency-fishery-4-04-ll-all-2 -->
+![Observed and fitted weight-frequency samples for 04.LL.ALL.2. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-4-04-ll-all-2.png){#fig-weight-frequency-fishery-4-04-ll-all-2 fig-align="center" width=100%}
+
+### Weight-frequency fits: 05.LL.OS.2
+
+<!-- figure: weight-frequency-fishery-5-05-ll-os-2 -->
+![Observed and fitted weight-frequency samples for 05.LL.OS.2. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-5-05-ll-os-2.png){#fig-weight-frequency-fishery-5-05-ll-os-2 fig-align="center" width=100%}
+
+### Weight-frequency fits: 06.LL.ARCH.3
+
+<!-- figure: weight-frequency-fishery-6-06-ll-arch-3 -->
+![Observed and fitted weight-frequency samples for 06.LL.ARCH.3. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-6-06-ll-arch-3.png){#fig-weight-frequency-fishery-6-06-ll-arch-3 fig-align="center" width=100%}
+
+### Weight-frequency fits: 07.LL.WEST.3
+
+<!-- figure: weight-frequency-fishery-7-07-ll-west-3 -->
+![Observed and fitted weight-frequency samples for 07.LL.WEST.3. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-7-07-ll-west-3.png){#fig-weight-frequency-fishery-7-07-ll-west-3 fig-align="center" width=100%}
+
+### Weight-frequency fits: 08.LL.EAST.3
+
+<!-- figure: weight-frequency-fishery-8-08-ll-east-3 -->
+![Observed and fitted weight-frequency samples for 08.LL.EAST.3. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-8-08-ll-east-3.png){#fig-weight-frequency-fishery-8-08-ll-east-3 fig-align="center" width=100%}
+
+### Weight-frequency fits: 09.LL.OS.3
+
+<!-- figure: weight-frequency-fishery-9-09-ll-os-3 -->
+![Observed and fitted weight-frequency samples for 09.LL.OS.3. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-9-09-ll-os-3.png){#fig-weight-frequency-fishery-9-09-ll-os-3 fig-align="center" width=100%}
+
+### Weight-frequency fits: 10.LL.ALL.5
+
+<!-- figure: weight-frequency-fishery-10-10-ll-all-5 -->
+![Observed and fitted weight-frequency samples for 10.LL.ALL.5. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-10-10-ll-all-5.png){#fig-weight-frequency-fishery-10-10-ll-all-5 fig-align="center" width=100%}
+
+### Weight-frequency fits: 11.LL.AU.5
+
+<!-- figure: weight-frequency-fishery-11-11-ll-au-5 -->
+![Observed and fitted weight-frequency samples for 11.LL.AU.5. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-11-11-ll-au-5.png){#fig-weight-frequency-fishery-11-11-ll-au-5 fig-align="center" width=100%}
+
+### Weight-frequency fits: 14.HL.ID.2
+
+<!-- figure: weight-frequency-fishery-14-14-hl-id-2 -->
+![Observed and fitted weight-frequency samples for 14.HL.ID.2. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-14-14-hl-id-2.png){#fig-weight-frequency-fishery-14-14-hl-id-2 fig-align="center" width=100%}
+
+### Weight-frequency fits: 29.Index R1
+
+<!-- figure: weight-frequency-fishery-29-29-index-r1 -->
+![Observed and fitted weight-frequency samples for 29.Index R1. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-29-29-index-r1.png){#fig-weight-frequency-fishery-29-29-index-r1 fig-align="center" width=100%}
+
+### Weight-frequency fits: 30.Index R2
+
+<!-- figure: weight-frequency-fishery-30-30-index-r2 -->
+![Observed and fitted weight-frequency samples for 30.Index R2. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-30-30-index-r2.png){#fig-weight-frequency-fishery-30-30-index-r2 fig-align="center" width=100%}
+
+### Weight-frequency fits: 31.Index R3
+
+<!-- figure: weight-frequency-fishery-31-31-index-r3 -->
+![Observed and fitted weight-frequency samples for 31.Index R3. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-31-31-index-r3.png){#fig-weight-frequency-fishery-31-31-index-r3 fig-align="center" width=100%}
+
+### Weight-frequency fits: 32.Index R4
+
+<!-- figure: weight-frequency-fishery-32-32-index-r4 -->
+![Observed and fitted weight-frequency samples for 32.Index R4. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-32-32-index-r4.png){#fig-weight-frequency-fishery-32-32-index-r4 fig-align="center" width=100%}
+
+### Weight-frequency fits: 33.Index R5
+
+<!-- figure: weight-frequency-fishery-33-33-index-r5 -->
+![Observed and fitted weight-frequency samples for 33.Index R5. Bars show observed sample counts by weight bin and fitted lines show model predictions; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-fishery-33-33-index-r5.png){#fig-weight-frequency-fishery-33-33-index-r5 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 01.LL.WEST.1
+
+<!-- figure: weight-frequency-residuals-fishery-1-01-ll-west-1 -->
+![Weight-frequency bubble residuals for 01.LL.WEST.1. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-1-01-ll-west-1.png){#fig-weight-frequency-residuals-fishery-1-01-ll-west-1 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 02.LL.EAST.1
+
+<!-- figure: weight-frequency-residuals-fishery-2-02-ll-east-1 -->
+![Weight-frequency bubble residuals for 02.LL.EAST.1. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-2-02-ll-east-1.png){#fig-weight-frequency-residuals-fishery-2-02-ll-east-1 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 03.LL.US.1
+
+<!-- figure: weight-frequency-residuals-fishery-3-03-ll-us-1 -->
+![Weight-frequency bubble residuals for 03.LL.US.1. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-3-03-ll-us-1.png){#fig-weight-frequency-residuals-fishery-3-03-ll-us-1 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 04.LL.ALL.2
+
+<!-- figure: weight-frequency-residuals-fishery-4-04-ll-all-2 -->
+![Weight-frequency bubble residuals for 04.LL.ALL.2. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-4-04-ll-all-2.png){#fig-weight-frequency-residuals-fishery-4-04-ll-all-2 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 05.LL.OS.2
+
+<!-- figure: weight-frequency-residuals-fishery-5-05-ll-os-2 -->
+![Weight-frequency bubble residuals for 05.LL.OS.2. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-5-05-ll-os-2.png){#fig-weight-frequency-residuals-fishery-5-05-ll-os-2 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 06.LL.ARCH.3
+
+<!-- figure: weight-frequency-residuals-fishery-6-06-ll-arch-3 -->
+![Weight-frequency bubble residuals for 06.LL.ARCH.3. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-6-06-ll-arch-3.png){#fig-weight-frequency-residuals-fishery-6-06-ll-arch-3 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 07.LL.WEST.3
+
+<!-- figure: weight-frequency-residuals-fishery-7-07-ll-west-3 -->
+![Weight-frequency bubble residuals for 07.LL.WEST.3. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-7-07-ll-west-3.png){#fig-weight-frequency-residuals-fishery-7-07-ll-west-3 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 08.LL.EAST.3
+
+<!-- figure: weight-frequency-residuals-fishery-8-08-ll-east-3 -->
+![Weight-frequency bubble residuals for 08.LL.EAST.3. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-8-08-ll-east-3.png){#fig-weight-frequency-residuals-fishery-8-08-ll-east-3 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 09.LL.OS.3
+
+<!-- figure: weight-frequency-residuals-fishery-9-09-ll-os-3 -->
+![Weight-frequency bubble residuals for 09.LL.OS.3. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-9-09-ll-os-3.png){#fig-weight-frequency-residuals-fishery-9-09-ll-os-3 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 10.LL.ALL.5
+
+<!-- figure: weight-frequency-residuals-fishery-10-10-ll-all-5 -->
+![Weight-frequency bubble residuals for 10.LL.ALL.5. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-10-10-ll-all-5.png){#fig-weight-frequency-residuals-fishery-10-10-ll-all-5 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 11.LL.AU.5
+
+<!-- figure: weight-frequency-residuals-fishery-11-11-ll-au-5 -->
+![Weight-frequency bubble residuals for 11.LL.AU.5. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-11-11-ll-au-5.png){#fig-weight-frequency-residuals-fishery-11-11-ll-au-5 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 14.HL.ID.2
+
+<!-- figure: weight-frequency-residuals-fishery-14-14-hl-id-2 -->
+![Weight-frequency bubble residuals for 14.HL.ID.2. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-14-14-hl-id-2.png){#fig-weight-frequency-residuals-fishery-14-14-hl-id-2 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 29.Index R1
+
+<!-- figure: weight-frequency-residuals-fishery-29-29-index-r1 -->
+![Weight-frequency bubble residuals for 29.Index R1. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-29-29-index-r1.png){#fig-weight-frequency-residuals-fishery-29-29-index-r1 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 30.Index R2
+
+<!-- figure: weight-frequency-residuals-fishery-30-30-index-r2 -->
+![Weight-frequency bubble residuals for 30.Index R2. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-30-30-index-r2.png){#fig-weight-frequency-residuals-fishery-30-30-index-r2 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 31.Index R3
+
+<!-- figure: weight-frequency-residuals-fishery-31-31-index-r3 -->
+![Weight-frequency bubble residuals for 31.Index R3. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-31-31-index-r3.png){#fig-weight-frequency-residuals-fishery-31-31-index-r3 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 32.Index R4
+
+<!-- figure: weight-frequency-residuals-fishery-32-32-index-r4 -->
+![Weight-frequency bubble residuals for 32.Index R4. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-32-32-index-r4.png){#fig-weight-frequency-residuals-fishery-32-32-index-r4 fig-align="center" width=100%}
+
+### Weight-frequency residuals: 33.Index R5
+
+<!-- figure: weight-frequency-residuals-fishery-33-33-index-r5 -->
+![Weight-frequency bubble residuals for 33.Index R5. Bubble size and sign show observed-minus-fitted residual structure by weight bin; panels identify selected years and legends identify assessment models.](generated/outputs/figures/weight-frequency-residuals-fishery-33-33-index-r5.png){#fig-weight-frequency-residuals-fishery-33-33-index-r5 fig-align="center" width=100%}
+
 ### Fishery selectivity at age
 
 <!-- figure: fishery-process -->
