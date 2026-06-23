@@ -66,6 +66,14 @@ copy_report_generated_outputs <- function(source, dest) {
   copied <- character()
 
   report_ready <- file.path(source, "report-ready")
+  for (name in c("report-selection.json", "report-selection.csv", "analysis-manifest.json", "analysis-manifest.csv")) {
+    src <- file.path(source, name)
+    if (!file.exists(src)) next
+    target <- file.path(dest, name)
+    dir.create(dirname(target), recursive = TRUE, showWarnings = FALSE)
+    file.copy(src, target, overwrite = TRUE)
+    copied <- c(copied, target)
+  }
   for (name in c("figures.qmd", "tables.qmd")) {
     src <- file.path(report_ready, name)
     if (!file.exists(src)) next

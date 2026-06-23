@@ -29,6 +29,8 @@ The report task:
 - reads the latest results artifact, or the job selected by `RESULTS_JOB_ID`;
 - copies generated figures, tables, and QMD seeds into
   `bet-2026-report/generated/outputs/`;
+- carries the Shiny curation files `report-selection.json` and
+  `analysis-manifest.json` forward when they are present;
 - seeds `sections/Figures.qmd` and `sections/Tables.qmd` only when those files
   are missing or still contain the initial placeholder;
 - records Kflow lineage in `outputs/provenance/`;
@@ -68,6 +70,11 @@ keep. Generated `sections/Figures.qmd` and `sections/Tables.qmd` are reseeded
 from the latest results by default so stale fishery labels cannot point at
 missing files. Set `KFLOW_REPORT_RESEED_GENERATED_SECTIONS=false` only when
 deliberately preserving manually curated figure/table sections across runs.
+
+When a results job was curated in MFCL Shiny, the generated QMD files already
+reflect the saved selection: included or excluded items, main or appendix
+placement, captured model/overlay controls, and caption overrides. The report
+author can still edit the seeded QMD by hand before final rendering.
 
 Large review HTML and diagnostics stay in Kflow artifacts. This repo keeps only
 the files needed to render the report as a standalone checkout.
