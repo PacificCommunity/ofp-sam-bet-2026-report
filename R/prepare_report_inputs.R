@@ -66,18 +66,38 @@ copy_report_generated_outputs <- function(source, dest) {
   copied <- character()
 
   report_ready <- file.path(source, "report-ready")
+  metadata_sources <- c(source, file.path(source, "metadata"))
   for (name in c("report-selection.json", "report-selection.csv", "analysis-manifest.json", "analysis-manifest.csv")) {
-    src <- file.path(source, name)
-    if (!file.exists(src)) next
-    target <- file.path(dest, name)
+    src <- file.path(metadata_sources, name)
+    src <- src[file.exists(src)][1] %||% ""
+    if (!nzchar(src)) next
+    target <- file.path(dest, "metadata", name)
     dir.create(dirname(target), recursive = TRUE, showWarnings = FALSE)
     file.copy(src, target, overwrite = TRUE)
     copied <- c(copied, target)
   }
-  for (name in c("figures.qmd", "tables.qmd")) {
+  for (name in c("figure-index.csv", "table-index.csv", "payload-index.csv", "plot-summary.csv", "figure-optimization.csv")) {
+    src <- file.path(c(file.path(source, "indices"), source), name)
+    src <- src[file.exists(src)][1] %||% ""
+    if (!nzchar(src)) next
+    target <- file.path(dest, "indices", name)
+    dir.create(dirname(target), recursive = TRUE, showWarnings = FALSE)
+    file.copy(src, target, overwrite = TRUE)
+    copied <- c(copied, target)
+  }
+  for (name in c("figures.qmd", "tables.qmd", "report-ready-files.csv")) {
     src <- file.path(report_ready, name)
     if (!file.exists(src)) next
     target <- file.path(dest, "report-ready", name)
+    dir.create(dirname(target), recursive = TRUE, showWarnings = FALSE)
+    file.copy(src, target, overwrite = TRUE)
+    copied <- c(copied, target)
+  }
+  overview <- file.path(source, "overview")
+  for (name in c("report-ready-figures.html", "report-map.html")) {
+    src <- file.path(overview, name)
+    if (!file.exists(src)) next
+    target <- file.path(dest, "overview", name)
     dir.create(dirname(target), recursive = TRUE, showWarnings = FALSE)
     file.copy(src, target, overwrite = TRUE)
     copied <- c(copied, target)
@@ -380,13 +400,9 @@ report_path <- resolve_path(report_dir, root)
 
 if (!dir.exists(report_path)) stop("Report directory not found: ", report_path, call. = FALSE)
 
-figure_dest <- file.path(report_path, "Figures", "generated")
-table_dest <- file.path(report_path, "tables", "generated")
 pipeline_dest <- file.path(report_path, "pipeline-inputs")
 generated_outputs_dest <- file.path(report_path, "generated", "outputs")
-unlink(c(figure_dest, table_dest, pipeline_dest, generated_outputs_dest), recursive = TRUE, force = TRUE)
-dir.create(figure_dest, recursive = TRUE, showWarnings = FALSE)
-dir.create(table_dest, recursive = TRUE, showWarnings = FALSE)
+unlink(c(pipeline_dest, generated_outputs_dest), recursive = TRUE, force = TRUE)
 dir.create(pipeline_dest, recursive = TRUE, showWarnings = FALSE)
 dir.create(generated_outputs_dest, recursive = TRUE, showWarnings = FALSE)
 
@@ -418,19 +434,25 @@ figure_index_files <- table_files[grepl("(^|/)figure-index[.]csv$|(^|/)mfclshiny
 table_index_files <- table_files[grepl("(^|/)table-index[.]csv$|(^|/)mfclshiny-table-index[.]csv$|(^|/)generated-table-index[.]csv$", table_files, ignore.case = TRUE)]
 provenance_files <- table_files[grepl("(^|/)provenance/.*provenance[.]csv$", table_files, ignore.case = TRUE)]
 
-copied_figures <- copy_unique(figure_files, figure_dest)
-report_table_files <- setdiff(table_files, c(figure_index_files, table_index_files))
-report_table_files <- report_table_files[!is_internal_report_table(report_table_files)]
-if (any(grepl("(^|/)(report|draft)/sections/", all_files, ignore.case = TRUE))) {
-  report_table_files <- report_table_files[grepl("(^|/)tables/", relative_to_input(report_table_files, input_root), ignore.case = TRUE)]
-}
-copied_tables <- copy_unique(report_table_files, table_dest)
+copied_generated_rel <- sub(
+  paste0("^", regex_escape(normalizePath(generated_outputs_dest, winslash = "/", mustWork = FALSE)), "/?"),
+  "",
+  normalizePath(copied_generated_outputs, winslash = "/", mustWork = FALSE)
+)
+copied_figures <- copied_generated_outputs[grepl("^figures/", copied_generated_rel)]
+copied_tables <- copied_generated_outputs[grepl("^tables/", copied_generated_rel)]
 
 figure_index <- dedupe_index_rows(bind_rows_fill(lapply(figure_index_files, read_csv_safe)))
-if (nrow(figure_index)) utils::write.csv(figure_index, file.path(figure_dest, "figure-index.csv"), row.names = FALSE)
+if (nrow(figure_index)) {
+  dir.create(file.path(generated_outputs_dest, "indices"), recursive = TRUE, showWarnings = FALSE)
+  utils::write.csv(figure_index, file.path(generated_outputs_dest, "indices", "figure-index.csv"), row.names = FALSE)
+}
 
 table_index <- dedupe_index_rows(bind_rows_fill(lapply(table_index_files, read_csv_safe)))
-if (nrow(table_index)) utils::write.csv(table_index, file.path(table_dest, "table-index.csv"), row.names = FALSE)
+if (nrow(table_index)) {
+  dir.create(file.path(generated_outputs_dest, "indices"), recursive = TRUE, showWarnings = FALSE)
+  utils::write.csv(table_index, file.path(generated_outputs_dest, "indices", "table-index.csv"), row.names = FALSE)
+}
 
 summary_files <- table_files[grepl("summary[.]csv$|model-index[.]csv$|plot-summary[.]csv$|report-files[.]csv$", table_files, ignore.case = TRUE)]
 summary_rows <- lapply(summary_files, function(file) {

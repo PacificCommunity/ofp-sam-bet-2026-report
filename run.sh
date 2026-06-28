@@ -302,10 +302,7 @@ publish_generated_report_inputs() {
   local stage_paths=()
   local path
   for path in \
-    "${REPORT_DIR}/generated/outputs/report-ready/figures.qmd" \
-    "${REPORT_DIR}/generated/outputs/report-ready/tables.qmd" \
-    "${REPORT_DIR}/generated/outputs/figures" \
-    "${REPORT_DIR}/generated/outputs/tables" \
+    "${REPORT_DIR}/generated/outputs" \
     "${REPORT_DIR}/pipeline-inputs" \
     "${REPORT_DIR}/sections/Figures.qmd" \
     "${REPORT_DIR}/sections/Tables.qmd" \
@@ -768,7 +765,7 @@ report_dir <- env("REPORT_DIR", "bet-2026-report")
 report_file_stem <- env("REPORT_FILE_STEM", "bet-2026-report")
 render_html <- truthy(env("REPORT_RENDER_HTML", "false"))
 
-dirs <- file.path(out, c("final-report", "figures", "tables", "indices", "provenance", "generated"))
+dirs <- file.path(out, c("final-report", "generated", "provenance", "index"))
 unlink(dirs, recursive = TRUE, force = TRUE)
 dir.create(out, recursive = TRUE, showWarnings = FALSE)
 invisible(lapply(dirs, dir.create, recursive = TRUE, showWarnings = FALSE))
@@ -793,70 +790,8 @@ if (dir.exists(generated_outputs_dir)) {
   generated_files <- list.files(generated_outputs_dir, recursive = TRUE, full.names = TRUE)
   for (file in generated_files) {
     rel <- sub(paste0("^", gsub("([][{}()+*^$|\\\\?.])", "\\\\\\1", generated_outputs_dir), "/?"), "", file)
-    if (grepl("^(report-ready/|figure-index[.]csv$|table-index[.]csv$|plot-summary[.]csv$)", rel, ignore.case = TRUE)) {
-      copy_file(file, file.path(out, "generated", "outputs", rel))
-    }
+    copy_file(file, file.path(out, "generated", "outputs", rel))
   }
-}
-
-figure_dir <- file.path(report_dir, "Figures", "generated")
-figure_index_path <- file.path(figure_dir, "figure-index.csv")
-figure_index <- read_csv_safe(figure_index_path)
-if (file.exists(figure_index_path)) {
-  if (is.data.frame(figure_index) && nrow(figure_index)) {
-    path_cols <- intersect(c("file", "relative_path", "path", "output", "figure"), names(figure_index))
-    if (length(path_cols)) {
-      excluded <- Reduce(`|`, lapply(path_cols, function(col) is_default_excluded_figure(figure_index[[col]])))
-      figure_index <- figure_index[!excluded, , drop = FALSE]
-    }
-  }
-  if (is.data.frame(figure_index) && nrow(figure_index)) {
-    figure_index <- polish_output_metadata(figure_index)
-    utils::write.csv(figure_index, file.path(out, "indices", "figure-index.csv"), row.names = FALSE)
-  } else {
-    utils::write.csv(figure_index, file.path(out, "indices", "figure-index.csv"), row.names = FALSE)
-  }
-}
-figure_files <- if (dir.exists(figure_dir)) {
-  list.files(figure_dir, pattern = "[.](png|jpg|jpeg|pdf)$", full.names = TRUE, ignore.case = TRUE)
-} else {
-  character()
-}
-figure_files <- figure_files[!is_default_excluded_figure(figure_files)]
-for (file in figure_files) {
-  row <- match_index_row(figure_index, file, "figure")
-  id <- if (nrow(row) && "figure" %in% names(row) && nzchar(as.character(row$figure[[1]]))) {
-    slug(row$figure[[1]])
-  } else {
-    slug(tools::file_path_sans_ext(basename(file)))
-  }
-  folder <- file.path(out, "figures", id)
-  copy_figure_for_output(file, folder)
-  write_sidecar(folder, row, "caption")
-}
-
-table_dirs <- c(file.path(report_dir, "tables", "generated"), file.path(report_dir, "tables"), file.path(report_dir, "Tables"))
-table_files <- unlist(lapply(table_dirs[dir.exists(table_dirs)], function(dir) {
-  list.files(dir, pattern = "[.]csv$", full.names = TRUE, ignore.case = TRUE)
-}), use.names = FALSE)
-table_index_files <- table_files[basename(table_files) %in% c("table-index.csv", "generated-table-index.csv", "mfclshiny-table-index.csv")]
-table_index <- bind_rows_fill(lapply(table_index_files, read_csv_safe))
-if (length(table_index_files)) {
-  copy_file(table_index_files[[1]], file.path(out, "indices", "table-index.csv"))
-}
-report_table_files <- setdiff(table_files, table_index_files)
-report_table_files <- report_table_files[!is_internal_report_table(report_table_files)]
-for (file in report_table_files) {
-  base <- basename(file)
-  row <- match_index_row(table_index, file, "table")
-  id <- if (nrow(row) && "table" %in% names(row) && nzchar(as.character(row$table[[1]]))) {
-    slug(row$table[[1]])
-  } else {
-    slug(tools::file_path_sans_ext(base))
-  }
-  folder <- file.path(out, "tables", id)
-  copy_file(file, file.path(folder, base))
-  write_sidecar(folder, row, "caption")
 }
 
 files <- list.files(out, recursive = TRUE, full.names = FALSE)
@@ -867,22 +802,18 @@ summary <- data.frame(
     "final-report",
     ifelse(grepl("^generated/", files), "generated",
     ifelse(grepl("^provenance/", files), "provenance",
-      ifelse(grepl("^figures/", files), "figure",
-      ifelse(grepl("^tables/", files), "table", "index")
-      )
+      "index"
       )
     )
   ),
   size_bytes = suppressWarnings(file.info(file.path(out, files))$size),
   stringsAsFactors = FALSE
 )
-utils::write.csv(summary, file.path(out, "indices", "report-output-index.csv"), row.names = FALSE)
+utils::write.csv(summary, file.path(out, "index", "report-output-index.csv"), row.names = FALSE)
 message("Organized report outputs under ", out, ": ",
         sum(summary$type == "final-report"), " final files, ",
-        length(unique(dirname(summary$output[summary$type == "figure"]))), " figure folders, ",
-        length(unique(dirname(summary$output[summary$type == "table"]))), " table folders, ",
         sum(summary$type == "provenance"), " provenance files, ",
-        sum(summary$type == "generated"), " generated-map files.")
+        sum(summary$type == "generated"), " generated input files.")
 RS
 
 publish_generated_report_inputs

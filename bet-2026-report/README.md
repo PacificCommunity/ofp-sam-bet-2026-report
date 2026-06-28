@@ -38,7 +38,8 @@ pipeline-inputs/
 The key review map is:
 
 ```text
-generated/outputs/report-ready/report-map.html
+generated/outputs/overview/report-ready-figures.html
+generated/outputs/overview/report-map.html
 ```
 
 If `sections/Figures.qmd` or `sections/Tables.qmd` is missing, or still contains

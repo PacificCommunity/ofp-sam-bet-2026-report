@@ -59,17 +59,22 @@ Useful generated files are kept in:
 ```text
 bet-2026-report/generated/outputs/report-ready/figures.qmd
 bet-2026-report/generated/outputs/report-ready/tables.qmd
-bet-2026-report/generated/outputs/report-ready/report-map.html
+bet-2026-report/generated/outputs/overview/report-ready-figures.html
+bet-2026-report/generated/outputs/overview/report-map.html
 bet-2026-report/generated/outputs/figures/
 bet-2026-report/generated/outputs/tables/
+bet-2026-report/generated/outputs/indices/
+bet-2026-report/generated/outputs/metadata/
 bet-2026-report/pipeline-inputs/
 ```
 
-Open `report-map.html` first when deciding which generated figures or tables to
-keep. Generated `sections/Figures.qmd` and `sections/Tables.qmd` are reseeded
-from the latest results by default so stale fishery labels cannot point at
-missing files. Set `KFLOW_REPORT_RESEED_GENERATED_SECTIONS=false` only when
-deliberately preserving manually curated figure/table sections across runs.
+Open `generated/outputs/overview/report-ready-figures.html` first for a one-page
+visual check, then `generated/outputs/overview/report-map.html` when deciding
+which generated figures or tables to keep.
+Generated `sections/Figures.qmd` and `sections/Tables.qmd` are reseeded from the
+latest results by default so stale fishery labels cannot point at missing files.
+Set `KFLOW_REPORT_RESEED_GENERATED_SECTIONS=false` only when deliberately
+preserving manually curated figure/table sections across runs.
 
 When a results job was curated in MFCL Shiny, the generated QMD files already
 reflect the saved selection: included or excluded items, main or appendix
