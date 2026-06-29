@@ -288,7 +288,7 @@ stabilize_pdf_figure_section <- function(path, every = 1L) {
     if (!length(body) || all(body %in% c("", break_lines))) end else NA_integer_
   }
 
-  out <- marker
+  out <- c(marker, "", "\\clearpage", "")
   i <- 1L
   while (i <= length(lines)) {
     line <- lines[[i]]
