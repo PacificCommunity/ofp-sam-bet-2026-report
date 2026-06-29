@@ -274,23 +274,44 @@ seed_report_section <- function(report_path, name, source) {
   status
 }
 
-stabilize_pdf_figure_section <- function(path, every = 8L) {
+stabilize_pdf_figure_section <- function(path, every = 1L) {
   if (!file.exists(path)) return(FALSE)
   lines <- readLines(path, warn = FALSE)
   marker <- "<!-- kflow-pdf-float-barriers -->"
-  if (any(grepl(marker, lines, fixed = TRUE))) return(FALSE)
+  break_lines <- c("\\FloatBarrier", "\\clearpage")
+  latex_break_block_end <- function(index) {
+    if (!identical(trimws(lines[[index]]), "```{=latex}")) return(NA_integer_)
+    closing <- which(seq_along(lines) > index & trimws(lines) == "```")
+    if (!length(closing)) return(NA_integer_)
+    end <- closing[[1L]]
+    body <- if (end > index + 1L) trimws(lines[seq.int(index + 1L, end - 1L)]) else character()
+    if (!length(body) || all(body %in% c("", break_lines))) end else NA_integer_
+  }
 
   out <- marker
-  figure_count <- 0L
-  for (line in lines) {
+  i <- 1L
+  while (i <= length(lines)) {
+    line <- lines[[i]]
+    if (identical(line, marker)) {
+      i <- i + 1L
+      next
+    }
+    block_end <- latex_break_block_end(i)
+    if (!is.na(block_end)) {
+      i <- block_end + 1L
+      next
+    }
+    if (trimws(line) %in% break_lines) {
+      i <- i + 1L
+      next
+    }
     out <- c(out, line)
     if (grepl("^!\\[", line) && grepl("\\{#fig-", line)) {
-      figure_count <- figure_count + 1L
-      if (figure_count %% every == 0L) {
-        out <- c(out, "", "```{=latex}", "\\FloatBarrier", "```", "")
-      }
+      out <- c(out, "", "```{=latex}", "\\FloatBarrier", "\\clearpage", "```", "")
     }
+    i <- i + 1L
   }
+  if (identical(lines, out)) return(FALSE)
   writeLines(out, path)
   TRUE
 }
