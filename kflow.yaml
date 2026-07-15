@@ -8,7 +8,7 @@ resources:
   disk: 8GB
 
 env:
-  JOB_TITLE: BET report writing preview
+  JOB_TITLE: BET report writing workspace
   JOB_DESCRIPTION: Render the shared Paul and Kyuhank writing branch for review.
   JOB_KEY: report-writing
   FLOW_GROUP: bet-2026-writing
