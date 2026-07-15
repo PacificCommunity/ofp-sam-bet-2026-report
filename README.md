@@ -7,6 +7,50 @@
 ![Report status: NOT FINAL draft scaffold](https://img.shields.io/badge/report%20status-NOT%20FINAL%20draft%20scaffold-d97706)
 ![Generated inputs: placeholders](https://img.shields.io/badge/generated%20inputs-placeholder%20figures%20%26%20captions-64748b)
 
+## Windows: Start here
+
+These steps are for a new Windows computer. No command line experience is
+needed.
+
+### 1. Install Kflow once
+
+1. Get the Kflow Connector ZIP from the project maintainer.
+2. In **Downloads**, right-click the ZIP and choose **Extract All**.
+3. Open the extracted folder and double-click
+   **Install Kflow Connect - Windows First-Time Setup.cmd**.
+4. Choose **Yes** when Windows asks for permission, then wait for the installer.
+   It installs Python, Git, GitHub CLI, Docker Desktop, and OpenSSH for you.
+5. Complete the GitHub sign-in in your browser using your own GitHub account.
+6. Open Docker Desktop once, accept its first-run prompts, and wait until it is
+   running. Restart Windows if requested, then run the installer once more.
+7. Double-click **Kflow Connect SSH Setup**. Enter your organisation submitter
+   username and password when asked. The password is normally needed only once.
+
+After setup, use the **Kflow Connect** desktop shortcut. No PowerShell or SSH
+window needs to remain open; the connection runs in the background.
+
+### 2. Open the report in RStudio
+
+1. Make sure Docker Desktop is running.
+2. Double-click **Kflow Connect** and sign in to Kflow.
+3. Open your assigned BET report writing task.
+4. Open the latest completed Job and click **RStudio**.
+5. Wait for RStudio Server to open in your browser.
+
+### 3. Finish safely
+
+- Save often with **Ctrl+S**.
+- Closing the browser does not delete saved work. Reopen the same Job on the
+  same computer to continue.
+- Before changing Job or computer, use the RStudio **Git** pane: select the
+  changed files, click **Commit**, enter a short message, click **Commit**, and
+  then click **Push**.
+- If the internet disconnects, keep working locally and push when it returns.
+
+> [!CAUTION]
+> This is a public repository. Never commit passwords, access tokens, SSH keys,
+> `.git-credentials`, `.Renviron`, or data that is not approved for public use.
+
 > [!WARNING]
 > **Draft scaffold, not the final 2026 assessment report.**
 > Figures, tables, captions, and narrative text still need analyst review before
