@@ -1,5 +1,5 @@
 name: ofp-sam-bet-2026-report
-description: Render the BET 2026 report directly from generated result figures and tables.
+description: Render the shared BET 2026 collaborative writing branch in Kflow.
 command: bash run.sh
 docker_image: ghcr.io/pacificcommunity/tuna-flow:v2.2
 resources:
@@ -8,14 +8,14 @@ resources:
   disk: 8GB
 
 env:
-  JOB_TITLE: BET report
-  JOB_DESCRIPTION: Render the assessment report from generated BET results.
-  JOB_KEY: report
-  FLOW_GROUP: bet-2026-base
+  JOB_TITLE: BET report writing workspace
+  JOB_DESCRIPTION: Render the shared collaborative writing branch for review.
+  JOB_KEY: report-writing
+  FLOW_GROUP: bet-2026-writing
   REPORT_DIR: bet-2026-report
   REPORT_QMD: assessment-report.qmd
   REPORT_FILE_STEM: bet-2026-report
-  REPORT_RENDER_HTML: "false"
+  REPORT_RENDER_HTML: "true"
   FLOW_SPECIES: BET
   FLOW_SPECIES_LABEL: bigeye tuna
   FLOW_ASSESSMENT_YEAR: "2026"
@@ -29,7 +29,7 @@ env:
   KFLOW_REPORT_COMMIT_GENERATED: "false"
   KFLOW_REPORT_PUSH_GENERATED: "false"
   KFLOW_REPORT_PUBLISH_REQUIRED: "false"
-  KFLOW_REPORT_RESEED_GENERATED_SECTIONS: "true"
+  KFLOW_REPORT_RESEED_GENERATED_SECTIONS: "false"
 input_jobs:
   - report: ofp-sam-bet-2026-results
     latest: 1
