@@ -14,7 +14,8 @@ needed.
 
 ### 1. Install Kflow once
 
-1. Get the Kflow Connector ZIP from the project maintainer.
+1. Download the
+   [Kflow Connector for Windows](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/download/kflow-connector-windows-20260715-1630/kflow-connector-20260715-1630.zip).
 2. In **Downloads**, right-click the ZIP and choose **Extract All**.
 3. Open the extracted folder and double-click
    **Install Kflow Connect - Windows First-Time Setup.cmd**.
