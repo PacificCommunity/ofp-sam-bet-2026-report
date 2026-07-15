@@ -459,7 +459,14 @@ if (!dir.exists(report_path)) stop("Report directory not found: ", report_path, 
 
 pipeline_dest <- file.path(report_path, "pipeline-inputs")
 generated_outputs_dest <- file.path(report_path, "generated", "outputs")
-unlink(c(pipeline_dest, generated_outputs_dest), recursive = TRUE, force = TRUE)
+preserve_generated_outputs <- tolower(
+  env("KFLOW_REPORT_PRESERVE_GENERATED_OUTPUTS", "false")
+) %in% c("true", "yes", "1", "on")
+
+unlink(pipeline_dest, recursive = TRUE, force = TRUE)
+if (!isTRUE(preserve_generated_outputs)) {
+  unlink(generated_outputs_dest, recursive = TRUE, force = TRUE)
+}
 dir.create(pipeline_dest, recursive = TRUE, showWarnings = FALSE)
 dir.create(generated_outputs_dest, recursive = TRUE, showWarnings = FALSE)
 
