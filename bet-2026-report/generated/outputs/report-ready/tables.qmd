@@ -76,3 +76,4 @@ if (file.exists(table_file)) {
   knitr::asis_output(paste0("Missing table file: `", table_file, "`"))
 }
 ```
+
