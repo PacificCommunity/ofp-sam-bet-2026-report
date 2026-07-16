@@ -4,11 +4,11 @@ Use Kflow to edit and render the BET 2026 assessment report in a reproducible RS
 
 ## Install Kflow Connect
 
-Current installer release: [Kflow Connect 20260716-155049](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/tag/kflow-connector-20260716-155049)
+Current installer release: [Kflow Connect 20260716-190428](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/tag/kflow-connector-20260716-190428)
 
-- [Windows ZIP](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/download/kflow-connector-20260716-155049/kflow-connector-noumea-host.zip)
-- [macOS and Linux TAR.GZ](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/download/kflow-connector-20260716-155049/kflow-connector-noumea-host.tar.gz)
-- [SHA256 checksums](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/download/kflow-connector-20260716-155049/kflow-connector-noumea-host-SHA256SUMS.txt)
+- [Windows ZIP](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/download/kflow-connector-20260716-190428/kflow-connector-noumea-host.zip)
+- [macOS and Linux TAR.GZ](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/download/kflow-connector-20260716-190428/kflow-connector-noumea-host.tar.gz)
+- [SHA256 checksums](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/download/kflow-connector-20260716-190428/kflow-connector-noumea-host-SHA256SUMS.txt)
 
 Kflow Connect includes the local RStudio helper. It reuses working GitHub, SSH, Docker, and helper setup instead of replacing it.
 
