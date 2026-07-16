@@ -453,8 +453,8 @@ write_yaml_template <- function(path, figure_rows, table_rows) {
 figure_catalog <- read_catalog("figures")
 figure_curation <- read_figure_curation()
 figure_roots <- unique(c(
-  report_paths("figure_roots", c("Figures/generated", "Figures/static", "Figures")),
-  report_paths("extra_figure_roots", c("Figures/generated"))
+  report_paths("figure_roots", c("Figures")),
+  report_paths("extra_figure_roots", c("Figures"))
 ))
 figure_metadata <- read_figure_metadata(figure_roots)
 figure_files <- figure_files_in_roots(figure_roots)
@@ -467,7 +467,7 @@ table_catalog <- read_catalog("tables")
 table_curation <- read_table_curation()
 table_roots <- unique(c(
   report_paths("table_roots", c("pipeline-inputs", "tables/generated", "tables", "Tables")),
-  report_paths("extra_table_roots", c("tables/generated"))
+  report_paths("extra_table_roots", c("tables"))
 ))
 table_metadata <- read_table_metadata(table_roots)
 table_files <- table_files_in_roots(table_roots)

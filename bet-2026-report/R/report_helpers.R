@@ -198,7 +198,7 @@ report_paths <- function(name, default = character()) {
   if (!length(out)) default else out
 }
 
-find_report_assets <- function(candidates, roots = c("Figures/generated", "Figures/static", "Figures")) {
+find_report_assets <- function(candidates, roots = c("Figures")) {
   candidates <- split_catalog_paths(candidates)
   if (!length(candidates)) {
     return(character())
@@ -235,12 +235,12 @@ find_report_assets <- function(candidates, roots = c("Figures/generated", "Figur
   unique(found)
 }
 
-find_report_asset <- function(candidates, roots = c("Figures/generated", "Figures/static", "Figures")) {
+find_report_asset <- function(candidates, roots = c("Figures")) {
   assets <- find_report_assets(candidates, roots = roots)
   if (length(assets)) assets[[1]] else ""
 }
 
-read_figure_metadata <- function(roots = c("Figures/generated", "Figures/static", "Figures")) {
+read_figure_metadata <- function(roots = c("Figures")) {
   roots <- roots[dir.exists(roots)]
   files <- unique(unlist(lapply(roots, function(root) {
     list.files(root, pattern = "figure-index[.]csv$|mfclshiny-figure-index[.]csv$", recursive = TRUE, full.names = TRUE, ignore.case = TRUE)
@@ -538,7 +538,7 @@ filter_catalog_tables <- function(catalog, placements = "main") {
   catalog[catalog_table_placement(catalog) %in% wanted, , drop = FALSE]
 }
 
-read_table_metadata <- function(roots = c("tables/generated", "tables", "Tables")) {
+read_table_metadata <- function(roots = c("tables")) {
   roots <- roots[dir.exists(roots)]
   files <- unique(unlist(lapply(roots, function(root) {
     list.files(
@@ -725,7 +725,7 @@ emit_config_warnings <- function() {
 }
 
 emit_catalog_figures <- function(catalog,
-                                 roots = c("Figures/generated", "Figures/static", "Figures"),
+                                 roots = c("Figures"),
                                  curation = data.frame(),
                                  placements = "main",
                                  empty_todo = TRUE) {
@@ -825,7 +825,7 @@ emit_generated_figure_group <- function(files, heading, metadata, id_prefix) {
 
 emit_curated_file_figures <- function(curation,
                                       catalog = data.frame(),
-                                      roots = c("Figures/generated", "Figures/static", "Figures"),
+                                      roots = c("Figures"),
                                       placements = "main",
                                       default_section = "Curated generated figures",
                                       id_prefix = "curated") {
@@ -894,7 +894,7 @@ emit_curated_file_figures <- function(curation,
 }
 
 emit_extra_generated_figures <- function(catalog,
-                                         roots = c("Figures/generated"),
+                                         roots = c("Figures"),
                                          curation = data.frame()) {
   roots <- roots[dir.exists(roots)]
   files <- sort(unique(unlist(lapply(roots, function(root) {
@@ -991,7 +991,7 @@ emit_kable <- function(x,
 }
 
 emit_catalog_tables <- function(catalog,
-                                roots = c("tables/generated", "tables", "Tables"),
+                                roots = c("tables"),
                                 curation = data.frame(),
                                 placements = "main",
                                 empty_todo = TRUE) {
@@ -1040,7 +1040,7 @@ emit_catalog_tables <- function(catalog,
 
 emit_curated_file_tables <- function(curation,
                                      catalog = data.frame(),
-                                     roots = c("tables/generated", "tables", "Tables"),
+                                     roots = c("tables"),
                                      placements = "main",
                                      default_section = "Curated generated tables") {
   curation <- complete_table_curation(curation)
@@ -1111,7 +1111,7 @@ emit_curated_file_tables <- function(curation,
 }
 
 emit_extra_generated_tables <- function(catalog,
-                                        roots = c("tables/generated"),
+                                        roots = c("tables"),
                                         curation = data.frame()) {
   roots <- roots[dir.exists(roots)]
   files <- as.character(unique(unlist(lapply(roots, function(root) {
