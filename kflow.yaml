@@ -1,5 +1,5 @@
 name: ofp-sam-bet-2026-report
-description: Collaborative BET 2026 report writing workspace using figures and tables committed with the report.
+description: Self-contained BET 2026 writing workspace. Edit committed sections and figures in RStudio and render one PDF.
 command: bash run.sh
 docker_image: ghcr.io/pacificcommunity/tuna-flow@sha256:71b97b4bdefa091a55284e45bbddfa330171a0674e8e4a32895424d6c8a100de
 resources:
@@ -15,7 +15,6 @@ env:
   REPORT_DIR: bet-2026-report
   REPORT_QMD: assessment-report.qmd
   REPORT_FILE_STEM: bet-2026-report
-  REPORT_RENDER_HTML: "true"
   FLOW_SPECIES: BET
   FLOW_SPECIES_LABEL: bigeye tuna
   FLOW_ASSESSMENT_YEAR: "2026"
@@ -25,13 +24,9 @@ env:
   TUNA_FLOW_RUNTIME_UPDATE: never
   KFLOW_RUNTIME_PACKAGES: none
   KFLOW_REPO_RUNTIME_PACKAGES: none
-  KFLOW_REPORT_COMMIT_GENERATED: "false"
-  KFLOW_REPORT_PUSH_GENERATED: "false"
-  KFLOW_REPORT_PUBLISH_REQUIRED: "false"
-  KFLOW_REPORT_RESEED_GENERATED_SECTIONS: "false"
 
 output_patterns:
-  - outputs/**
+  - outputs/bet-2026-report.pdf
 
 job_config:
   optional:
@@ -42,8 +37,6 @@ job_config:
     - REPORT_DIR
     - REPORT_QMD
     - REPORT_FILE_STEM
-    - REPORT_RENDER_HTML
-    - OUTPUT_DIR
     - FLOW_SPECIES
     - FLOW_SPECIES_LABEL
     - FLOW_ASSESSMENT_YEAR
@@ -53,7 +46,3 @@ job_config:
     - TUNA_FLOW_RUNTIME_UPDATE
     - KFLOW_RUNTIME_PACKAGES
     - KFLOW_REPO_RUNTIME_PACKAGES
-    - KFLOW_REPORT_COMMIT_GENERATED
-    - KFLOW_REPORT_PUSH_GENERATED
-    - KFLOW_REPORT_PUBLISH_REQUIRED
-    - KFLOW_REPORT_RESEED_GENERATED_SECTIONS
