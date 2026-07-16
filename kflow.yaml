@@ -1,16 +1,16 @@
 name: ofp-sam-bet-2026-report
-description: Render the shared Paul and Kyuhank BET 2026 writing branch in Kflow.
+description: Collaborative BET 2026 report writing workspace using figures and tables committed with the report.
 command: bash run.sh
-docker_image: ghcr.io/pacificcommunity/tuna-flow:v2.2
+docker_image: ghcr.io/pacificcommunity/tuna-flow@sha256:71b97b4bdefa091a55284e45bbddfa330171a0674e8e4a32895424d6c8a100de
 resources:
   cpus: 4
   memory: 12GB
-  disk: 8GB
+  disk: 10GB
 
 env:
-  JOB_TITLE: BET report writing workspace
-  JOB_DESCRIPTION: Render the shared Paul and Kyuhank writing branch for review.
-  JOB_KEY: report-writing
+  JOB_TITLE: Paul report writing workspace
+  JOB_DESCRIPTION: Continue writing from this job's collab/paul-writing snapshot, then commit and push the edits from RStudio.
+  JOB_KEY: paul-writing
   FLOW_GROUP: bet-2026-writing
   REPORT_DIR: bet-2026-report
   REPORT_QMD: assessment-report.qmd
@@ -19,22 +19,20 @@ env:
   FLOW_SPECIES: BET
   FLOW_SPECIES_LABEL: bigeye tuna
   FLOW_ASSESSMENT_YEAR: "2026"
+  KFLOW_RSTUDIO_FOLLOW_BRANCH: "true"
   KFLOW_RUNTIME_REQUIRE_PRIVATE_PACKAGES: "false"
   KFLOW_RUNTIME_UPDATE: never
   TUNA_FLOW_RUNTIME_UPDATE: never
   KFLOW_RUNTIME_PACKAGES: none
   KFLOW_REPO_RUNTIME_PACKAGES: none
-  KFLOW_RUNTIME_GITHUB_AUTH: "true"
-  KFLOW_FORWARD_GITHUB_TOKEN_TO_RUNTIME: "true"
   KFLOW_REPORT_COMMIT_GENERATED: "false"
   KFLOW_REPORT_PUSH_GENERATED: "false"
   KFLOW_REPORT_PUBLISH_REQUIRED: "false"
   KFLOW_REPORT_RESEED_GENERATED_SECTIONS: "false"
-input_jobs:
-  - report: ofp-sam-bet-2026-results
-    latest: 1
+
 output_patterns:
   - outputs/**
+
 job_config:
   optional:
     - FLOW_GROUP
@@ -45,22 +43,16 @@ job_config:
     - REPORT_QMD
     - REPORT_FILE_STEM
     - REPORT_RENDER_HTML
+    - OUTPUT_DIR
     - FLOW_SPECIES
     - FLOW_SPECIES_LABEL
     - FLOW_ASSESSMENT_YEAR
-    - RESULTS_JOB_ID
-    - RESULTS_JOB_IDS
-    - OUTPUTS_JOB_ID
-    - OUTPUTS_JOB_IDS
-    - INPUT_DIR
-    - OUTPUT_DIR
+    - KFLOW_RSTUDIO_FOLLOW_BRANCH
     - KFLOW_RUNTIME_REQUIRE_PRIVATE_PACKAGES
     - KFLOW_RUNTIME_UPDATE
     - TUNA_FLOW_RUNTIME_UPDATE
     - KFLOW_RUNTIME_PACKAGES
     - KFLOW_REPO_RUNTIME_PACKAGES
-    - KFLOW_RUNTIME_GITHUB_AUTH
-    - KFLOW_FORWARD_GITHUB_TOKEN_TO_RUNTIME
     - KFLOW_REPORT_COMMIT_GENERATED
     - KFLOW_REPORT_PUSH_GENERATED
     - KFLOW_REPORT_PUBLISH_REQUIRED

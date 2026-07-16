@@ -1,159 +1,64 @@
-# BET 2026 Assessment Report
+# BET 2026 report writing for Paul
 
-<p align="right">
-  <a href="kflow.yaml"><img src="kflow-ready.svg" alt="Kflow ready task"></a>
-</p>
+## First-time Windows setup
 
-![Report status: NOT FINAL draft scaffold](https://img.shields.io/badge/report%20status-NOT%20FINAL%20draft%20scaffold-d97706)
-![Generated inputs: placeholders](https://img.shields.io/badge/generated%20inputs-placeholder%20figures%20%26%20captions-64748b)
+1. Download [Kflow Connect for Windows](https://github.com/kyuhank/Kflow/releases/download/kflow-connector-20260716-1335/kflow-connector-20260716-1335.zip).
+2. Right-click the ZIP, choose **Extract All**, and open the extracted folder.
+3. Double-click **Install Kflow Connect - Windows First-Time Setup.cmd**.
+4. Complete the GitHub sign-in when the browser opens.
+5. If Docker Desktop requests a restart or WSL 2 setup, complete it and run the installer once more.
+6. Double-click **Kflow Connect SSH Setup.cmd** and enter the assigned Kflow account.
+7. Start Docker Desktop, then open **Kflow Connect**.
 
-## Windows: Start here
+Do not run the installer from inside the ZIP preview.
 
-These steps are for a new Windows computer. No command line experience is
-needed.
+## Writing workflow
 
-### 1. Install Kflow once
+~~~mermaid
+flowchart LR
+    A["Open Kflow"] --> B["Start newest job"]
+    B --> C["Open RStudio"]
+    C --> D["Write or upload"]
+    D --> E["Commit and Push"]
+    E --> F["Updates are merged"]
+    F --> B
+~~~
 
-1. Download the
-   [Kflow Connector for Windows](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/download/kflow-connector-windows-20260715-1630/kflow-connector-20260715-1630.zip).
-2. In **Downloads**, right-click the ZIP and choose **Extract All**.
-3. Open the extracted folder and double-click
-   **Install Kflow Connect - Windows First-Time Setup.cmd**.
-4. Choose **Yes** when Windows asks for permission, then wait for the installer.
-   It installs Python, Git, GitHub CLI, Docker Desktop, and OpenSSH for you.
-5. Complete the GitHub sign-in in your browser using your own GitHub account.
-6. Open Docker Desktop once, accept its first-run prompts, and wait until it is
-   running. Restart Windows if requested, then run the installer once more.
-7. Double-click **Kflow Connect SSH Setup**. Enter your organisation submitter
-   username and password when asked. The password is normally needed only once.
+1. Open **Kflow Connect**.
+2. Open **BET report writing - Paul**.
+3. Start a new job after any new changes have been merged, then click **RStudio** on that newest job.
+4. Write in <code>bet-2026-report/sections/</code>.
+5. In the RStudio **Git** pane, select the changed files, click **Commit**, enter a short message, and click **Push**.
 
-After setup, use the **Kflow Connect** desktop shortcut. No PowerShell or SSH
-window needs to remain open; the connection runs in the background.
+A new job opens the latest committed writing at the time the job is created.
 
-### 2. Open the report in RStudio
+## Add a file from the laptop
 
-1. Make sure Docker Desktop is running.
-2. Double-click **Kflow Connect** and sign in to Kflow.
-3. Open your assigned BET report writing task.
-4. Open the latest completed Job and click **RStudio**.
-5. Wait for RStudio Server to open in your browser.
+1. In RStudio, open the **Files** pane.
+2. Open the folder where the file belongs.
+3. Click **Upload** and choose the file from the laptop.
+4. Confirm the file appears in the **Git** pane, then commit and push it.
 
-### 3. Finish safely
+Put new report figures in <code>bet-2026-report/Figures/static/</code>.
 
-- Save often with **Ctrl+S**.
-- Closing the browser does not delete saved work. Reopen the same Job on the
-  same computer to continue.
-- Before changing Job or computer, use the RStudio **Git** pane: select the
-  changed files, click **Commit**, enter a short message, click **Commit**, and
-  then click **Push**.
-- If the internet disconnects, keep working locally and push when it returns.
+## If something does not work
 
-> [!CAUTION]
-> This is a public repository. Never commit passwords, access tokens, SSH keys,
-> `.git-credentials`, `.Renviron`, or data that is not approved for public use.
+~~~mermaid
+flowchart TD
+    A["Something is not working"] --> B{"Does Kflow open?"}
+    B -- "No" --> C["Run Kflow Connect SSH Setup"]
+    B -- "Yes" --> D{"Does RStudio open?"}
+    D -- "No" --> E["Start Docker Desktop and reopen Kflow"]
+    D -- "Yes" --> F{"Does Push work?"}
+    F -- "No" --> G["Check GitHub write access and sign in again"]
+    F -- "Yes, but writing is old" --> H["Start a new job"]
+~~~
 
-> [!WARNING]
-> **Draft scaffold, not the final 2026 assessment report.**
-> Figures, tables, captions, and narrative text still need analyst review before
-> this can be treated as the final BET 2026 assessment report.
+| Problem | What to do |
+|---|---|
+| RStudio does not open | Start Docker Desktop and reopen **Kflow Connect**. |
+| Kflow does not open | Run **Kflow Connect SSH Setup.cmd** again. |
+| The report looks older than the latest merge | Start a new job and open RStudio from that job. |
+| Push is rejected | Ask for repository write access, then sign in to GitHub again. |
 
-This repository contains the Quarto source for the BET 2026 report. It is
-designed to work in Kflow, but the report folder can also be rendered locally
-after generated inputs are available.
-
-## Workflow
-
-The active Kflow chain is:
-
-```text
-ofp-sam-bet-2026-stepwise -> ofp-sam-bet-2026-results -> ofp-sam-bet-2026-report
-```
-
-The report task:
-
-- reads the latest results artifact, or the job selected by `RESULTS_JOB_ID`;
-- copies generated figures, tables, and QMD seeds into
-  `bet-2026-report/generated/outputs/`;
-- carries the Shiny curation files `report-selection.json` and
-  `analysis-manifest.json` forward when they are present;
-- seeds `sections/Figures.qmd` and `sections/Tables.qmd` only when those files
-  are missing or still contain the initial placeholder;
-- records Kflow lineage in `outputs/provenance/`;
-- optionally commits the report-ready generated inputs back to this repo when
-  publishing is enabled.
-
-## Edit Here
-
-Most manual report work should happen in:
-
-- `bet-2026-report/sections/*.qmd` for narrative, figure order, table order, and
-  caption edits;
-- `bet-2026-report/report-config.yml` for species, year, authors, meeting
-  details, and draft-watermark settings;
-- `bet-2026-report/catalog/curation.yml` for small placement overrides when a
-  generated figure or table should be included, excluded, moved, or renamed;
-- `bet-2026-report/references.bib` for citations.
-
-Keep `bet-2026-report/assessment-report.qmd` as the main entrypoint unless a
-job explicitly uses another file.
-
-## Generated Inputs
-
-Useful generated files are kept in:
-
-```text
-bet-2026-report/generated/outputs/report-ready/figures.qmd
-bet-2026-report/generated/outputs/report-ready/tables.qmd
-bet-2026-report/generated/outputs/overview/report-ready-figures.html
-bet-2026-report/generated/outputs/overview/report-map.html
-bet-2026-report/generated/outputs/figures/
-bet-2026-report/generated/outputs/tables/
-bet-2026-report/generated/outputs/indices/
-bet-2026-report/generated/outputs/metadata/
-bet-2026-report/pipeline-inputs/
-```
-
-Open `generated/outputs/overview/report-ready-figures.html` first for a one-page
-visual check, then `generated/outputs/overview/report-map.html` when deciding
-which generated figures or tables to keep.
-Generated `sections/Figures.qmd` and `sections/Tables.qmd` are reseeded from the
-latest results by default so stale fishery labels cannot point at missing files.
-Set `KFLOW_REPORT_RESEED_GENERATED_SECTIONS=false` only when deliberately
-preserving manually curated figure/table sections across runs.
-
-When a results job was curated in MFCL Shiny, the generated QMD files already
-reflect the saved selection: included or excluded items, main or appendix
-placement, captured model/overlay controls, and caption overrides. The report
-author can still edit the seeded QMD by hand before final rendering.
-
-Large review HTML and diagnostics stay in Kflow artifacts. This repo keeps only
-the files needed to render the report as a standalone checkout.
-
-## Run
-
-Kflow uses:
-
-```bash
-bash run.sh
-```
-
-After generated inputs exist, the report can also be rendered from the report
-folder:
-
-```bash
-cd bet-2026-report
-quarto render assessment-report.qmd --to pdf
-```
-
-## Common Kflow Config
-
-| Field | Typical value | Purpose |
-| --- | --- | --- |
-| `RESULTS_JOB_ID` | `256` | Use one specific results artifact. |
-| `RESULTS_JOB_IDS` | `256,260` | Combine multiple results artifacts. |
-| `REPORT_QMD` | `assessment-report.qmd` | Quarto entrypoint inside `bet-2026-report/`. |
-| `REPORT_FILE_STEM` | `bet-2026-report` | Output filename stem. |
-| `REPORT_RENDER_HTML` | `false` | Also render the final HTML report. PDF-only is the default to save space. |
-| `KFLOW_REPORT_COMMIT_GENERATED` | `false` | Commit generated report inputs after a successful run. Off by default because Kflow artifacts already carry them. |
-| `KFLOW_REPORT_PUSH_GENERATED` | `false` | Push that generated-input commit when committing is enabled. |
-| `KFLOW_REPORT_PUBLISH_REQUIRED` | `false` | Fail the report only when rendering fails, not when generated-input publishing is unavailable. |
+If the connection drops after RStudio opens, the work remains on the laptop. Use **Kflow Local RStudio** to reopen it and push after reconnecting.

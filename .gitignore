@@ -12,5 +12,11 @@ report/Figures
 /inputs/
 /.R-library/
 /.kflow-runtime-cache/
+/data/
+/bet-2026-report/pipeline-inputs/
+/.quarto/
+/bet-2026-report/.quarto/
+/.kflow-rstudio.Rproj
+**/.kflow-rstudio.Rproj
 .Rhistory
 .RData

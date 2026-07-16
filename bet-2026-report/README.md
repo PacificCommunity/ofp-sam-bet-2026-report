@@ -1,63 +1,22 @@
-# BET 2026 Report Source
+# BET 2026 report source
 
-<p align="right">
-  <a href="../kflow.yaml"><img src="../kflow-ready.svg" alt="Kflow ready task"></a>
-</p>
+This directory contains the complete Quarto source for the 2026 bigeye tuna assessment report. Reviewed figures and tables are committed under <code>generated/outputs</code>, so rendering does not require a Kflow input dependency.
 
-![Report status: NOT FINAL draft scaffold](https://img.shields.io/badge/report%20status-NOT%20FINAL%20draft%20scaffold-d97706)
+## Writing
 
-> [!WARNING]
-> **Draft scaffold, not the final 2026 assessment report.**
-> Treat generated figures, captions, tables, and result text as review material
-> until the assessment is finalized.
+Edit narrative text in <code>sections/</code>. The report entry point is <code>assessment-report.qmd</code>, which includes <code>report-body.qmd</code> and the ordered section files.
 
-This folder is the Quarto report source. Use `assessment-report.qmd` as the main
-entrypoint.
-
-## Edit First
-
-- `sections/*.qmd`: report text, figure/table placement, captions, and appendix
-  material.
-- `report-config.yml`: species/year metadata, authors, meeting details,
-  bibliography settings, and draft watermark.
-- `catalog/curation.yml`: small overrides for generated figures and tables.
-- `references.bib`: citations.
-
-Avoid putting BET-specific narrative in `assessment-report.qmd` or
-`report-body.qmd`; keep those files reusable.
-
-## Generated Inputs
-
-Kflow copies results artifacts into:
-
-```text
-generated/outputs/
-pipeline-inputs/
-```
-
-The key review map is:
-
-```text
-generated/outputs/overview/report-ready-figures.html
-generated/outputs/overview/report-map.html
-```
-
-If `sections/Figures.qmd` or `sections/Tables.qmd` is missing, or still contains
-the initial `kflow-section-seed` placeholder, the next report run seeds it from:
-
-```text
-generated/outputs/report-ready/figures.qmd
-generated/outputs/report-ready/tables.qmd
-```
-
-After that, edit the section files directly. Later Kflow runs preserve existing
-manual sections.
+Put new manually supplied figures in <code>Figures/static/</code>. Replace generated figures or tables only after review, and commit the corresponding index or section reference in the same change.
 
 ## Render
 
-```bash
-quarto render assessment-report.qmd --to pdf
-```
+From this directory in the Kflow RStudio Terminal:
 
-Keep the draft watermark enabled in `report-config.yml` until the report is
-approved for wider release.
+~~~bash
+quarto render assessment-report.qmd --to pdf --output bet-2026-report.pdf
+quarto render assessment-report.qmd --to html --output bet-2026-report.html
+~~~
+
+From the repository root, <code>bash run.sh</code> performs both renders and writes deliverables to <code>outputs/final-report/</code>.
+
+The writing task uses the pinned <code>tuna-flow v2.4</code> environment. No result-job archive, runtime package update, or generated-section reseeding is required.
