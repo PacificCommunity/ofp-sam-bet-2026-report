@@ -1,4 +1,4 @@
-# BET Report Writing: Paul
+# BET 2026 Report Writing
 
 > **Windows quick start:** complete setup once, then use the Kflow Connect
 > shortcut for each writing session.
@@ -43,12 +43,12 @@ Kflow Connect starts Docker only if needed and reuses an existing helper and
 tunnel. After launch, no PowerShell window remains open.
 
 ```text
-Kflow > BET report writing - Paul > latest job > RStudio
+Kflow > assigned BET report-writing task > latest job > RStudio
 RStudio > edit and Render > Git Commit > Push
 ```
 
 RStudio opens the branch and commit recorded for the selected job. Commits and
-pushes go to `collab/paul-writing` using your own authenticated GitHub identity.
+pushes go to the branch shown for that job using your own authenticated GitHub identity.
 
 1. Edit the report in RStudio and save your changes.
 2. Select **Render** to build and review the report.
