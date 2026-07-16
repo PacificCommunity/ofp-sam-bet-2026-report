@@ -1,75 +1,89 @@
 # BET 2026 Report Writing
 
-> **Windows quick start:** complete setup once, then use the Kflow Connect
-> shortcut for each writing session.
+Use Kflow to edit and render the BET 2026 assessment report in a reproducible RStudio workspace. The report source is in [`bet-2026-report/`](bet-2026-report/).
 
-## ONE TIME: Set up this Windows computer
+## Install Kflow Connect
 
-### 1. Install Kflow Connect
+Current installer release: [Kflow Connect 20260716-155049](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/tag/kflow-connector-20260716-155049)
 
-1. Open [the latest Kflow Connector release](https://github.com/kyuhank/Kflow/releases/latest).
-2. Download the Windows installer bundle. In **Downloads**, right-click the ZIP
-   file, select **Extract All**, and open the extracted folder.
+- [Windows ZIP](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/download/kflow-connector-20260716-155049/kflow-connector-noumea-host.zip)
+- [macOS and Linux TAR.GZ](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/download/kflow-connector-20260716-155049/kflow-connector-noumea-host.tar.gz)
+- [SHA256 checksums](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/releases/download/kflow-connector-20260716-155049/kflow-connector-noumea-host-SHA256SUMS.txt)
+
+Kflow Connect includes the local RStudio helper. It reuses working GitHub, SSH, Docker, and helper setup instead of replacing it.
+
+## Account check
+
+Before starting, confirm these two requirements:
+
+- Your Kflow login is the same as your GitHub username.
+- Your GitHub account has write access to this repository.
+
+RStudio uses the GitHub credentials on your own computer. A job created by another person does not reuse that person's credentials. Commits and pushes therefore use the GitHub account of the person who opens RStudio, provided the two requirements above are met.
+
+## Windows first-time setup
+
+1. Download **Windows ZIP** above.
+2. Right-click the ZIP, choose **Extract All**, and open the extracted folder. Do not run files from inside the ZIP preview.
 3. Double-click **Install Kflow Connect - Windows First-Time Setup.cmd**.
-4. If Windows User Account Control asks whether to allow changes, select
-   **Yes**. Accept any Windows Package Manager (`winget`) source or licence
-   prompts that appear.
+4. Approve the Windows administrator prompt if it appears. The installer checks Python, Git, GitHub CLI, Docker Desktop, OpenSSH, WSL 2, and the local RStudio helper. Working installations are skipped.
+5. When the browser opens, sign in to the GitHub account whose username matches your Kflow login and approve GitHub CLI access.
+6. If Windows or Docker Desktop requests a restart or WSL 2 completion, finish that step and run **Install Kflow Connect - Windows First-Time Setup.cmd** once more.
+7. Double-click **Kflow Connect SSH Setup.cmd**. Enter the assigned Kflow account name when prompted. Enter the account password once if requested; typed passwords are not displayed or stored.
+8. Open **Kflow Connect** from the Start menu or double-click **Kflow Connect.cmd** in the extracted folder.
 
-The installer checks for Python, Git, GitHub CLI, Docker Desktop, and OpenSSH.
-It installs only missing items and skips anything already available.
+Kflow Connect starts Docker Desktop when required, waits for it, starts the local helper and SSH tunnel in the background, and opens Kflow in the default browser. No PowerShell window needs to remain open.
 
-When GitHub authorization appears, use **your own GitHub account**. Follow the
-displayed one-time code and browser approval instructions. The setup does not
-ask you to paste a personal access token.
+## macOS first-time setup
 
-If Docker Desktop asks you to enable WSL 2, restart Windows, or sign out,
-complete that action and then run the installer again. Items already configured
-will be skipped.
+1. Download and extract **macOS and Linux TAR.GZ** above.
+2. Control-click **Install Kflow Connect.command**, choose **Open**, and choose **Open** again if Gatekeeper asks.
+3. Run **Kflow Connect SSH Setup.command** and enter the assigned Kflow account when prompted.
+4. Open the installed **Kflow Connect** application or double-click **Kflow Connect.command**.
 
-### 2. Set up SSH access
+The installer reuses existing tools and can install missing prerequisites. Docker Desktop is started automatically when required.
 
-1. In the extracted folder, double-click **Kflow Connect SSH Setup.cmd**.
-2. At the Kflow username prompt, enter or confirm your assigned Kflow username.
-3. If prompted, enter your submitter password. This is required once only when
-   existing SSH access is not already valid; valid access is detected and
-   reused.
+## Linux first-time setup
 
-## EVERY TIME: Open the report
+1. Download and extract **macOS and Linux TAR.GZ** above.
+2. Double-click **Install Kflow Connect.desktop** and choose **Trust and Launch** or **Allow Launching** if requested. The terminal alternative is `./install.sh`.
+3. Run **Kflow Connect SSH Setup.desktop** and enter the assigned Kflow account when prompted.
+4. Open **Kflow Connect** from the application menu or double-click **Kflow Connect.desktop**.
 
-1. Double-click **Kflow Connect**.
-2. Wait for Kflow to open in your browser.
+## Daily writing workflow
 
-Kflow Connect starts Docker only if needed and reuses an existing helper and
-tunnel. After launch, no PowerShell window remains open.
+1. Open **Kflow Connect**.
+2. Open the assigned BET report-writing task.
+3. Open RStudio from the **latest job card**, not from the task-level shortcut. Each job opens the branch and exact commit attached to that job.
+4. Wait while the Docker image is prepared. If the image is missing locally, Kflow downloads it automatically on first use.
+5. Edit files under `bet-2026-report/`.
+6. Render from the RStudio **Render** button, or run `quarto render bet-2026.qmd --to pdf` from the `bet-2026-report` directory.
+7. Review the PDF in RStudio.
+8. In the RStudio Git pane, select the intended files, click **Commit**, enter a message, and click **Push**.
+9. Return to the Kflow task and click **Run**. Every task run clones the current remote branch again, so the new job uses the latest pushed commit.
 
-```text
-Kflow > assigned BET report-writing task > latest job > RStudio
-RStudio > edit and Render > Git Commit > Push
-```
+The opened repository should show the assigned branch, not `HEAD detached`. Kflow configures its upstream automatically. Never force-push.
 
-RStudio opens the branch and commit recorded for the selected job. Commits and
-pushes go to the branch shown for that job using your own authenticated GitHub identity.
+## Add a file from your computer
 
-1. Edit the report in RStudio and save your changes.
-2. Select **Render** to build and review the report.
-3. In the **Git** pane, select the changed files and choose **Commit**.
-4. Enter a short message, complete the commit, then choose **Push**.
+In RStudio, open the **Files** pane, browse to the destination folder, choose **Upload**, and select the local file. Commit and push it with the other report changes.
 
-### Upload a file from your computer
+## What happens automatically
 
-In RStudio, open the **Files** pane, go to the destination folder, select
-**Upload**, choose the file, and confirm. Include it in your next **Commit** and
-**Push**.
+- Docker Desktop is started on Windows and macOS when it is not already running.
+- A missing Docker image is downloaded automatically; an existing image is reused.
+- The local RStudio helper starts in the background and listens only on the local computer.
+- The SSH tunnel starts in the background and is reused when healthy.
+- Every Task **Run** starts from the latest commit on its configured remote branch.
+- The submitted Git commit opens in RStudio on a normal tracking branch.
+- GitHub credentials remain on the user's computer and are mounted read-only for Git operations.
+- Work in an existing dirty or divergent workspace is preserved rather than reset.
 
-## Quick troubleshooting
+## Troubleshooting
 
-- **Docker is not ready:** Open Docker Desktop, wait until it reports that it is
-  running, then double-click **Kflow Connect** again.
-- **Push says the remote has advanced:** In the RStudio **Git** pane, select
-  **Pull**. If it completes without a conflict, select **Push** again. If a
-  conflict appears, stop and ask project support.
-
-## Keep Git safe
-
-- Never force-push.
-- Never add credentials, private keys, or access tokens to the repository.
+- If the first RStudio start is slow, leave Kflow open while the Docker image downloads, then refresh the job.
+- If GitHub push is unavailable, rerun the first-time installer and sign in with the GitHub username that matches the Kflow login.
+- If SSH setup asks for a password every time, rerun the SSH setup and allow it to register the generated public key.
+- If Docker requests a restart, restart the computer and rerun the first-time installer once.
+- If an older job opens an outdated report state, close it and open RStudio from the newest job card.
+- Do not commit passwords, access tokens, private keys, or credential files to this repository.
