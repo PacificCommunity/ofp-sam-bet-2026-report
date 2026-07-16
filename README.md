@@ -1,98 +1,75 @@
-# BET 2026 report writing
+# BET Report Writing: Paul
 
-## First-time Windows setup
+> **Windows quick start:** complete setup once, then use the Kflow Connect
+> shortcut for each writing session.
 
-1. Download [Kflow Connect for Windows](https://github.com/kyuhank/Kflow/releases/download/kflow-connector-20260716-1335/kflow-connector-20260716-1335.zip).
-2. Right-click the ZIP, choose **Extract All**, and open the extracted folder.
+## ONE TIME: Set up this Windows computer
+
+### 1. Install Kflow Connect
+
+1. Open [the latest Kflow Connector release](https://github.com/kyuhank/Kflow/releases/latest).
+2. Download the Windows installer bundle. In **Downloads**, right-click the ZIP
+   file, select **Extract All**, and open the extracted folder.
 3. Double-click **Install Kflow Connect - Windows First-Time Setup.cmd**.
-4. Complete the GitHub sign-in when the browser opens.
-5. If Docker Desktop requests a restart or WSL 2 setup, complete it and run the installer once more.
-6. Double-click **Kflow Connect SSH Setup.cmd** and enter the assigned Kflow account.
-7. Start Docker Desktop, then open **Kflow Connect**.
+4. If Windows User Account Control asks whether to allow changes, select
+   **Yes**. Accept any Windows Package Manager (`winget`) source or licence
+   prompts that appear.
 
-Do not run the installer from inside the ZIP preview.
+The installer checks for Python, Git, GitHub CLI, Docker Desktop, and OpenSSH.
+It installs only missing items and skips anything already available.
 
-## Writing workflow
+When GitHub authorization appears, use **your own GitHub account**. Follow the
+displayed one-time code and browser approval instructions. The setup does not
+ask you to paste a personal access token.
 
-~~~mermaid
-flowchart LR
-    A["Open Kflow"] --> B["Start newest job"]
-    B --> C["Open RStudio"]
-    C --> D["Write or replace figures"]
-    D --> E["Render PDF"]
-    E --> F["Commit and Push"]
-~~~
+If Docker Desktop asks you to enable WSL 2, restart Windows, or sign out,
+complete that action and then run the installer again. Items already configured
+will be skipped.
 
-1. Open **Kflow Connect**.
-2. Open **BET report writing - Paul** or **BET report writing - Kyuhan**.
-3. Click **RStudio**. Each task opens its own writing branch.
-4. Write in <code>bet-2026-report/sections/</code>.
-5. Put or replace report images directly in <code>bet-2026-report/Figures/</code>.
-6. In the Terminal, run <code>bash run.sh</code> from the repository root.
-7. In the RStudio **Git** pane, select the changed files, click **Commit**, enter a short message, and click **Push**.
+### 2. Set up SSH access
 
-The Kflow job output contains only <code>bet-2026-report.pdf</code>. The report
-does not download or depend on a Results job.
+1. In the extracted folder, double-click **Kflow Connect SSH Setup.cmd**.
+2. At the Kflow username prompt, enter or confirm your assigned Kflow username.
+3. If prompted, enter your submitter password. This is required once only when
+   existing SSH access is not already valid; valid access is detected and
+   reused.
 
-## Citation and cross-reference examples
+## EVERY TIME: Open the report
 
-Use an existing key from <code>bet-2026-report/references.bib</code>:
+1. Double-click **Kflow Connect**.
+2. Wait for Kflow to open in your browser.
 
-```markdown
-Standardisation choices can affect abundance indices [@maunder_standardizing_2004].
-@maunder_standardizing_2004 discusses this issue in detail.
+Kflow Connect starts Docker only if needed and reuses an existing helper and
+tunnel. After launch, no PowerShell window remains open.
+
+```text
+Kflow > BET report writing - Paul > latest job > RStudio
+RStudio > edit and Render > Git Commit > Push
 ```
 
-Reference a labelled figure or table with <code>@fig-...</code> or
-<code>@tbl-...</code>:
+RStudio opens the branch and commit recorded for the selected job. Commits and
+pushes go to `collab/paul-writing` using your own authenticated GitHub identity.
 
-```markdown
-The assessment regions are shown in @fig-region-map.
-Reference-point notation is summarised in @tbl-reference-point-symbols.
-```
+1. Edit the report in RStudio and save your changes.
+2. Select **Render** to build and review the report.
+3. In the **Git** pane, select the changed files and choose **Commit**.
+4. Enter a short message, complete the commit, then choose **Push**.
 
-Add a figure with a unique label, then use that label in the text:
+### Upload a file from your computer
 
-```markdown
-![Short, complete caption.](Figures/my-figure.png){#fig-my-figure width=100%}
+In RStudio, open the **Files** pane, go to the destination folder, select
+**Upload**, choose the file, and confirm. Include it in your next **Commit** and
+**Push**.
 
-The main pattern is visible in @fig-my-figure.
-```
+## Quick troubleshooting
 
-The existing files <code>sections/Figures.qmd</code> and
-<code>sections/Tables.qmd</code> are working examples. Figure labels must start
-with <code>fig-</code>; table chunk labels must start with <code>tbl-</code>.
+- **Docker is not ready:** Open Docker Desktop, wait until it reports that it is
+  running, then double-click **Kflow Connect** again.
+- **Push says the remote has advanced:** In the RStudio **Git** pane, select
+  **Pull**. If it completes without a conflict, select **Push** again. If a
+  conflict appears, stop and ask project support.
 
-## Add a file from the laptop
+## Keep Git safe
 
-1. In RStudio, open the **Files** pane.
-2. Open the folder where the file belongs.
-3. Click **Upload** and choose the file from the laptop.
-4. Confirm the file appears in the **Git** pane, then commit and push it.
-
-The repository includes a small example figure set in
-<code>bet-2026-report/Figures/</code>. Replace an existing file with the same
-name to update it without changing the section source, or add a file and its
-entry to <code>sections/Figures.qmd</code>.
-
-## If something does not work
-
-~~~mermaid
-flowchart TD
-    A["Something is not working"] --> B{"Does Kflow open?"}
-    B -- "No" --> C["Run Kflow Connect SSH Setup"]
-    B -- "Yes" --> D{"Does RStudio open?"}
-    D -- "No" --> E["Start Docker Desktop and reopen Kflow"]
-    D -- "Yes" --> F{"Does Push work?"}
-    F -- "No" --> G["Check GitHub write access and sign in again"]
-    F -- "Yes, but writing is old" --> H["Start a new job"]
-~~~
-
-| Problem | What to do |
-|---|---|
-| RStudio does not open | Start Docker Desktop and reopen **Kflow Connect**. |
-| Kflow does not open | Run **Kflow Connect SSH Setup.cmd** again. |
-| The report looks older than the latest push | Reopen RStudio from the task, or start a new PDF job. |
-| Push is rejected | Ask for repository write access, then sign in to GitHub again. |
-
-If the connection drops after RStudio opens, the work remains on the laptop. Use **Kflow Local RStudio** to reopen it and push after reconnecting.
+- Never force-push.
+- Never add credentials, private keys, or access tokens to the repository.
