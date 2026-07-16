@@ -3,7 +3,9 @@ description: Self-contained BET 2026 writing workspace. Edit committed sections 
 command: bash run.sh
 docker_image: ghcr.io/pacificcommunity/tuna-flow@sha256:71b97b4bdefa091a55284e45bbddfa330171a0674e8e4a32895424d6c8a100de
 resources:
-  cpus: 2  memory: 8GB  disk: 10GB
+  cpus: 2
+  memory: 8GB
+  disk: 10GB
 
 env:
   JOB_TITLE: Paul report writing workspace
