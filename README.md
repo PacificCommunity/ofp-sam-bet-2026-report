@@ -24,7 +24,7 @@ flowchart LR
 ~~~
 
 1. Open **Kflow Connect**.
-2. Open **BET report writing - Paul** or **BET report writing - Kyuhank**.
+2. Open **BET report writing - Paul** or **BET report writing - Kyuhan**.
 3. Click **RStudio**. Each task opens its own writing branch.
 4. Write in <code>bet-2026-report/sections/</code>.
 5. Put or replace report images directly in <code>bet-2026-report/Figures/</code>.
