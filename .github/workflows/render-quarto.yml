@@ -7,10 +7,6 @@ on:
       - main
     tags:
       - "v*"
-    paths:
-      - "quarto/**"
-      - ".github/pages/**"
-      - ".github/workflows/render-quarto.yml"
   pull_request:
     paths:
       - "quarto/**"

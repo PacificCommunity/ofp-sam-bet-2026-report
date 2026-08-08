@@ -1,6 +1,0 @@
-Symbol,Description,Current status
-"SB_t / SB_{F=0,t}","Dynamic spawning potential depletion in time period t, comparing estimated spawning potential with the no-fishing spawning potential for the same recruitment history.","Confirm the year ranges and notation used for the 2026 assessment."
-"SB_recent / SB_{F=0}","Recent-period spawning potential depletion used for stock-status advice.","TODO: set recent period and values from the accepted 2026 model set."
-"F_recent / F_MSY","Recent fishing mortality relative to the fishing mortality producing maximum sustainable yield.","TODO: set recent period and values from the accepted 2026 yield analysis."
-"SB_MSY","Spawning potential at maximum sustainable yield from the yield analysis.","TODO: generate from the accepted 2026 management-advice model set."
-"LRP","WCPFC limit reference point for bigeye tuna, based on 20 percent of unfished spawning potential.","TODO: confirm the reference-period definition used for the 2026 assessment."
