@@ -56,6 +56,10 @@ jobs:
           ref: rev1
           fetch-depth: 0
 
+      - name: Trust the container workspace
+        shell: bash
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
       - name: Fetch preserved draft baseline
         shell: bash
         run: git fetch --no-tags origin draft:refs/remotes/origin/draft
