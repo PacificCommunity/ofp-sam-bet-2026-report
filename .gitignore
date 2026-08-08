@@ -1,8 +1,8 @@
-quarto/_render/
-quarto/.quarto/
-quarto/_freeze/
-quarto/*.tex
-quarto/*.pdf
-quarto/tools/__pycache__/
+.quarto/
+_freeze/
+_render/
+tools/__pycache__/
 release/
 CHAT_HANDOFF_*.md
+
+/.quarto/

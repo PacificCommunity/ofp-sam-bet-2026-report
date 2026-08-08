@@ -9,7 +9,15 @@ on:
       - "v*"
   pull_request:
     paths:
-      - "quarto/**"
+      - "**.qmd"
+      - "_quarto.yml"
+      - "SCreport.cls"
+      - "figures/**"
+      - "references/**"
+      - "sections/**"
+      - "styles/**"
+      - "tables/**"
+      - "*.lua"
       - ".github/pages/**"
       - ".github/workflows/render-quarto.yml"
 
@@ -37,20 +45,23 @@ jobs:
 
       - name: Render report
         shell: bash
-        working-directory: quarto
         run: |
           quarto --version
           pdflatex --version | head -n 1
-          quarto render index.qmd --to pdf
+          quarto render main.qmd --to pdf
 
-      - name: Verify rendered PDF
-        run: test -s quarto/_render/WCPFC-SC22-2026-SA-WP-06.pdf
+      - name: Verify rendered report
+        run: |
+          test -s WCPFC-SC22-2026-SA-WP-06.pdf
+          test -s main.tex
 
-      - name: Upload rendered PDF
+      - name: Upload rendered report
         uses: actions/upload-artifact@v4
         with:
           name: WCPFC-SC22-2026-SA-WP-06
-          path: quarto/_render/WCPFC-SC22-2026-SA-WP-06.pdf
+          path: |
+            WCPFC-SC22-2026-SA-WP-06.pdf
+            main.tex
           if-no-files-found: error
           retention-days: 30
 
@@ -63,7 +74,7 @@ jobs:
         shell: bash
         run: |
           install -d _pages
-          install -m 0644 quarto/_render/WCPFC-SC22-2026-SA-WP-06.pdf _pages/WCPFC-SC22-2026-SA-WP-06.pdf
+          install -m 0644 WCPFC-SC22-2026-SA-WP-06.pdf _pages/WCPFC-SC22-2026-SA-WP-06.pdf
           install -m 0644 .github/pages/index.html _pages/index.html
 
       - name: Upload GitHub Pages artifact
@@ -97,7 +108,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Download rendered PDF
+      - name: Download rendered report
         uses: actions/download-artifact@v4
         with:
           name: WCPFC-SC22-2026-SA-WP-06
@@ -106,15 +117,15 @@ jobs:
       - name: Build Quarto source archive
         shell: bash
         run: |
-          tar \
-            --exclude='quarto/.quarto' \
-            --exclude='quarto/_render' \
-            -czf release/WCPFC-SC22-2026-SA-WP-06-quarto-source.tar.gz \
-            quarto .github/workflows/render-quarto.yml
+          git archive \
+            --format=tar.gz \
+            --output=release/WCPFC-SC22-2026-SA-WP-06-quarto-source.tar.gz \
+            HEAD
 
       - name: Publish release assets
         uses: softprops/action-gh-release@v2
         with:
           files: |
             release/WCPFC-SC22-2026-SA-WP-06.pdf
+            release/main.tex
             release/WCPFC-SC22-2026-SA-WP-06-quarto-source.tar.gz

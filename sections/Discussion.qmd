@@ -1,0 +1,39 @@
+Discussion and conclusions {#sec-discussion}
+==========================
+
+Stock Status from the uncertainty grid
+--------------------------------------
+
+Quite a bit of important commentary and discussion to be completed when authors have had some sleep
+
+Recommendations for further work
+--------------------------------
+
+still have a bit to add here
+
+The general conclusions of this assessment are as follows:
+
+-   The spawning potential of the stock has become more depleted across all model regions until around 2010, after which it has become more stable.
+
+-   The diagnostic model in this assessment is one of the most pessimistic models of the uncertainty ensemble used for management advice.
+
+-   Average fishing mortality rates for juvenile and adult age-classes have increased throughout the period of the assessment until around 2000, after which they have stabilised, but with high inter-annual variability for juveniles.
+
+-   Juveniles have experienced considerably higher recent fishing mortality than adults.
+
+-   The median depletion from the uncertainty grid for the recent period (2021-2024; $SB_{recent}$/$SB_{F=0}$) is estimated at 0.277 (80 percentile range including estimation and structural uncertainty 0.172--0.395, 95 percentile range range 0.136--0.442).
+
+-   Fifteen of the 80 models in the ensemble had $SB_{recent}$/$SB_{F=0}$ \< LRP 0.2, the uncertainty ensemble with estimation uncertainty estimates 18.6% probability on being below the LRP.
+
+-   CMM 2025-02 contains an objective to maintain the spawning biomass depletion ratio above the average for 2012-2015, $SB_{2012-2015}$/$SB_{F=0}$, which is a value of 0.296 calculated across the ensemble. Based upon the estimates of $SB_{recent}$/$SB_{F=0}$ of 0.277 the stock status is marginally below this objective.
+
+-   Recent (2020--2023) median fishing mortality $F_{recent}$/$F_{MSY}$ was 0.838 (80 percentile range, including estimation and structural uncertainty 0.592--1.206, 95 percentile rang range 0.460--1.350).
+
+-   While the stock is assessed as more depleted and under going higher fishing mortality than the previous assessment in 2023, according to the ensemble presented it would be considered not overfished (less than 20% probability of being below the LRP), and not undergoing overfishing based on the median $F_{recent}$/$F_{MSY}$ \< 1.
+
+-   Overall, the 2026 assessment present a more pessimistic stock status than the previous assessment.
+
+Acknowledgements
+================
+
+To be completed

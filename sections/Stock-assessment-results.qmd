@@ -1,0 +1,40 @@
+Stock assessment results {#sec-stock-assess-results}
+------------------------
+
+### Uncertainty ensemble {#sec-structural-uncertainty-analysis}
+
+Of the 100 ensemble model runs, 80 met the gradient convergence criteria $\leq 1.0 \times 10^{-4}$ of which 62 had positive definite Hessians. The 80 models were retained in the ensemble for management advice; of the 20 models that failed ten failed the convergence gradient criterion and ten were incomplete. For the 62 positive definite Hessian fits, 100 correlated inverse-Hessian draws were propagated jointly by the multivariate delta method; 18 Near-PDH fits contribute structural uncertainty only. Estimation uncertainty is therefore incorporated into the statistics for management advice, but is not complete for all models.
+
+The planned and retained model numbers by uncertainty category are shown in Figure @fig-ensemble-design-retention. The were more models retained with the higher two $\tau$ values (less weight of tag data), and more with reporting rates excluded in the mixing period, otherwise retained models were well dispersed across different levels of each uncertainty component. The bootstrap sampling for the estimation uncertainty accounted for these difference.
+
+The influence of each uncertainty component on the management quantities across the ensemble of models is displayed in Figure @fig-management-uncertainty-continuous-axes-steep-M, Figure @fig-management-uncertainty-discrete-axes-tau-mix and Figure @fig-management-uncertainty-discrete-axes-tag-rep-effcrp. Natural mortality and tag mixing were most influential on the spread of the ensemble.
+
+The trajectories of $SB$/$SB_{F=0}$, spawning potential ($SB$), fishing mortality and recruitment for each of the 80 models in the ensemble are displayed in Figure @fig-ensemble-individual. Most of the models have terminal $SB$/$SB_{F=0}$ \> 0.2, 15 models were \< 0.2. Ribbon plots of the trajectories of $SB$/$SB_{F=0}$, spawning potential ($SB$), fishing mortality and recruitment including the estimation uncertainty are provided in Figure @fig-ensemble-est-uncert-ribbon.
+
+### Analyses of stock status {#sec-stock-status-analysis}
+
+There are several ancillary analyses related to stock status that are typically undertaken on the diagnostic model including dynamic Majuro and Kobe analyses and fisheries impacts analyses.
+
+We do not present the results of all analysis for all models in this report. In this section, we rely largely on the tabular results of the structural uncertainty grid (Table @tbl-manage-quant, Table @tbl-stock-status-refs, Table @tbl-ref-points, Table @tbl-est-uncertainty) and the dynamic spawning depletion and spawning potential plots for the models in the structural uncertainty grid (Figure @fig-ensemble-est-uncert-ribbon, and the dynamic Majuro and Kobe plots (Figure @fig-time-dynamic-kobe-majuro).
+
+### Majuro and Kobe plots and comparisons with Limit and Target Reference Points:
+
+Majuro and Kobe plots show the spread of the uncertainty range is mostly in the green area, that would be considered not overfished and not undergoing over fishing, however the uncertainty extends into the region of overfished and undergoing overfishing Figure @fig-combined-kobe-majuro-status.
+
+Both the dynamic Majuro and Kobe plots for the diagnostic model and median of the uncertainty ensemble show the steady increase in depletion (declining stock status) and fishing mortality of the stock since the 1950s with an increase in fishing mortality from the late 1960s. There more recent trend indicates that the stock status has continued to decline and fishing mortality continued to increase (Figure @fig-time-dynamic-kobe-majuro).
+
+### Fishing impact and time dynamic MSY:
+
+text to be added
+
+see Figure @fig-dynamic-msy, Figure @fig-impact-region
+
+### Yield analysis:
+
+text to be added
+
+see Figure @fig-yield
+
+### Catch based projections:
+
+to be added
