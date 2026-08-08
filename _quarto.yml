@@ -23,7 +23,7 @@ format:
     include-in-header:
       - styles/wcpfc-sc22.tex
     include-before-body:
-      - styles/front-matter.tex
+      - styles/revision.tex
     pdf-engine: pdflatex
     latex-auto-install: true
     keep-tex: true
