@@ -6,3 +6,5 @@ release/
 CHAT_HANDOFF_*.md
 
 /.quarto/
+
+**/*.quarto_ipynb

@@ -50,7 +50,7 @@ The progression of model development from the 2023 diagnostic model to the 2026 
 
 24. **Diagnostic2026**
 
-The stepwise model development can be explored in the [interactive HTML viewer](https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise/releases/latest/download/interactive-model-viewer.html).
+The stepwise model development can be explored in the [interactive HTML viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html).
 
 Overall, only minor to moderate changes in the stepwise (terminal estimates, compared to prior step) were observed when updating the data to 2024 (less depleted/higher spawning potential), implementing the new CPUE approach (more depleted/lower spawning potential), implementing the release group specific mixing period (moderately more depleted/minor lowering in spawning potential), effort creep (perhaps counter intuitive, slightly less depleted/higher spawning potential), and implementing Dirichlet multinomial (slightly more depleted/slightly lower spawning potential). The increased initial biomass, steeper decline and slightly higher terminal biomass and less depleted stock status after implementation of the effort creep was perhaps counter intuitive. However, each effort creep scenario is a separate set of CPUE indices that the model fits to, so the starting biomass can shift. An alternative approach to a better understand effort creep impacts would be to some how fix the starting biomass conditions to be the same across the different effort creep adjusted CPUE time series. We necessarily treat the alternative effort creep CPUE scenarios as independent hypotheses and run new model fits to each, but this is an area that needs more thought.
 
@@ -100,17 +100,25 @@ The diagnostic model reach a gradient of 0.0001, and a positive definite Hessian
 
 The jitter method conducted in the current assessment was more rigorous than the 2023 assessment with jittering from the early model fitting phases. Twenty-five of 30 runs met the convergence criterion. The lowest objective function value among retained runs was 89,469.7, 1,345.2 units lower than the Diagnostic model without jitter; 15 of the retained fits had worse fits and ten retained runs improved on that fit Figure @fig-jitter-scatter-plot. The minimum gradient was 5.84 × $10^{-4}$. The worse objective functions typically had much higher differences in the objective function value to the diagnostic model than the better values. This indicates some instability in the model convergence and the occurrence of local topography on the likelihood surface. However, the estimated management quantities showed minor variation among all jitter models. The estimated quantity that varied most among the jitter models was the recruitment, which seems to have unstable estimation Figure @fig-jitter-derived-values-diag-panel. For the depletion at the region level the estimation of the depletion in region 5 was most unstable Figure @fig-jitter-regional-depletion.
 
+The complete jitter results can be viewed in the [browser report](https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html).
+
 ### Self test {#sec-selftest}
 
 Fifty of 50 pseudo-data refits completed and met the recorded convergence criterion. Convergence ranged from 5.13e-05 to 9.97e-05. Median whole-series pseudo-data errors ranged from -0.23% to 0.07%. The generating truth was inside the pointwise central 95% empirical refit range at 385 of 438 annual quantity-year points (87.9%). Median relative bias across recent and native assessment summaries ranged from -2.1% to 3.5%. Across the selected recruitment-scale, growth and stock-recruit parameters, median relative errors ranged from -3.85% to 2.00%. These are empirical simulation-estimation diagnostics under the configured generator, not confidence intervals for the assessment. Self test was overall successful, the model successful estimated the time series $SB$/$SB_{F=0}$, $SB$, recruitment without any consistent bias through the time series. Median relative bias was less than 5% for $SB$/$SB_{F=0}$, $SB$, recruitment and around 6-7% for F, which had a positive bias (Figure @fig-selftest-recovery). The selftest recovered time series of derived quantities is displayed in Figure @fig-selftest-time-series.
+
+The complete self-test results can be viewed in the [browser report](https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html).
 
 ### Retrospectives {#sec-retro-analysis}
 
 The retrospective analysis showed acceptable results with no strong bias for depletion (Mohn's rho -0.195), recruitment (Mohn's rho -0.062) and spawning potential (Mohn's $\rho$ -0.235) all within or close to the acceptable range of $\pm 0.2 \text{ to } \pm 0.3$, fishing mortality had Mohn's $\rho$ of 0.308, but this is not unexpected as F is very uncertain in the final years of the assessment (Figure @fig-retro-analysis).
 
+The complete retrospective results can be viewed in the [browser report](https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html).
+
 ### Likelihood profiles {#sec-likelihood-profile}
 
 The likelihood profile over the mean total biomass for the diagnostic model showed conflict among the data sources. Most notable was the strong preference of the CPUE data and to a lesser degree the size data for lower biomass versus the tag data that preferred higher biomass (Figure @fig-diag-profile-data-sources). The CAAL data tend to preferred higher biomass than the CPUE and size data, but had a flat profile through most of the biomass range, and the region of the overall likelihood. The penalty terms also preferred lower biomass. The conflict between the CPUE and tagging indicates that tag data is the key influence on higher biomass scaling. This conflict is accounted for to an extent in the uncertainty ensemble through higher mixing period scenarios, the alternative approaches to reporting rate adjustments in the mixing period, alternative ($\tau$).
+
+The likelihood profiles can be explored in the [interactive HTML viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html).
 
 Given the conflict with the tagging data and assumptions required for modeling this data we explored likelihood profiles on the three tagging programs (Figure @fig-diag-profile-data-tag-prog). This showed that the tropical focussed PTTP is the main program that is preferring a higher biomass scale. The RTTP is less influential but also tends towards higher biomass. The JPTP, which is in region 1 is in conflict with the two tropical programs. This is perhaps not surprising given these programmes are spatially separated, and represent very different regions of the bigeye stock in the WCPO. Of more interest is the profiles of the tag release groups (Figure @fig-diag-profile-data-tag-prog-grps. There are no standout release group profiles for any of the individual programmes, and only one PTTP and one RTTP release group prefers lower biomass.
 
@@ -170,7 +178,7 @@ Differences over time in the estimated adult and juvenile fishing mortality are 
 Sensitivity analyses {#sec-sensitivity-results}
 --------------------
 
-The results of all sensitivity analysis can be explored in the [interactive HTML viewer](https://github.com/PacificCommunity/ofp-sam-bet-2026-sensitivity/releases/latest/download/bet-2026-sensitivity-interactive-viewer.html). All the sensitivity models achieved a suitable gradient and had positive definite Hessian status.
+The results of all sensitivity analysis can be explored in the [interactive HTML viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html). All the sensitivity models achieved a suitable gradient and had positive definite Hessian status.
 
 ### Steepness {#sec-oneoff-steepness}
 

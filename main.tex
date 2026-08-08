@@ -69,6 +69,7 @@
 
 
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -130,15 +131,12 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
-\usepackage[bidi=basic]{babel}
+\usepackage[bidi=basic,shorthands=off]{babel}
 \else
-\usepackage[bidi=default]{babel}
+\usepackage[bidi=default,shorthands=off]{babel}
 \fi
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
 \ifLuaTeX
-  \usepackage[english]{selnolig} % disable illegal ligatures
+  \usepackage{selnolig} % disable illegal ligatures
 \fi
 
 
@@ -256,7 +254,6 @@ Phillips \and P. Hamer}
 
 \renewcommand*\contentsname{Table of contents}
 {
-\hypersetup{linkcolor=}
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
@@ -273,8 +270,8 @@ The assessment applies a simplified 5 region model structure compared to
 the 9 region structure used in the previous four bigeye assessments;
 2017, 2018, 2020, and 2023. The spatial structure represents a step in
 simplifying this assessment considering comments from SC19 and the 2026
-Pre-Assessment Workshop (PAW) (P. Hamer 2026). Readers are also referred
-to SC22-SA-IP09 (J. Hampton et al. 2026) which includes exploration of a
+Pre-Assessment Workshop (PAW) (Hamer, 2026). Readers are also referred
+to SC22-SA-IP09 (Hampton et al., 2026b) which includes exploration of a
 simpler single region model. New developments to the stock assessment,
 many of which have been in response to comments on the 2023 assessment
 by SC19 and discussion at the PAW, include:
@@ -285,32 +282,32 @@ by SC19 and discussion at the PAW, include:
   fisheries definitions.
 \item
   Conversion of longline weight data to lengths outside the model and
-  addition of observed length data for longline fisheries (T. Peatman,
-  Kim, et al. 2026)
+  addition of observed length data for longline fisheries (Peatman et
+  al., 2026b)
 \item
   Stricter size composition data filtering and enhanced reweighting
-  approach (T. Peatman, Kim, et al. 2026)
+  approach (Peatman et al., 2026b)
 \item
   Global sdmTMB CPUE analysis used for regional scaling, and new MFCL
-  regional scaling penalty (T. Teears 2026; N. Davies et al. 2026a)
+  regional scaling penalty (Davies et al., 2026a; Teears, 2026)
 \item
   Separate sdmTMB CPUE analyses for each model region (x 10), removing
   the need for shared selectivity and catchability among CPUE indices
-  (PAW and yellowfin tuna peer review recommendation) (P. Hamer 2026; T.
-  Teears 2026; A. E. Punt, Maunder, and Ianelli 2023)
+  (PAW and yellowfin tuna peer review recommendation) (Hamer, 2026; Punt
+  et al., 2023; Teears, 2026)
 \item
   External M-scale assumption rather than internal estimation (PAW
   recommendation to improve model stability)
 \item
   Release group specific tag maxing based on individual based tag mixing
-  model (yellowfin tuna peer review A. E. Punt, Maunder, and Ianelli
-  (2023)), and removal of Coral Sea Tagging data (supported by PAW)
+  model (yellowfin tuna peer review Punt et al. (2023)), and removal of
+  Coral Sea Tagging data (supported by PAW)
 \item
-  Tag reporting rate penalties informed by increased tag seeding (T.
-  Peatman et al. 2026)
+  Tag reporting rate penalties informed by increased tag seeding
+  (Peatman et al., 2026a)
 \item
   Substantial increase in age at length data, including north Pacific
-  samples (Wakefield et al. 2026; Hasegawa et al. 2026)
+  samples (Hasegawa et al., 2026; Wakefield et al., 2026)
 \item
   Uncertainty ensemble rather than orthogonal grid
 \item
@@ -318,15 +315,15 @@ by SC19 and discussion at the PAW, include:
 \end{itemize}
 
 This assessment is supported by the analysis of catch and effort data
-for longline fisheries to provide regional abundance indices (T. Teears
-2026), revised analysis of tagger effects and tag reporting rates (T.
-Peatman, Scutt Phillips, et al. 2026; T. Peatman et al. 2026), enhanced
-and improved size composition data analyses and preparation, include the
-weight data to length conversion work (T. Peatman, Kim, et al. 2026),
-tag mixing simulation modeling (J. Scutt Phillips, Senina, and Bonin
-2026) and developments to MFCL software (N. Davies et al. 2026b). An
-extensive process of stepwise model development was conducted to
-transition from the 2023 to the 2026 assessment model and new data.
+for longline fisheries to provide regional abundance indices (Teears,
+2026), revised analysis of tagger effects and tag reporting rates
+(Peatman et al., 2026c; Peatman et al., 2026a), enhanced and improved
+size composition data analyses and preparation, include the weight data
+to length conversion work (Peatman et al., 2026b), tag mixing simulation
+modeling (Scutt Phillips et al., 2026) and developments to MFCL software
+(Davies et al., 2026a). An extensive process of stepwise model
+development was conducted to transition from the 2023 to the 2026
+assessment model and new data.
 
 The 2026 bigeye stock assessment estimated the median
 \(SB_{recent}\)/\(SB_{F=0}\) across the model grid to be 0.277, where
@@ -500,33 +497,31 @@ assessment framework, we recommend:
 This paper presents the 2026 stock assessment of bigeye tuna
 (\emph{Thunnus obesus}; BET) in the western and central Pacific Ocean
 (WCPO; west of 150\(^\circ\) W). Assessments of WCPO bigeye tuna have
-been conducted regularly since the late 1990s (Langley et al. 2008; S.
-Harley, Hoyle, and Langley 2009; S. J. Harley et al. 2010; N. Davies et
-al. 2011; Shelton J. Harley et al. 2014-08; S. McKechnie, Pilling, and
-Hampton 2017; M. Vincent, Pilling, and Hampton 2018; Nicholas
-Ducharme-Barth et al. 2020; Day et al. 2023). As in previous
+been conducted regularly since the late 1990s (Davies et al., 2011; Day
+et al., 2023; Ducharme-Barth et al., 2020a; S. Harley et al., 2009;
+Harley et al., 2010; Harley et al., 2014; Langley et al., 2008;
+McKechnie et al., 2017a; Vincent et al., 2018). As in previous
 assessments, the objectives of the 2026 bigeye tuna assessment are to
 estimate population level parameters which indicate the stock status and
 impacts of fishing, such as time series of recruitment, biomass, biomass
 depletion and fishing mortality. We summarize the stock status in terms
 of reference points adopted by the Western and Central Pacific Fisheries
 Commission (WCPFC). The methodology used for the assessment is based on
-the general approach of integrated modeling (D. Fournier and Archibald
+the general approach of integrated modeling (D. Fournier \& Archibald,
 1982), which is carried out using the stock assessment framework
 MULTIFAN-CL (version 2.2.7.9)\footnote{https://github.com/PacificCommunity/multifan-cl/}
-D. A. Fournier, Hampton, and Sibert (1998); J. Hampton and Fournier
-(2001); N. Davies et al. (2026c)). MFCL implements a size-based, age-
-and spatially-structured population model. Model parameters are
-estimated by maximizing an objective function, consisting of both
-likelihood (data) and ``prior''\footnote{Note that unless otherwise
-  stated any mention of a ``prior'' in this report does not refer to a
-  prior in the Bayesian sense, though the effect on the parameter
-  estimate is similar, but rather a penalty placed on the likelihood
-  such that the estimated parameter does not deviate too much from the
-  specified ``prior'' value. The magnitude of the deviation from the
-  ``prior'' is dependent on the information content of the data and the
-  strength of the likelihood penalty applied.} information components
-(penalties).
+Fournier et al. (1998); Hampton \& Fournier (2001); Davies et al.
+(2026b)). MFCL implements a size-based, age- and spatially-structured
+population model. Model parameters are estimated by maximizing an
+objective function, consisting of both likelihood (data) and
+``prior''\footnote{Note that unless otherwise stated any mention of a
+  ``prior'' in this report does not refer to a prior in the Bayesian
+  sense, though the effect on the parameter estimate is similar, but
+  rather a penalty placed on the likelihood such that the estimated
+  parameter does not deviate too much from the specified ``prior''
+  value. The magnitude of the deviation from the ``prior'' is dependent
+  on the information content of the data and the strength of the
+  likelihood penalty applied.} information components (penalties).
 
 Each new assessment of a WCPO tuna stock typically involves updates to
 fishery catch, effort (for CPUE analysis), and size composition data,
@@ -539,7 +534,7 @@ continually improve the modeling procedures and more accurately estimate
 fishing impacts, biological and population processes and quantities used
 for management advice. Advice from the Scientific Committee (SC) on
 previous assessments, and the annual SPC Pre-assessment Workshops (PAW)
-(P. Hamer 2026) guide this ongoing process. Changes to aspects of an
+(Hamer, 2026) guide this ongoing process. Changes to aspects of an
 assessment can result in changes to the estimated status of the stock
 and fishing impacts. Each new assessment aims to provide the best
 possible assessment of stock status with the time and data available.
@@ -563,20 +558,19 @@ quantities provided by the assessment.
 Notable new features of the 2026 assessment are summarised below and
 this assessment report should be read in conjunction with several
 supporting papers, specifically the paper on CPUE analyses and other
-data inputs (T. Teears 2026), the paper on size composition data
-preparations and weighting (T. Peatman, Kim, et al. 2026), the papers on
-tag reporting rates and tagger effects estimations (T. Peatman, Scutt
-Phillips, et al. 2026; T. Peatman et al. 2026), the paper on tag mixing
-estimation (J. Scutt Phillips, Senina, and Bonin 2026), the paper on
-MFCL developments (N. Davies et al. 2026b) and the paper on conceptual
-models of bigeye and yellowfin population structure (P. Hamer et al.
-2023). Planning and approaches for this assessment were informed by the
-discussion at the 2026 SPC PAW (P. Hamer 2026). Several other papers are
-also relevant to this assessment including the single region, no tag
-data, fleets-as-areas model experiments for yellowfin and bigeye tuna
-(J. Hampton et al. 2026), and an experiment exploring implications of
-growth variation on the 2023 bigeye tuna assessment (J. Hampton, Davies,
-and Hamer 2026).
+data inputs (Teears, 2026), the paper on size composition data
+preparations and weighting (Peatman et al., 2026b), the papers on tag
+reporting rates and tagger effects estimations (Peatman et al., 2026c;
+Peatman et al., 2026a), the paper on tag mixing estimation (Scutt
+Phillips et al., 2026), the paper on MFCL developments (Davies et al.,
+2026a) and the paper on conceptual models of bigeye and yellowfin
+population structure (Hamer et al., 2023). Planning and approaches for
+this assessment were informed by the discussion at the 2026 SPC PAW
+(Hamer, 2026). Several other papers are also relevant to this assessment
+including the single region, no tag data, fleets-as-areas model
+experiments for yellowfin and bigeye tuna (Hampton et al., 2026b), and
+an experiment exploring implications of growth variation on the 2023
+bigeye tuna assessment (Hampton et al., 2026a).
 
 Some of the more notable changes to the analysis used in this assessment
 include the following, which are discussed in more detail in relevant
@@ -588,31 +582,31 @@ sections of this report.
   fisheries definitionsFigure Figure~\ref{fig-map-5regions}
 \item
   Conversion of weight data to lengths outside the model and addition of
-  length data for longline fisheries (T. Peatman, Kim, et al. 2026)
+  length data for longline fisheries (Peatman et al., 2026b)
 \item
   Stricter size composition data filtering and enhanced reweighting
-  approach (T. Peatman, Kim, et al. 2026)
+  approach (Peatman et al., 2026b)
 \item
   Global sdmTMB CPUE analysis used for regional scaling, with new MFCL
-  regional scaling penalty (T. Teears 2026; N. Davies et al. 2026a)
+  regional scaling penalty (Davies et al., 2026a; Teears, 2026)
 \item
   Separate sdmTMB CPUE analyses for each model region, removes need for
   shared selectivity and catchability among CPUE indices (PAW and
-  yellowfin tuna peer review recommendation) (P. Hamer 2026; T. Teears
-  2026; A. E. Punt, Maunder, and Ianelli 2023)
+  yellowfin tuna peer review recommendation) (Hamer, 2026; Punt et al.,
+  2023; Teears, 2026)
 \item
   External M-scale assumption rather than internal estimation (PAW
   recommendation to improve model stability)
 \item
   Release group specific tag maxing based on individual based tag mixing
-  model (yellowfin tuna peer review A. E. Punt, Maunder, and Ianelli
-  (2023)), removal of Coral Sea Tagging data
+  model (yellowfin tuna peer review Punt et al. (2023)), removal of
+  Coral Sea Tagging data
 \item
-  Tag reporting rate penalties informed by increased tag seeding (T.
-  Peatman et al. 2026)
+  Tag reporting rate penalties informed by increased tag seeding
+  (Peatman et al., 2026a)
 \item
   Substantial increase in age at length data, including north Pacific
-  samples (Wakefield et al. 2026; Hasegawa et al. 2026)
+  samples (Hasegawa et al., 2026; Wakefield et al., 2026)
 \item
   Uncertainty ensemble rather than orthogonal grid
 \item
@@ -626,49 +620,47 @@ sections of this report.
 Bigeye tuna are distributed throughout the tropical and sub-tropical
 waters of the Pacific, Indian and Atlantic Oceans. Genetic studies
 indicate that Atlantic bigeye have minimal mixing with bigeye in the
-Indo-Pacific regions (Chow et al. 2000; Gonzalez, Beerli, and Zardoya
-2008; Grewe et al. 2019). There is no strong evidence for genetic
-population structure in the Pacific Ocean (Grewe and Hampton 1998;
-Bradley R. Moore et al. 2020-10; Natasha et al. 2022-04). While genetic
-studies are largely uninformative on the rates of mixing of bigeye tuna
-throughout the Pacific, they are broadly consistent with the results of
-tagging experiments conducted by SPC and the Inter-American Tropical
-Tuna Commission (IATTC) (K. Schaefer et al. 2015; Bradley R. Moore et
-al. 2020-10). These studies show that while the majority of tagged
-bigeye have been recaptured in the general regions of their release
-(i.e.~within 1,500 nautical miles) some tagged bigeye move large
-distances across the Pacific Ocean (i.e.~\textgreater4,000 nautical
-miles) Figure Figure~\ref{fig-tag-displacement-map}. These occasional
-large-scale movements and the continuous distribution of bigeye tuna
-across the Pacific would explain the lack of clear genetic structure.
-The cumulative information on movement from conventional and electronic
-tag-recapture data, particularly efforts focused in the equatorial
-central Pacific, have indicated more extensive longitudinal,
+Indo-Pacific regions (Chow et al., 2000; Gonzalez et al., 2008; Grewe et
+al., 2019). There is no strong evidence for genetic population structure
+in the Pacific Ocean (Grewe \& Hampton, 1998; Moore et al., 2020;
+Natasha et al., 2022). While genetic studies are largely uninformative
+on the rates of mixing of bigeye tuna throughout the Pacific, they are
+broadly consistent with the results of tagging experiments conducted by
+SPC and the Inter-American Tropical Tuna Commission (IATTC) (Moore et
+al., 2020; K. Schaefer et al., 2015). These studies show that while the
+majority of tagged bigeye have been recaptured in the general regions of
+their release (i.e.~within 1,500 nautical miles) some tagged bigeye move
+large distances across the Pacific Ocean (i.e.~\textgreater4,000
+nautical miles) Figure Figure~\ref{fig-tag-displacement-map}. These
+occasional large-scale movements and the continuous distribution of
+bigeye tuna across the Pacific would explain the lack of clear genetic
+structure. The cumulative information on movement from conventional and
+electronic tag-recapture data, particularly efforts focused in the
+equatorial central Pacific, have indicated more extensive longitudinal,
 particularly west to east, displacements with fewer movements between
-tropical tag release sites and temperate zones (K. Schaefer et al. 2015;
-Bradley R. Moore et al. 2020-10; S. McKechnie, Pilling, and Hampton
-2017). While there is apparent high movement throughout the equatorial
-Pacific and lack of genetic structure, this does not preclude spatial
-structure in population processes that are important in stock assessment
-(i.e., growth, mortality, recruitment) and regional fishing
-impacts/local depletion. Growth rates have been shown to differ between
-bigeye tuna in the WCPO and EPO, with smaller lengths-at-age observed
-for bigeye in the WCPO, and suggestion of a clinal increase in growth
-rates from the west to east Pacific (S. McKechnie et al. 2015;
-Aires-da-Silva et al. 2015; J. Farley et al. 2017). This is also
-reflected in observations of increased size at maturity for bigeye in
-the EPO compared to the WCPO (J. Farley et al. 2017). Further, there is
-some evidence from otolith chemistry studies for structuring of
-recruitment sources. For example, Rooker et al. (2016-05) indicated that
-1--2 year old fish sampled from the Marshall Islands were derived from
-local sources, whereas fish caught off Hawai'i were suggested to have
-originated more broadly from the central equatorial region. In turn,
-otolith chemistry and genetic studies of juvenile bigeye in the
-Indonesian archipelagic waters suggested juvenile residency and low
-mixing with the broader western Pacific for this life stage (Bradley R.
-Moore et al. 2019-12; Proctor et al. 2019).
+tropical tag release sites and temperate zones (McKechnie et al., 2017a;
+Moore et al., 2020; K. Schaefer et al., 2015). While there is apparent
+high movement throughout the equatorial Pacific and lack of genetic
+structure, this does not preclude spatial structure in population
+processes that are important in stock assessment (i.e., growth,
+mortality, recruitment) and regional fishing impacts/local depletion.
+Growth rates have been shown to differ between bigeye tuna in the WCPO
+and EPO, with smaller lengths-at-age observed for bigeye in the WCPO,
+and suggestion of a clinal increase in growth rates from the west to
+east Pacific (Aires-da-Silva et al., 2015; Farley et al., 2017;
+McKechnie et al., 2015a). This is also reflected in observations of
+increased size at maturity for bigeye in the EPO compared to the WCPO
+(Farley et al., 2017). Further, there is some evidence from otolith
+chemistry studies for structuring of recruitment sources. For example,
+Rooker et al. (2016) indicated that 1--2 year old fish sampled from the
+Marshall Islands were derived from local sources, whereas fish caught
+off Hawai'i were suggested to have originated more broadly from the
+central equatorial region. In turn, otolith chemistry and genetic
+studies of juvenile bigeye in the Indonesian archipelagic waters
+suggested juvenile residency and low mixing with the broader western
+Pacific for this life stage (Moore et al., 2019; Proctor et al., 2019).
 
-The paper by P. Hamer et al. (2023) considers published information on
+The paper by Hamer et al. (2023) considers published information on
 genetic and non-genetics indicators of population structure, plus larval
 distribution patterns, and also includes analyses of spatial
 heterogeneities in size composition data and CPUE time series for the
@@ -689,74 +681,73 @@ assessments in the WCPO and this is discussed further in Section
 Section~\ref{sec-spatial-stratification}.
 
 Despite uncertainties in population connectivity across the Pacific a
-sensitivity analysis by S. McKechnie et al. (2015) in 2015 showed that
+sensitivity analysis by McKechnie et al. (2015a) in 2015 showed that
 despite extensive longitudinal movements in the equatorial Pacific, the
 discrete WCPO stock assumption was capable of accurately capturing the
 dynamics and stock status indicators for WCPO bigeye. The current
 assessment continues the approach of a separate assessment for the WCPO
 region and the stock within the domain of the model (essentially the
 WCPO, west of 150\(^\circ\) W) is considered to be a discrete stock unit
-(Langley et al. 2008; S. Harley, Hoyle, and Langley 2009; S. J. Harley
-et al. 2010; N. Davies et al. 2011; Shelton J. Harley et al. 2014-08; S.
-McKechnie, Pilling, and Hampton 2017; M. Vincent, Pilling, and Hampton
-2018; Nicholas Ducharme-Barth et al. 2020; Day et al. 2023).
+(Davies et al., 2011; Day et al., 2023; Ducharme-Barth et al., 2020a; S.
+Harley et al., 2009; Harley et al., 2010; Harley et al., 2014; Langley
+et al., 2008; McKechnie et al., 2017a; Vincent et al., 2018).
 
 \subsection{Biological characteristics}\label{sec-biology}
 
 Bigeye tuna are moderately fast growing, and have a maximum fork length
-(FL) of about 200 cm (Aires-da-Silva et al. 2015; J. Farley et al.
-2017), with an estimated average maximum length of 157 cm in the WCPO
-(Eveson et al. 2020; J. Farley et al. 2020). The growth parameters for
-bigeye tuna are influential biological parameters in the stock
-assessment (S. McKechnie, Pilling, and Hampton 2017; M. Vincent,
-Pilling, and Hampton 2018). Studies to improve growth information for
-bigeye have occurred in recent years, notably by Eveson et al. (2020);
-J. Farley et al. (2020); Wakefield et al. (2026); Hasegawa et al.
-(2026). Recent bomb radiocarbon age work has validated the
-interpretation of growth bands in bigeye otoliths as annual and
+(FL) of about 200 cm (Aires-da-Silva et al., 2015; Farley et al., 2017),
+with an estimated average maximum length of 157 cm in the WCPO (Eveson
+et al., 2020; Farley et al., 2020). The growth parameters for bigeye
+tuna are influential biological parameters in the stock assessment
+(McKechnie et al., 2017a; Vincent et al., 2018). Studies to improve
+growth information for bigeye have occurred in recent years, notably by
+Eveson et al. (2020); Farley et al. (2020); Wakefield et al. (2026);
+Hasegawa et al. (2026). Recent bomb radiocarbon age work has validated
+the interpretation of growth bands in bigeye otoliths as annual and
 confirmed the oldest `validated' age for a bigeye tuna in the WCPO at
 least 13 years of age. This compares to the longest period at liberty
 for a recaptured bigeye tuna tagged in the WCPO of approximately 14
 years, for a fish estimated at 1-2 years old at release (SPC,
 unpublished data). The oldest estimated fish aged from otoliths in the
-WCPO is approximately 15 years (J. Farley et al. 2020). The 2026
+WCPO is approximately 15 years (Farley et al., 2020). The 2026
 assessment will incorporate a substantial increase in the amount of
 conditional-age-at-length data, both for the equatorial region and the
 region north of 10\(^\circ\) N for which no samples were available in
-the previous assessments (Wakefield et al. 2026; Hasegawa et al. 2026).
+the previous assessments (Hasegawa et al., 2026; Wakefield et al.,
+2026).
 
 Bigeye tuna in the WCPO become reproductively active from about 80 cm
-FL, and nearly all individuals \textgreater120 cm FL are mature (J.
-Farley et al. 2017). There is some evidence for regional variation in
-maturity-at-length in the WCPO and EPO (Nicol et al. 2011; J. Farley et
-al. 2017; K. M. Schaefer, Fuller, and Miyabe 2005). As with other tunas,
-the population sex ratio of bigeye tuna changes at around the age/size
-of reproductive maturity to increasingly favor males at larger sizes,
+FL, and nearly all individuals \textgreater120 cm FL are mature (Farley
+et al., 2017). There is some evidence for regional variation in
+maturity-at-length in the WCPO and EPO (Farley et al., 2017; Nicol et
+al., 2011; K. M. Schaefer et al., 2005). As with other tunas, the
+population sex ratio of bigeye tuna changes at around the age/size of
+reproductive maturity to increasingly favor males at larger sizes,
 thought to relate to higher mortality of females due to the energetic
-stress of regular spawning Sun, Chu, and Yeh (2006); Sam McKechnie,
-Tremblay-Boyer, and Pilling (2017)). Sex ratio information is used to
-define spawning potential (rather than spawning biomass) as a product of
-maturity status, female sex-ratio in the population, and fecundity.
-Spawning typical occurs in water temperatures above 24\(^\circ\) C, with
-an approximate daily cycle, and occurs all year in the tropical Pacific,
-but more seasonally in the warmer months in sub-tropical regions (Sun,
-Chu, and Yeh 2006; J. Farley et al. 2017). Areas of higher larval
-densities have been found in the western Pacific from Papua New Guinea
-to Philippines, Chinese Taipei to the Okinawa Islands, also several
-areas in the central Pacific, and in the eastern Pacific off Panama and
-Colombia (Nishikawa et al. 1985; Ijima and Jusup 2023-04).
+stress of regular spawning Sun et al. (2006); McKechnie et al. (2017b)).
+Sex ratio information is used to define spawning potential (rather than
+spawning biomass) as a product of maturity status, female sex-ratio in
+the population, and fecundity. Spawning typical occurs in water
+temperatures above 24\(^\circ\) C, with an approximate daily cycle, and
+occurs all year in the tropical Pacific, but more seasonally in the
+warmer months in sub-tropical regions (Farley et al., 2017; Sun et al.,
+2006). Areas of higher larval densities have been found in the western
+Pacific from Papua New Guinea to Philippines, Chinese Taipei to the
+Okinawa Islands, also several areas in the central Pacific, and in the
+eastern Pacific off Panama and Colombia (Ijima \& Jusup, 2023; Nishikawa
+et al., 1985).
 
 The natural mortality (M) rate of bigeye tuna varies with size, with
 rates of \textless{} 0.5 yr\(^{-1}\) for bigeye \textgreater40 cm FL and
 \textgreater2 years age and higher rates for the youngest age-classes
-(\textless2 years) (J. Hampton 2000). The 2020 bigeye assessment
-conducted a life-history based meta-analysis (Piner and Lee 2011) of
-natural mortality for bigeye and indicated an envelope of potential
-average quarterly M rates of lower 95\% confidence interval (0.109),
-mean (0.127) and upper 95\% confidence interval (0.146) (Nicholas
-Ducharme-Barth et al. 2020). The 2023 assessment estimated M internally
-to the MFCL model using a Lorenzen function, adult (age 40 quarters) M
-was estimated at 0.078 per quarter (Day et al. 2023).
+(\textless2 years) (Hampton, 2000). The 2020 bigeye assessment conducted
+a life-history based meta-analysis (Piner \& Lee, 2011) of natural
+mortality for bigeye and indicated an envelope of potential average
+quarterly M rates of lower 95\% confidence interval (0.109), mean
+(0.127) and upper 95\% confidence interval (0.146) (Ducharme-Barth et
+al., 2020a). The 2023 assessment estimated M internally to the MFCL
+model using a Lorenzen function, adult (age 40 quarters) M was estimated
+at 0.078 per quarter (Day et al., 2023).
 
 \subsection{Fisheries}\label{sec-fisheries}
 
@@ -775,30 +766,30 @@ While they are not targeted by purse seine vessels, bigeye are taken
 almost exclusively from sets on natural and artificial floating objects
 (FADs), and comprise mostly small juveniles. Estimation of the bigeye
 tuna catch from associated sets has been the focus of considerable
-research over recent years (T. Peatman et al. 2019). This purse seine
+research over recent years (Peatman et al., 2019). This purse seine
 fishery expanded rapidly from the early 1980's and the estimated annual
 bigeye catches for this gear have been in the vicinity of 45,000-72,000
 mt over the last 15 years in the WCPO (i.e., the region of this
-assessment which excludes the overlap area with IATTC) (S. McKechnie,
-Pilling, and Vidal 2026). This compares to the WCPO longline catch of
-between approximately 32,000-59,000 mt over the same period (Hare et al.
-2025; S. McKechnie, Pilling, and Vidal 2026).
+assessment which excludes the overlap area with IATTC) (McKechnie et
+al., 2026). This compares to the WCPO longline catch of between
+approximately 32,000-59,000 mt over the same period (Hare et al., 2025;
+McKechnie et al., 2026).
 
 The highest estimated bigeye tuna total catch from the WCPO was
 approximately 175,000 mt in 2004 (195,000 mt in the same year for the
 entire WCPFC-CA). The WCPO bigeye catches have declined since around
 2010, after which they have ranged between around 110,000--160,000 mt
-(135,000-175,000 mt for entire WCPFC-CA) (Hare et al. 2025, 2026;
-Williams and Ruaia 2023; S. McKechnie, Pilling, and Vidal 2026). Over
-the recent period (2015-2024), approximately 50\% of the catch by
-weight, but 10\% by numbers was taken by longline, reflecting the
-selection of longline gear for larger fish. In contrast, 50\% of the
-catch by numbers, but only 35\% by weight was taken by purse seine sets
-associated with FADs. A small purse seine fishery also operates in the
-coastal waters off Japan with an annual bigeye catch of less than 500 mt
-in recent years. A slightly higher level of bigeye catch is taken by the
-coastal Japanese pole-and-line fishery relative to the coastal Japanese
-purse seine, however, overall these catches are negligible.
+(135,000-175,000 mt for entire WCPFC-CA) (Hare et al., 2025, 2026;
+McKechnie et al., 2026; Williams \& Ruaia, 2023). Over the recent period
+(2015-2024), approximately 50\% of the catch by weight, but 10\% by
+numbers was taken by longline, reflecting the selection of longline gear
+for larger fish. In contrast, 50\% of the catch by numbers, but only
+35\% by weight was taken by purse seine sets associated with FADs. A
+small purse seine fishery also operates in the coastal waters off Japan
+with an annual bigeye catch of less than 500 mt in recent years. A
+slightly higher level of bigeye catch is taken by the coastal Japanese
+pole-and-line fishery relative to the coastal Japanese purse seine,
+however, overall these catches are negligible.
 
 In recent years, collaborative work between SPC, WCPFC, CSIRO (primarily
 in Indonesia), and fisheries agencies in Indonesia, the Philippines, and
@@ -818,13 +809,13 @@ Data used in the bigeye tuna stock assessment using MFCL consist of
 catch, effort, length \& weight-frequency data for the fisheries defined
 in the analysis, and tag-recapture data. Conditional age-at-length data
 are also used directly as data in the assessment model, as was
-recommended by the peer review of the 2020 yellowfin tuna assessment (A.
-E. Punt, Maunder, and Ianelli 2023). Improvements in these data inputs
-are ongoing and readers should refer to the companion papers highlighted
-at the end of Section Section~\ref{sec-introduction} for detailed
-descriptions of how the data and biological inputs were formulated as
-only brief overviews are provided below. A summary of the data available
-for the assessment is provided in (T. Teears 2026), and in Figure
+recommended by the peer review of the 2020 yellowfin tuna assessment
+(Punt et al., 2023). Improvements in these data inputs are ongoing and
+readers should refer to the companion papers highlighted at the end of
+Section Section~\ref{sec-introduction} for detailed descriptions of how
+the data and biological inputs were formulated as only brief overviews
+are provided below. A summary of the data available for the assessment
+is provided in (Teears, 2026), and in Figure
 Figure~\ref{fig-data-coverage-tile}.
 
 \subsection{Spatial stratification}\label{sec-spatial-stratification}
@@ -841,22 +832,21 @@ stratification used in the the previous four assessments. The simplified
 spatial structure was motivated by a general desire to reduce the
 complexity following SC reviews of the 2023 assessment and discussion at
 PAW, particularly by removing the small region 9 that was implemented in
-2014, after the bigeye assessment peer review (Ianelli, Maunder, and
-Punt 2012). This small region was included to better model the tagging
-data from the historical Coral Sea tagging cruises (Shelton J. Harley et
-al. 2014-08). Region 9 was maintained in the previous assessments,
-partly because of tag-recaptures with long times at liberty that were
-thought to provide information on natural mortality (M) which was
-estimated internal to the model in the 2023 assessment. In the 2026
-assessment, in an attempt to improve model stability, after discussion
-at the PAW it was decided to return to the approach of earlier
-assessments and apply M as an external parameter (P. Hamer 2026).
-Related to this change the archival tag-recapture data from the Coral
-Sea Tagging program combined with conventional tags from the Regional
-Tuna Tagging Programme (RTTP) and the Pacific Tuna Tagging Programme
-(PTTP) was used in an external analysis to estimate an adult M and
-M-at-age (using previous growth curves) Lorenzen curve (N.
-Ducharme-Barth et al. 2026). The smaller Region 8 around Papua New
+2014, after the bigeye assessment peer review (Ianelli et al., 2012).
+This small region was included to better model the tagging data from the
+historical Coral Sea tagging cruises (Harley et al., 2014). Region 9 was
+maintained in the previous assessments, partly because of tag-recaptures
+with long times at liberty that were thought to provide information on
+natural mortality (M) which was estimated internal to the model in the
+2023 assessment. In the 2026 assessment, in an attempt to improve model
+stability, after discussion at the PAW it was decided to return to the
+approach of earlier assessments and apply M as an external parameter
+(Hamer, 2026). Related to this change the archival tag-recapture data
+from the Coral Sea Tagging program combined with conventional tags from
+the Regional Tuna Tagging Programme (RTTP) and the Pacific Tuna Tagging
+Programme (PTTP) was used in an external analysis to estimate an adult M
+and M-at-age (using previous growth curves) Lorenzen curve
+(Ducharme-Barth et al., 2026). The smaller Region 8 around Papua New
 Guinea and the Solomon Is was used in previous assessment to better
 model tag-recapture data in relation to assumed tag mixing. However,
 this was mostly related to skipjack and yellowfin that have high numbers
@@ -870,16 +860,16 @@ they were each reduced to single regions, retaining some spatial fleet
 separation by using a fleets-as-areas approach. This resulted a 4 region
 stratification that was supported at the PAW, and was more consistent
 with the conceptual model and the objective of removing unnecessary
-spatial complexity(P. Hamer 2026; P. Hamer et al. 2023). An alternative
-5 region structure was also proposed at PAW with a separate central-east
+spatial complexity(Hamer et al., 2023; Hamer, 2026). An alternative 5
+region structure was also proposed at PAW with a separate central-east
 equatorial region to better accommodate the concentration of
 tag-recapture data in that area and to improve the level of within model
-region tag mixing. Ultimately based on the tag mixing modeling (J. Scutt
-Phillips, Senina, and Bonin 2026), the 5 region structure was chosen for
-the 2026 assessment Figure Figure~\ref{fig-map-5regions}. The PAW also
+region tag mixing. Ultimately based on the tag mixing modeling (Scutt
+Phillips et al., 2026), the 5 region structure was chosen for the 2026
+assessment Figure Figure~\ref{fig-map-5regions}. The PAW also
 recommended to explore a single region fleets-as-area model, excluding
-all tag data (P. Hamer 2026). This exploration is provided in a
-companion paper to SC22 (J. Hampton et al. 2026).
+all tag data (Hamer, 2026). This exploration is provided in a companion
+paper to SC22 (Hampton et al., 2026b).
 
 \subsection{Temporal stratification}\label{sec-temporal-stratification}
 
@@ -940,12 +930,12 @@ but when used as index fisheries they do not take any catch, and must
 have effort data to allow modeling of CPUE. For this assessment one
 index fishery is defined for each model region as a composite fishery
 composed of longline fisheries operating under various flags in each
-assessment region (T. Teears 2026). In the 2023 assessment a single
-sdmTMB CPUE standardisation model was conducted across the entire
-assessment region (i.e.~global model), the quarterly predictions were
-then aggregated and summed by model regions to generate the region
-specific abundance indices (T. Teears et al. 2023), that were assumed to
-have constant catchability and selectivity. This allowed MFCL to use the
+assessment region (Teears, 2026). In the 2023 assessment a single sdmTMB
+CPUE standardisation model was conducted across the entire assessment
+region (i.e.~global model), the quarterly predictions were then
+aggregated and summed by model regions to generate the region specific
+abundance indices (Teears et al., 2023), that were assumed to have
+constant catchability and selectivity. This allowed MFCL to use the
 differences in relative abundance indices among model regions as
 information on the relative size of the vulnerable population among
 model regions (i.e.~regional scaling). The assumption of shared
@@ -953,9 +943,9 @@ catchability and selectivity is problematic and can create problems with
 adequately fitting the size compositions for each index fishery. The
 yellowfin assessment peer review recommended freeing up these
 assumptions of shared catchability and selectivity among CPUE abundance
-indices (A. E. Punt, Maunder, and Ianelli 2023). This was discussed in
-depth at the PAW, where it was recommended to run a global sdmTMB model
-using the long-term Japanese operational data, use this global model for
+indices (Punt et al., 2023). This was discussed in depth at the PAW,
+where it was recommended to run a global sdmTMB model using the
+long-term Japanese operational data, use this global model for
 generating regional abundance indices that are assumed to have shared
 catchability and selectivity, but only use these for information on
 relative vulnerable abundance among model regions (i.e.~only for
@@ -964,17 +954,17 @@ individual sdmTMB CPUE models for each model region. Separate regional
 CPUE models could perhaps better account for regional differences in
 CPUE covariate relationships, and the resultant abundance indices can
 have their own selectivity without assuming constant catchability among
-model regions (P. Hamer 2026). This approached was adopted and required
-considerable additional work in the CPUE analyses (T. Teears 2026), and
+model regions (Hamer, 2026). This approached was adopted and required
+considerable additional work in the CPUE analyses (Teears, 2026), and
 also modifications/enhancement to the MFCL code to allow one set of CPUE
 (i.e.~global model) to be used to generate a regional abundance scaling
 penalty, and the other set of region specific CPUE indices to provide
-the time series abundance indices for the model to fit to (N. Davies et
-al. 2026b). Furthermore, specification of the time period from the
+the time series abundance indices for the model to fit to (Davies et
+al., 2026a). Furthermore, specification of the time period from the
 global indices to use to calculate the regional scale penalty is
 required. The PAW recommended using a time period where data coverage
 was most broad across the global model domain, this period was 1965-1969
-(T. Teears 2026). The MFCL code was also modified to input global CPUE
+(Teears, 2026). The MFCL code was also modified to input global CPUE
 time series of different start and end dates so the scaling penalty
 could be determined for different time periods, noting the the penalty
 is applied only to that time period Section
@@ -987,16 +977,15 @@ and weight-frequency) for the extraction fisheries is assumed to
 represent the actual composition of the removed fish for any space-time
 strata, and in the data preparation process are weighted by the catch in
 order to represent the fisheries extractions at the spatial (region) and
-temporal (quarter) resolution of the model (T. Peatman, Kim, et al.
-2026). However, for the index fisheries, while the same aggregation
-process is conducted, the size data are weighted by standardised CPUE
-(rather than by catch) so that the size data are more representative of
-the abundance of the underlying population in each region and time
-period. Further, because the size data for the index and extraction
-fisheries are effectively being used twice (but weighted differently),
-the likelihood weighting for the size composition is adjusted such that
-the original intended weight (effective sample size) in the likelihood
-is preserved.
+temporal (quarter) resolution of the model (Peatman et al., 2026b).
+However, for the index fisheries, while the same aggregation process is
+conducted, the size data are weighted by standardised CPUE (rather than
+by catch) so that the size data are more representative of the abundance
+of the underlying population in each region and time period. Further,
+because the size data for the index and extraction fisheries are
+effectively being used twice (but weighted differently), the likelihood
+weighting for the size composition is adjusted such that the original
+intended weight (effective sample size) in the likelihood is preserved.
 
 \subsection{Catch and effort data}\label{sec-catch-effort-data}
 
@@ -1095,16 +1084,15 @@ For the industrial purse seine fisheries predominantly operating in
 tropical regions 3, and 4, catch by species within each set type
 (associated or unassociated) is determined by applying estimates of
 species composition from observer-collected samples to total catches
-estimated from raised logsheet data (J. Hampton and Williams 2016; T.
-Peatman, Williams, and Nicol 2021; T. Peatman, Williams, and Nicol
-2023). For the Japanese (JP) fleet for which there is greater confidence
-in species-based reporting, reported catch by species is used. Purse
-seine catch for Philippines (PH) and Indonesian (ID) domestic purse
-seine fisheries, predominantly operating in region 2, was derived from
-raised port sampling data provided by these countries. We note that the
-COVID-19 pandemic resulted in low observer coverage of the purse seine
-fleets from mid 2020 to 2022 and purse seine catch estimates are less
-reliable over these years.
+estimated from raised logsheet data (Hampton \& Williams, 2016; Peatman
+et al., 2021; Peatman et al., 2023). For the Japanese (JP) fleet for
+which there is greater confidence in species-based reporting, reported
+catch by species is used. Purse seine catch for Philippines (PH) and
+Indonesian (ID) domestic purse seine fisheries, predominantly operating
+in region 2, was derived from raised port sampling data provided by
+these countries. We note that the COVID-19 pandemic resulted in low
+observer coverage of the purse seine fleets from mid 2020 to 2022 and
+purse seine catch estimates are less reliable over these years.
 
 \subsubsection{Longline}\label{sec-catch-effort-LL}
 
@@ -1122,29 +1110,29 @@ represents the most complete spatiotemporal record of longline fishing
 activity in the Pacific, spanning from 1952 through to the present and
 is the result of collaborative ongoing data-sharing efforts from many
 countries. This data-set was first created in 2015 in support of the
-Pacific-wide bigeye tuna stock assessment (S. McKechnie, Tremblay-Boyer,
-and Harley 2015), and has subsequently been used in each bigeye and
-yellowfin tuna assessment (S. McKechnie, Pilling, and Hampton 2017; M.
-Vincent, Pilling, and Hampton 2018; Nicholas Ducharme-Barth et al. 2020;
-Day et al. 2023). Since 2017 spatiotemporal approaches (James T. Thorson
-et al. 2015) have been used for CPUE modeling in WCPFC stock assessments
-(Tremblay-Boyer et al. 2017; N. Ducharme-Barth et al. 2020; T. Teears et
-al. 2023). Consistent with the 2023 assessment, the CPUE modeling was
-conducted with sdmTMB (Anderson et al. 2022-03). A detailed description
-of the methods for generating the spatiotemporal abundance indices is
-provided in T. Teears (2026). However, some aspects are worth noting
-here. Firstly, the global analysis used for the regional scaling penalty
-takes account of habitat viability by not including predictions in cells
-when SST is below a specified thresholds. The threshold was determined
-as 17°C based on the probability of positive CPUE observations being
-greater than 10\% (T. Teears 2026). Applying the SST thresholds prevents
-inflating the relative abundance in the northern and southern regions by
-including spatial cells that have predictions of positive abundance that
-are unlikely in reality. The approach was a recommendation from the PAW.
+Pacific-wide bigeye tuna stock assessment (McKechnie et al., 2015b), and
+has subsequently been used in each bigeye and yellowfin tuna assessment
+(Day et al., 2023; Ducharme-Barth et al., 2020a; McKechnie et al.,
+2017a; Vincent et al., 2018). Since 2017 spatiotemporal approaches
+(Thorson et al., 2015) have been used for CPUE modeling in WCPFC stock
+assessments (Ducharme-Barth et al., 2020b; Teears et al., 2023;
+Tremblay-Boyer et al., 2017). Consistent with the 2023 assessment, the
+CPUE modeling was conducted with sdmTMB (Anderson et al., 2022). A
+detailed description of the methods for generating the spatiotemporal
+abundance indices is provided in Teears (2026). However, some aspects
+are worth noting here. Firstly, the global analysis used for the
+regional scaling penalty takes account of habitat viability by not
+including predictions in cells when SST is below a specified thresholds.
+The threshold was determined as 17°C based on the probability of
+positive CPUE observations being greater than 10\% (Teears, 2026).
+Applying the SST thresholds prevents inflating the relative abundance in
+the northern and southern regions by including spatial cells that have
+predictions of positive abundance that are unlikely in reality. The
+approach was a recommendation from the PAW.
 
 The CPUE modeling for the 2026 assessment made some key improvements
 over the 2023 version, largely following detailed discussion and
-recommendations from PAW (P. Hamer 2026). The 2026 analysis implemented
+recommendations from PAW (Hamer, 2026). The 2026 analysis implemented
 encounter and positive component sub-models separately to allow for
 differences in model formulas; specifically to allow the number of hooks
 to be included in the encounter sub-model. The inclusion of vessel ID as
@@ -1156,9 +1144,9 @@ over time) was included as an adjustment on predicted regional CPUE
 indices. The decision at PAW was that zero effort creep was implausible,
 so a range of positive effort creep is explored based on the
 recommendation from PAW, and no zero options are included in the
-assessment models. Please refer to T. Teears (2026) for a full
-description of the CPUE modeling for generating the global and region
-specific abundance indices.
+assessment models. Please refer to Teears (2026) for a full description
+of the CPUE modeling for generating the global and region specific
+abundance indices.
 
 \subsubsection{Other fisheries}\label{sec-catch-effort-other}
 
@@ -1168,7 +1156,7 @@ are not part of the index fisheries, with the catch-conditioned
 approached effort data are not necessary for these extraction fisheries.
 Catch estimates for the ID/PH/VN fisheries are derived from various port
 sampling programmes dating back to the 1960s for ID and the PH, and
-early 2000s for VN (Williams and Ruaia 2023; Vidal et al. 2026).
+early 2000s for VN (Vidal et al., 2026; Williams \& Ruaia, 2023).
 
 \subsection{Size data}\label{sec-size-data}
 
@@ -1180,21 +1168,20 @@ the nearest kilogram). Processing methods varied between fleets
 requiring the application of conversion factors to convert the available
 processed weight data to whole weight equivalents. Details of the
 various processed weight to whole weight conversion factors are provided
-in P. Hamer et al. (2026). Note that these conversions occur in the
-database prior to data extraction for stock assessments (P. Hamer et al.
+in Hamer et al. (2026). Note that these conversions occur in the
+database prior to data extraction for stock assessments (Hamer et al.,
 2025). Data were either collected onboard by fishers, through observer
 programs, or through port sampling, see descriptions of data sources in
-P. Hamer et al. (2025); P. Hamer et al. (2026). Each size-frequency
-record in the model consisted of the actual number of bigeye tuna
-measured and Figure Figure~\ref{fig-data-coverage-tile} provides details
-of the temporal availability of length and weight-frequency data (also
-see T. Teears (2026)). Note that a maximum effective sample size of
-1,000 is implemented in MFCL when using the robust normal likelihood for
-size composition data. The effective sample size was further
-down-weighted as explained in Section
-Section~\ref{sec-sizefreq-likelihood}. Summaries of the available size
-composition data by year and fishery are provided in T. Teears (2026)
-and the processed data in T. Peatman, Kim, et al. (2026).
+Hamer et al. (2025); Hamer et al. (2026). Each size-frequency record in
+the model consisted of the actual number of bigeye tuna measured and
+Figure Figure~\ref{fig-data-coverage-tile} provides details of the
+temporal availability of length and weight-frequency data (also see
+Teears (2026)). Note that a maximum effective sample size of 1,000 is
+implemented in MFCL when using the robust normal likelihood for size
+composition data. The effective sample size was further down-weighted as
+explained in Section Section~\ref{sec-sizefreq-likelihood}. Summaries of
+the available size composition data by year and fishery are provided in
+Teears (2026) and the processed data in Peatman et al. (2026b).
 
 An extensive process of preparatory size data processing is required to
 improve the reliability and representativeness of size composition data.
@@ -1206,26 +1193,26 @@ Only length data are available for purse seine, pole and line and the
 other miscellaneous gear fisheries in the Indonesia/Philippines/Vietnam
 region. For longline fisheries both weight and length data are
 available. For the 2026 assessment, based on recommendations from
-previous years (T. Teears et al. 2023; Day et al. 2023) and discussions
-at the PAW (P. Hamer 2026), it was decided to include weight and length
+previous years (Day et al., 2023; Teears et al., 2023) and discussions
+at the PAW (Hamer, 2026), it was decided to include weight and length
 data for longline fisheries due to the increasing coverage of length
-data in recent years and the decreasing coverage of weight data (T.
-Peatman, Kim, et al. 2026). This involved the conversion of weight data
-to lengths external to the model, so that the final models ran entirely
-on length data, this is the fist time to apply this approach. A key
-principle used in constructing the size composition inputs was not to
-use weight and length data at the same time for a fishery, even if it
-was available. The decision was made to start replacing the weight data
-(or weight converted to length) with actual length data if and when the
-length data had greater coverage than the weight data. The preparation
-of size data across the longline, purse seine, pole and line and other
-domestic fisheries (Indonesia/Philippines/Vietnam), including the
-integration of longline length data and the associated weight-length
-conversion process is a significant amount of work, and is fully
-described in the companion paper by T. Peatman, Kim, et al. (2026).
-Preparation of size data inputs has increased substantially in recent
-year, with increased review and scrutiny of these data and now take up a
-more significant time component of data inputs preparation.
+data in recent years and the decreasing coverage of weight data (Peatman
+et al., 2026b). This involved the conversion of weight data to lengths
+external to the model, so that the final models ran entirely on length
+data, this is the fist time to apply this approach. A key principle used
+in constructing the size composition inputs was not to use weight and
+length data at the same time for a fishery, even if it was available.
+The decision was made to start replacing the weight data (or weight
+converted to length) with actual length data if and when the length data
+had greater coverage than the weight data. The preparation of size data
+across the longline, purse seine, pole and line and other domestic
+fisheries (Indonesia/Philippines/Vietnam), including the integration of
+longline length data and the associated weight-length conversion process
+is a significant amount of work, and is fully described in the companion
+paper by Peatman et al. (2026b). Preparation of size data inputs has
+increased substantially in recent year, with increased review and
+scrutiny of these data and now take up a more significant time component
+of data inputs preparation.
 
 The Philippines domestic handline fishery in region 2 (Fishery
 15.HL.PH.2) consistently catches the largest individuals in the WCPO.
@@ -1242,20 +1229,20 @@ Of the three main tropical tuna species, bigeye tuna has the least
 amount of tagging data available. Information on the bigeye tag data
 characteristics, the process of constructing the MFCL tagging file, and
 estimating tag release correction factors (tagger effects) and reporting
-rate priors (from tag seeding experiments) can be found in T. Peatman,
-Scutt Phillips, et al. (2026); T. Peatman et al. (2026); T. Teears
-(2026). A summary of the tagging data and maps displaying tag
-displacements are in T. Teears (2026). Data were available from the
-Regional Tuna Tagging Project (RTTP) during 1989--92 (including
-affiliated in-country projects in the Solomon Islands, Kiribati, Fiji
-and the Philippines), the ongoing Pacific Tuna Tagging Programme (PTTP)
-that began in 2006, see Figure Figure~\ref{fig-tag-release-recapt} and
-Figure Figure~\ref{fig-tag-displacement-map}. The Japanese Tagging
-Programme (JPTP) conducted by NRIFSF and the Ajinomoto Co.~Inc, over the
-period 2000--2020 is also included. The new tagging data for the 2026
+rate priors (from tag seeding experiments) can be found in Peatman et
+al. (2026c); Peatman et al. (2026a); Teears (2026). A summary of the
+tagging data and maps displaying tag displacements are in Teears (2026).
+Data were available from the Regional Tuna Tagging Project (RTTP) during
+1989--92 (including affiliated in-country projects in the Solomon
+Islands, Kiribati, Fiji and the Philippines), the ongoing Pacific Tuna
+Tagging Programme (PTTP) that began in 2006, see Figure
+Figure~\ref{fig-tag-release-recapt} and Figure
+Figure~\ref{fig-tag-displacement-map}. The Japanese Tagging Programme
+(JPTP) conducted by NRIFSF and the Ajinomoto Co.~Inc, over the period
+2000--2020 is also included. The new tagging data for the 2026
 assessment comes from PTTP. As discussed previously historical (1995,
 1999-2001) data from the Coral Sea tagging cruises by CSIRO (Evans et
-al. 2008) are no longer included.
+al., 2008) are no longer included.
 
 After tagged fish are recaptured, there is often a delay before the tag
 is reported and the data are entered into the tagging databases. If this
@@ -1267,7 +1254,7 @@ end of 2022. The 2023 assessment included tag data until 2019.
 Significant numbers of tagged bigeye have been released in recent (2020
 and 2021) tagging cruises focused on bigeye and yellowfin in the central
 Pacific (model region 4). Recaptures from these releases are available
-for the 2026 assessment (T. Teears 2026). Tags were released using
+for the 2026 assessment (Teears, 2026). Tags were released using
 standard tuna tagging equipment and techniques by trained scientists and
 technicians. Tags have been returned from a range of fisheries, having
 been recovered onboard or via processing and unloading facilities
@@ -1279,35 +1266,34 @@ for a number of sources of tag loss, unusable recaptures due to lack of
 adequately resolved recapture data, estimates of tag loss (shedding and
 initial mortality) due to variable skill of taggers (i.e., tagger
 effects), and estimates of base levels of tag shedding and tag
-mortality. These adjustments are described in more detail in T. Peatman,
-Scutt Phillips, et al. (2026); T. Teears (2026). An additional issue for
-the bigeye assessment is that there are a considerable number of tag
-returns that were released within the WCPO but recaptured to the east of
-longitude 150\(^\circ\)W, outside the WCPO assessment region. The
-adjustment or rescaling of releases for recaptures in the EPO preserves
-the recovery rates of tags from individual tag groups that would
-otherwise be biased low given that a considerable proportion of
-recaptures cannot be attributed to a recapture category in the
-assessment. These procedures were first described in Berger et al.
-(2014-08) and S. McKechnie et al. (2016). However, the releases are not
-adjusted for emigration outside of the model domain to the EPO. This is
-an important issue that requires further consideration as to options for
-informing adjustments to release numbers to account for emigration to
-the EPO.
+mortality. These adjustments are described in more detail in Peatman et
+al. (2026c); Teears (2026). An additional issue for the bigeye
+assessment is that there are a considerable number of tag returns that
+were released within the WCPO but recaptured to the east of longitude
+150\(^\circ\)W, outside the WCPO assessment region. The adjustment or
+rescaling of releases for recaptures in the EPO preserves the recovery
+rates of tags from individual tag groups that would otherwise be biased
+low given that a considerable proportion of recaptures cannot be
+attributed to a recapture category in the assessment. These procedures
+were first described in Berger et al. (2014) and McKechnie et al.
+(2016). However, the releases are not adjusted for emigration outside of
+the model domain to the EPO. This is an important issue that requires
+further consideration as to options for informing adjustments to release
+numbers to account for emigration to the EPO.
 
 For incorporation into the assessment, tag releases were stratified by
 release region, time period of release (quarter) and the same size
 classes used to stratify the length-frequency data. The likelihood
 penalties or ``priors'' used for the reporting rates of the grouped tag
 return fisheries have been updated relative to those used in the
-previous assessment based on the analysis of tag seeding experiments (T.
-Peatman et al. 2026). Tag reporting rate groupings are required as not
-all reporting fisheries have tag seeding experiments. These reporting
-rate grouping decisions necessarily require some expert judgement. For
-this assessment we have also excluded tag release groups with 5 or less
-recaptures from the estimation of reporting rates, as we felt there was
-insufficient information to inform model estimation of the reporting
-rates. Tag reporting rate groupings are included in Table
+previous assessment based on the analysis of tag seeding experiments
+(Peatman et al., 2026a). Tag reporting rate groupings are required as
+not all reporting fisheries have tag seeding experiments. These
+reporting rate grouping decisions necessarily require some expert
+judgement. For this assessment we have also excluded tag release groups
+with 5 or less recaptures from the estimation of reporting rates, as we
+felt there was insufficient information to inform model estimation of
+the reporting rates. Tag reporting rate groupings are included in Table
 Table~\ref{tbl-tag-definitions}.
 
 \section{Model description}\label{sec-model-description}
@@ -1319,11 +1305,10 @@ dynamics of the fish population; (ii) the fishery dynamics; (iii) the
 dynamics of tagged fish populations (iv) the observation models for the
 data; (v) the parameter estimation procedure; and (vi) stock assessment
 interpretations. Detailed technical descriptions of components (i)--(iv)
-are given in J. Hampton and Fournier (2001) and N. Davies et al.
-(2026c), and summarised below. In addition, we describe the procedures
-followed for estimating the parameters of the model and the way in which
-stock status conclusions are drawn relative to a series of reference
-points.
+are given in Hampton \& Fournier (2001) and Davies et al. (2026b), and
+summarised below. In addition, we describe the procedures followed for
+estimating the parameters of the model and the way in which stock status
+conclusions are drawn relative to a series of reference points.
 
 \subsection{Population dynamics}\label{sec-model-population-dynamics}
 
@@ -1342,8 +1327,8 @@ Recruitment is defined as the appearance of age-class 1 quarter fish
 spawning does not typically follow a strong seasonal pattern, especially
 in the tropical waters where most of the spawning occurs. Rather it
 occurs sporadically all year and is thought to be influenced by food
-availability (K. M. Schaefer, Fuller, and Miyabe 2005; Sun, Chu, and Yeh
-2006; Itano 2000). The assessment model assumed that recruitment occurs
+availability (Itano, 2000; K. M. Schaefer et al., 2005; Sun et al.,
+2006). The assessment model assumed that recruitment occurs
 instantaneously at the beginning of each quarter. This is a discrete
 approximation to continuous recruitment, but provides sufficient
 flexibility to allow a range of variability to be incorporated into the
@@ -1368,29 +1353,28 @@ Beverton and Holt stock-recruitment relationship (SRR) with a fixed
 value of steepness (\emph{h}). Steepness is defined as the ratio of the
 equilibrium recruitment produced by 20\% of the equilibrium unexploited
 spawning potential to that produced by the equilibrium unexploited
-spawning potential (Francis 1992; S. J. Harley 2011). Typically,
-fisheries data are not very informative about the steepness parameter of
-the SRR parameters (ISSF 2011); hence, the steepness parameter was fixed
-at a moderate value (diagnostic model: 0.80) and the sensitivity of the
-model results to the value of steepness was explored by setting it to
-lower (0.65) and higher (0.95) values. The high CV (2.2) of the
+spawning potential (Francis, 1992; Harley, 2011). Typically, fisheries
+data are not very informative about the steepness parameter of the SRR
+parameters (ISSF, 2011); hence, the steepness parameter was fixed at a
+moderate value (diagnostic model: 0.80) and the sensitivity of the model
+results to the value of steepness was explored by setting it to lower
+(0.65) and higher (0.95) values. The high CV (2.2) of the
 log-recruitment deviates, computed annually, ensured that the SRR had
 negligible impact on the estimation of recruitment and other model
-parameters, as recommended by Ianelli, Maunder, and Punt (2012). The SRR
-was estimated over the period 1962--2023 to prevent the earlier
-recruitments (which may not be well estimated), and the terminal
-recruitments (which are not freely estimated), from influencing the
-relationship.
+parameters, as recommended by Ianelli et al. (2012). The SRR was
+estimated over the period 1962--2023 to prevent the earlier recruitments
+(which may not be well estimated), and the terminal recruitments (which
+are not freely estimated), from influencing the relationship.
 
 The SRR was incorporated mainly so that yield analysis and population
 projections could be undertaken for stock assessment purposes,
 particularly the determination of equilibrium- and depletion-based
 reference points. We therefore applied a weak penalty (equivalent to a
 CV of 2.2) for deviation from the SRR so that it would have negligible
-effect on recruitment and other model estimates (J. Hampton and Fournier
+effect on recruitment and other model estimates (Hampton \& Fournier,
 2001), but still allow the estimation of asymptotic recruitment. This
 approach was recommended (recommendation 20) by the 2011 bigeye
-assessment review (Ianelli, Maunder, and Punt 2012).
+assessment review (Ianelli et al., 2012).
 
 \subsubsection{Initial population}\label{sec-model-initial-population}
 
@@ -1413,33 +1397,33 @@ deterministic function of the lengths-at-age and a specified
 weight-length relationship\footnote{The length-weight relationship has
   been updated for the current assessment based on an analysis of
   current and historical port sampling data under WCPFC Project 90 with
-  bias correction applied (P. Hamer et al. 2026)}. These processes are
+  bias correction applied (Hamer et al., 2026)}. These processes are
 assumed to be regionally and temporally invariant.
 
 In previous assessments several approaches to growth estimation were
-explored, including external otolith based growth curves (J. Farley et
-al. 2020), a growth curve based on the otoliths with the addition of
-tag-recapture growth increment data (Eveson et al. 2020), an internal
+explored, including external otolith based growth curves (Farley et al.,
+2020), a growth curve based on the otoliths with the addition of
+tag-recapture growth increment data (Eveson et al., 2020), an internal
 MFCL growth estimation using a conditional-age-at-length (CAAL) dataset
-(J. Farley et al. 2020), which also made use of the modal progressions
-apparent in various size composition data (Nicholas Ducharme-Barth et
-al. 2020). Results were sensitive to approaches used for growth. The
-peer review of the yellowfin assessment (A. E. Punt, Maunder, and
-Ianelli 2023) carefully considered the approaches to estimating growth.
-They concluded that based on the otolith sampling protocols, with
-otoliths selected according to length (i.e., attempting to achieve
-sufficient numbers of otolith samples across the full length range, plus
-bias in otolith readability with age), that any external growth curves
-would likely be biased. They strongly recommended that for this type of
-otolith sampling regime that age data should be conditional on length
-and the growth estimated internally, using conditional-age-at-length
-data within MFCL. This approach was applied in the 2023 assessment and
-is continued for this assessment to estimate the von Bertalanffy growth
-curve internal to the MFCL model, considering also information on growth
-from size composition data. We also note the substantial enhancement of
-the CAAL data set through the efforts of SPCs recently established
-schlerochronoly lab (Wakefield et al. 2026) and the contributions of
-Japan's FRA (Hasegawa et al. 2026).
+(Farley et al., 2020), which also made use of the modal progressions
+apparent in various size composition data (Ducharme-Barth et al.,
+2020a). Results were sensitive to approaches used for growth. The peer
+review of the yellowfin assessment (Punt et al., 2023) carefully
+considered the approaches to estimating growth. They concluded that
+based on the otolith sampling protocols, with otoliths selected
+according to length (i.e., attempting to achieve sufficient numbers of
+otolith samples across the full length range, plus bias in otolith
+readability with age), that any external growth curves would likely be
+biased. They strongly recommended that for this type of otolith sampling
+regime that age data should be conditional on length and the growth
+estimated internally, using conditional-age-at-length data within MFCL.
+This approach was applied in the 2023 assessment and is continued for
+this assessment to estimate the von Bertalanffy growth curve internal to
+the MFCL model, considering also information on growth from size
+composition data. We also note the substantial enhancement of the CAAL
+data set through the efforts of SPCs recently established
+schlerochronoly lab (Wakefield et al., 2026) and the contributions of
+Japan's FRA (Hasegawa et al., 2026).
 
 \subsubsection{Movement}\label{sec-model-movement}
 
@@ -1447,8 +1431,8 @@ Movement was assumed to occur instantaneously at the beginning of each
 quarter via movement parameters that connect regions sharing a common
 boundary. Note that fish can move between non-contiguous regions in a
 single time step due to the ``implicit transition'' computational
-algorithm employed (see J. Hampton and Fournier (2001) and N. Davies et
-al. (2026c) for details). Movement is parameterized by a pair of
+algorithm employed (see Hampton \& Fournier (2001) and Davies et al.
+(2026b) for details). Movement is parameterized by a pair of
 bi-directional parameters at each region boundary. Movement is therefore
 possible in both directions across each regional boundary in each of the
 four quarters. Each of these coefficients is estimated independently
@@ -1473,55 +1457,53 @@ specified as a fixed value. Internal estimation can be constrained by
 providing a prior value and a penalty weight for deviations from the
 prior. Age specific deviations from average \(M\) can also be estimated
 or input as a fixed \(M\)-at-age function. The later approach was taken
-in the 2020 assessments for both bigeye and yellowfin (Nicholas
-Ducharme-Barth et al. 2020; Matthew Vincent et al. 2020) where
-\(M\)-at-age was calculated using an approach applied to other tunas in
-the WCPO and EPO (S. J. Harley and Maunder 2003; S. D. Hoyle 2008; S.
-Hoyle and Nicol 2008). The yellowfin peer review had some difficulty
-with tracing the sources of data for some of the inputs to the external
-\(M\)-at-age function applied in 2020 that requires fitting a model that
-depends on empirical data on the sex-ratio at length, a growth curve, a
-base \(M\) assumption for males, assumptions on critical lengths for
-inflections and a multiplier that determines the linear decline in \(M\)
-for young ages to the base \(M\), plus a length at which female
-mortality is assumed to begin to increase. There are uncertainties in
-all these empirical data and assumptions, and the data for sex ratio is
-limited especially for larger and older fish. While the peer review
-generally supported the method, the construction of the external
-\(M\)-at-age function, notably the limitations in some of the available
-data required to estimate it, the complexity of the calculations and the
-various assumption required are problematic. Furthermore, the external
-\(M\)-at-age function requires re-estimation if different growth curves
-are applied, further complicating use of this method. After the
-yellowfin peer review, a Tuna Stock Assessment Good Practices workshop
-run by the ``Center for the Advancement of Population Assessment
-Methodology'' (CAPAM) was held (March 2023,
+in the 2020 assessments for both bigeye and yellowfin (Ducharme-Barth et
+al., 2020a; Vincent et al., 2020) where \(M\)-at-age was calculated
+using an approach applied to other tunas in the WCPO and EPO (Harley \&
+Maunder, 2003; S. D. Hoyle, 2008; Hoyle \& Nicol, 2008). The yellowfin
+peer review had some difficulty with tracing the sources of data for
+some of the inputs to the external \(M\)-at-age function applied in 2020
+that requires fitting a model that depends on empirical data on the
+sex-ratio at length, a growth curve, a base \(M\) assumption for males,
+assumptions on critical lengths for inflections and a multiplier that
+determines the linear decline in \(M\) for young ages to the base \(M\),
+plus a length at which female mortality is assumed to begin to increase.
+There are uncertainties in all these empirical data and assumptions, and
+the data for sex ratio is limited especially for larger and older fish.
+While the peer review generally supported the method, the construction
+of the external \(M\)-at-age function, notably the limitations in some
+of the available data required to estimate it, the complexity of the
+calculations and the various assumption required are problematic.
+Furthermore, the external \(M\)-at-age function requires re-estimation
+if different growth curves are applied, further complicating use of this
+method. After the yellowfin peer review, a Tuna Stock Assessment Good
+Practices workshop run by the ``Center for the Advancement of Population
+Assessment Methodology'' (CAPAM) was held (March 2023,
 https://www.capamresearch.org/Tuna\_Stock\_Assessment\_Good\_Practices\_Workshop)
 and provided a strong endorsement for applying a simpler Lorenzen
 functional form for estimation of \(M\)-at-age for tuna. Other CAPAM
 reviews of approaches for estimating \(M\) have also, where possible,
 favoured estimating \(M\) within the model, ``let the data speak for
 themselves'', while being careful to review model diagnostics and
-plausibility of model estimated \(M\) against external estimates (Hamel
-2015; André E. Punt et al. 2021-01). For the 2023 assessment M-at-age
-was estimated internal to the model with a Lorenzen function (Day et al.
-2023). However, the model was not stable to Jittering, and there were
-concerns expressed by SC19 that instability may be partly related to the
-internal estimation of both growth and M. Discussions at the 2026 PAW
-recommended reverting back to fixing the adult/asymptotic M
-(i.e.~M-scale, based an assumed M at age 40 quaters) initially at the
-best estimate from the 2023 diagnostic model, with the Lorenzen M-at-age
-shape being determined by the internally estimated growth curve
-(inverse) (P. Hamer 2026).
+plausibility of model estimated \(M\) against external estimates (Hamel,
+2015; Punt et al., 2021). For the 2023 assessment M-at-age was estimated
+internal to the model with a Lorenzen function (Day et al., 2023).
+However, the model was not stable to Jittering, and there were concerns
+expressed by SC19 that instability may be partly related to the internal
+estimation of both growth and M. Discussions at the 2026 PAW recommended
+reverting back to fixing the adult/asymptotic M (i.e.~M-scale, based an
+assumed M at age 40 quaters) initially at the best estimate from the
+2023 diagnostic model, with the Lorenzen M-at-age shape being determined
+by the internally estimated growth curve (inverse) (Hamer, 2026).
 
 In this assessment we continue to use the Lorenzen functional form for
 \(M\)-at-age (with \(M\)-at-age being inversely proportional to the mean
 length at age) but to fix the asymptotic value of \(M\), i.e.~the \(M\)
 for age 40 quarters, and treat this fixed \(M\) as an uncertainty in the
 uncertainty ensemble used for management advice. Further, as noted
-previous, a companion paper estimated M based on tag-recapture data (N.
-Ducharme-Barth et al. 2026), and the results of that study are included
-in the M uncertainty range for this assessment.
+previous, a companion paper estimated M based on tag-recapture data
+(Ducharme-Barth et al., 2026), and the results of that study are
+included in the M uncertainty range for this assessment.
 
 \subsubsection{Reproductive
 potential}\label{sec-model-reproductive-potential}
@@ -1532,26 +1514,26 @@ population biomass to the relevant management quantity, spawning
 potential biomass (\(SB\)). Assumptions about maturity do not affect the
 process of fitting the model, only the reference point values. The
 approach for calculating the reproductive potential at length ogive in
-this assessment is the same as the 2023 assessment (Day et al. 2023).
+this assessment is the same as the 2023 assessment (Day et al., 2023).
 MFCL estimates the reproductive potential at age ogive internally from
 the externally calculated reproductive potential ogive at length. This
 length-based ogive is converted internally to the reproductive
-potential-at-age using a smooth-spline approximation (N. Davies,
-Fournier, and Hampton 2019). This allows for a more natural definition
-of reproductive potential as the product of three length-based
-processes: proportion females-at-length\footnote{For the current
-  assessment, female sex-ratio-at-length was calculated from Regional
-  Observer Program data in SPC's holdings through to 2018, consistent
-  with the previous assessment as few data have been collected since.}
-(sex-ratio), proportion of females mature-at-length\footnote{Taken from
-  J. Farley et al. (2017) as in the previous assessment.}, and the
-fecundity-at-length of mature females\footnote{Taken from Sun, Chu, and
-  Yeh (2006) and standardized per kg of body weight at length as in the
-  previous assessment.} (Figure Figure~\ref{fig-maturity-ogive}).
-Another added benefit is that this reproductive potential ogive is
-growth invariant. As in the 2023 assessment, we have not included
-spawning fraction in the reproductive potential calculation, as these
-data are still not adequate for bigeye in the WCPO.
+potential-at-age using a smooth-spline approximation (Davies et al.,
+2019). This allows for a more natural definition of reproductive
+potential as the product of three length-based processes: proportion
+females-at-length\footnote{For the current assessment, female
+  sex-ratio-at-length was calculated from Regional Observer Program data
+  in SPC's holdings through to 2018, consistent with the previous
+  assessment as few data have been collected since.} (sex-ratio),
+proportion of females mature-at-length\footnote{Taken from Farley et al.
+  (2017) as in the previous assessment.}, and the fecundity-at-length of
+mature females\footnote{Taken from Sun et al. (2006) and standardized
+  per kg of body weight at length as in the previous assessment.}
+(Figure Figure~\ref{fig-maturity-ogive}). Another added benefit is that
+this reproductive potential ogive is growth invariant. As in the 2023
+assessment, we have not included spawning fraction in the reproductive
+potential calculation, as these data are still not adequate for bigeye
+in the WCPO.
 
 \subsection{Fishery dynamics}\label{sec-model-fihsery-dynamics}
 
@@ -1559,14 +1541,14 @@ data are still not adequate for bigeye in the WCPO.
 
 Selectivity has typically been estimated as a function of age within
 MFCL. Recent developments in MFCL, based on recommendations from the
-yellowfin peer review (A. E. Punt, Maunder, and Ianelli 2023), have
-developed an option to estimate length-based selectivity, which was
-applied in the recent skipjack assessment (T. Teears et al. 2025). We
-attempted the length-based selectivity option, however, despite various
-configurations and model runs we could not achieve better/satisfactory
-results in terms of data fits than the traditional age-based
-selectivity. We ran out of time for deeper exploration and decided to
-continue with age-based selectivity for the 2026 assessment.
+yellowfin peer review (Punt et al., 2023), have developed an option to
+estimate length-based selectivity, which was applied in the recent
+skipjack assessment (Teears et al., 2025). We attempted the length-based
+selectivity option, however, despite various configurations and model
+runs we could not achieve better/satisfactory results in terms of data
+fits than the traditional age-based selectivity. We ran out of time for
+deeper exploration and decided to continue with age-based selectivity
+for the 2026 assessment.
 
 Estimated selectivity curves at age are included in Figure
 Figure~\ref{fig-select-age}. These selectivity curves can be transformed
@@ -1606,8 +1588,8 @@ tag-reporting rates for at least some fisheries is required for
 reasonable model behavior to be obtained. We provided reporting rate
 priors (penalties) for reporting groups (combinations of tagging
 programme and fishery) that reflect independent estimates of the
-reporting rates and their variances from tag seeding (T. Peatman et al.
-2026). For the RTTP and PTTP, relatively informative ``priors'' were
+reporting rates and their variances from tag seeding (Peatman et al.,
+2026a). For the RTTP and PTTP, relatively informative ``priors'' were
 formulated for the equatorial purse seine fisheries given that tag
 seeding experiments were focused on purse seiners. We also make some
 assumptions regarding fisheries that have similar characteristics to
@@ -1692,7 +1674,7 @@ A key aspect of fitting to tag-recapture data is the assumptions on
 mixing periods. The allocation of appropriate ``mixing periods'' in
 stock assessments that use tag-recapture data is problematic as model
 estimations are sensitive to this assumption and misspecification can
-bias estimation of management quantities (Kolody and Hoyle 2014). Mixing
+bias estimation of management quantities (Kolody \& Hoyle, 2014). Mixing
 rates may vary depending on release locations and times depending on
 various factors, including; oceanographic dynamics, contexts of releases
 (e.g., FADs versus free schools, archipelagic waters versus oceanic),
@@ -1702,29 +1684,29 @@ influence movements.
 In previous bigeye assessments alternative fixed assumptions of mixing
 periods, i.e.~one or two quarters, were applied to all tag release
 groups, based on qualitative consideration of quarterly post-release tag
-recaptures per purse seine catch maps (i.e.~tag recapture rate maps) (T.
-Teears et al. 2023). The 2023 yellowfin peer review noted the tag mixing
-modeling approach recently being applied to skipjack (Castillo Jordan et
-al. 2022; J. Scutt Phillips et al. 2022), wherebye an individual based
-dispersal model is used to model dispersal and fishing mortality
-exposure of tag release groups and contemporaneous untagged populations
-as model particles. The approach simulates mixing periods specifically
-for each release group, taking into account the unique locational and
-temporal (environmental, fishing effort) contexts of each release event
-constituting the group that may result in different rates of mixing of
-released fish. It applies an individual based Lagrangian model
-(Ikamoana)(J. Scutt Phillips et al. 2018) to track movement of
+recaptures per purse seine catch maps (i.e.~tag recapture rate maps)
+(Teears et al., 2023). The 2023 yellowfin peer review noted the tag
+mixing modeling approach recently being applied to skipjack (Castillo
+Jordan et al., 2022; Scutt Phillips et al., 2022), wherebye an
+individual based dispersal model is used to model dispersal and fishing
+mortality exposure of tag release groups and contemporaneous untagged
+populations as model particles. The approach simulates mixing periods
+specifically for each release group, taking into account the unique
+locational and temporal (environmental, fishing effort) contexts of each
+release event constituting the group that may result in different rates
+of mixing of released fish. It applies an individual based Lagrangian
+model (Ikamoana)(Scutt Phillips et al., 2018) to track movement of
 individual fish (particles) and quantify the fishing pressure that
 individuals experience across their dispersal trajectories. Ikamoana
 uses the forcings and parameters such as fishing mortality, growth, and
 natural mortality that have been estimated from real data by the
-Eulerian model SEAPODYM (Senina et al. 2020). This is a simplistic
+Eulerian model SEAPODYM (Senina et al., 2020). This is a simplistic
 description of the approach, for more detail see the companion paper by
-J. Scutt Phillips, Senina, and Bonin (2026). The peer review panel
-recommended that this approach be explored for the yellowfin and bigeye
-assessments.The approach was subsequently developed for this bigeye
-assessment, and release group specific mixing periods were estimated, as
-described below J. Scutt Phillips, Senina, and Bonin (2026).
+Scutt Phillips et al. (2026). The peer review panel recommended that
+this approach be explored for the yellowfin and bigeye assessments.The
+approach was subsequently developed for this bigeye assessment, and
+release group specific mixing periods were estimated, as described below
+Scutt Phillips et al. (2026).
 
 With the individual based modeling approach, mixing is estimated to have
 occurred for each tag release group at a point in time post-release when
@@ -1766,28 +1748,28 @@ To note the mixing simulations could only be conducted on release group
 pre-2019 as the SEAPODYM model forcings did not extend beyond that time
 period. This means the recent tag releases (not included in the 2023
 assessment) could not have simulated mixing periods. Further, no
-releases were simulated from JPTP in region 1 (see (J. Scutt Phillips,
-Senina, and Bonin 2026)). For release groups that were not directly
-simulated, due to either computational reasons or a lack of forcing data
-from SEAPODYM, a mixing period was assigned using averaged Kolmogorov
-dissimilarity values from simulated groups. Specifically, for each
-mixing scenario (zero, one, two and three quarters), the mean Kolmogorov
-dissimilarity K was taken across the simulated release groups either
-across all groups, or across all groups within a region from which an
-indication of region-specific mixing was required, producing a single
-representative K value per scenario. The cutoff selection rule was then
-applied to this averaged set of four values exactly as it was for an
-individual group: the assigned mixing period is the shortest scenario
-whose mean K falls below the chosen cutoff, or four quarters if none
-does. It is important to note that the averaging is performed on the
-dissimilarity metric, at each mixing scenario, and not on the resulting
-mixing periods themselves. Averaging the mixing periods would combine
-values that are already the outcome of a threshold rule, discarding
-information about how close each group was to its cutoff and giving a
-non-integer result requiring arbitrary rounding; averaging the
-underlying K values instead preserves the full recapture probability
-distribution information from simulations, and applies the selection
-rule once in the same way as for a simulated group.
+releases were simulated from JPTP in region 1 (see (Scutt Phillips et
+al., 2026)). For release groups that were not directly simulated, due to
+either computational reasons or a lack of forcing data from SEAPODYM, a
+mixing period was assigned using averaged Kolmogorov dissimilarity
+values from simulated groups. Specifically, for each mixing scenario
+(zero, one, two and three quarters), the mean Kolmogorov dissimilarity K
+was taken across the simulated release groups either across all groups,
+or across all groups within a region from which an indication of
+region-specific mixing was required, producing a single representative K
+value per scenario. The cutoff selection rule was then applied to this
+averaged set of four values exactly as it was for an individual group:
+the assigned mixing period is the shortest scenario whose mean K falls
+below the chosen cutoff, or four quarters if none does. It is important
+to note that the averaging is performed on the dissimilarity metric, at
+each mixing scenario, and not on the resulting mixing periods
+themselves. Averaging the mixing periods would combine values that are
+already the outcome of a threshold rule, discarding information about
+how close each group was to its cutoff and giving a non-integer result
+requiring arbitrary rounding; averaging the underlying K values instead
+preserves the full recapture probability distribution information from
+simulations, and applies the selection rule once in the same way as for
+a simulated group.
 
 \subsection{Likelihood components}\label{sec-likelihood-components}
 
@@ -1804,7 +1786,7 @@ extraction fisheries in that no catch is extracted and CPUE is modeled
 directly as a log-normal likelihood contribution. The contribution of
 each observation to the log likelihood is made up of time-varying CVs
 and a generic component, or scaled CV. The time-varying CVs are input
-from the standardisation models (T. Teears 2026) where each region was
+from the standardisation models (Teears, 2026) where each region was
 modeled separately. The generic CVs were derived from overall standard
 error from each region-specific standardisation model.
 
@@ -1818,14 +1800,14 @@ the likelihood by arbitrary divisors (10, 20 for diagnostic model, and
 40) of input sample sizes to account for overdispersion by reducing the
 effective sample sizes. The 2023 assessment also explored a self-scaling
 method for weighting the size composition data, the
-Dirichlet-multinomial likelihood (J. T. Thorson et al. 2017). The
+Dirichlet-multinomial likelihood (Thorson et al., 2017). The
 Dirichlet-multinomial likelihood approach suggested high weights for the
 size composition data (the effective sample size cap was set very high
 at 1,000), which resulted in deterioration of the fits to the abundance
 indices, and it was therefore not applied. For the 2026 assessment we
 revisited Dirichlet-multinomial, with 8 fishery groupings, but rather
 applied a low effective sample size cap of 25. We also initial applied
-the Francis weight method (Francis 2011), which suggest this was a
+the Francis weight method (Francis, 2011), which suggest this was a
 reasonable cap. With the Dirichlet multinomial, an effective sample size
 (dispersion) parameter was estimated within the model for each
 composition dataset, allowing the degree of overdispersion to be
@@ -1839,7 +1821,7 @@ We applied the same approach as the previous assessments which set a
 fixed tau (\(\tau\)) across all release groups/recapture fisheries. An
 alternative to this approach is to allow \(\tau\) to be estimated
 (either overall or by groups of recapture fisheries) as done in the 2025
-skipjack assessment (T. Teears et al. 2025), this effectively allows
+skipjack assessment (Teears et al., 2025), this effectively allows
 \(\tau\) to vary somewhat to achieve a better overall objective function
 within the joint likelihood. The \(\tau\) estimation will be impacted by
 all the data in the model, and through the negative binomial assumptions
@@ -1861,42 +1843,42 @@ variance of the negative binomial distribution in relation to the
 Poisson distribution, for which the variance is equal to the mean.
 Therefore, the \(\tau\) parameter value influences the weighting of the
 tagging data in the overall model joint likelihood. As noted above,
-similar to S. McKechnie, Pilling, and Hampton (2017), initial attempts
-to estimate \(\tau\), assumed common for all fisheries and tag release
-groups, tended to estimate a value close to 1, i.e.~Poisson, assumes
-little or no over dispersion. Tag recapture data is likely to have a
-degree of over dispersion due to clustering of recaptures, although it
-likely depends on the level of dispersal and mixing after release.
-Recaptures of tag groups shortly after release (that might fall in the
-mixing period) could be expected to have higher overdispersion than
-those recaptured after longer periods at liberty. Assigning a fixed
-\(\tau\) to all fisheries and tag release groups is perhaps not ideal,
-but a pragmatic approach given the limited time to statistically explore
-the tag recapture overdispersion properties outside the model.
+similar to McKechnie et al. (2017a), initial attempts to estimate
+\(\tau\), assumed common for all fisheries and tag release groups,
+tended to estimate a value close to 1, i.e.~Poisson, assumes little or
+no over dispersion. Tag recapture data is likely to have a degree of
+over dispersion due to clustering of recaptures, although it likely
+depends on the level of dispersal and mixing after release. Recaptures
+of tag groups shortly after release (that might fall in the mixing
+period) could be expected to have higher overdispersion than those
+recaptured after longer periods at liberty. Assigning a fixed \(\tau\)
+to all fisheries and tag release groups is perhaps not ideal, but a
+pragmatic approach given the limited time to statistically explore the
+tag recapture overdispersion properties outside the model.
 
 Late in this assessment process when exploring the \(\tau\) flag setting
 and the MFCL code in depth we found that the last assessments settings,
 unbeknownst to those analysts, actually resulted in a fixed \(\tau\) of
 only slightly \textgreater1 (1.02), close to Poisson, rather than the
-value of 2 as noted in those previous assessment reports (Nicholas
-Ducharme-Barth et al. 2020; Day et al. 2023). This issue was not obvious
-and required digging into MFCL code to discover. This meant that the
-current diagnostic model that we had already fully diagnosed had a
-\(\tau\) of 1.02. This is not desirable for tag recapture data, as noted
-above. We therefore ran an additional model with \(\tau\) set to 2, as
-this value appears to be considered suitable in previous assessment
-methods, as it approaches a negative binomial with variance of twice the
-Poisson, which can better account for overdispersion, but could
-substantially downweight the tag data. This setting did allow a
-comparison between a model that placed a high weight on the tag data
-versus a model that downweighted the tag data. The value of \(\tau\) may
-also interact with the mixing period assumptions in the uncertainty
-ensemble, such that scenarios with longer tag mixing time, and therefore
-less tags remaining in the joint likelihood estimation, would be subject
-to less overdispersion, but be even more severely downweighted with an
-increased \(\tau\). The use of \(\tau\), along with other assumptions
-required for fitting tag recapture data in the joint likelihood requires
-further technical review and guidance for future MFCL tuna assessments.
+value of 2 as noted in those previous assessment reports (Day et al.,
+2023; Ducharme-Barth et al., 2020a). This issue was not obvious and
+required digging into MFCL code to discover. This meant that the current
+diagnostic model that we had already fully diagnosed had a \(\tau\) of
+1.02. This is not desirable for tag recapture data, as noted above. We
+therefore ran an additional model with \(\tau\) set to 2, as this value
+appears to be considered suitable in previous assessment methods, as it
+approaches a negative binomial with variance of twice the Poisson, which
+can better account for overdispersion, but could substantially
+downweight the tag data. This setting did allow a comparison between a
+model that placed a high weight on the tag data versus a model that
+downweighted the tag data. The value of \(\tau\) may also interact with
+the mixing period assumptions in the uncertainty ensemble, such that
+scenarios with longer tag mixing time, and therefore less tags remaining
+in the joint likelihood estimation, would be subject to less
+overdispersion, but be even more severely downweighted with an increased
+\(\tau\). The use of \(\tau\), along with other assumptions required for
+fitting tag recapture data in the joint likelihood requires further
+technical review and guidance for future MFCL tuna assessments.
 Ultimately, we added an additional step to the stepwise and chose the
 \(\tau\) of 2 as the diagnostic model setting.
 
@@ -1905,22 +1887,21 @@ Ultimately, we added an additional step to the stepwise and chose the
 
 A further likelihood component involves using conditional-age-at-length
 (CAAL) data, as recommended by the yellowfin tuna assessment peer review
-(A. E. Punt, Maunder, and Ianelli 2023). These data are included in the
-assessment and contribute to estimation of the growth parameters, as
-they provide direct observations of the distribution of ages, generally
-measured with some error, within each observed length class. For each
-fishery and time period (quarter) aged fish are separated into observed
-(measured) length classes, with the distribution of ages tabulated as a
-function of the known length (ideally with ageing measurement error, but
-this feature is still to be fully developed and tested in MFCL). The
-measured age distribution within each length interval is assumed to be
-multinomially distributed, and this forms the basis of the likelihood
-component for these data. However, despite the otolith data being
-collected across a range of locations and times the
-conditional-age-at-length data generally have a degree of
-non-independence, as is the case for size compositional data, so these
-conditional age-at-length data were downweighted by a factor of 0.75 for
-the diagnostic case model.
+(Punt et al., 2023). These data are included in the assessment and
+contribute to estimation of the growth parameters, as they provide
+direct observations of the distribution of ages, generally measured with
+some error, within each observed length class. For each fishery and time
+period (quarter) aged fish are separated into observed (measured) length
+classes, with the distribution of ages tabulated as a function of the
+known length (ideally with ageing measurement error, but this feature is
+still to be fully developed and tested in MFCL). The measured age
+distribution within each length interval is assumed to be multinomially
+distributed, and this forms the basis of the likelihood component for
+these data. However, despite the otolith data being collected across a
+range of locations and times the conditional-age-at-length data
+generally have a degree of non-independence, as is the case for size
+compositional data, so these conditional age-at-length data were
+downweighted by a factor of 0.75 for the diagnostic case model.
 
 As mentioned previously additional CAAL data are available for the 2026
 assessment, with enhanced coverage of the region north of 10 degrees N.
@@ -1941,8 +1922,8 @@ downweighted (i.e.~weighting factor \textless1). The region specific
 weighting factors were applied to the CAAL data from each fishery in a
 region that had CAAL. The weighting factors operate as scalars and
 simply multiply by the observed samples. A new feature was created in
-MFCL for implementing these weights (scaling factors) (N. Davies et al.
-2026b), which has the effect of adjusting (scaling) the effective
+MFCL for implementing these weights (scaling factors) (Davies et al.,
+2026a), which has the effect of adjusting (scaling) the effective
 samples sizes for fitting to the CAAL observations. These weighting
 factors do not change the overall observed samples size, applying
 additional overall downweighting is required for that.
@@ -1957,7 +1938,7 @@ and penalties specified in the model. The optimisation is continued
 either until a pre-specified minimum gradient is achieved or until a
 maximum number of iterations is reached. This optimisation is performed
 by an efficient algorithm using exact derivatives with respect to the
-model parameters (auto-differentiation, D. A. Fournier et al. (2012)).
+model parameters (auto-differentiation, Fournier et al. (2012)).
 Estimation was conducted in a sequence of phases, the first of which
 uses somewhat arbitrary starting parameter values. A bash shell script,
 or ``doitall'', implements the phased sequence for gradually estimating
@@ -2097,13 +2078,13 @@ A second version of the ASPM, in which recruitment variability was
 estimated as for the diagnostic case, was also run (Section
 Section~\ref{sec-aspm}).
 
-\textbf{Retrospective} Retrospective analyses (Hurtado-Ferro et al.
+\textbf{Retrospective} Retrospective analyses (Hurtado-Ferro et al.,
 2015) were conducted as a general test of the stability of the model, as
 a robust model should produce similar output when rerun with data for
-the terminal quarters sequentially excluded (Cadigan and Farrell 2005).
+the terminal quarters sequentially excluded (Cadigan \& Farrell, 2005).
 Retrospective analyses with 7 peels for the diagnostic model are
 presented in Section Section~\ref{sec-retro-analysis}. The Mohn's rho
-statistic (Mohn 1999), a measure of the average relative bias of
+statistic (Mohn, 1999), a measure of the average relative bias of
 retrospective estimates, was computed for recruitment, \(SB\) and
 spawning potential depletion (\(SB_t/SB_{F=0[t]}\)) and annual \(F\), to
 indicate whether significant retrospective bias was present in the
@@ -2113,9 +2094,9 @@ model.
 to large amounts of often conflicting data, absolute estimates of total
 abundance can be unstable. Therefore, a likelihood profile analysis was
 undertaken of the marginal penalized likelihood in respect of population
-scaling, following the procedure outlined by S. McKechnie, Pilling, and
-Hampton (2017) and Tremblay-Boyer et al. (2017). The results of these
-procedures are presented for the diagnostic model Section
+scaling, following the procedure outlined by McKechnie et al. (2017a)
+and Tremblay-Boyer et al. (2017). The results of these procedures are
+presented for the diagnostic model Section
 Section~\ref{sec-likelihood-profile}. Likelihood profiling is initially
 conducted on the main data components, i.e.~CPUE indices, size data, tag
 data, CAAL data. If significant conflict is found among the main data
@@ -2188,8 +2169,8 @@ Section~\ref{sec-method-yield}.
 
 Several ancillary analyses using the converged model/s were conducted in
 order to interpret the results for stock assessment purposes. The
-methods involved are summarized below and the details can be found in N.
-Davies et al. (2026c).
+methods involved are summarized below and the details can be found in
+Davies et al. (2026b).
 
 \subsubsection{Yield analysis}\label{sec-method-yield}
 
@@ -2202,8 +2183,8 @@ parameters. All of these parameters, apart from \emph{fmult}, which is
 arbitrarily specified over a range of 0--50 (in increments of 0.1), are
 available from the parameter estimates of the model. The maximum yield
 with respect to \emph{fmult} can be determined using the formulae given
-in N. Davies et al. (2026c), and is equivalent to the MSY. Similarly,
-the spawning potential at MSY \(SB_{MSY}\) can be determined from this
+in Davies et al. (2026b), and is equivalent to the MSY. Similarly, the
+spawning potential at MSY \(SB_{MSY}\) can be determined from this
 analysis. The ratios of the current (or recent average) levels of
 fishing mortality and spawning potential to their respective levels at
 MSY are determined for all models of interest. This analysis was
@@ -2298,8 +2279,8 @@ step, and retains the previous changes.
   compositions for longline fisheries (i.e.~adds the observed length
   data, noting previous bigeye assessment only used weight data for
   longline fisheries): Evaluate the effect of using observed lengths
-  where their catch coverage exceeded that of weight samples (T.
-  Peatman, Kim, et al. 2026)
+  where their catch coverage exceeded that of weight samples (Peatman et
+  al., 2026b)
 \item
   \textbf{{[}08{]}} Update data through to 2024, except for CAAL data:
   Extend the temporal coverage of the assessment.
@@ -2314,8 +2295,7 @@ step, and retains the previous changes.
   sdmTMB model: Penalize relative abundance differences among model
   regions but allow region specific CPUE indices to have individual
   selectivity and catchability, strong recommendation from PAW and
-  yellowfin assessment peer review (A. E. Punt, Maunder, and Ianelli
-  2023; P. Hamer 2026).
+  yellowfin assessment peer review (Hamer, 2026; Punt et al., 2023).
 \item
   \textbf{{[}11{]}} Time-varying CPUE uncertainty: Account for temporal
   variation in the relative precision of the CPUE indices.
@@ -2333,7 +2313,7 @@ step, and retains the previous changes.
   \textbf{{[}14a{]}} Apply the regional CAAL data reweighting by all 5
   regions (i.e.~reweight observed sample sizes based on relative mean
   CPUE among regions from global sdmTMB model, as discussed at PAW and
-  in (Hasegawa et al. 2026): Test region-level spatial weighting.
+  in (Hasegawa et al., 2026): Test region-level spatial weighting.
 \item
   \textbf{{[}14b{]}} As previous but combining CAAL data from regions 3
   and 4 (sub-basin CAAL reweighting by CPUE): Sub-basin reweighting of
@@ -2344,7 +2324,7 @@ step, and retains the previous changes.
 \item
   \textbf{{[}16{]}} Apply release-group-specific tag-mixing periods with
   K-statistic cut-off 0.2: Assign release-group-specific mixing periods
-  (see appendix Tables in J. Scutt Phillips, Senina, and Bonin (2026)
+  (see appendix Tables in Scutt Phillips et al. (2026)
 \item
   \textbf{{[}17{]}} Tag reporting rate adjustment exclusion (MFCL
   tag-flag02=1)in pre-mixing window: Avoid applying poorly determined or
@@ -2399,11 +2379,11 @@ We primarily focused on the key sensitivities below:
   Conditional-age-at-length data weighting: 1, 0.5 (diagnostic 0.75)
 \item
   Adult natural morality (M and at age 40 quarter) value: Tag based =
-  0.062/quarter (N. Ducharme-Barth et al. 2026), Higher M = 0.10/quarter
+  0.062/quarter (Ducharme-Barth et al., 2026), Higher M = 0.10/quarter
   (diagnostic 2023: 0.078/quarter)
 \item
   Effort creep on longline CPUE indices: `maximum' scenario suggested
-  from PAW (S. Hoyle 2024) 3\% per year pre 1976, 1.5\% year post 1976,
+  from PAW (Hoyle, 2024) 3\% per year pre 1976, 1.5\% year post 1976,
   (diagnostic: min 1\% per year pre 1976, 0.5\% year post 1976).
 \item
   Time period of the global CPUE to use for regional scaling penalty:
@@ -2444,21 +2424,21 @@ this uncertainty distribution needs further discussion among technical
 experts. This was not discussed at the PAW and we chose the pragmatic
 option of a symmetrical normal distribution centered on the diagnostic
 K-statistic of 0.2. The relationship between these K-statistic cut-off
-values and the assigned mixing periods can be viewed in J. Scutt
-Phillips, Senina, and Bonin (2026). Finally, the sensitivity analysis
-showed that once \(\tau\) increased beyond 1.4 the key results were
-insensitive, so \(\tau\) above 1.4 seems somewhat redundant in further
-downweighting the tag data influence. However there was sensitivity
-between 1 and 1.4. Acknowledging that the basis for setting a \(\tau\)
-value is not clear, other than it should be above 1, we include three
-values for \(\tau\) in the uncertainty ensemble: 1.2, 1.3, 1.4.
+values and the assigned mixing periods can be viewed in Scutt Phillips
+et al. (2026). Finally, the sensitivity analysis showed that once
+\(\tau\) increased beyond 1.4 the key results were insensitive, so
+\(\tau\) above 1.4 seems somewhat redundant in further downweighting the
+tag data influence. However there was sensitivity between 1 and 1.4.
+Acknowledging that the basis for setting a \(\tau\) value is not clear,
+other than it should be above 1, we include three values for \(\tau\) in
+the uncertainty ensemble: 1.2, 1.3, 1.4.
 
 The `uncertainty ensemble' provides a distribution of plausible
 management quantities that captures a range of structural, biological
 and or data uncertainties. For this assessment we have followed the
-Monte Carlo ensemble approach applied in the most recent skipjack (T.
-Teears et al. 2025) and south Pacific albacore assessments (T. Teears et
-al. 2024). The choice of uncertainties to included in the ensemble
+Monte Carlo ensemble approach applied in the most recent skipjack
+(Teears et al., 2025) and south Pacific albacore assessments (Teears et
+al., 2024). The choice of uncertainties to included in the ensemble
 models is informed by the sensitivity analyses. For the uncertainty
 ensemble we include a combination of parameter distributions from which
 values are randomly drawn which implicitly weights those draws according
@@ -2498,7 +2478,7 @@ Estimation uncertainty is provided for the terminal management
 quantities: \(SB_{recent}\)/\(SB_{F=0}\), \(F_{recent}\)/\(F_{MSY}\),
 \(SB_{recent}\)/\(SB_{MSY}\). The estimation uncertainty is combined
 across all 100 models in the ensemble using a parametric bootstrap
-similar to the approach used in the 2023 bigeye assessments (Day et al.
+similar to the approach used in the 2023 bigeye assessments (Day et al.,
 2023). We generate 100 random draws from normal distributions with mean
 and standard deviation specified for each ensemble model, in the case of
 \(SB_{recent}\)/\(SB_{F=0}\), which was estimated on the log scale,
@@ -2634,7 +2614,7 @@ grid or ensemble that is used to construct management advice.
 \end{enumerate}
 
 The stepwise model development can be explored in the
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise/releases/latest/download/interactive-model-viewer.html}{interactive
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html}{interactive
 HTML viewer}.
 
 Overall, only minor to moderate changes in the stepwise (terminal
@@ -2818,6 +2798,10 @@ Figure~\ref{fig-jitter-derived-values-diag-panel}. For the depletion at
 the region level the estimation of the depletion in region 5 was most
 unstable Figure Figure~\ref{fig-jitter-regional-depletion}.
 
+The complete jitter results can be viewed in the
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html}{browser
+report}.
+
 \subsubsection{Self test}\label{sec-selftest}
 
 Fifty of 50 pseudo-data refits completed and met the recorded
@@ -2838,6 +2822,10 @@ had a positive bias (Figure Figure~\ref{fig-selftest-recovery}). The
 selftest recovered time series of derived quantities is displayed in
 Figure Figure~\ref{fig-selftest-time-series}.
 
+The complete self-test results can be viewed in the
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{browser
+report}.
+
 \subsubsection{Retrospectives}\label{sec-retro-analysis}
 
 The retrospective analysis showed acceptable results with no strong bias
@@ -2847,6 +2835,10 @@ acceptable range of \(\pm 0.2 \text{ to } \pm 0.3\), fishing mortality
 had Mohn's \(\rho\) of 0.308, but this is not unexpected as F is very
 uncertain in the final years of the assessment (Figure
 Figure~\ref{fig-retro-analysis}).
+
+The complete retrospective results can be viewed in the
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html}{browser
+report}.
 
 \subsubsection{Likelihood profiles}\label{sec-likelihood-profile}
 
@@ -2863,6 +2855,10 @@ influence on higher biomass scaling. This conflict is accounted for to
 an extent in the uncertainty ensemble through higher mixing period
 scenarios, the alternative approaches to reporting rate adjustments in
 the mixing period, alternative (\(\tau\)).
+
+The likelihood profiles can be explored in the
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{interactive
+HTML viewer}.
 
 Given the conflict with the tagging data and assumptions required for
 modeling this data we explored likelihood profiles on the three tagging
@@ -3012,7 +3008,7 @@ Figure~\ref{fig-juv-adult-F}.
 \subsection{Sensitivity analyses}\label{sec-sensitivity-results}
 
 The results of all sensitivity analysis can be explored in the
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-sensitivity/releases/latest/download/bet-2026-sensitivity-interactive-viewer.html}{interactive
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html}{interactive
 HTML viewer}. All the sensitivity models achieved a suitable gradient
 and had positive definite Hessian status.
 
@@ -3108,6 +3104,10 @@ multivariate delta method; 18 Near-PDH fits contribute structural
 uncertainty only. Estimation uncertainty is therefore incorporated into
 the statistics for management advice, but is not complete for all
 models.
+
+The retained models and uncertainty results can be explored in the
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html}{interactive
+HTML viewer}.
 
 The planned and retained model numbers by uncertainty category are shown
 in Figure Figure~\ref{fig-ensemble-design-retention}. The were more
@@ -3756,7 +3756,7 @@ of 0.078.}
 \caption{\label{fig-stepwise-panel}Stepwise model changes for depletion,
 recruitment, spawning potential and fishing mortality. The individual
 stepwise model changes can be explored in the
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise/releases/latest/download/interactive-model-viewer.html}{interactive
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html}{interactive
 HTML viewer}.}
 
 \end{figure}%
@@ -4430,7 +4430,7 @@ length (age 40 quarters) (b), tag overdispersion (c), tag-mixing cutoff
 shows the 100 planned configurations and teal shows the 80 retained
 models. Curves in panels a--b show the specified continuous input
 distributions; the green point and line in panel b are the tag-based
-estimate and 90\% confidence interval from N. Ducharme-Barth et al.
+estimate and 90\% confidence interval from Ducharme-Barth et al.
 (2026).}
 
 \end{figure}%
@@ -4618,582 +4618,582 @@ Likely to be added
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
 
-\phantomsection\label{refs}
+\protect\phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
 \bibitem[\citeproctext]{ref-aires-da-silva_improved_2015}
-Aires-da-Silva, A M, M N Maunder, K M Schaefer, and D W Fuller. 2015.
-{``Improved Growth Estimates from Integrated Analysis of Direct Aging
-and Tag-Recapture Data: An Illustration with Bigeye Tuna (Thunnus
-Obesus) of the Eastern Pacific Ocean with Implications for
-Management.''} \emph{Fisheries Research} 163: 119--26.
+Aires-da-Silva, A. M., Maunder, M. N., Schaefer, K. M., \& Fuller, D. W.
+(2015). Improved growth estimates from integrated analysis of direct
+aging and tag-recapture data: An illustration with bigeye tuna (thunnus
+obesus) of the eastern pacific ocean with implications for management.
+\emph{Fisheries Research}, \emph{163}, 119--126.
 
 \bibitem[\citeproctext]{ref-anderson_sdmtmb_2022}
-Anderson, Sean C., Eric J. Ward, Philina A. English, and Lewis A. K.
-Barnett. 2022-03. {``{sdmTMB}: An r Package for Fast, Flexible, and
-User-Friendly Generalized Linear Mixed Effects Models with Spatial and
-Spatiotemporal Random Fields.''} Preprint. Ecology.
-\url{https://doi.org/10.1101/2022.03.24.485545}.
+Anderson, S. C., Ward, E. J., English, P. A., \& Barnett, L. A. K.
+(2022). \emph{{sdmTMB}: An r package for fast, flexible, and
+user-friendly generalized linear mixed effects models with spatial and
+spatiotemporal random fields} {[}Preprint{]}. Ecology.
+\url{https://doi.org/10.1101/2022.03.24.485545}
 
 \bibitem[\citeproctext]{ref-berger_analysis_2014}
-Berger, A M, S McKechnie, F Abascal, B Kumasi, T Usu, and S J Nichol.
-2014-08. {``Analysis of Tagging Data for the 2014 Tropical Tuna
-Assessments: Data Quality Rules, Tagger Effects, and Reporting Rates.''}
-{WCPFC}-{SC}10-2014/{SA}-{IP}-06. Majuro, Republic of the Marshall
-Islands, 6-14 August 2014.: WCPFC.
+Berger, A. M., McKechnie, S., Abascal, F., Kumasi, B., Usu, T., \&
+Nichol, S. J. (2014). \emph{Analysis of tagging data for the 2014
+tropical tuna assessments: Data quality rules, tagger effects, and
+reporting rates} (No. {WCPFC}-{SC}10-2014/{SA}-{IP}-06). WCPFC.
 
 \bibitem[\citeproctext]{ref-cadigan_local_2005}
-Cadigan, Noel G., and Patrick J. Farrell. 2005. {``Local Influence
-Diagnostics for the Retrospective Problem in Sequential Population
-Analysis.''} \emph{{ICES} Journal of Marine Science: Journal Du Conseil}
-62 (2): 256--65. \url{https://doi.org/10.1016/j.icesjms.2004.11.015}.
+Cadigan, N. G., \& Farrell, P. J. (2005). Local influence diagnostics
+for the retrospective problem in sequential population analysis.
+\emph{{ICES} Journal of Marine Science: Journal Du Conseil},
+\emph{62}(2), 256--265.
+\url{https://doi.org/10.1016/j.icesjms.2004.11.015}
 
 \bibitem[\citeproctext]{ref-castillo_jordan_stock_2022}
-Castillo Jordan, C, T Teears, J Hampton, N. Davies, J. Scutt Phillips,
-S. McKechnie, T. Peatman, et al. 2022. {``Stock Assessment of Skipjack
-Tuna in the Western and Central Pacific Ocean: 2022.''}
-{WCPFC}-{SC}18-{SA}-{WP}-01. WCPFC.
+Castillo Jordan, C., Teears, T., Hampton, J., Davies, N., Scutt
+Phillips, J., McKechnie, S., Peatman, T., Macdonald, J., Day, J.,
+Magnusson, A., Scott, R., Scott, F., Pilling, G., \& Hamer, P. (2022).
+\emph{Stock assessment of skipjack tuna in the western and central
+pacific ocean: 2022} (No. {WCPFC}-{SC}18-{SA}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-chow_genetic_2000}
-Chow, Seinen, Hiroaki Okamoto, Naozumi Miyabe, Kazuhiko Hiramatsu, and
-Noel Barut. 2000. {``Genetic Divergence Between Atlantic and
-Indo-Pacific Stocks of Bigeye Tuna (Thunnus Obesus) and Admixture Around
-South Africa.''} \emph{Molecular Ecology} 9 (2): 221--27.
-\url{https://doi.org/10.1046/j.1365-294x.2000.00851.x}.
-
-\bibitem[\citeproctext]{ref-davies_developments_2026-1}
-Davies, N., F. Bouye, K Kim, A. Magnusson, and J. Hampton. 2026a.
-{``Developments in the {MULTIFAN}-{CL} Software 2025-26.''}
-{WCPFC}-{SC}22-2026/{SA}-{IP}-02. WCPFC.
+Chow, S., Okamoto, H., Miyabe, N., Hiramatsu, K., \& Barut, N. (2000).
+Genetic divergence between atlantic and indo-pacific stocks of bigeye
+tuna (thunnus obesus) and admixture around south africa. \emph{Molecular
+Ecology}, \emph{9}(2), 221--227.
+\url{https://doi.org/10.1046/j.1365-294x.2000.00851.x}
 
 \bibitem[\citeproctext]{ref-davies_developments_2026}
-Davies, N., F Bouye, K Kim, A Magnusson, and J. Hampton. 2026b.
-{``Developments in the {MULTIFAN}-{CL} Software 2025-26.''}
-{WCPFC}-{SC}22-2026/{SA}-{IP}-02. WCPFC.
+Davies, N., Bouye, F., Kim, K., Magnusson, A., \& Hampton, J. (2026a).
+\emph{Developments in the {MULTIFAN}-{CL} software 2025-26} (No.
+{WCPFC}-{SC}22-2026/{SA}-{IP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-davies_multifan-cl_2026}
-Davies, N, D A Fournier, J. Hampton, P. Kleiber, F. Bouye, K Kim, A.
-Magnusson, and S. Hoyle. 2026c. {``{MULTIFAN}-{CL} User's Guide Version
-2.2.7.8.''} Noumea, New Caledonia: WCPFC.
+Davies, N., Fournier, D. A., Hampton, J., Kleiber, P., Bouye, F., Kim,
+K., Magnusson, A., \& Hoyle, S. (2026b). \emph{{MULTIFAN}-{CL} user's
+guide version 2.2.7.8}. WCPFC.
 
 \bibitem[\citeproctext]{ref-davies_developments_2019}
-Davies, N, D Fournier, and J Hampton. 2019. {``Developments in the
-{MULTIFAN}-{CL} Software 2018-2019.''} {WCPFC}-{SC}15-2019/{SA}-{IP}-02.
-Pohnpei, Federated States of Micronesia: WCPFC.
+Davies, N., Fournier, D., \& Hampton, J. (2019). \emph{Developments in
+the {MULTIFAN}-{CL} software 2018-2019} (No.
+{WCPFC}-{SC}15-2019/{SA}-{IP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-davies_stock_2011}
-Davies, N, S Hoyle, S Harley, A Langley, P Kleiber, and J Hampton. 2011.
-{``Stock Assessment of Bigeye Tuna in the Western and Central Pacific
-Ocean.''} {WCPFC}-{SC}7-2011/{SA}-{WP}-02. Pohnpei, Federated States of
-Micronesia: WCPFC.
+Davies, N., Hoyle, S., Harley, S., Langley, A., Kleiber, P., \& Hampton,
+J. (2011). \emph{Stock assessment of bigeye tuna in the western and
+central pacific ocean} (No. {WCPFC}-{SC}7-2011/{SA}-{WP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-day_stock_2023}
-Day, J, A. Magnusson, T. Teears, J. Hampton, N. Davies, C Castillo
-Jordán, T. Peatman, et al. 2023. {``Stock Assessment of Bigeye Tuna in
-the Western and Central Pacific Ocean: 2023.''}
-{WCPFC}-{SC}19-2023/{SA}-{WP}-05 (Rev. 2). WCPFC.
-
-\bibitem[\citeproctext]{ref-ducharme-barth_stock_2020}
-Ducharme-Barth, Nicholas, Matthew Vincent, John Hampton, Paul Hamer,
-Peter Williams, and Graham Pilling. 2020. {``Stock Assessment of Bigeye
-Tuna in the Western and Central Pacific Ocean.''}
-{WCPFC}-{SC}16-2020/{SA}-{WP}-03 {[}{REV}3{]}. WCPFC.
+Day, J., Magnusson, A., Teears, T., Hampton, J., Davies, N., Castillo
+Jordán, C., Peatman, T., Scott, R., Scutt Phillips, J., McKechnie, S.,
+Scott, F., Yao, N., Natadra, R., Pilling, G., Williams, P., \& Hamer, P.
+(2023). \emph{Stock assessment of bigeye tuna in the western and central
+pacific ocean: 2023} (No. {WCPFC}-{SC}19-2023/{SA}-{WP}-05 (Rev. 2)).
+WCPFC.
 
 \bibitem[\citeproctext]{ref-ducharme-barth_natural_2026}
-Ducharme-Barth, N., T. Peatman, J. Scutt Phillips, and C. Minte-Vera.
-2026. {``Natural Mortality Estimation for {WCPO} Bigeye Tuna: A Joint
-Cohort Analysis of Coral Sea and Region 4 Tagging Data.''}
-{WCPFC}-{SC}22-2026/{SA}-{IP}-14. WCPFC.
+Ducharme-Barth, N., Peatman, T., Scutt Phillips, J., \& Minte-Vera, C.
+(2026). \emph{Natural mortality estimation for {WCPO} bigeye tuna: A
+joint cohort analysis of coral sea and region 4 tagging data} (No.
+{WCPFC}-{SC}22-2026/{SA}-{IP}-14). WCPFC.
+
+\bibitem[\citeproctext]{ref-ducharme-barth_stock_2020}
+Ducharme-Barth, N., Vincent, M., Hampton, J., Hamer, P., Williams, P.,
+\& Pilling, G. (2020a). \emph{Stock assessment of bigeye tuna in the
+western and central pacific ocean} (No. {WCPFC}-{SC}16-2020/{SA}-{WP}-03
+{[}{REV}3{]}). WCPFC.
 
 \bibitem[\citeproctext]{ref-ducharme-barth_analysis_2020}
-Ducharme-Barth, N, M Vincent, T Vidal, and P Hamer. 2020. {``Analysis of
-Pacific-Wide Operational Longline Dataset for Bigeye and Yellowfin Tuna
-Catch-Per-Unit-Effort ({CPUE}).''} {SC}16-{SA}-{IP}-07. WCPFC.
+Ducharme-Barth, N., Vincent, M., Vidal, T., \& Hamer, P. (2020b).
+\emph{Analysis of pacific-wide operational longline dataset for bigeye
+and yellowfin tuna catch-per-unit-effort ({CPUE})} (No.
+{SC}16-{SA}-{IP}-07). WCPFC.
 
 \bibitem[\citeproctext]{ref-evans_behaviour_2008}
-Evans, K., A. Langley, N. P. Clear, P. Williams, T. Patterson, J.
-Sibert, J. Hampton, and J. S. Gunn. 2008. {``Behaviour and Habitat
-Preferences of Bigeye Tuna (Thunnus Obesus) and Their Influence on
-Longline Fishery Catches in the Western Coral Sea.''} \emph{Canadian
-Journal of Fisheries and Aquatic Sciences} 65: 2427--43.
+Evans, K., Langley, A., Clear, N. P., Williams, P., Patterson, T.,
+Sibert, J., Hampton, J., \& Gunn, J. S. (2008). Behaviour and habitat
+preferences of bigeye tuna (thunnus obesus) and their influence on
+longline fishery catches in the western coral sea. \emph{Canadian
+Journal of Fisheries and Aquatic Sciences}, \emph{65}, 2427--2443.
 
 \bibitem[\citeproctext]{ref-eveson_integrated_2020}
-Eveson, P, M Vincent, J Farley, K Krusic-Golub, and J Hampton. 2020.
-{``Integrated Growth Models from Otolith and Tagging Data for Yellowfin
-and Bigeye Tuna in the Western and Central Pacific Ocean.''}
-{SC}16-{SA}-{IP}-03. WCPFC.
+Eveson, P., Vincent, M., Farley, J., Krusic-Golub, K., \& Hampton, J.
+(2020). \emph{Integrated growth models from otolith and tagging data for
+yellowfin and bigeye tuna in the western and central pacific ocean} (No.
+{SC}16-{SA}-{IP}-03). WCPFC.
 
 \bibitem[\citeproctext]{ref-farley_age_2017}
-Farley, J., P. Eveson, K. Krusic-Golub, C Sanchez, F Rouspard, S
-McKechnie, S Nichol, B Leroy, N Smith, and S-K Chang. 2017. {``Age,
-Growth and Maturity of Bigeye Tuna in the Pacific.''} {WCPFC}-{SC}13-
-2017/{SA}-{WP}-01. Rarotonga, Cook Islands, 9-17 August 2017: WCPFC.
+Farley, J., Eveson, P., Krusic-Golub, K., Sanchez, C., Rouspard, F.,
+McKechnie, S., Nichol, S., Leroy, B., Smith, N., \& Chang, S.-K. (2017).
+\emph{Age, growth and maturity of bigeye tuna in the pacific} (No.
+{WCPFC}-{SC}13- 2017/{SA}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-farley_age_2020}
-Farley, J, K Krusic-Golub, P Eveson, N Clear, F Rouspard, C Sanchez, S
-Nicol, and J Hampton. 2020. {``Age and Growth of Yellowfin and Bigeye
-Tuna in the Western and Central Pacific Ocean from Otoliths.''}
-{SC}16-{SA}-{WP}-02. WCPFC.
-
-\bibitem[\citeproctext]{ref-fournier_ad_2012}
-Fournier, D A, H J Skaug, J Ancheta, J. Ianelli, A Magnusson, M N
-Maunder, A Nielson, and J. Sibert. 2012. {``{AD} Model Builder: Using
-Automatic Differentiation for Statistical Inference of Highly
-Parameterized Complex Nonlinear Models.''} \emph{Optimization Methods
-and Software} 27 (2): 233--49.
+Farley, J., Krusic-Golub, K., Eveson, P., Clear, N., Rouspard, F.,
+Sanchez, C., Nicol, S., \& Hampton, J. (2020). \emph{Age and growth of
+yellowfin and bigeye tuna in the western and central pacific ocean from
+otoliths} (No. {SC}16-{SA}-{WP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-fournier_multifan-cl_1998}
-Fournier, D. A., J. Hampton, and J. R. Sibert. 1998. {``{MULTIFAN}-{CL}:
-A Length-Based, Age-Structured Model for Fisheries Stock Assessment,
-with Application to South Pacific Albacore, Thunnus Alalunga.''}
-\emph{Canadian Journal of Fisheries and Aquatic Sciences} 55: 2105--16.
+Fournier, D. A., Hampton, J., \& Sibert, J. R. (1998). {MULTIFAN}-{CL}:
+A length-based, age-structured model for fisheries stock assessment,
+with application to south pacific albacore, thunnus alalunga.
+\emph{Canadian Journal of Fisheries and Aquatic Sciences}, \emph{55},
+2105--2116.
+
+\bibitem[\citeproctext]{ref-fournier_ad_2012}
+Fournier, D. A., Skaug, H. J., Ancheta, J., Ianelli, J., Magnusson, A.,
+Maunder, M. N., Nielson, A., \& Sibert, J. (2012). {AD} model builder:
+Using automatic differentiation for statistical inference of highly
+parameterized complex nonlinear models. \emph{Optimization Methods and
+Software}, \emph{27}(2), 233--249.
 
 \bibitem[\citeproctext]{ref-fournier_general-theory_1982}
-Fournier, D., and C. P. Archibald. 1982. {``A General-Theory for
-Analyzing Catch at Age Data.''} \emph{Canadian Journal of Fisheries and
-Aquatic Sciences} 39 (8): 1195--1207.
-\url{https://doi.org/10.1139/f82-157}.
+Fournier, D., \& Archibald, C. P. (1982). A general-theory for analyzing
+catch at age data. \emph{Canadian Journal of Fisheries and Aquatic
+Sciences}, \emph{39}(8), 1195--1207.
+\url{https://doi.org/10.1139/f82-157}
 
 \bibitem[\citeproctext]{ref-francis_use_1992}
-Francis, R. I. C. C. 1992. {``Use of Risk Analysis to Assess Fishery
-Management Strategies: A Case Study Using Orange Roughy (It Hoplostethus
-Atlanticus) on the Chatham Rise, New Zealand.''} \emph{Canadian Journal
-of Fisheries and Aquatic Science} 49: 922--30.
+Francis, R. I. C. C. (1992). Use of risk analysis to assess fishery
+management strategies: A case study using orange roughy
+({\emph{Hoplostethus atlanticus}}) on the chatham rise, new zealand.
+\emph{Canadian Journal of Fisheries and Aquatic Science}, \emph{49},
+922--930.
 
 \bibitem[\citeproctext]{ref-francis_data_2011}
----------. 2011. {``Data Weighting in Statistical Fisheries Stock
-Assessment Models.''} \emph{Canadian Journal of Fisheries and Aquatic
-Sciences} 68: 1124--38.
+Francis, R. I. C. C. (2011). Data weighting in statistical fisheries
+stock assessment models. \emph{Canadian Journal of Fisheries and Aquatic
+Sciences}, \emph{68}, 1124--1138.
 
 \bibitem[\citeproctext]{ref-gonzalez_genetic_2008}
-Gonzalez, Elena G, Peter Beerli, and Rafael Zardoya. 2008. {``Genetic
-Structuring and Migration Patterns of Atlantic Bigeye Tuna, Thunnus
-Obesus (Lowe, 1839).''} \emph{{BMC} Evolutionary Biology} 8 (1): 252.
-\url{https://doi.org/10.1186/1471-2148-8-252}.
+Gonzalez, E. G., Beerli, P., \& Zardoya, R. (2008). Genetic structuring
+and migration patterns of atlantic bigeye tuna, thunnus obesus (lowe,
+1839). \emph{{BMC} Evolutionary Biology}, \emph{8}(1), 252.
+\url{https://doi.org/10.1186/1471-2148-8-252}
 
 \bibitem[\citeproctext]{ref-grewe_assessment_1998}
-Grewe, P. M., and J. Hampton. 1998. {``An Assessment of Bigeye (Thunnus
-Obesus) Population Structure in the Pacific Ocean Based on Mitochondrial
-{DNA} and {DNA} Microsatellite Analysis.''} {JIMAR} Contribution 98-330.
+Grewe, P. M., \& Hampton, J. (1998). \emph{An assessment of bigeye
+(thunnus obesus) population structure in the pacific ocean based on
+mitochondrial {DNA} and {DNA} microsatellite analysis}. {JIMAR}
+Contribution 98-330.
 
 \bibitem[\citeproctext]{ref-grewe_population_2019}
-Grewe, P. M., C. H. Wudianto, C. H. Proctor, M. S. Adam, A. R. Jauhary,
-K Schaefer, D. G. Itano, et al. 2019. {``Population Structure and
-Connectivity of Tropical Tuna Species Across the Indo Pacific Ocean
-Region.''} {WCPFC}-{SC}15-2019/{SA}-{IP}-15. WCPFC.
+Grewe, P. M., Wudianto, C. H., Proctor, C. H., Adam, M. S., Jauhary, A.
+R., Schaefer, K., Itano, D. G., Evans, K., Killian, A., Foster, S. D.,
+Gosselin, T., Feutry, P., Aulich, J., Gunasekera, R. M., Lansdell, M.,
+\& Davies, C. R. (2019). \emph{Population structure and connectivity of
+tropical tuna species across the indo pacific ocean region} (No.
+{WCPFC}-{SC}15-2019/{SA}-{IP}-15). WCPFC.
 
 \bibitem[\citeproctext]{ref-hamel_method_2015}
-Hamel, Owen S. 2015. {``A Method for Calculating a Meta-Analytical Prior
-for the Natural Mortality Rate Using Multiple Life History
-Correlates.''} \emph{Ices Journal of Marine Science} 72 (1): 62--69.
-\url{https://doi.org/10.1093/icesjms/fsu131}.
+Hamel, O. S. (2015). A method for calculating a meta-analytical prior
+for the natural mortality rate using multiple life history correlates.
+\emph{Ices Journal of Marine Science}, \emph{72}(1), 62--69.
+\url{https://doi.org/10.1093/icesjms/fsu131}
 
 \bibitem[\citeproctext]{ref-hamer_summary_2026}
-Hamer, P. 2026. {``Summary Report from the {SPC} Pre-Assessment Workshop
-- March 2026.''} {WCPFC}-{SC}22-2026/{SA}-{IP}-01. WCPFC.
+Hamer, P. (2026). \emph{Summary report from the {SPC} pre-assessment
+workshop - march 2026} (No. {WCPFC}-{SC}22-2026/{SA}-{IP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-hamer_wcpfc_2026}
-Hamer, P., C Castillo Jordán, A. Panizza, and T. Peatman. 2026.
-{``{WCPFC} Project127/127a - Review and Reconciliation of Size Data
-Collected in the {WCPFC}-{CA} for Stock Assessment Purposes: Phase 2
-Progress Report.''} {WCPFC}-{SC}22-2026/{ST}-{WP}-02. WCPFC.
+Hamer, P., Castillo Jordán, C., Panizza, A., \& Peatman, T. (2026).
+\emph{{WCPFC} Project127/127a - review and reconciliation of size data
+collected in the {WCPFC}-{CA} for stock assessment purposes: Phase 2
+progress report} (No. {WCPFC}-{SC}22-2026/{ST}-{WP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-hamer_review_2023}
-Hamer, P, J Potts, J Macdonald, and I Senina. 2023. {``Review and
-Analyses to Inform Conceptual Models of Population Structure and Spatial
-Stratification of Bigeye and Yellowfin Tuna Assessments in the Western
-and Central Pacific Ocean.''} {SC}19-{SA}-{WP}-02. Palau: WCPFC.
+Hamer, P., Potts, J., Macdonald, J., \& Senina, I. (2023). \emph{Review
+and analyses to inform conceptual models of population structure and
+spatial stratification of bigeye and yellowfin tuna assessments in the
+western and central pacific ocean} (No. {SC}19-{SA}-{WP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-hamer_progress_2025}
-Hamer, P, E Schneiter, T Vidal, and P Williams. 2025. {``Progress
-Report: Review and Reconciliation of Size Data Collected in the
-{WCPFC}-{CA} for Stock Assessment Purposes ({WCPFC} Project: 127).''}
-{WCPFC}-{SC}21-{ST}-{WP}-02. WCPFC.
+Hamer, P., Schneiter, E., Vidal, T., \& Williams, P. (2025).
+\emph{Progress report: Review and reconciliation of size data collected
+in the {WCPFC}-{CA} for stock assessment purposes ({WCPFC} project:
+127)} (No. {WCPFC}-{SC}21-{ST}-{WP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-hampton_natural_2000}
-Hampton, J. 2000. {``Natural Mortality Rates in Tropical Tunas: Size
-Really Does Matter.''} \emph{Canadian Journal of Fisheries and Aquatic
-Science} 57: 1002--10.
+Hampton, J. (2000). Natural mortality rates in tropical tunas: Size
+really does matter. \emph{Canadian Journal of Fisheries and Aquatic
+Science}, \emph{57}, 1002--1010.
 
 \bibitem[\citeproctext]{ref-hampton_investigation_2026-1}
-Hampton, J., N. Davies, and P. Hamer. 2026. {``Investigation of the
-Impacts of Regional Growth Variation on the 2023 Bigeye Tuna Stock
-Assessment.''} {WCPFC}-{SC}22-2026/{SA}-{IP}11. WCPFC.
+Hampton, J., Davies, N., \& Hamer, P. (2026a). \emph{Investigation of
+the impacts of regional growth variation on the 2023 bigeye tuna stock
+assessment} (No. {WCPFC}-{SC}22-2026/{SA}-{IP}11). WCPFC.
 
 \bibitem[\citeproctext]{ref-hampton_spatially-disaggregated_2001}
-Hampton, J., and D. A. Fournier. 2001. {``A Spatially-Disaggregated,
-Length-Based, Age-Structured Population Model of Yellowfin Tuna (Thunnus
-Albacares) in the Western and Central Pacific Ocean.''} \emph{Marine and
-Freshwater Research} 52: 937--63.
+Hampton, J., \& Fournier, D. A. (2001). A spatially-disaggregated,
+length-based, age-structured population model of yellowfin tuna (thunnus
+albacares) in the western and central pacific ocean. \emph{Marine and
+Freshwater Research}, \emph{52}, 937--963.
 
 \bibitem[\citeproctext]{ref-hampton_investigation_2026}
-Hampton, J., T Teears, K Kim, A. Magnusson, N. Davies, and P. Hamer.
-2026. {``Investigation of Single Region Fleets as Areas Models for
-Bigeye and Yellowfin Tuna in the {WCPO}.''}
-{WCPFC}-{SC}22-2026/{SA}-{IP}-09. WCPFC.
+Hampton, J., Teears, T., Kim, K., Magnusson, A., Davies, N., \& Hamer,
+P. (2026b). \emph{Investigation of single region fleets as areas models
+for bigeye and yellowfin tuna in the {WCPO}} (No.
+{WCPFC}-{SC}22-2026/{SA}-{IP}-09). WCPFC.
 
 \bibitem[\citeproctext]{ref-hampton_annual_2016}
-Hampton, J, and P Williams. 2016. {``Annual Estimates of Purse Seine
-Catches by Species Based on Alternative Data Sources.''}
-{WCPFC}-{SC}12-2016/{ST}-{IP}-03. Bali, Indonesia, 3-11 August 2016:
-WCPFC.
+Hampton, J., \& Williams, P. (2016). \emph{Annual estimates of purse
+seine catches by species based on alternative data sources} (No.
+{WCPFC}-{SC}12-2016/{ST}-{IP}-03). WCPFC.
 
 \bibitem[\citeproctext]{ref-hare_western_2025}
-Hare, S., T. Vidal, C Castillo Jordán, J. Day, P. Hamer, N. Hill, P.
-Machful, et al. 2025. {``The Western and Central Pacific Una Fishery:
-2024 Overview and Status of Stocks.''} Tuna Fisheries Assessment Report
-No. 25. Noumea, New Caledonia: SPC.
+Hare, S., Vidal, T., Castillo Jordán, C., Day, J., Hamer, P., Hill, N.,
+Machful, P., Magnusson, A., Nicol, S., Odongo, V., Panizza, A., Peatman,
+T., Scott, R., Senina, I., Sloyan, B., Teears, T., \& Pilling, G.
+(2025). \emph{The western and central pacific tuna fishery: 2024
+overview and status of stocks} {[}Tuna Fisheries Assessment Report No.
+25{]}. SPC.
 
 \bibitem[\citeproctext]{ref-hare_compendium_2026}
-Hare, S., T. Vidal, R Scott, and G Pilling. 2026. {``A Compendium of
-Fisheries Indicators for Target Tuna Stocks in the {WCPFC} Convention
-Area.''} {WCPFC}-{SC}22-2026/{SA}-{WP}-07. WCPFC.
-
-\bibitem[\citeproctext]{ref-harley_simple_2003}
-Harley, S J, and M N Maunder. 2003. {``A Simple Model for Age-Structured
-Natural Mortality Based on Changes in Sex Ratios.''} {SAR}-4-01. La
-Jolla, California, {USA}, 19-21 May 2003: Inter-American Tropical Tuna
-Commission.
+Hare, S., Vidal, T., Scott, R., \& Pilling, G. (2026). \emph{A
+compendium of fisheries indicators for target tuna stocks in the {WCPFC}
+convention area} (No. {WCPFC}-{SC}22-2026/{SA}-{WP}-07). WCPFC.
 
 \bibitem[\citeproctext]{ref-harley_preliminary_2011}
-Harley, S. J. 2011. {``A Preliminary Investigation of Steepness in Tunas
-Based on Stock Assessment Results.''} {WCPFC}-{SC}7-2011/{SA}-{IP}-08.
-Pohnpei, Federated States of Micronesia, 9-17 August 2011.: WCPFC.
-
-\bibitem[\citeproctext]{ref-harley_stock_2010}
-Harley, S. J., S. Hoyle, J. Hampton, and P. Kleiber. 2010. {``Stock
-Assessment of Bigeye Tuna in the Western and Central Pacific Ocean.''}
-{WCPFC}-{SC}6-2010/{SA}-{WP}-01. Nuku'alofa, Tonga, 10-19 August 2010.:
-WCPFC.
+Harley, S. J. (2011). \emph{A preliminary investigation of steepness in
+tunas based on stock assessment results} (No.
+{WCPFC}-{SC}7-2011/{SA}-{IP}-08). WCPFC.
 
 \bibitem[\citeproctext]{ref-harley_stock_2014}
-Harley, Shelton J, Nick Davies, John Hampton, and Sam McKechnie.
-2014-08. {``Stock Assessment of Bigeye Tuna in the Western and Central
-Pacific Ocean.''} {WCPFC}-{SC}10-2014/{SA}-{WP}-01. Majuro, Republic of
-the Marshall Islands, 6-14 August 2014.: WCPFC.
-\url{http://wcpfc.int/system/files/SC10-SA-WP-01\%20BET\%20Assessment.pdf}.
+Harley, S. J., Davies, N., Hampton, J., \& McKechnie, S. (2014).
+\emph{Stock assessment of bigeye tuna in the western and central pacific
+ocean} (No. {WCPFC}-{SC}10-2014/{SA}-{WP}-01). WCPFC.
+\url{http://wcpfc.int/system/files/SC10-SA-WP-01\%20BET\%20Assessment.pdf}
+
+\bibitem[\citeproctext]{ref-harley_stock_2010}
+Harley, S. J., Hoyle, S., Hampton, J., \& Kleiber, P. (2010).
+\emph{Stock assessment of bigeye tuna in the western and central pacific
+ocean} (No. {WCPFC}-{SC}6-2010/{SA}-{WP}-01). WCPFC.
+
+\bibitem[\citeproctext]{ref-harley_simple_2003}
+Harley, S. J., \& Maunder, M. N. (2003). \emph{A simple model for
+age-structured natural mortality based on changes in sex ratios} (No.
+{SAR}-4-01). Inter-American Tropical Tuna Commission.
 
 \bibitem[\citeproctext]{ref-harley_stock_2009}
-Harley, S, S Hoyle, and A Langley. 2009. {``Stock Assessment of Bigeye
-Tuna in the Western and Central Pacific Ocean.''}
-{WCPFC}-{SC}5-2009/{SA}-{WP}-04. Port Vila, Vanuatu, 10-21 August 2009:
-WCPFC.
+Harley, S., Hoyle, S., \& Langley, A. (2009). \emph{Stock assessment of
+bigeye tuna in the western and central pacific ocean.} (No.
+{WCPFC}-{SC}5-2009/{SA}-{WP}-04). WCPFC.
 
 \bibitem[\citeproctext]{ref-hasegawa_new_2026}
-Hasegawa, T., K Okamoto, H Ijima, K Kim, P. Hamer, C Wakefield, A Pons,
-J. Widdrington, and N Davies. 2026. {``New Age-at-Length Data for {WCPO}
-Bigeye and Yellowfin Tuna from the Temperate North Pacific and
-Approaches to Address Spatial Sampling Bias in Growth Estimation Within
-{MFCL}.''} {WCPFC}-{SC}22-2026/{IP}-08. WCPFC.
+Hasegawa, T., Okamoto, K., Ijima, H., Kim, K., Hamer, P., Wakefield, C.,
+Pons, A., Widdrington, J., \& Davies, N. (2026). \emph{New age-at-length
+data for {WCPO} bigeye and yellowfin tuna from the temperate north
+pacific and approaches to address spatial sampling bias in growth
+estimation within {MFCL}} (No. {WCPFC}-{SC}22-2026/{IP}-08). WCPFC.
 
 \bibitem[\citeproctext]{ref-hoyle_effort_2024}
-Hoyle, S. 2024. {``Effort Creep in Longline and Purse Seine {CPUE} and
-Its Application in Tropical Tuna Assessments.''}
-{WCPFC}-{SC}20-2024/{SA}-{IP}-09. WCPFC.
+Hoyle, S. (2024). \emph{Effort creep in longline and purse seine {CPUE}
+and its application in tropical tuna assessments} (No.
+{WCPFC}-{SC}20-2024/{SA}-{IP}-09). WCPFC.
 
 \bibitem[\citeproctext]{ref-hoyle_adjusted_2008}
-Hoyle, S. D. 2008. {``Adjusted Biological Parameters and Spawning
-Biomass Calculations for South Pacific Albacore Tuna, and Their
-Implications for Stock Assessments.''} {WCPFC}-{SC}4-2008/{ME}-{WP}-02.
-Port Moresby, Papua New Guinea, 11-22 August 2008.: WCPFC.
+Hoyle, S. D. (2008). \emph{Adjusted biological parameters and spawning
+biomass calculations for south pacific albacore tuna, and their
+implications for stock assessments} (No.
+{WCPFC}-{SC}4-2008/{ME}-{WP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-hoyle_sensitivity_2008}
-Hoyle, S., and S. Nicol. 2008. {``Sensitivity of Bigeye Stock Assessment
-to Alternative Biological and Reporductive Assumptions.''}
-{WCPFC}-{SC}4-2008/{ME}-{WP}-01. Port Moresby, Papua New Guinea, 11-22
-August 2008.: WCPFC.
+Hoyle, S., \& Nicol, S. (2008). \emph{Sensitivity of bigeye stock
+assessment to alternative biological and reproductive assumptions} (No.
+{WCPFC}-{SC}4-2008/{ME}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-hurtado-ferro_looking_2015}
-Hurtado-Ferro, Felipe, Cody S. Szuwalski, Juan L. Valero, Sean C.
-Anderson, Curry J. Cunningham, Kelli F. Johnson, Roberto Licandeo, et
-al. 2015. {``Looking in the Rear-View Mirror: Bias and Retrospective
-Patterns in Integrated, Age-Structured Stock Assessment Models.''}
-\emph{Ices Journal of Marine Science} 72 (1): 99--110.
-\url{https://doi.org/10.1093/icesjms/fsu198}.
+Hurtado-Ferro, F., Szuwalski, C. S., Valero, J. L., Anderson, S. C.,
+Cunningham, C. J., Johnson, K. F., Licandeo, R., McGilliard, C. R.,
+Monnahan, C. C., Muradian, M. L., Ono, K., Vert-Pre, K. A., Whitten, A.
+R., \& Punt, A. E. (2015). Looking in the rear-view mirror: Bias and
+retrospective patterns in integrated, age-structured stock assessment
+models. \emph{Ices Journal of Marine Science}, \emph{72}(1), 99--110.
+\url{https://doi.org/10.1093/icesjms/fsu198}
 
 \bibitem[\citeproctext]{ref-ianelli_independent_2012}
-Ianelli, Jim, Mark N. Maunder, and Andre. E. Punt. 2012. {``Independent
-Review of the 2011 {WCPO} Bigeye Tuna Assessment.''}
-{WCPFC}-{SC}8-2012/{SA}-{WP}-01. Busan, Republic of Korea, 7-15 August
-2012: WCPFC.
+Ianelli, J., Maunder, M. N., \& Punt, Andre. E. (2012).
+\emph{Independent review of the 2011 {WCPO} bigeye tuna assessment} (No.
+{WCPFC}-{SC}8-2012/{SA}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-ijima_tuna_2023}
-Ijima, Hirotaka, and Marko Jusup. 2023-04. {``Tuna and Billfish Larval
-Distributions in a Warming Ocean.''} {arXiv}.
-\url{http://arxiv.org/abs/2304.09442}.
+Ijima, H., \& Jusup, M. (2023). \emph{Tuna and billfish larval
+distributions in a warming ocean}. {arXiv}.
+\url{http://arxiv.org/abs/2304.09442}
 
 \bibitem[\citeproctext]{ref-issf_report_2011}
-ISSF. 2011. {``Report of the 2011 {ISSF} Stock Assessment Workshop.''}
-{ISSF} Technical Report 2011-02. Rome, Italy, March 14-17: ISSF.
+ISSF. (2011). \emph{Report of the 2011 {ISSF} stock assessment workshop}
+(No. {ISSF} Technical Report 2011-02). ISSF.
 
 \bibitem[\citeproctext]{ref-itano_reproductive_2000}
-Itano, D. 2000. {``The Reproductive Biology of Yellowfin Tuna (It
-Thunnus Albacares) in Hawaiian Waters and the Western Tropical Pacific
-Ocean: Project Summary.''} \{JIMAR\} Contribution 00-328 {SOEST} 00-01.
-University of Hawai'i.
+Itano, D. (2000). \emph{The reproductive biology of yellowfin tuna
+({\emph{Thunnus albacares}}) in hawaiian waters and the western tropical
+pacific ocean: Project summary} (JIMAR Contribution 00-328 No. {SOEST}
+00-01). University of Hawai'i.
 
 \bibitem[\citeproctext]{ref-kolody_evaluation_2014}
-Kolody, D., and S. Hoyle. 2014. {``Evaluation of Tag Mixing Assumptions
-in Western Pacific Ocean Skipjack Tuna Stock Assessment Models.''}
-\emph{Fisheries Research}
-http://dx.doi.org/101016/j.fishres.2014.05.008.
+Kolody, D., \& Hoyle, S. (2014). Evaluation of tag mixing assumptions in
+western pacific ocean skipjack tuna stock assessment models.
+\emph{Fisheries Research},
+\emph{http://dx.doi.org/101016/j.fishres.2014.05.008}.
 
 \bibitem[\citeproctext]{ref-langley_stock_2008}
-Langley, A., J. Hampton, P. Kleiber, and S. Hoyle. 2008. {``Stock
-Assessment of Bigeye Tuna in the Western and Central Pacific Ocean,
-Including an Analysis of Management Options.''}
-{WCPFC}-{SC}4/{SA}-{WP}-1. WCPFC.
-
-\bibitem[\citeproctext]{ref-mckechnie_background_2017}
-McKechnie, Sam, L Tremblay-Boyer, and G Pilling. 2017. {``Background
-Analyses for the 2017 Stock Assessments of Bigeye and Yellowfin Tuna in
-the Western and Central Pacific Ocean.''}
-{WCPFC}-{SC}13-2017/{SA}-{IP}-06. Rarotonga, Cook Islands: WCPFC.
+Langley, A., Hampton, J., Kleiber, P., \& Hoyle, S. (2008). \emph{Stock
+assessment of bigeye tuna in the western and central pacific ocean,
+including an analysis of management options} (No.
+{WCPFC}-{SC}4/{SA}-{WP}-1). WCPFC.
 
 \bibitem[\citeproctext]{ref-mckechnie_sensitivity_2015}
-McKechnie, S., J. Hampton, Francisco Abascal, N. Davies, and S. J.
-Harley. 2015. {``Sensitivity of {WCPO} Stock Assessment Results to the
-Inclusion of {EPO} Dynamics Within a Pacific-Wide Analysis.''}
-{WCPFC}-{SC}11-2015/{SA}-{WP}-04. Pohnpei, Federated States of
-Micronesia, 5-13 August 2015: WCPFC.
+McKechnie, S., Hampton, J., Abascal, F., Davies, N., \& Harley, S. J.
+(2015a). \emph{Sensitivity of {WCPO} stock assessment results to the
+inclusion of {EPO} dynamics within a pacific-wide analysis} (No.
+{WCPFC}-{SC}11-2015/{SA}-{WP}-04). WCPFC.
 
 \bibitem[\citeproctext]{ref-mckechnie_construction_2016}
-McKechnie, S., D. Ochi, H. Kiyofuji, T. Peatman, and S. Caillot. 2016.
-{``Construction of Tagging Data Input Files for the 2016 Skipjack Tuna
-Stock Assessment in the Western and Central Pacific Ocean.''}
-{WCPFC}-{SC}12-2016/{SA}-{IP}-05. Bali, Indonesia, 3-11 August 2016:
-WCPFC.
+McKechnie, S., Ochi, D., Kiyofuji, H., Peatman, T., \& Caillot, S.
+(2016). \emph{Construction of tagging data input files for the 2016
+skipjack tuna stock assessment in the western and central pacific ocean}
+(No. {WCPFC}-{SC}12-2016/{SA}-{IP}-05). WCPFC.
 
 \bibitem[\citeproctext]{ref-mckechnie_stock_2017}
-McKechnie, S., G Pilling, and J. Hampton. 2017. {``Stock Assessment of
-Bigeye Tuna in the Western and Central Pacific Ocean.''}
-{WCPFC}-{SC}13-2017/{SA}-{WP}-05. Rarotonga, Cook Islands, 9-17 August
-2017: WCPFC.
+McKechnie, S., Pilling, G., \& Hampton, J. (2017a). \emph{Stock
+assessment of bigeye tuna in the western and central pacific ocean} (No.
+{WCPFC}-{SC}13-2017/{SA}-{WP}-05). WCPFC.
 
 \bibitem[\citeproctext]{ref-mckechnie_summaries_2026}
-McKechnie, S, G Pilling, and T. Vidal. 2026. {``Summaries of Bigeye Tuna
-Catch and Effort to Support Management Procedure Discussions.''}
-{WCPFC}-{SC}22-2026/{SA}-{IP}-12. WCPFC.
+McKechnie, S., Pilling, G., \& Vidal, T. (2026). \emph{Summaries of
+bigeye tuna catch and effort to support management procedure
+discussions} (No. {WCPFC}-{SC}22-2026/{SA}-{IP}-12). WCPFC.
 
 \bibitem[\citeproctext]{ref-mckechnie_analysis_2015}
-McKechnie, S., L Tremblay-Boyer, and S J Harley. 2015. {``Analysis of
-Pacific-Wide Operational Longline {CPUE} Data for Bigeye Tuna.''}
-{WCPFC}-{SC}11-2015/{SA}-{WP}-03. Pohnpei, Federated States of
-Micronesia, 5-13 August 2015: WCPFC.
+McKechnie, S., Tremblay-Boyer, L., \& Harley, S. J. (2015b).
+\emph{Analysis of pacific-wide operational longline {CPUE} data for
+bigeye tuna} (No. {WCPFC}-{SC}11-2015/{SA}-{WP}-03). WCPFC.
+
+\bibitem[\citeproctext]{ref-mckechnie_background_2017}
+McKechnie, S., Tremblay-Boyer, L., \& Pilling, G. (2017b).
+\emph{Background analyses for the 2017 stock assessments of bigeye and
+yellowfin tuna in the western and central pacific ocean} (No.
+{WCPFC}-{SC}13-2017/{SA}-{IP}-06). WCPFC.
 
 \bibitem[\citeproctext]{ref-mohn_retrospective_1999}
-Mohn, R. 1999. {``The Retrospective Problem in Sequential Population
-Analysis: An Investigation Using Cod Fishery and Simulated Data.''}
-\emph{Ices Journal of Marine Science} 56 (4): 473--88.
-\url{https://doi.org/10.1006/jmsc.1999.0481}.
+Mohn, R. (1999). The retrospective problem in sequential population
+analysis: An investigation using cod fishery and simulated data.
+\emph{Ices Journal of Marine Science}, \emph{56}(4), 473--488.
+\url{https://doi.org/10.1006/jmsc.1999.0481}
 
 \bibitem[\citeproctext]{ref-moore_defining_2020}
-Moore, Bradley R., Johann D. Bell, Karen Evans, Jessica Farley, Peter M.
-Grewe, John Hampton, Amandine D. Marie, et al. 2020-10. {``Defining the
-Stock Structures of Key Commercial Tunas in the Pacific Ocean i: Current
-Knowledge and Main Uncertainties.''} \emph{Fisheries Research} 230
-(2020-10): 105525. \url{https://doi.org/10.1016/j.fishres.2020.105525}.
+Moore, B. R., Bell, J. D., Evans, K., Farley, J., Grewe, P. M., Hampton,
+J., Marie, A. D., Minte-Vera, C., Nicol, S., Pilling, G. M., Scutt
+Phillips, J., Tremblay-Boyer, L., Williams, A. J., \& Smith, N. (2020).
+Defining the stock structures of key commercial tunas in the pacific
+ocean i: Current knowledge and main uncertainties. \emph{Fisheries
+Research}, \emph{230}, 105525.
+\url{https://doi.org/10.1016/j.fishres.2020.105525}
 
 \bibitem[\citeproctext]{ref-moore_movement_2019}
-Moore, Bradley R, Pratiwi Lestari, Scott C Cutmore, Craig Proctor, and
-Robert J G Lester. 2019-12. {``Movement of Juvenile Tuna Deduced from
-Parasite Data.''} Edited by James Watson. \emph{{ICES} Journal of Marine
-Science} 76 (6): 1678--89. \url{https://doi.org/10.1093/icesjms/fsz022}.
+Moore, B. R., Lestari, P., Cutmore, S. C., Proctor, C., \& Lester, R. J.
+G. (2019). Movement of juvenile tuna deduced from parasite data.
+\emph{{ICES} Journal of Marine Science}, \emph{76}(6), 1678--1689.
+\url{https://doi.org/10.1093/icesjms/fsz022}
 
 \bibitem[\citeproctext]{ref-natasha_no_2022}
-Natasha, Janice, Brian L. Stockwell, Amandine D. Marie, John Hampton,
-Neville Smith, Simon Nicol, and Ciro Rico. 2022-04. {``No Population
-Structure of Bigeye Tunas (Thunnus Obesus) in the Western and Central
-Pacific Ocean Indicated by Single Nucleotide Polymorphisms.''}
-\emph{Front. Mar. Sci.} 9 (2022-04): 799684.
-\url{https://doi.org/10.3389/fmars.2022.799684}.
+Natasha, J., Stockwell, B. L., Marie, A. D., Hampton, J., Smith, N.,
+Nicol, S., \& Rico, C. (2022). No population structure of bigeye tunas
+(thunnus obesus) in the western and central pacific ocean indicated by
+single nucleotide polymorphisms. \emph{Front. Mar. Sci.}, \emph{9},
+799684. \url{https://doi.org/10.3389/fmars.2022.799684}
 
 \bibitem[\citeproctext]{ref-nicol_bigeye_2011}
-Nicol, S., S. Hoyle, J. Farley, B. Muller, S. Retalmai, K. Sisior, and
-A. Williams. 2011. {``Bigeye Tuna Age, Growth, and Reproductive Biology
-(Project 35).''} {WCPFC}-{SC}7-2011/{SA}-{WP}-01. Pohnpei, Federated
-States of Micronesia, 9-17 August 2011.: WCPFC.
+Nicol, S., Hoyle, S., Farley, J., Muller, B., Retalmai, S., Sisior, K.,
+\& Williams, A. (2011). \emph{Bigeye tuna age, growth, and reproductive
+biology (project 35)} (No. {WCPFC}-{SC}7-2011/{SA}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-nishikawa_average_1985}
-Nishikawa, Y, M Honma, S Ueyanagi, and S Kikawa. 1985. {``Average
-Distribution of Larvae of Oceanic Species of Scombroid Fishes,
-1956-1981.''} \emph{Far Seas Fish.Res.Lab., 99 p.}
+Nishikawa, Y., Honma, M., Ueyanagi, S., \& Kikawa, S. (1985). Average
+distribution of larvae of oceanic species of scombroid fishes,
+1956-1981. \emph{Far Seas Fish.Res.Lab., 99 p.}
 
 \bibitem[\citeproctext]{ref-peatman_better_2019}
-Peatman, T, S Fukofuka, T Park, P Williams, J Hampton, and N Smith.
-2019. {``Better Purse Seine Catch Composition Estimates: Progress on the
-Project 60 Work Plan.''} Technical Report. SPC.
+Peatman, T., Fukofuka, S., Park, T., Williams, P., Hampton, J., \&
+Smith, N. (2019). \emph{Better purse seine catch composition estimates:
+Progress on the project 60 work plan.} {[}Technical Report{]}. SPC.
 
 \bibitem[\citeproctext]{ref-peatman_analysis_2026-2}
-Peatman, T, S. Gislard, J. Scutt Phillips, J. Potts, and S. Nicol. 2026.
-{``Analysis of Tag Seeding Data for the 2026 Yellowfin \& Bigeye
-Assessments: Reporting Rates for Purse Seine Fleets.''}
-{WCPFC}-{SC}22-2026/{SA}-{IP}-05. WCPFC.
+Peatman, T., Gislard, S., Scutt Phillips, J., Potts, J., \& Nicol, S.
+(2026a). \emph{Analysis of tag seeding data for the 2026 yellowfin \&
+bigeye assessments: Reporting rates for purse seine fleets} (No.
+{WCPFC}-{SC}22-2026/{SA}-{IP}-05). WCPFC.
 
 \bibitem[\citeproctext]{ref-peatman_analysis_2026}
-Peatman, T., K Kim, A. Magnusson, C Castillo Jordan, and P. Hamer. 2026.
-{``Analysis of Size Frequency Data for the 2026 Bigeye and Yellowfin
-Assessments.''} {WCPFC}-{SC}22-{SA}-{IP}06. WCPFC.
+Peatman, T., Kim, K., Magnusson, A., Castillo Jordan, C., \& Hamer, P.
+(2026b). \emph{Analysis of size frequency data for the 2026 bigeye and
+yellowfin assessments} (No. {WCPFC}-{SC}22-{SA}-{IP}06). WCPFC.
 
 \bibitem[\citeproctext]{ref-peatman_analysis_2026-1}
-Peatman, T., J. Scutt Phillips, J. Potts, and S Nicol. 2026. {``Analysis
-of Tagging Data for the 2026 Yellowfin \& Bigeye Assessments:
-Corrections to Tag Releases for Tagging Conditions.''}
-{WCPFC}-{SC}22-2026/{SA}-{IP}-04. WCPFC.
-
-\bibitem[\citeproctext]{ref-peatman_project_2023}
-Peatman, T., P. Williams, and S. Nicol. 2023. {``Project 60: {Progress}
-Report - Improving Purse Seine Species Composition.''} \{WCPFC\}
-\{Scientific\} \{Committee\} paper SC19-ST-IP-03. Palau.
+Peatman, T., Scutt Phillips, J., Potts, J., \& Nicol, S. (2026c).
+\emph{Analysis of tagging data for the 2026 yellowfin \& bigeye
+assessments: Corrections to tag releases for tagging conditions} (No.
+{WCPFC}-{SC}22-2026/{SA}-{IP}-04). WCPFC.
 
 \bibitem[\citeproctext]{ref-peatman_project_2021}
-Peatman, T, P. Williams, and S Nicol. 2021. {``Project 60: Progress
-Towards Acheiving {SC}16 Recomendations.''}
-{WCPFC}-{SC}17-2021/{ST}-{IP}-04. WCPFC.
+Peatman, T., Williams, P., \& Nicol, S. (2021). \emph{Project 60:
+Progress towards achieving {SC}16 recommendations} (No.
+{WCPFC}-{SC}17-2021/{ST}-{IP}-04). WCPFC.
+
+\bibitem[\citeproctext]{ref-peatman_project_2023}
+Peatman, T., Williams, P., \& Nicol, S. (2023). \emph{Project 60:
+{Progress} report - improving purse seine species composition} (WCPFC
+Scientific Committee Paper No. SC19-ST-IP-03).
 
 \bibitem[\citeproctext]{ref-pilling_approaches_2016}
-Pilling, G, R Scott, N Davies, and J Hampton. 2016. {``Approaches Used
-to Undertake Management Projections of {WCPO} Tuna Stocks Based Upon
-{MULTIFAN}-{CL} Stock Assessments.''} {WCPFC}-{SC}12-2016/{MI}-{IP}-04.
-Bali, Indonesia, 3-11 August 2016.
+Pilling, G., Scott, R., Davies, N., \& Hampton, J. (2016).
+\emph{Approaches used to undertake management projections of {WCPO} tuna
+stocks based upon {MULTIFAN}-{CL} stock assessments} (No.
+{WCPFC}-{SC}12-2016/{MI}-{IP}-04). Bali, Indonesia, 3-11 August 2016.
 
 \bibitem[\citeproctext]{ref-piner_meta-analysis_2011}
-Piner, K, and H Lee. 2011. {``Meta-Analysis of Striped Marlin Natural
-Mortality.''} {ISC}/11/{BILLWG}‐1/10. ISC.
+Piner, K., \& Lee, H. (2011). \emph{Meta-analysis of striped marlin
+natural mortality} (No. {ISC}/11/{BILLWG}‐1/10). ISC.
 
 \bibitem[\citeproctext]{ref-proctor_population_2019}
-Proctor, C. H., R. G. J. Lester, N. P. Clear, P. M. Grewe, Bradley R.
-Moore, J. P. Eveson, P Lestari, et al. 2019. {``Population Structure of
-Yellowfin Tuna (Thunnus Albacares) and Bigeye Tuna (t. Obesus) in the
-Indonesian Region.''} Final Report as output of {ACIAR} Project
-{FIS}/2009/059. Australian Centre for International Agricultural
-Research, Canberra: ACIAR.
-
-\bibitem[\citeproctext]{ref-punt_independent_2023}
-Punt, A. E., M N Maunder, and J. Ianelli. 2023. {``Independent Review of
-Recent {WCPO} Yellowfin Tuna Assessment.''} {SC}19-{SA}-{WP}-01. WCPFC.
+Proctor, C. H., Lester, R. G. J., Clear, N. P., Grewe, P. M., Moore, B.
+R., Eveson, J. P., Lestari, P., Wudji, A., Taufik, M., Wudianto,
+Lansdell, M. J., Hill, P. L., Dietz, C., Thompson, J. M., Cutmore, S.
+C., Foster, S. D., Gosselin, T., \& Davies, C. R. (2019).
+\emph{Population structure of yellowfin tuna ({\emph{Thunnus
+albacares}}) and bigeye tuna ({\emph{T. obesus}}) in the indonesian
+region.} (No. Final Report as output of {ACIAR} Project {FIS}/2009/059;
+pp. 139 pp.). ACIAR.
 
 \bibitem[\citeproctext]{ref-punt_consequences_2021}
-Punt, André E., Claudio Castillo-Jordán, Owen S. Hamel, Jason M. Cope,
-Mark N. Maunder, and James N. Ianelli. 2021-01. {``Consequences of Error
-in Natural Mortality and Its Estimation in Stock Assessment Models.''}
-\emph{Fisheries Research} 233 (2021-01): 105759.
-\url{https://doi.org/10.1016/j.fishres.2020.105759}.
+Punt, A. E., Castillo-Jordán, C., Hamel, O. S., Cope, J. M., Maunder, M.
+N., \& Ianelli, J. N. (2021). Consequences of error in natural mortality
+and its estimation in stock assessment models. \emph{Fisheries
+Research}, \emph{233}, 105759.
+\url{https://doi.org/10.1016/j.fishres.2020.105759}
+
+\bibitem[\citeproctext]{ref-punt_independent_2023}
+Punt, A. E., Maunder, M. N., \& Ianelli, J. (2023). \emph{Independent
+review of recent {WCPO} yellowfin tuna assessment} (No.
+{SC}19-{SA}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-rooker_natal_2016}
-Rooker, Jay R., R. J. David Wells, David G. Itano, Simon R. Thorrold,
-and Jessica M. Lee. 2016-05. {``Natal Origin and Population Connectivity
-of Bigeye and Yellowfin Tuna in the Pacific Ocean.''} \emph{Fish.
-Oceanogr.} 25 (3): 277--91. \url{https://doi.org/10.1111/fog.12154}.
+Rooker, J. R., David Wells, R. J., Itano, D. G., Thorrold, S. R., \&
+Lee, J. M. (2016). Natal origin and population connectivity of bigeye
+and yellowfin tuna in the pacific ocean. \emph{Fish. Oceanogr.},
+\emph{25}(3), 277--291. \url{https://doi.org/10.1111/fog.12154}
 
 \bibitem[\citeproctext]{ref-schaefer_reproductive_2005}
-Schaefer, K. M., D. W. Fuller, and N. Miyabe. 2005. {``Reproductive
-Biology of Bigeye Tuna (It Thunnus Obesus) in the Eastern and Central
-Pacific Ocean.''} 23(1). 35p. {IATTC} Bulletin.
+Schaefer, K. M., Fuller, D. W., \& Miyabe, N. (2005). \emph{Reproductive
+biology of bigeye tuna ({\emph{Thunnus obesus}}) in the eastern and
+central pacific ocean} (No. 23(1). 35p.). {IATTC} Bulletin.
 
 \bibitem[\citeproctext]{ref-schaefer_movements_2015}
-Schaefer, K., D. Fuller, J. Hampton, S. Caillot, B. Leroy, and D. Itano.
-2015. {``Movements, Dispersion, and Mixing of Bigeye Tuna (It Thunnus
-Obesus) Tagged and Released in the Equatorial Central Pacific Ocean,
-with Conventional and Archival Tags.''} \emph{Fisheries Research} 161:
-336--55.
+Schaefer, K., Fuller, D., Hampton, J., Caillot, S., Leroy, B., \& Itano,
+D. (2015). Movements, dispersion, and mixing of bigeye tuna
+({\emph{Thunnus obesus}}) tagged and released in the equatorial central
+pacific ocean, with conventional and archival tags. \emph{Fisheries
+Research}, \emph{161}, 336--355.
 
 \bibitem[\citeproctext]{ref-scutt_phillips_quantifying_2022}
-Scutt Phillips, J, J Lehodey, J Hampton, I Senina, and S Nicol. 2022.
-{``Quantifying Rates of Mixing in Tagged, {WCPO} Skipjack Tuna.''}
-{WCPFC}-{SC}18-2022/{SA}-{WP}-04. WCPFC.
+Scutt Phillips, J., Lehodey, J., Hampton, J., Senina, I., \& Nicol, S.
+(2022). \emph{Quantifying rates of mixing in tagged, {WCPO} skipjack
+tuna} (No. {WCPFC}-{SC}18-2022/{SA}-{WP}-04). WCPFC.
 
 \bibitem[\citeproctext]{ref-scutt_phillips_individual-based_2018}
-Scutt Phillips, J., A. Sen Gupta, I. Senina, E. Sebille, M. Lange, P.
-Lehodey, Hampton J, and S. Nichol. 2018. {``An Individual-Based Model of
-Skipjack Tuna Katsuwonus Pelamis Movement in the Tropical Pacific
-Ocean.''} \emph{Progress in Oceanography} 164: 63--74.
+Scutt Phillips, J., Sen Gupta, A., Senina, I., Sebille, E., Lange, M.,
+Lehodey, P., J, H., \& Nichol, S. (2018). An individual-based model of
+skipjack tuna katsuwonus pelamis movement in the tropical pacific ocean.
+\emph{Progress in Oceanography}, \emph{164}, 63--74.
 
 \bibitem[\citeproctext]{ref-scutt_phillips_estimation_2026}
-Scutt Phillips, J., I. Senina, and L. Bonin. 2026. {``Estimation of Tag
-Mixing Periods for Teh 2026 {WCPO} Tuna Stock Assessments.''}
-{WCPFC}-{SC}22-2026-{SA}-{IP}-10. WCPFC.
+Scutt Phillips, J., Senina, I., \& Bonin, L. (2026). \emph{Estimation of
+tag mixing periods for the 2026 {WCPO} tuna stock assessments} (No.
+{WCPFC}-{SC}22-2026-{SA}-{IP}-10). WCPFC.
 
 \bibitem[\citeproctext]{ref-senina_seapodym_2020}
-Senina, I, P. Lehodey, S Nicol, J Scutt Phillips, and J Hampton. 2020.
-{``{SEAPODYM}: Revisiting Bigeye Reference Model with Conventional
-Tagging Data.''} {WCPFC}-{SC}16-2020/{EB}-{IP}-05. WCPFC.
-
-\bibitem[\citeproctext]{ref-sun_reproductive_2006}
-Sun, C-L., S-L. Chu, and S-Z. Yeh. 2006. {``Reproductive Biology of
-Bigeye Tuna in the Western and Central Pacific Ocean.''}
-{WCPFC}-{SC}2-2006/{BI}-{WP}-01. Manila, Philippines, 7-18 August 2006:
+Senina, I., Lehodey, P., Nicol, S., Scutt Phillips, J., \& Hampton, J.
+(2020). \emph{{SEAPODYM}: Revisiting bigeye reference model with
+conventional tagging data} (No. {WCPFC}-{SC}16-2020/{EB}-{IP}-05).
 WCPFC.
 
+\bibitem[\citeproctext]{ref-sun_reproductive_2006}
+Sun, C.-L., Chu, S.-L., \& Yeh, S.-Z. (2006). \emph{Reproductive biology
+of bigeye tuna in the western and central pacific ocean} (No.
+{WCPFC}-{SC}2-2006/{BI}-{WP}-01). WCPFC.
+
 \bibitem[\citeproctext]{ref-teears_background_2026}
-Teears, T. 2026. {``Background Analyses and Data Inputs for the 2026
-{WCPO} Yellowfin and Bigeye Tuna Stock Assessment.''}
-{WCPFC}-{SC}22-2026-{SA}-{IP}03. WCPFC.
+Teears, T. (2026). \emph{Background analyses and data inputs for the
+2026 {WCPO} yellowfin and bigeye tuna stock assessment} (No.
+{WCPFC}-{SC}22-2026-{SA}-{IP}03). WCPFC.
 
 \bibitem[\citeproctext]{ref-teears_stock_2024}
-Teears, T., C Castillo Jordán, N Davies, J. Day, J. Hampton, A.
-Magnusson, T. Peatman, et al. 2024. {``Stock Assessment of South Pacific
-Albacore: 2024.''} {WCPFC}-{SC}20-2024/{SA}-{WP}-02-Rev 2. WCPFC.
+Teears, T., Castillo Jordán, C., Davies, N., Day, J., Hampton, J.,
+Magnusson, A., Peatman, T., Pilling, G., Xu, H., Vidal, T., Williams,
+P., \& Hamer, P. (2024). \emph{Stock assessment of south pacific
+albacore: 2024} (No. {WCPFC}-{SC}20-2024/{SA}-{WP}-02-Rev 2). WCPFC.
 
 \bibitem[\citeproctext]{ref-teears_stock_2025}
-Teears, T, N Davies, P Hamer, A Magnusson, T Peatman, J Scutt Phillips,
-T Vidal, and J Hampton. 2025. {``Stock Assessment of Skipjack Tuna in
-the Western and Central Pacific Ocean: 2025 (Rev 3).''}
-{WCPFC}-{SC}21-2025/{SA}-{WP}-02\_rev\_3. WCPFC.
-\url{https://meetings.wcpfc.int/node/26679}.
+Teears, T., Davies, N., Hamer, P., Magnusson, A., Peatman, T., Scutt
+Phillips, J., Vidal, T., \& Hampton, J. (2025). \emph{Stock assessment
+of skipjack tuna in the western and central pacific ocean: 2025 (rev 3)}
+(No. {WCPFC}-{SC}21-2025/{SA}-{WP}-02\_rev\_3). WCPFC.
+\url{https://meetings.wcpfc.int/node/26679}
 
 \bibitem[\citeproctext]{ref-teears_cpue_2023}
-Teears, T., J. Day, J. Hampton, A. Magnusson, S. McKechnie, T. Peatman,
-J. Scutt Phillips, P. Williams, and P. Hamer. 2023. {``{CPUE} Analysis
-and Data Inputs for the 2023 Bigeye and Yellowfin Tuna Assessments in
-the {WCPO}.''} {WCPFC}-{SC}19-2023/{SA}-{WP}-03. WCPFC.
+Teears, T., Day, J., Hampton, J., Magnusson, A., McKechnie, S., Peatman,
+T., Scutt Phillips, J., Williams, P., \& Hamer, P. (2023). \emph{{CPUE}
+analysis and data inputs for the 2023 bigeye and yellowfin tuna
+assessments in the {WCPO}} (No. {WCPFC}-{SC}19-2023/{SA}-{WP}-03).
+WCPFC.
 
 \bibitem[\citeproctext]{ref-thorson_model-based_2017}
-Thorson, J. T., K. F. Johnson, R. D. Methot, and I. G. Taylor. 2017.
-{``Model-Based Estimates of Effective Sample Size in Stock Assessment
-Models Using the Dirichlet-Multinomial Distribution.''} \emph{Fisheries
-Research} 192: 84--93.
+Thorson, J. T., Johnson, K. F., Methot, R. D., \& Taylor, I. G. (2017).
+Model-based estimates of effective sample size in stock assessment
+models using the dirichlet-multinomial distribution. \emph{Fisheries
+Research}, \emph{192}, 84--93.
 
 \bibitem[\citeproctext]{ref-thorson_geostatistical_2015}
-Thorson, James T., Andrew O. Shelton, Eric J. Ward, and Hans J. Skaug.
-2015. {``Geostatistical Delta-Generalized Linear Mixed Models Improve
-Precision for Estimated Abundance Indices for West Coast
-Groundfishes.''} \emph{Ices Journal of Marine Science} 72 (5):
-1297--1310. \url{https://doi.org/10.1093/icesjms/fsu243}.
+Thorson, J. T., Shelton, A. O., Ward, E. J., \& Skaug, H. J. (2015).
+Geostatistical delta-generalized linear mixed models improve precision
+for estimated abundance indices for west coast groundfishes. \emph{Ices
+Journal of Marine Science}, \emph{72}(5), 1297--1310.
+\url{https://doi.org/10.1093/icesjms/fsu243}
 
 \bibitem[\citeproctext]{ref-tremblay-boyer_stock_2017}
-Tremblay-Boyer, L, S McKechnie, G Pilling, and J Hampton. 2017. {``Stock
-Assessment of Yellowfin Tuna in the Western and Central Pacific
-Ocean.''} {WCPFC}-{SC}13-2017/{SA}-{WP}-06. Rarotonga, Cook Islands,
-9-17 August 2017: WCPFC.
+Tremblay-Boyer, L., McKechnie, S., Pilling, G., \& Hampton, J. (2017).
+\emph{Stock assessment of yellowfin tuna in the western and central
+pacific ocean.} (No. {WCPFC}-{SC}13-2017/{SA}-{WP}-06). WCPFC.
 
 \bibitem[\citeproctext]{ref-vidal_data_2026}
-Vidal, T., F. Heather, F Satria, V. Hai, S Barcoma, N Duong, L Sadiyah,
-et al. 2026. {``Data Improvements in the West Pacific East Asia ({WPEA})
-Region of {WCPFC}.''} {WCPFC}-{SC}22-2026/{ST}-{IP}-05. WCPFC.
+Vidal, T., Heather, F., Satria, F., Hai, V., Barcoma, S., Duong, N.,
+Sadiyah, L., Anas, M., Januar, A., Rachmadi, D., \& Suadela, P. (2026).
+\emph{Data improvements in the west pacific east asia ({WPEA}) region of
+{WCPFC}} (No. {WCPFC}-{SC}22-2026/{ST}-{IP}-05). WCPFC.
 
 \bibitem[\citeproctext]{ref-vincent_stock_2020}
-Vincent, Matthew, Nicholas Ducharme-Barth, Paul Hamer, John Hampton,
-Peter Williams, and Graham Pilling. 2020. {``Stock Assessment of
-Yellowfin Tuna in the Western and Central Pacific Ocean.''}
-\{WCPFC\}-\{SC\}16-2020/\{SA\}-\{WP\}-04-Rev2. WCPFC.
+Vincent, M., Ducharme-Barth, N., Hamer, P., Hampton, J., Williams, P.,
+\& Pilling, G. (2020). \emph{Stock assessment of yellowfin tuna in the
+western and central pacific ocean} {[}WCPFC-SC16-2020/SA-WP-04-Rev2{]}.
+WCPFC.
 
 \bibitem[\citeproctext]{ref-vincent_incorporation_2018}
-Vincent, M, G Pilling, and J Hampton. 2018. {``Incorporation of Updated
-Growth Information Within the 2017 {WCPO} Bigeye Stock Assessment Grid,
-and Examination of the Sensitivity of Estimates to Alternative Model
-Spatial Structures.''} {WCPFC}-{SC}14-2018/ {SA}-{WP}-03. Oceanic
-Fisheries Programme, The Pacific Community.
+Vincent, M., Pilling, G., \& Hampton, J. (2018). \emph{Incorporation of
+updated growth information within the 2017 {WCPO} bigeye stock
+assessment grid, and examination of the sensitivity of estimates to
+alternative model spatial structures} (No. {WCPFC}-{SC}14-2018/
+{SA}-{WP}-03). Oceanic Fisheries Programme, The Pacific Community.
 
 \bibitem[\citeproctext]{ref-wakefield_project_2026}
-Wakefield, C., J. Widdrington, K. Krusic-Golub, A Pons, P. Reis-Santos,
-B. Gillanders, J. Farley, S Nicol, and P. Hamer. 2026. {``Project 129
-Update: Building an Age-Length Data Stream for Tuna Assessments.''}
-{WCPFC}-{SC}22-2022/{SA}-{WP}-12. WCPFC.
+Wakefield, C., Widdrington, J., Krusic-Golub, K., Pons, A., Reis-Santos,
+P., Gillanders, B., Farley, J., Nicol, S., \& Hamer, P. (2026).
+\emph{Project 129 update: Building an age-length data stream for tuna
+assessments} (No. {WCPFC}-{SC}22-2026/{SA}-{WP}-12). WCPFC.
 
 \bibitem[\citeproctext]{ref-williams_overview_2023}
-Williams, P., and T. Ruaia. 2023. {``Overview of Tuna Fisheries in the
-{Western} and {Central} {Pacific} {Ocean}, Including Economic Conditions
-- 2022.''}
+Williams, P., \& Ruaia, T. (2023). \emph{Overview of tuna fisheries in
+the {Western} and {Central} {Pacific} {Ocean}, including economic
+conditions - 2022}.
 
 \end{CSLReferences}
 

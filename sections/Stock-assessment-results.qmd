@@ -5,6 +5,8 @@ Stock assessment results {#sec-stock-assess-results}
 
 Of the 100 ensemble model runs, 80 met the gradient convergence criteria $\leq 1.0 \times 10^{-4}$ of which 62 had positive definite Hessians. The 80 models were retained in the ensemble for management advice; of the 20 models that failed ten failed the convergence gradient criterion and ten were incomplete. For the 62 positive definite Hessian fits, 100 correlated inverse-Hessian draws were propagated jointly by the multivariate delta method; 18 Near-PDH fits contribute structural uncertainty only. Estimation uncertainty is therefore incorporated into the statistics for management advice, but is not complete for all models.
 
+The retained models and uncertainty results can be explored in the [interactive HTML viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html).
+
 The planned and retained model numbers by uncertainty category are shown in Figure @fig-ensemble-design-retention. The were more models retained with the higher two $\tau$ values (less weight of tag data), and more with reporting rates excluded in the mixing period, otherwise retained models were well dispersed across different levels of each uncertainty component. The bootstrap sampling for the estimation uncertainty accounted for these difference.
 
 The influence of each uncertainty component on the management quantities across the ensemble of models is displayed in Figure @fig-management-uncertainty-continuous-axes-steep-M, Figure @fig-management-uncertainty-discrete-axes-tau-mix and Figure @fig-management-uncertainty-discrete-axes-tag-rep-effcrp. Natural mortality and tag mixing were most influential on the spread of the ensemble.

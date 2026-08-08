@@ -2,6 +2,8 @@
 
 [![Render Quarto PDF](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/render-quarto.yml/badge.svg?branch=main)](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/render-quarto.yml)
 
+[Open WCPFC-SC22-2026-SA-WP-06 in the browser](https://pacificcommunity.github.io/ofp-sam-bet-2026-report/WCPFC-SC22-2026-SA-WP-06.pdf)
+
 This repository is the editable, modular Quarto source for the 2026 bigeye tuna
 assessment report. The source is deliberately self-contained: all chapter
 files, figures, tables and bibliography needed to render the report are stored
@@ -40,3 +42,4 @@ The rendered PDF and retained LaTeX are written to
 - `tables/` contains report tables.
 - `figures/` contains the referenced figure assets.
 - `references/references.bib` contains the bibliography.
+- `references/apa.csl` contains the report's reference style.

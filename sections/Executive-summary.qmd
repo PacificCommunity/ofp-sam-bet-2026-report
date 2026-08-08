@@ -9,7 +9,7 @@ This paper describes the 2026 stock assessment of bigeye tuna *Thunnus obesus* i
 
 -   Stricter size composition data filtering and enhanced reweighting approach [@peatman_analysis_2026]
 
--   Global sdmTMB CPUE analysis used for regional scaling, and new MFCL regional scaling penalty [@teears_background_2026; @davies_developments_2026-1]
+-   Global sdmTMB CPUE analysis used for regional scaling, and new MFCL regional scaling penalty [@teears_background_2026; @davies_developments_2026]
 
 -   Separate sdmTMB CPUE analyses for each model region (x 10), removing the need for shared selectivity and catchability among CPUE indices (PAW and yellowfin tuna peer review recommendation) [@hamer_summary_2026; @teears_background_2026; @punt_independent_2023]
 

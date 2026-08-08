@@ -56,7 +56,7 @@
 
 
 
-![Stepwise model changes for depletion, recruitment, spawning potential and fishing mortality. The individual stepwise model changes can be explored in the [interactive HTML viewer](https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise/releases/latest/download/interactive-model-viewer.html).](figures/stepwise_panel.png){#fig-stepwise-panel width=100%}
+![Stepwise model changes for depletion, recruitment, spawning potential and fishing mortality. The individual stepwise model changes can be explored in the [interactive HTML viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html).](figures/stepwise_panel.png){#fig-stepwise-panel width=100%}
 
 
 
