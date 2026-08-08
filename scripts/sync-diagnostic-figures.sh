@@ -97,14 +97,15 @@ manifest_path="$report_root/figures_new/UPSTREAM_DIAGNOSTIC.txt"
 {
   printf 'source_url=%s\n' "$diagnostic_pages_root"
   printf 'source_commit=%s\n' "$diagnostic_source_sha"
-  printf 'synced_utc=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
   for mapping in "${asset_map[@]}"; do
     destination_path=${mapping#*|}
-    sha256sum "$report_root/$destination_path"
+    checksum=$(sha256sum "$report_root/$destination_path" | cut -d' ' -f1)
+    printf '%s  %s\n' "$checksum" "$destination_path"
   done
   for mapping in "${data_map[@]}"; do
     destination_path=${mapping#*|}
-    sha256sum "$report_root/$destination_path"
+    checksum=$(sha256sum "$report_root/$destination_path" | cut -d' ' -f1)
+    printf '%s  %s\n' "$checksum" "$destination_path"
   done
 } > "$manifest_path"
 

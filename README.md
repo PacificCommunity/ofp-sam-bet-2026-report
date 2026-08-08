@@ -73,6 +73,7 @@ The diagnostic repository's Pages workflow can also send a
 `diagnostic-report-updated` repository dispatch after deployment. Configure its
 `REPORT_REPO_DISPATCH_TOKEN` secret with permission to dispatch workflows in
 this repository; the Rev.01 workflow then synchronizes the published assets,
-commits changed diagnostic assets and rebuilds both PDFs. The no-tagging and
-alternative-movement appendix and its figures are retained from the supplied
-Word note.
+commits changed diagnostic assets and rebuilds both PDFs. A six-hour scheduled
+check provides a token-free fallback and only commits when the pinned source
+commit or synchronized files change. The no-tagging and alternative-movement
+appendix and its figures are retained from the supplied Word note.

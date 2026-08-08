@@ -1,28 +1,27 @@
-source_url=../ofp-sam-bet-2026-diagnostic/diagnostic-report-output
+source_url=https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic
 source_commit=96f9a07b2b881a8e31fe98de58b8f997fe38d6ac
-synced_utc=2026-08-08T19:45:22Z
-166dfb4bb65d00bd91a29abb3f1ae188752943d39e9762d9676b90511cefb8e7  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/aspm-comparison.png
-8a16e26c451a9f1b9df2f8398f933e08b44616d006d3a3f980708cc94f7a90cb  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/cpue-fit-residuals.png
-41675d3f91c3a3b38232ca6c5782671f5630a3db9267e012df67b527fd9ed13c  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/diagnostic-population-dynamics.png
-ad4b0ce3a23d0b082c8b557c38f022d1dbabc0a88a7da01bcaf2d5fccca4a700  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/hessian-parameter-scales.png
-968c27bf23a5f4f9199e14dad55146ce7c43285e71d070f7759cb9201eb8696d  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/likelihood-profile-caal-region-detail.png
-9d4cef53825871befcd4971fcafba5f953cf2bfdfd4464b1c0d46915b54fe7a9  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/likelihood-profile-components.png
-263b6b03eb4ad43df8f5583013eca34a96843ae0ebdb45a8e78a24c437c3ff80  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/likelihood-profile-cpue-detail.png
-6cf6b3e5304cc52e46729126cba5fb102a480f61e0cd4121a4d62980cd88c7bf  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/likelihood-profile-lf-detail.png
-f84ec980921bad23fbe9c4e9aa3d2bbb22d362ccb8abe91355fbefe4c34fc2ab  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/likelihood-profile-penalty-detail.png
-421a181d1122a376605e703dc6fa48d7eeb70972bddd16304b954f0b2b6865da  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/likelihood-profile-tag-detail.png
-b028e3c7d3d4b54a13fa248a04475f197b863cf6d989e6e49e691bc54a004a26  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/retrospective-diagnostics.png
-c328a5711af96affda50c30a5cb480ace599ad884f6aec1d8361920f9b06bc6f  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/self-test-diagnostics.png
-c7ea9ea6182bcbd58c97d9826309d8e73be0de37ef6cc7b3311fcf6bf906b51b  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/age-data-fit-by-region.png
-eb5221d22cc7198dba310e8c7d63ee8ecc073a53034dd85da4ba2939fdd704dd  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/f-juvenile-adult-by-area-2col.png
-ba76275355a6222ee5a8fd5bf756d0b5eb32f5a0e7f4449983b2b5880d2951b0  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/fishery-process.png
-0c9d7c9b902acd1c55356b4ff90c046e8daedf37fa8752454e7886e122895a9a  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/fishery-selectivity-length.png
-8e0cc64bde38e6d04eda5597cde274c56b1c9ec1c9da58465e298c5a45b54900  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/growth-curve.png
-74b12fce9ac344223014187b69f91b526836de6adbf4709946b67c74a5366e54  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/length-frequency-fit-by-fishery.png
-9251311f6fdec2fae8a8fb8ca1d1f36cfad66d167d440a4a501a4ecea889109d  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/recruitment-by-area-2col.png
-73c774045f804bc454bb06a4ede49dbffcf59d3d1454f700013e479949e43bf3  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/region-map.png
-57e0ddb4f20a069d684b43532aa17834449f0d855a307b6f81c1bc8a5d5e1b5d  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/regional-movement.png
-161afd0ba3764dc2261a23fe02d17c1b9df73369723cdd172de852ca18ccbc8a  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/tag-attrition-by-program.png
-610f84ed9d63f4cd2f42e719c6e02a4adf4d3cfabe0e1c730fd5d1ebf6a79f6e  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/tag-reporting-rates-active.png
-1e75812c074e9be51c80d41a414fbeeb467a8915704f5520a308a508242c56cd  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/figures_new/total-biomass-with-without-fishing-2col.png
-c1d12c0ef0ad997a1ec5d109f55a9541fe9fa2f1b2512537caa4a92e1db92168  /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/tables/source/tag-reporting-rate-groups.csv
+f880ea6905a4d7597da21d062d305271e43772e06f685a2710d9252920cf64d4  figures_new/aspm-comparison.png
+3760dd1dd9b63f822c27867616c6de473fa9fad6a1c55dce85f54ea2492240b9  figures_new/cpue-fit-residuals.png
+1d7d212df7145bf32dbf0540c0be552b90938e8c1359e02a8fa3b911174474b9  figures_new/diagnostic-population-dynamics.png
+ca54776674711c333ad874cd83fd914ecf50f6719813170afcbcb61e7ea956ad  figures_new/hessian-parameter-scales.png
+89243373feaf9302fb1289864c4979523de7e20f6d2fd9a5dca786c00731e16c  figures_new/likelihood-profile-caal-region-detail.png
+600aac82a0a61c0972d9f116a9caea36e772f6b754916e113c2ca2dfb6246391  figures_new/likelihood-profile-components.png
+a3bee7d99b68e7dc995e7012d698e3758166313b7a5f5919f3f2d25f2efdbf90  figures_new/likelihood-profile-cpue-detail.png
+7e18a02aa06f39f20eebfe66f73efdd152794a95e96ab47b8f0fb83871e89f88  figures_new/likelihood-profile-lf-detail.png
+1291a4a39302c1b3bba555e402eee28d5f4ab09bf104b04c083440ff2aa6440a  figures_new/likelihood-profile-penalty-detail.png
+31c9ccbd2f8601b320fb17320c6dd4f71db998faa923b97fe398347a63a76f73  figures_new/likelihood-profile-tag-detail.png
+5c033d3a81c8d972687aa55b220cb9cb6eb16d46f2c113eb5a6a34042b6bf7c6  figures_new/retrospective-diagnostics.png
+df2de679809f2a38b8a3f952049a8f50512041073b0fecd65ab8878ce83241dc  figures_new/self-test-diagnostics.png
+acd9e85a72739c41b3547988ec7ad58e594d41bc2a387a07f2f167ec62e479a2  figures_new/age-data-fit-by-region.png
+df185deb7f88ec87533617cf58118f005a2b525761d965d2bd75ee67704baae6  figures_new/f-juvenile-adult-by-area-2col.png
+d44ba9921a17c82eb4a8d28e9b93c315f695240986898b773c6b9d03dbea86b6  figures_new/fishery-process.png
+9a0148760f326c1b9c7ed25a38ed211e90bd95b5b8e10b0f76c4ef9dc1ab2704  figures_new/fishery-selectivity-length.png
+44a0f3068539d9f6086037372d3881fc3ba6a2d2e8a35e72cfb6f44ebc33cd87  figures_new/growth-curve.png
+bc87fddd2e6bef1ce08fc454a414380b55be32d92c9dd24764fda47cc8a14e0c  figures_new/length-frequency-fit-by-fishery.png
+47c513801db7ba6e542c330c456dfdaca4b1782ebc61267505977a012e7715a0  figures_new/recruitment-by-area-2col.png
+987c8000ca90b906502713de402b2c09c599f99b590fa14ccd0596b85e29f12c  figures_new/region-map.png
+ee318a041fe0ad5a3906ef12d25e6d700cafc14fc989bc624f01bc88b4501211  figures_new/regional-movement.png
+0a5c99ff17b6093ac074a45d925fcad7a70b70a78275cf49b6c1116de7be2c3a  figures_new/tag-attrition-by-program.png
+5039d3677ccba440c07620ad9a914fa1585b48c307716cb4d1043a9a15bc3587  figures_new/tag-reporting-rates-active.png
+a077fa1cb0f1c575faf3e8afe32ec726a65110c5d361ce09bba31eee818ddefe  figures_new/total-biomass-with-without-fishing-2col.png
+c1d12c0ef0ad997a1ec5d109f55a9541fe9fa2f1b2512537caa4a92e1db92168  tables/source/tag-reporting-rate-groups.csv

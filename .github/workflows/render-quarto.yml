@@ -2,6 +2,8 @@ name: Render Quarto PDF
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
   repository_dispatch:
     types:
       - diagnostic-report-updated
@@ -46,11 +48,11 @@ jobs:
 
     steps:
       - name: Check out repository
-        if: github.event_name != 'repository_dispatch'
+        if: github.event_name != 'repository_dispatch' && github.event_name != 'schedule'
         uses: actions/checkout@v4
 
       - name: Check out Rev.01 for upstream synchronization
-        if: github.event_name == 'repository_dispatch'
+        if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
         uses: actions/checkout@v4
         with:
           ref: rev1
@@ -74,20 +76,27 @@ jobs:
         run: git fetch --no-tags origin draft:refs/remotes/origin/draft
 
       - name: Synchronize published diagnostic-report figures
-        if: github.event_name == 'repository_dispatch'
+        if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
         shell: bash
         env:
-          DIAGNOSTIC_SOURCE_SHA: ${{ github.event.client_payload.sha }}
+          DISPATCH_SOURCE_SHA: ${{ github.event.client_payload.sha }}
         run: |
+          if [[ -n "$DISPATCH_SOURCE_SHA" ]]; then
+            DIAGNOSTIC_SOURCE_SHA="$DISPATCH_SOURCE_SHA"
+          else
+            DIAGNOSTIC_SOURCE_SHA=$(git ls-remote \
+              https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic.git \
+              refs/heads/main | cut -f1)
+          fi
+          test -n "$DIAGNOSTIC_SOURCE_SHA"
+          echo "DIAGNOSTIC_SOURCE_SHA=$DIAGNOSTIC_SOURCE_SHA" >> "$GITHUB_ENV"
           bash scripts/sync-diagnostic-figures.sh \
             https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic \
             "$DIAGNOSTIC_SOURCE_SHA"
 
       - name: Persist synchronized diagnostic assets on Rev.01
-        if: github.event_name == 'repository_dispatch'
+        if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
         shell: bash
-        env:
-          DIAGNOSTIC_SOURCE_SHA: ${{ github.event.client_payload.sha }}
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
