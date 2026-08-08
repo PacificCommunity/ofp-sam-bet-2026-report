@@ -62,7 +62,7 @@ Fishery & Name & Region & Data group & Tag-recapture group \\
 \setlength{\tabcolsep}{2pt}
 \renewcommand{\arraystretch}{1.05}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.06\linewidth}>{\raggedright\arraybackslash}p{0.14\linewidth}>{\raggedright\arraybackslash}p{0.16\linewidth}>{\raggedright\arraybackslash}p{0.12\linewidth}>{\raggedright\arraybackslash}p{0.28\linewidth}>{\raggedright\arraybackslash}p{0.09\linewidth}@{}}
-\caption{Tag-reporting-rate groups, release coverage and estimation status. Pooled denotes groups shared across the stated release programmes.}\label{tbl-tag-definitions}\\
+\caption{Tag-reporting-rate groups, release coverage and estimation status. For groups spanning RTTP and PTTP, the same group number is also assigned to the extra pooled row of the MFCL reporting-rate matrix; pooled is not a tag programme.}\label{tbl-tag-definitions}\\
 \toprule
 Group & Tag programme & Fisheries & Release groups & Release years & Estimated \\
 \midrule
@@ -73,9 +73,9 @@ Group & Tag programme & Fisheries & Release groups & Release years & Estimated \
 \endhead
 \bottomrule
 \endlastfoot
-1 & RTTP/\allowbreak{}PTTP/\allowbreak{}pooled & 1--2, 4--10 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & Yes \\
-2 & RTTP/\allowbreak{}PTTP/\allowbreak{}pooled & 3 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & No \\
-3 & RTTP/\allowbreak{}PTTP/\allowbreak{}pooled & 11 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & No \\
+1 & RTTP/\allowbreak{}PTTP & 1--2, 4--10 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & Yes \\
+2 & RTTP/\allowbreak{}PTTP & 3 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & No \\
+3 & RTTP/\allowbreak{}PTTP & 11 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & No \\
 4 & RTTP & 12 & 1--15 & 1989--1992 & No \\
 5 & RTTP & 13 & 1--15 & 1989--1992 & No \\
 6 & RTTP & 14--18, 21--22 & 1--15 & 1989--1992 & Yes \\
@@ -84,13 +84,13 @@ Group & Tag programme & Fisheries & Release groups & Release years & Estimated \
 9 & RTTP & 24 & 1--15 & 1989--1992 & No \\
 10 & RTTP & 25, 27 & 1--15 & 1989--1992 & Yes \\
 11 & RTTP & 26, 28 & 1--15 & 1989--1992 & No \\
-12 & PTTP/\allowbreak{}pooled & 12--13 & 16--61 & 2006--2013, 2015--2021 & No \\
-13 & PTTP/\allowbreak{}pooled & 14--18, 21--22 & 16--61 & 2006--2013, 2015--2021 & Yes \\
-14 & PTTP/\allowbreak{}pooled & 19--20 & 16--61 & 2006--2013, 2015--2021 & Yes \\
-15 & PTTP/\allowbreak{}pooled & 23 & 16--61 & 2006--2013, 2015--2021 & No \\
-16 & PTTP/\allowbreak{}pooled & 24 & 16--61 & 2006--2013, 2015--2021 & No \\
-17 & PTTP/\allowbreak{}pooled & 25, 27 & 16--61 & 2006--2013, 2015--2021 & Yes \\
-18 & PTTP/\allowbreak{}pooled & 26, 28 & 16--61 & 2006--2013, 2015--2021 & Yes \\
+12 & PTTP & 12--13 & 16--61 & 2006--2013, 2015--2021 & No \\
+13 & PTTP & 14--18, 21--22 & 16--61 & 2006--2013, 2015--2021 & Yes \\
+14 & PTTP & 19--20 & 16--61 & 2006--2013, 2015--2021 & Yes \\
+15 & PTTP & 23 & 16--61 & 2006--2013, 2015--2021 & No \\
+16 & PTTP & 24 & 16--61 & 2006--2013, 2015--2021 & No \\
+17 & PTTP & 25, 27 & 16--61 & 2006--2013, 2015--2021 & Yes \\
+18 & PTTP & 26, 28 & 16--61 & 2006--2013, 2015--2021 & Yes \\
 19 & JPTP & 1 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes \\
 20 & JPTP & 2, 4--10 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes \\
 21 & JPTP & 3 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
@@ -103,6 +103,56 @@ Group & Tag programme & Fisheries & Release groups & Release years & Estimated \
 28 & JPTP & 24 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
 29 & JPTP & 25, 27 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes \\
 30 & JPTP & 26, 28 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
+\end{longtable}
+\endgroup
+
+\clearpage
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.03}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.29\linewidth}>{\raggedright\arraybackslash}p{0.61\linewidth}>{\raggedleft\arraybackslash}p{0.05\linewidth}@{}}
+\caption{Estimated parameters that MFCL flagged as on or close to a bound in the diagnostic model. Parameter names are descriptive rather than MFCL internal variable names.}\label{tbl-parameter-bounds}\\
+\toprule
+Parameter type & Bound location(s) & Number \\
+\midrule
+\endfirsthead
+\toprule
+Parameter type & Bound location(s) & Number \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+Movement diffusion coefficient & Lower bound (0); 29 season--movement-path coefficients & 29 \\
+Regional recruitment-distribution deviation & Lower bound (-3); Region 2 in 1980 Q1, 1982 Q1--Q2, 1984 Q1 and Q4, and 1985 Q1 & 6 \\
+Fishery selectivity spline coefficient & Lower bound (-20); spline node 5 for fishery 16 (PL.ALL.2) and fishery 24 (PL.ALL.WEST.3) & 2 \\
+Tag reporting rate & Upper bound (0.99); reporting-rate group 23 (JPTP, fisheries 12--13) & 1 \\
+\end{longtable}
+
+\vspace{0.7em}
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedleft\arraybackslash}p{0.08\linewidth}@{}}
+\caption{Strongest estimated-parameter correlations in the diagnostic model ($|r| > 0.95$), calculated from the inverse Hessian.}\label{tbl-parameter-correlations}\\
+\toprule
+Parameter 1 & Parameter 2 & Correlation \\
+\midrule
+\endfirsthead
+\toprule
+Parameter 1 & Parameter 2 & Correlation \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+Mean length of oldest age class & von Bertalanffy growth-rate parameter ($\kappa$) & -0.9997 \\
+Mean length of youngest age class & von Bertalanffy growth-rate parameter ($\kappa$) & -0.9976 \\
+Mean length of youngest age class & Mean length of oldest age class & 0.9965 \\
+Mean length of oldest age class & Age-dependency parameter for the standard deviation of length at age & -0.9868 \\
+von Bertalanffy growth-rate parameter ($\kappa$) & Age-dependency parameter for the standard deviation of length at age & 0.9868 \\
+Mean length of youngest age class & Age-dependency parameter for the standard deviation of length at age & -0.9856 \\
+Regional recruitment-distribution deviation, Region 1 (2024 Q3) & Regional recruitment-distribution deviation, Region 5 (2024 Q3) & -0.9773 \\
+Regional recruitment-distribution deviation, Region 1 (2024 Q1) & Regional recruitment-distribution deviation, Region 5 (2024 Q1) & -0.9611 \\
+Regional recruitment-distribution deviation, Region 4 (1965 Q4) & Regional recruitment-distribution deviation, Region 5 (1965 Q4) & -0.9603 \\
 \end{longtable}
 \endgroup
 

@@ -94,7 +94,9 @@ Diagnostic analysis for the diagnostic model {#sec-diagnostics}
 
 ### Convergence {#sec-diag-convergence}
 
-The diagnostic model reach a gradient of 0.0001, and a positive definite Hessian (PDH) was achieved. Parameters on bound - add Parameter correlation - add
+The diagnostic model reached a maximum gradient component of $9.68 \times 10^{-5}$ and had a positive-definite Hessian, with all 1,997 eigenvalues positive. MFCL flagged 38 estimated parameters as on or close to a bound (@tbl-parameter-bounds). Most were movement diffusion coefficients estimated effectively as zero. The other bound cases were six regional recruitment-distribution deviations, two selectivity spline coefficients and one tag-reporting-rate parameter. These cases did not prevent a positive-definite Hessian.
+
+The inverse-Hessian correlation matrix contained 22 parameter pairs with $|r| > 0.90$, involving 29 unique parameters; nine pairs had $|r| > 0.95$. The nine strongest pairs are shown in @tbl-parameter-correlations. Six involved the jointly estimated mean and standard deviation of length at age, and three involved regional recruitment distribution in the same quarter. The remaining 13 correlations (0.90--0.95 in absolute value) were also confined to growth-variability parameters and regional recruitment-distribution deviations.
 
 ### Jitter {#sec-diag-jitter}
 
