@@ -60,6 +60,15 @@ jobs:
         shell: bash
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
+      - name: Install tracked-change tooling
+        shell: bash
+        run: |
+          if ! command -v latexdiff >/dev/null 2>&1; then
+            apt-get update
+            apt-get install --yes --no-install-recommends latexdiff
+          fi
+          latexdiff --version
+
       - name: Fetch preserved draft baseline
         shell: bash
         run: git fetch --no-tags origin draft:refs/remotes/origin/draft
