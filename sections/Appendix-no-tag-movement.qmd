@@ -1,0 +1,68 @@
+No-tagging and alternative-movement model comparisons {#sec-appendix-no-tag-movement}
+--------------------------------------------------------------------------
+
+The current bigeye tuna diagnostic model includes tagging data categorised into 98 tag-release groups modelled using a negative-binomial likelihood with assumed overdispersion of $\tau=2$ (variance of tag recaptures equals twice the expected value). Tagging data inform the model about movement among the five model regions, fishing mortality and population size. However, several critical assumptions are required, including: (1) tagged fish are fully mixed with the untagged population in the release region following a number of pre-specified initial post-release periods designated as "mixing periods"; and (2) recaptured tagged fish are reported, and hence available for inclusion in the model, with estimated probabilities conditioned on reporting rates estimated for some fisheries from tag-seeding experiments [@peatman_analysis_2026-2]. Other treatments correct the tagging data for variable initial survival of tagged fish and movement outside the assessment area (the Pacific Ocean west of 150$^\circ$W) [@peatman_analysis_2026-1].
+
+To determine the impact of tagging data on the assessment results, three alternative models were developed and compared with the diagnostic model:
+
+-   **5R-MFCL:** the diagnostic model with tagging data removed and the movement parameters estimated in the MULTIFAN-CL diagnostic model retained as fixed parameters. This removes the direct influence of tagging data on fishing mortality and population size while retaining their estimated movement information.
+
+-   **5R-SEAP:** a model similar to 5R-MFCL, but with movement parameters supplied by the current reference version of the bigeye tuna SEAPODYM model [@senina_updated_2026].
+
+-   **1R:** a single-region "fleets-as-areas" bigeye tuna model without tagging data [@hampton_investigation_2026].
+
+The fixed movement estimates used by 5R-MFCL and 5R-SEAP are shown in @fig-appendix-mfcl-movement and @fig-appendix-seapodym-movement. The patterns are qualitatively similar, although seasonal variation is evident in some MFCL-estimated movements but is limited in the SEAPODYM estimates. The SEAPODYM estimates vary with age, whereas the MFCL estimates are age-invariant. For example, SEAPODYM estimates that movement from regions 4 and 3 to region 1 increases with age.
+
+\clearpage
+```{=latex}
+\begin{landscape}
+```
+
+![Bigeye tuna movement probabilities estimated in the MFCL diagnostic model. Columns identify donor regions and rows identify recipient regions; the horizontal axes are quarterly age classes. Q1 is dark blue, Q2 orange, Q3 green and Q4 light blue.](figures_new/appendix-mfcl-movement.png){#fig-appendix-mfcl-movement width=100%}
+
+```{=latex}
+\end{landscape}
+```
+\clearpage
+```{=latex}
+\begin{landscape}
+```
+
+![Bigeye tuna movement probabilities from the SEAPODYM reference model. Columns identify donor regions and rows identify recipient regions; the horizontal axes are quarterly age classes. Q1 is dark blue, Q2 orange, Q3 green and Q4 light blue.](figures_new/appendix-seapodym-movement.png){#fig-appendix-seapodym-movement width=100%}
+
+```{=latex}
+\end{landscape}
+```
+\clearpage
+
+Estimates of recruitment, spawning biomass, spawning-biomass depletion and regional spawning-biomass distribution are shown for the diagnostic model (5R-Diag) and the three alternatives in @fig-appendix-no-tag-comparison. Regional-distribution estimates are not available from the single-region model, so the corresponding panel includes the native SEAPODYM distribution for comparison.
+
+Overall, the headline estimates were reasonably consistent across models:
+
+-   **Recruitment (1952--2024):** the 5R-Diag average was 17.3 million fish per quarter. The 5R-MFCL average was 14% higher, 5R-SEAP was almost identical and 1R was 8% lower.
+
+-   **Spawning biomass (1952--2024):** the 5R-Diag average was 597 thousand t. The 5R-MFCL average was 9% higher, 5R-SEAP was 22% lower and 1R was 24% higher.
+
+-   **Spawning-biomass depletion (2020--2024):** the 5R-Diag average was 0.18. The 5R-MFCL average was 9% higher, 5R-SEAP was 15% lower and 1R was 5% higher.
+
+-   **Regional spawning-biomass distribution (1952--2024):** 5R-MFCL was most similar to 5R-Diag. The 5R-SEAP distribution was very similar to native SEAPODYM and placed considerably more spawning biomass in region 1 than did 5R-Diag and 5R-MFCL.
+
+\clearpage
+```{=latex}
+\begin{landscape}
+```
+
+![Comparisons of recruitment (upper left), spawning-biomass depletion (upper right), spawning biomass (lower left) and regional spawning-biomass distribution (lower right). The models are the current five-region diagnostic model (5R-Diag), the five-region model without tagging data and with fixed MFCL movement (5R-MFCL), the five-region model without tagging data and with fixed SEAPODYM movement (5R-SEAP), and the single-region model without tagging data (1R). Native SEAPODYM is included only in the regional-distribution panel.](figures_new/appendix-no-tag-model-comparison.png){#fig-appendix-no-tag-comparison width=100%}
+
+```{=latex}
+\end{landscape}
+```
+\clearpage
+
+### Conclusions {#sec-appendix-no-tag-conclusions}
+
+The key estimates from 5R-Diag and the no-tagging model with the same fixed movement parameters (5R-MFCL) are very similar. This indicates either that tagging data have only a small direct effect on population scaling in the diagnostic model, or that their effect is expressed primarily through movement. Because the tagging-data likelihood profile favours greater population scaling, the second explanation is credible. A likelihood profile of the diagnostic model with movement fixed may help distinguish these explanations.
+
+SEAPODYM estimates somewhat greater movement and mixing than the diagnostic model. In MFCL, tagging observations are aggregated into large regions, making assumptions about within-region mixing sensitive to the spatial distributions of tag releases and fishing effort. SEAPODYM operates at a finer $2^\circ \times 2^\circ$ spatial resolution and analyses tagging data in recapture-conditioned mode, making it less dependent on reporting-rate assumptions. These features provide a case that SEAPODYM movement may be less affected by large-region aggregation and more realistic because environmental drivers are represented explicitly.
+
+Despite the different bases for estimating movement in MFCL and SEAPODYM, and some differences in the movement estimates themselves, the consistency of the headline assessment quantities is reassuring.

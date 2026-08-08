@@ -7,36 +7,34 @@ Of the 100 ensemble model runs, 80 met the gradient convergence criteria $\leq 1
 
 The retained models and uncertainty results can be explored in the [interactive HTML viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html).
 
-The planned and retained model numbers by uncertainty category are shown in Figure @fig-ensemble-design-retention. The were more models retained with the higher two $\tau$ values (less weight of tag data), and more with reporting rates excluded in the mixing period, otherwise retained models were well dispersed across different levels of each uncertainty component. The bootstrap sampling for the estimation uncertainty accounted for these difference.
+The planned and retained model numbers by uncertainty category are shown in @fig-ensemble-design-retention. More models were retained at the two higher $\tau$ values, which assign less weight to tag data, and when reporting-rate adjustments were excluded during the mixing period. Otherwise, retained models were distributed across the levels of each uncertainty component. Equal total model weights prevented these differences in retention from giving greater influence to categories containing more retained models.
 
-The influence of each uncertainty component on the management quantities across the ensemble of models is displayed in Figure @fig-management-uncertainty-continuous-axes-steep-M, Figure @fig-management-uncertainty-discrete-axes-tau-mix and Figure @fig-management-uncertainty-discrete-axes-tag-rep-effcrp. Natural mortality and tag mixing were most influential on the spread of the ensemble.
+The influence of each uncertainty component on the management quantities across the ensemble of models is displayed in @fig-management-uncertainty-continuous-axes-steep-M, @fig-management-uncertainty-discrete-axes-tau-mix and @fig-management-uncertainty-discrete-axes-tag-rep-effcrp. Natural mortality and tag mixing were most influential on the spread of the ensemble.
 
-The trajectories of $SB$/$SB_{F=0}$, spawning potential ($SB$), fishing mortality and recruitment for each of the 80 models in the ensemble are displayed in Figure @fig-ensemble-individual. Most of the models have terminal $SB$/$SB_{F=0}$ \> 0.2, 15 models were \< 0.2. Ribbon plots of the trajectories of $SB$/$SB_{F=0}$, spawning potential ($SB$), fishing mortality and recruitment including the estimation uncertainty are provided in Figure @fig-ensemble-est-uncert-ribbon.
+The trajectories of $SB$/$SB_{F=0}$, spawning potential, fishing mortality and recruitment for each of the 80 models are displayed in @fig-ensemble-individual. Fifteen central model estimates had recent $SB$/$SB_{F=0}<0.2$. Ribbon plots combining structural uncertainty and the available estimation uncertainty are provided in @fig-ensemble-est-uncert-ribbon.
 
 ### Analyses of stock status {#sec-stock-status-analysis}
 
 There are several ancillary analyses related to stock status that are typically undertaken on the diagnostic model including dynamic Majuro and Kobe analyses and fisheries impacts analyses.
 
-We do not present the results of all analysis for all models in this report. In this section, we rely largely on the tabular results of the structural uncertainty grid (Table @tbl-manage-quant, Table @tbl-stock-status-refs, Table @tbl-ref-points, Table @tbl-est-uncertainty) and the dynamic spawning depletion and spawning potential plots for the models in the structural uncertainty grid (Figure @fig-ensemble-est-uncert-ribbon, and the dynamic Majuro and Kobe plots (Figure @fig-time-dynamic-kobe-majuro).
+We do not present every ancillary result for every model. This section relies mainly on the equal-model-weight ensemble summaries in @tbl-manage-quant, @tbl-stock-status-refs, @tbl-ref-points and @tbl-est-uncertainty, the time-series uncertainty in @fig-ensemble-est-uncert-ribbon, and the dynamic Majuro and Kobe plots in @fig-time-dynamic-kobe-majuro.
 
-### Majuro and Kobe plots and comparisons with Limit and Target Reference Points:
+### Majuro and Kobe plots and comparisons with reference points
 
-Majuro and Kobe plots show the spread of the uncertainty range is mostly in the green area, that would be considered not overfished and not undergoing over fishing, however the uncertainty extends into the region of overfished and undergoing overfishing Figure @fig-combined-kobe-majuro-status.
+Most of the combined uncertainty distribution lies in the Kobe and Majuro areas corresponding to a stock that is not overfished and not undergoing overfishing, although the distribution extends into less favourable categories (@fig-combined-kobe-majuro-status). The equal-model-weight mixture assigns an 18.6% probability to recent depletion below the LRP, a 17.3% probability to $SB_{recent}/SB_{MSY}<1$, and a 24.1% probability to $F_{recent}/F_{MSY}>1$ (@tbl-stock-status-refs). The category probabilities are printed directly within the corresponding plot areas to make the uncertainty allocation explicit, following the general panel-percentage presentation used by @kim_quantitative_2025; that study is cited for the visualisation approach, not as evidence for the tuna assessment results.
 
-Both the dynamic Majuro and Kobe plots for the diagnostic model and median of the uncertainty ensemble show the steady increase in depletion (declining stock status) and fishing mortality of the stock since the 1950s with an increase in fishing mortality from the late 1960s. There more recent trend indicates that the stock status has continued to decline and fishing mortality continued to increase (Figure @fig-time-dynamic-kobe-majuro).
+The dynamic Majuro and Kobe trajectories for both the diagnostic model and the annual ensemble median show declining stock status and increasing fishing mortality since the 1950s, with fishing mortality increasing more strongly from the late 1960s (@fig-time-dynamic-kobe-majuro). The ensemble median remains more optimistic than the diagnostic model, consistent with the diagnostic model being near the pessimistic edge of the ensemble.
 
-### Fishing impact and time dynamic MSY:
+### Fishing impact and time-dynamic MSY
 
-text to be added
+Dynamic MSY declined from relatively high values early in the assessment as the fishery expanded and the age composition of removals changed, and was broadly between approximately 120 and 150 thousand t in recent decades (@fig-dynamic-msy). Recent catches were generally near or below the corresponding dynamic-MSY series, although both quantities vary annually and this comparison is not a replacement for the ensemble reference-point results.
 
-see Figure @fig-dynamic-msy, Figure @fig-impact-region
+Estimated fishery impact increased in all regions, with the greatest terminal impact in Region 2 and substantial impacts in Regions 3 and 4 (@fig-impact-region). At the stock-wide scale, associated purse-seine fisheries made the largest single contribution to the increase since the 1990s; longline and miscellaneous fisheries also contributed materially. The attribution depends on the diagnostic-model spatial and fishery structure and should be interpreted as a decomposition of that model's estimated impact.
 
-### Yield analysis:
+### Yield analysis
 
-text to be added
+The diagnostic-model equilibrium yield curve was relatively flat near its maximum (@fig-yield). The fishing-mortality multiplier associated with recent fishing was close to, but slightly above, the multiplier producing the maximum equilibrium yield, while the corresponding equilibrium yield remained close to MSY. Management quantities derived model by model from the yield analysis are summarised in @tbl-manage-quant and @tbl-ref-points; the ensemble median $F_{recent}/F_{MSY}$ was 0.838 after incorporating structural and available estimation uncertainty.
 
-see Figure @fig-yield
+### Catch-based projections {#sec-projection-results}
 
-### Catch based projections:
-
-to be added
+Under fishery- and quarter-specific catches fixed at their 2022--2024 means, the ensemble projected recovery in both depletion and spawning potential after 2024 (@fig-projection-stock-trajectories). Across the 800 model--recruitment realisations, median depletion increased to 0.355 in 2030, 0.517 in 2040 and 0.545 in 2054 (@tbl-stock-projections). In 2030, 5.2% of realisations were below the 0.20 LRP and 6.9% were below the 2012--2015 depletion objective; none of the realisations was below either benchmark in 2040 or 2054. Median spawning potential increased from 523.1 thousand t in 2030 to 720.6 thousand t in 2054. These are conditional projections under the specified recent-catch scenario, not forecasts of future catches or management action, and their intervals include recruitment variability but not Hessian parameter uncertainty.

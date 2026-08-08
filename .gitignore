@@ -8,3 +8,6 @@ CHAT_HANDOFF_*.md
 /.quarto/
 
 **/*.quarto_ipynb
+/WCPFC-SC22-2026-SA-WP-06-draft-diff.aux
+/WCPFC-SC22-2026-SA-WP-06-draft-diff.log
+/WCPFC-SC22-2026-SA-WP-06-draft-diff.toc

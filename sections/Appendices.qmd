@@ -1,4 +1,31 @@
+```{=latex}
+\appendix
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{A\arabic{figure}}
+\setcounter{table}{0}
+\renewcommand{\thetable}{A\arabic{table}}
+```
+
 Appendices {#sec-appendices}
 ==========
 
-Likely to be added
+Interactive supporting resources {#sec-interactive-resources}
+--------------------------------
+
+The following self-contained browser reports provide selectable model detail that cannot be reproduced legibly in the static figures. All links were checked during preparation of Revision 1. The PDF figures and tables remain the publication record; the viewers are supporting exploration tools.
+
+-   [Stepwise model-development viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html): comparison of the 2023 refit, intermediate development steps and the 2026 diagnostic model.
+
+-   [Diagnostic report](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html): model-fit, population-dynamics, diagnostic and configuration outputs, including downloadable tables.
+
+-   [Likelihood-profile viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html): selectable overall and component profiles. CPUE can be expanded to index fisheries; length-frequency and CAAL profiles can be expanded from region to fishery; tag profiles can be expanded from tagging programme to release group; and penalty components can be selected individually. The LF profiles refer to length-frequency data; weight-frequency profiles are not present because the assessment model used length compositions after external conversion of longline weight observations.
+
+-   [Jitter diagnostics](https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html): convergence, objective-function and derived-quantity results for dispersed starting values.
+
+-   [Self-test diagnostics](https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html): simulation-estimation recovery summaries and replicate-level results.
+
+-   [Retrospective diagnostics](https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html): seven terminal-year peels, trajectories and Mohn's $\rho$ summaries.
+
+-   [One-off sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html): comparison of the diagnostic model with the one-off sensitivity models.
+
+-   [Uncertainty-ensemble viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html): retained-model design, management quantities and ensemble uncertainty summaries.

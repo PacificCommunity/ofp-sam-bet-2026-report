@@ -2,9 +2,12 @@ name: Render Quarto PDF
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types:
+      - diagnostic-report-updated
   push:
     branches:
-      - main
+      - rev1
     tags:
       - "v*"
   pull_request:
@@ -13,7 +16,9 @@ on:
       - "_quarto.yml"
       - "SCreport.cls"
       - "figures/**"
+      - "figures_new/**"
       - "references/**"
+      - "scripts/**"
       - "sections/**"
       - "styles/**"
       - "tables/**"
@@ -32,28 +37,74 @@ jobs:
   render:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pages: write
       id-token: write
     container:
       image: ghcr.io/pacificcommunity/tuna-flow-private:v2.7@sha256:4fee4c40cb6439ff920b1dd233a84bf19d5cc0e37278c99ceff3fd79cb9c8852
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     steps:
       - name: Check out repository
+        if: github.event_name != 'repository_dispatch'
         uses: actions/checkout@v4
+
+      - name: Check out Rev.01 for upstream synchronization
+        if: github.event_name == 'repository_dispatch'
+        uses: actions/checkout@v4
+        with:
+          ref: rev1
+          fetch-depth: 0
+
+      - name: Fetch preserved draft baseline
+        shell: bash
+        run: git fetch --no-tags origin draft:refs/remotes/origin/draft
+
+      - name: Synchronize published diagnostic-report figures
+        if: github.event_name == 'repository_dispatch'
+        shell: bash
+        env:
+          DIAGNOSTIC_SOURCE_SHA: ${{ github.event.client_payload.sha }}
+        run: |
+          bash scripts/sync-diagnostic-figures.sh \
+            https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic \
+            "$DIAGNOSTIC_SOURCE_SHA"
+
+      - name: Persist synchronized diagnostic assets on Rev.01
+        if: github.event_name == 'repository_dispatch'
+        shell: bash
+        env:
+          DIAGNOSTIC_SOURCE_SHA: ${{ github.event.client_payload.sha }}
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add figures_new tables/source/tag-reporting-rate-groups.csv
+          if git diff --cached --quiet; then
+            echo "Diagnostic figures already match $DIAGNOSTIC_SOURCE_SHA"
+          else
+            git commit -m "Sync diagnostic figures from $DIAGNOSTIC_SOURCE_SHA [skip ci]"
+            git push origin HEAD:rev1
+          fi
 
       - name: Render report
         shell: bash
         run: |
           quarto --version
           pdflatex --version | head -n 1
+          Rscript scripts/audit-cross-references.R .
+          Rscript scripts/audit-assessment-values.R .
           quarto render main.qmd --to pdf
+
+      - name: Build tracked-change report against draft
+        shell: bash
+        run: bash scripts/build-draft-diff.sh origin/draft
 
       - name: Verify rendered report
         run: |
           test -s WCPFC-SC22-2026-SA-WP-06.pdf
+          test -s WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf
           test -s main.tex
+          test -s main-diff.tex
 
       - name: Upload rendered report
         uses: actions/upload-artifact@v4
@@ -61,16 +112,18 @@ jobs:
           name: WCPFC-SC22-2026-SA-WP-06
           path: |
             WCPFC-SC22-2026-SA-WP-06.pdf
+            WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf
             main.tex
+            main-diff.tex
           if-no-files-found: error
           retention-days: 30
 
       - name: Configure GitHub Pages
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/rev1'
         uses: actions/configure-pages@v5
 
       - name: Prepare GitHub Pages artifact
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/rev1'
         shell: bash
         run: |
           install -d _pages
@@ -78,13 +131,13 @@ jobs:
           install -m 0644 .github/pages/index.html _pages/index.html
 
       - name: Upload GitHub Pages artifact
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/rev1'
         uses: actions/upload-pages-artifact@v3
         with:
           path: _pages
 
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/rev1'
     needs: render
     runs-on: ubuntu-latest
     permissions:
@@ -122,10 +175,24 @@ jobs:
             --output=release/WCPFC-SC22-2026-SA-WP-06-quarto-source.tar.gz \
             HEAD
 
+          (
+            cd release
+            sha256sum \
+              WCPFC-SC22-2026-SA-WP-06.pdf \
+              WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf \
+              main.tex \
+              main-diff.tex \
+              WCPFC-SC22-2026-SA-WP-06-quarto-source.tar.gz \
+              > SHA256SUMS
+          )
+
       - name: Publish release assets
         uses: softprops/action-gh-release@v2
         with:
           files: |
             release/WCPFC-SC22-2026-SA-WP-06.pdf
+            release/WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf
             release/main.tex
+            release/main-diff.tex
             release/WCPFC-SC22-2026-SA-WP-06-quarto-source.tar.gz
+            release/SHA256SUMS

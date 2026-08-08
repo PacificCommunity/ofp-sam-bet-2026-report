@@ -3,108 +3,170 @@ Tables
 
 \clearpage
 
+\begin{landscape}
 \begingroup
-\footnotesize
+\fontsize{6.8}{7.2}\selectfont
 \setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{1.05}
-\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{0.07\linewidth}>{\raggedright\arraybackslash}p{0.30\linewidth}>{\raggedleft\arraybackslash}p{0.08\linewidth}>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedleft\arraybackslash}p{0.18\linewidth}@{}}
-\caption{Definition of fisheries for the 2026 bigeye tuna stock assessment in the western and central Pacific Ocean.}\label{tbl-fisheries-definitions}\\
+\renewcommand{\arraystretch}{0.94}
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{0.04\linewidth}>{\raggedright\arraybackslash}p{0.18\linewidth}>{\raggedleft\arraybackslash}p{0.04\linewidth}>{\raggedright\arraybackslash}p{0.08\linewidth}>{\raggedleft\arraybackslash}p{0.09\linewidth}>{\raggedleft\arraybackslash}p{0.09\linewidth}>{\raggedright\arraybackslash}p{0.12\linewidth}>{\raggedleft\arraybackslash}p{0.05\linewidth}@{}}
+\caption{Definition of fisheries for the 2026 bigeye tuna stock assessment in the western and central Pacific Ocean. The tag-recapture group identifies the recapture-fishery aggregation, whereas the selectivity group identifies the fitted selectivity curve.}\label{tbl-fisheries-definitions}\\
 \toprule
-Fishery & Name & Region & Data group & Tag-recapture group \\
+Fishery & Name & Region & Data group & Tag-recapture group & Selectivity group & Selectivity form & Nodes \\
 \midrule
 \endfirsthead
 \toprule
-Fishery & Name & Region & Data group & Tag-recapture group \\
+Fishery & Name & Region & Data group & Tag-recapture group & Selectivity group & Selectivity form & Nodes \\
 \midrule
 \endhead
 \bottomrule
 \endlastfoot
-1 & 01.LL.WEST.1 & 1 & LL & 1 \\
-2 & 02.LL.EAST.1 & 1 & LL & 2 \\
-3 & 03.LL.US.1 & 1 & LL & 3 \\
-4 & 04.LL.ALL.2 & 2 & LL & 4 \\
-5 & 05.LL.OS.2 & 2 & LL & 5 \\
-6 & 06.LL.ARCH.3 & 3 & LL & 6 \\
-7 & 07.LL.WEST.3 & 3 & LL & 7 \\
-8 & 08.LL.EAST.4 & 4 & LL & 8 \\
-9 & 09.LL.OS.3 & 3 & LL & 9 \\
-10 & 10.LL.ALL.5 & 5 & LL & 10 \\
-11 & 11.LL.AU.5 & 5 & LL & 11 \\
-12 & 12.PS.JP.1 & 1 & PS & 12 \\
-13 & 13.PL.JP.1 & 1 & PL & 13 \\
-14 & 14.HL.ID.2 & 2 & HL & 14 \\
-15 & 15.HL.PH.2 & 2 & HL & 14 \\
-16 & 16.PL.ALL.2 & 2 & PL & 15 \\
-17 & 17.PS.ID.2 & 2 & PS & 14 \\
-18 & 18.PS.PH.2 & 2 & PS & 14 \\
-19 & 19.PS.ASS.2 & 2 & PS ASS & 16 \\
-20 & 20.PS.UNA.2 & 2 & PS UNASS & 16 \\
-21 & 21.DOM.ID.2 & 2 & DOM & 14 \\
-22 & 22.DOM.PH.2 & 2 & DOM & 14 \\
-23 & 23.DOM.VN.2 & 2 & DOM & 17 \\
-24 & 24.PL.ALL.WEST.3 & 3 & PL & 18 \\
-25 & 25.PS.ASS.WEST.3 & 3 & PS ASS & 19 \\
-26 & 26.PS.ASS.EAST.4 & 4 & PS ASS & 20 \\
-27 & 27.PS.UNA.WEST.3 & 3 & PS UNASS & 19 \\
-28 & 28.PS.UNA.EAST.4 & 4 & PS UNASS & 20 \\
-29 & 29.Index R1 & 1 & Index & 21 \\
-30 & 30.Index R2 & 2 & Index & 21 \\
-31 & 31.Index R3 & 3 & Index & 21 \\
-32 & 32.Index R4 & 4 & Index & 21 \\
-33 & 33.Index R5 & 5 & Index & 21 \\
+1 & 01.LL.WEST.1 & 1 & LL & 1 & 1 & Cubic spline & 5 \\
+2 & 02.LL.EAST.1 & 1 & LL & 2 & 2 & Cubic spline & 5 \\
+3 & 03.LL.US.1 & 1 & LL & 3 & 3 & Cubic spline & 5 \\
+4 & 04.LL.ALL.2 & 2 & LL & 4 & 4 & Cubic spline & 5 \\
+5 & 05.LL.OS.2 & 2 & LL & 5 & 5 & Cubic spline & 5 \\
+6 & 06.LL.ARCH.3 & 3 & LL & 6 & 6 & Cubic spline & 5 \\
+7 & 07.LL.WEST.3 & 3 & LL & 7 & 7 & Cubic spline & 5 \\
+8 & 08.LL.EAST.4 & 4 & LL & 8 & 8 & Cubic spline & 5 \\
+9 & 09.LL.OS.3 & 3 & LL & 9 & 9 & Cubic spline & 5 \\
+10 & 10.LL.ALL.5 & 5 & LL & 10 & 10 & Cubic spline & 5 \\
+11 & 11.LL.AU.5 & 5 & LL & 11 & 11 & Cubic spline & 5 \\
+12 & 12.PS.JP.1 & 1 & PS & 12 & 12 & Cubic spline & 5 \\
+13 & 13.PL.JP.1 & 1 & PL & 13 & 13 & Cubic spline & 5 \\
+14 & 14.HL.ID.2 & 2 & HL & 14 & 14 & Cubic spline & 5 \\
+15 & 15.HL.PH.2 & 2 & HL & 14 & 15 & Cubic spline & 5 \\
+16 & 16.PL.ALL.2 & 2 & PL & 15 & 16 & Cubic spline & 5 \\
+17 & 17.PS.ID.2 & 2 & PS & 14 & 17 & Cubic spline & 5 \\
+18 & 18.PS.PH.2 & 2 & PS & 14 & 18 & Cubic spline & 5 \\
+19 & 19.PS.ASS.2 & 2 & PS ASS & 16 & 19 & Cubic spline & 5 \\
+20 & 20.PS.UNA.2 & 2 & PS UNASS & 16 & 20 & Cubic spline & 5 \\
+21 & 21.DOM.ID.2 & 2 & DOM & 14 & 21 & Cubic spline & 5 \\
+22 & 22.DOM.PH.2 & 2 & DOM & 14 & 22 & Cubic spline & 5 \\
+23 & 23.DOM.VN.2 & 2 & DOM & 17 & 23 & Cubic spline & 5 \\
+24 & 24.PL.ALL.WEST.3 & 3 & PL & 18 & 24 & Cubic spline & 5 \\
+25 & 25.PS.ASS.WEST.3 & 3 & PS ASS & 19 & 25 & Cubic spline & 7 \\
+26 & 26.PS.ASS.EAST.4 & 4 & PS ASS & 20 & 26 & Cubic spline & 7 \\
+27 & 27.PS.UNA.WEST.3 & 3 & PS UNASS & 19 & 27 & Cubic spline & 5 \\
+28 & 28.PS.UNA.EAST.4 & 4 & PS UNASS & 20 & 28 & Cubic spline & 5 \\
+29 & 29.Index R1 & 1 & Index & 21 & 29 & Cubic spline & 5 \\
+30 & 30.Index R2 & 2 & Index & 21 & 30 & Cubic spline & 5 \\
+31 & 31.Index R3 & 3 & Index & 21 & 31 & Cubic spline & 5 \\
+32 & 32.Index R4 & 4 & Index & 21 & 32 & Cubic spline & 5 \\
+33 & 33.Index R5 & 5 & Index & 21 & 33 & Cubic spline & 5 \\
 \end{longtable}
 \endgroup
+\end{landscape}
 
 \clearpage
 
 \begingroup
 \footnotesize
-\setlength{\tabcolsep}{2pt}
-\renewcommand{\arraystretch}{1.05}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.06\linewidth}>{\raggedright\arraybackslash}p{0.14\linewidth}>{\raggedright\arraybackslash}p{0.16\linewidth}>{\raggedright\arraybackslash}p{0.12\linewidth}>{\raggedright\arraybackslash}p{0.28\linewidth}>{\raggedright\arraybackslash}p{0.09\linewidth}@{}}
-\caption{Tag-reporting-rate groups, release coverage and estimation status. For groups spanning RTTP and PTTP, the same group number is also assigned to the extra pooled row of the MFCL reporting-rate matrix; pooled is not a tag programme.}\label{tbl-tag-definitions}\\
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.20\linewidth}>{\raggedright\arraybackslash}p{0.34\linewidth}>{\raggedright\arraybackslash}p{0.38\linewidth}@{}}
+\caption{Dirichlet--multinomial configuration used for length-composition weighting in the 2026 diagnostic model. Nmax is an asymptotic upper bound on incident effective sample size, not a fixed weight assigned to each composition.}\label{tbl-dm-configuration}\\
 \toprule
-Group & Tag programme & Fisheries & Release groups & Release years & Estimated \\
+Component & Diagnostic-model setting & Interpretation \\
 \midrule
 \endfirsthead
 \toprule
-Group & Tag programme & Fisheries & Release groups & Release years & Estimated \\
+Component & Diagnostic-model setting & Interpretation \\
 \midrule
 \endhead
 \bottomrule
 \endlastfoot
-1 & RTTP/\allowbreak{}PTTP & 1--2, 4--10 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & Yes \\
-2 & RTTP/\allowbreak{}PTTP & 3 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & No \\
-3 & RTTP/\allowbreak{}PTTP & 11 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & No \\
-4 & RTTP & 12 & 1--15 & 1989--1992 & No \\
-5 & RTTP & 13 & 1--15 & 1989--1992 & No \\
-6 & RTTP & 14--18, 21--22 & 1--15 & 1989--1992 & Yes \\
-7 & RTTP & 19--20 & 1--15 & 1989--1992 & Yes \\
-8 & RTTP & 23 & 1--15 & 1989--1992 & No \\
-9 & RTTP & 24 & 1--15 & 1989--1992 & No \\
-10 & RTTP & 25, 27 & 1--15 & 1989--1992 & Yes \\
-11 & RTTP & 26, 28 & 1--15 & 1989--1992 & No \\
-12 & PTTP & 12--13 & 16--61 & 2006--2013, 2015--2021 & No \\
-13 & PTTP & 14--18, 21--22 & 16--61 & 2006--2013, 2015--2021 & Yes \\
-14 & PTTP & 19--20 & 16--61 & 2006--2013, 2015--2021 & Yes \\
-15 & PTTP & 23 & 16--61 & 2006--2013, 2015--2021 & No \\
-16 & PTTP & 24 & 16--61 & 2006--2013, 2015--2021 & No \\
-17 & PTTP & 25, 27 & 16--61 & 2006--2013, 2015--2021 & Yes \\
-18 & PTTP & 26, 28 & 16--61 & 2006--2013, 2015--2021 & Yes \\
-19 & JPTP & 1 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes \\
-20 & JPTP & 2, 4--10 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes \\
-21 & JPTP & 3 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
-22 & JPTP & 11 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
-23 & JPTP & 12--13 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes \\
-24 & JPTP & 14--15, 17--18, 21--22 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
-25 & JPTP & 16 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
-26 & JPTP & 19--20 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
-27 & JPTP & 23 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
-28 & JPTP & 24 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
-29 & JPTP & 25, 27 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes \\
-30 & JPTP & 26, 28 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
+Likelihood & DM without random effects (parest flag 141 = 11) & Allows extra-multinomial variation in length compositions. \\
+Fishery grouping & Eight groups covering all 33 fisheries (fish flag 68; Table~\ref{tbl-dm-groups}) & Shares information among fisheries with similar gear or data roles. \\
+Concentration intercept & \texttt{fish\_pars(22)} fixed at 7 (fish flag 69 = 0) & The intercept had reached its upper bound in preliminary estimation and was not re-estimated. \\
+Relative-sample-size exponent & Group-specific \texttt{fish\_pars(23)} estimated from Phase 2 (fish flag 89 = 1) & Allows effective composition information to change with relative observed sample size within each group. \\
+ESS upper asymptote & $N_{\max}=25$ (parest flag 342; MFCL default = 1,000) & Selected just above the Francis ESS 95th-percentile range of 22.22--23.81 across 2,399 positive compositions and to retain acceptable CPUE fit. \\
+Length-bin support & Minimum span of five positive bins (parest flag 320 = 5); parest flag 313 = 0 & Uses the DM support rule rather than the robust-normal tail control. \\
 \end{longtable}
 \endgroup
+
+\vspace{0.8em}
+
+\begin{landscape}
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.04}
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{0.06\linewidth}>{\raggedright\arraybackslash}p{0.18\linewidth}>{\raggedright\arraybackslash}p{0.49\linewidth}>{\raggedright\arraybackslash}p{0.20\linewidth}@{}}
+\caption{Eight fishery groups used to estimate group-specific relative-sample-size effects in the Dirichlet--multinomial length-composition likelihood. Fishery numbers and series names follow the fishery-definition table.}\label{tbl-dm-groups}\\
+\toprule
+DM group & Fisheries & Fishery series & Grouping basis \\
+\midrule
+\endfirsthead
+\toprule
+DM group & Fisheries & Fishery series & Grouping basis \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+G1 & F1--F4, F6--F8, F10--F11 & LL.WEST.1; LL.EAST.1; LL.US.1; LL.ALL.2; LL.ARCH.3; LL.WEST.3; LL.EAST.3; LL.ALL.5; LL.AU.5 & Main longline composition process \\
+G2 & F5, F9 & LL.OS.2; LL.OS.3 & Offshore longline series with a distinct sampling history \\
+G3 & F12, F17--F18 & PS.JP.1; PS.ID.2; PS.PH.2 & Purse-seine series without associated/unassociated set-type separation \\
+G4 & F19, F25--F26 & PS.ASS.2; PS.ASS.WEST.3; PS.ASS.EAST.3 & Associated purse-seine series \\
+G5 & F20, F27--F28 & PS.UNA.2; PS.UNA.WEST.3; PS.UNA.EAST.3 & Unassociated purse-seine series \\
+G6 & F14--F15 & HL.ID.2; HL.PH.2 & Handline series \\
+G7 & F13, F16, F21--F24 & PL.JP.1; PL.ALL.2; DOM.ID.2; DOM.PH.2; DOM.VN.2; PL.ALL.WEST.3 & Other extraction fisheries pooled for stable estimation \\
+G8 & F29--F33 & Index R1; Index R2; Index R3; Index R4; Index R5 & Regional indices sharing the relative-abundance reweighting procedure \\
+\end{longtable}
+\endgroup
+\end{landscape}
+
+\clearpage
+
+\begin{landscape}
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.00}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.045\linewidth}>{\raggedright\arraybackslash}p{0.105\linewidth}>{\raggedright\arraybackslash}p{0.075\linewidth}>{\raggedright\arraybackslash}p{0.125\linewidth}>{\raggedright\arraybackslash}p{0.09\linewidth}>{\raggedright\arraybackslash}p{0.215\linewidth}>{\raggedright\arraybackslash}p{0.065\linewidth}>{\raggedleft\arraybackslash}p{0.065\linewidth}@{}}
+\caption{Tag-reporting-rate groups, release coverage, estimation status and fitted reporting rates. Group is the MFCL reporting-rate group number. The pooled-matrix-row column indicates whether the same group number is also assigned to MFCL's extra pooled row; pooled is not a tagging programme. Group 31 is assigned to Index fisheries F29--F33 to complete the matrix, but is an inactive technical placeholder with no tag-recapture likelihood and is omitted.}\label{tbl-tag-definitions}\\
+\toprule
+Group & Tag programmes & Pooled matrix row & Fisheries & Release groups & Release years & Estimated & Fitted RR \\
+\midrule
+\endfirsthead
+\toprule
+Group & Tag programmes & Pooled matrix row & Fisheries & Release groups & Release years & Estimated & Fitted RR \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+1 & RTTP/\allowbreak{}PTTP & Yes & 1--2, 4--10 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & Yes & 0.258 \\
+2 & RTTP/\allowbreak{}PTTP & Yes & 3 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & No & -- \\
+3 & RTTP/\allowbreak{}PTTP & Yes & 11 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & No & -- \\
+4 & RTTP & No & 12 & 1--15 & 1989--1992 & No & -- \\
+5 & RTTP & No & 13 & 1--15 & 1989--1992 & No & -- \\
+6 & RTTP & No & 14--18, 21--22 & 1--15 & 1989--1992 & Yes & 0.637 \\
+7 & RTTP & No & 19--20 & 1--15 & 1989--1992 & Yes & 0.625 \\
+8 & RTTP & No & 23 & 1--15 & 1989--1992 & No & -- \\
+9 & RTTP & No & 24 & 1--15 & 1989--1992 & No & -- \\
+10 & RTTP & No & 25, 27 & 1--15 & 1989--1992 & Yes & 0.567 \\
+11 & RTTP & No & 26, 28 & 1--15 & 1989--1992 & No & -- \\
+12 & PTTP & Yes & 12--13 & 16--61 & 2006--2013, 2015--2021 & No & -- \\
+13 & PTTP & Yes & 14--18, 21--22 & 16--61 & 2006--2013, 2015--2021 & Yes & 0.461 \\
+14 & PTTP & Yes & 19--20 & 16--61 & 2006--2013, 2015--2021 & Yes & 0.503 \\
+15 & PTTP & Yes & 23 & 16--61 & 2006--2013, 2015--2021 & No & -- \\
+16 & PTTP & Yes & 24 & 16--61 & 2006--2013, 2015--2021 & No & -- \\
+17 & PTTP & Yes & 25, 27 & 16--61 & 2006--2013, 2015--2021 & Yes & 0.732 \\
+18 & PTTP & Yes & 26, 28 & 16--61 & 2006--2013, 2015--2021 & Yes & 0.843 \\
+19 & JPTP & No & 1 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes & 0.665 \\
+20 & JPTP & No & 2, 4--10 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes & 0.159 \\
+21 & JPTP & No & 3 & 62--98 & 2000--2010, 2012, 2014, 2017 & No & -- \\
+22 & JPTP & No & 11 & 62--98 & 2000--2010, 2012, 2014, 2017 & No & -- \\
+23 & JPTP & No & 12--13 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes & 0.990 \\
+24 & JPTP & No & 14--15, 17--18, 21--22 & 62--98 & 2000--2010, 2012, 2014, 2017 & No & -- \\
+25 & JPTP & No & 16 & 62--98 & 2000--2010, 2012, 2014, 2017 & No & -- \\
+26 & JPTP & No & 19--20 & 62--98 & 2000--2010, 2012, 2014, 2017 & No & -- \\
+27 & JPTP & No & 23 & 62--98 & 2000--2010, 2012, 2014, 2017 & No & -- \\
+28 & JPTP & No & 24 & 62--98 & 2000--2010, 2012, 2014, 2017 & No & -- \\
+29 & JPTP & No & 25, 27 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes & 0.173 \\
+30 & JPTP & No & 26, 28 & 62--98 & 2000--2010, 2012, 2014, 2017 & No & -- \\
+\end{longtable}
+\endgroup
+\end{landscape}
 
 \clearpage
 

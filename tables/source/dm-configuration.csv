@@ -1,0 +1,7 @@
+Component,Diagnostic-model setting,Interpretation
+Likelihood,DM without random effects (parest flag 141 = 11),Allows extra-multinomial variation in length compositions
+Fishery grouping,Eight groups covering all 33 fisheries (fish flag 68),Shares information among fisheries with similar gear or data roles
+Concentration intercept,fish_pars(22) fixed at 7 (fish flag 69 = 0),The intercept had reached its upper bound in preliminary estimation and was not re-estimated
+Relative-sample-size exponent,Group-specific fish_pars(23) estimated from Phase 2 (fish flag 89 = 1),Allows effective composition information to change with relative observed sample size within each group
+ESS upper asymptote,"Nmax = 25 (parest flag 342; MFCL default = 1000)",Selected just above the Francis ESS 95th-percentile range of 22.22-23.81 across 2399 positive compositions and to retain acceptable CPUE fit
+Length-bin support,Minimum span of five positive bins (parest flag 320 = 5); parest flag 313 = 0,Uses the DM support rule rather than the robust-normal tail control
