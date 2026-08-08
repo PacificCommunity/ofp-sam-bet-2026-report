@@ -1,0 +1,72 @@
+Executive Summary
+=================
+
+This paper describes the 2026 stock assessment of bigeye tuna *Thunnus obesus* in the western and central Pacific Ocean. An additional three years of data were available since the previous assessment in 2023, and the model extends through to the end of 2024. The assessment applies a simplified 5 region model structure compared to the 9 region structure used in the previous four bigeye assessments; 2017, 2018, 2020, and 2023. The spatial structure represents a step in simplifying this assessment considering comments from SC19 and the 2026 Pre-Assessment Workshop (PAW) [@hamer_summary_2026]. Readers are also referred to SC22-SA-IP09 [@hampton_investigation_2026] which includes exploration of a simpler single region model. New developments to the stock assessment, many of which have been in response to comments on the 2023 assessment by SC19 and discussion at the PAW, include:
+
+-   Simplified spatial structure from 9 to 5 regions, and revised fisheries definitions.
+
+-   Conversion of longline weight data to lengths outside the model and addition of observed length data for longline fisheries [@peatman_analysis_2026]
+
+-   Stricter size composition data filtering and enhanced reweighting approach [@peatman_analysis_2026]
+
+-   Global sdmTMB CPUE analysis used for regional scaling, and new MFCL regional scaling penalty [@teears_background_2026; @davies_developments_2026-1]
+
+-   Separate sdmTMB CPUE analyses for each model region (x 10), removing the need for shared selectivity and catchability among CPUE indices (PAW and yellowfin tuna peer review recommendation) [@hamer_summary_2026; @teears_background_2026; @punt_independent_2023]
+
+-   External M-scale assumption rather than internal estimation (PAW recommendation to improve model stability)
+
+-   Release group specific tag maxing based on individual based tag mixing model (yellowfin tuna peer review @punt_independent_2023), and removal of Coral Sea Tagging data (supported by PAW)
+
+-   Tag reporting rate penalties informed by increased tag seeding [@peatman_analysis_2026-2]
+
+-   Substantial increase in age at length data, including north Pacific samples [@wakefield_project_2026; @hasegawa_new_2026]
+
+-   Uncertainty ensemble rather than orthogonal grid
+
+-   Enhanced diagnostics
+
+This assessment is supported by the analysis of catch and effort data for longline fisheries to provide regional abundance indices [@teears_background_2026], revised analysis of tagger effects and tag reporting rates [@peatman_analysis_2026-1; @peatman_analysis_2026-2], enhanced and improved size composition data analyses and preparation, include the weight data to length conversion work [@peatman_analysis_2026], tag mixing simulation modeling [@scutt_phillips_estimation_2026] and developments to MFCL software [@davies_developments_2026]. An extensive process of stepwise model development was conducted to transition from the 2023 to the 2026 assessment model and new data.
+
+The 2026 bigeye stock assessment estimated the median $SB_{recent}$/$SB_{F=0}$ across the model grid to be 0.277, where *recent* is the period 2021-2024. Overall, the current assessment estimates indicate a more pessimistic stock status, or lower $SB$/$SB_{F=0}$, than the 2023 assessment.
+
+In addition to the diagnostic model, we report the results of one-off sensitivities to explore the impact of important data and model assumptions for the diagnostic model on the stock assessment results and conclusions. These sensitivity analyses informed the structure of a model ensemble used to characterise the uncertainty of key management quantities for considering the management advice. The most important uncertainties related to assumptions required for the modeling of the tag/recapture data. This was because there is conflict between the tag data and the other key data (CPUE abundance indices and size data) with regards to the population size of the bigeye stock in the model region. The model interprets the tag data as being consistent with a larger stock size and lower impact of fishing resulting in a more optimistic/less depleted status, whereas it interprets the CPUE abundance indices and the size data as more consistent with a lower stock size, higher impact of fishing and a more pessimistic/more depleted status. The sensitivity analysis has shown that models with greater emphasis on either of these data sources can produce acceptable diagnostics and similar trends and dynamics, but different outcomes for the estimates of the key management quantities due to their conflicting information on population scaling. Further discussion on this topic is provided below.
+
+Across the 80 models with suitable convergence in the structural uncertainty grid, the most important factors when evaluating stock status uncertainty were the assumed values for the natural mortality scale and the tag mixing periods. The stepwise model development and sensitivity analysis on the diagnostic model indicted that the model was most sensitive to the assumption of the level of overdispersion in tag data, but between a specific range of values of $\tau$ from 1.0 --1.4, above which the model estimation of depletion and population scale did not change, natural mortality scale, tag mixing, and the time period over which the global CPUE index data are used to inform the regional scaling penalty.
+
+The general conclusions of this assessment are as follows:
+
+**General trends**
+
+-   The spawning potential of the stock has become more depleted across all model regions until around 2010, after which it has become more stable.
+
+-   Average fishing mortality rates for juvenile and adult age-classes have increased throughout the period of the assessment until around 2000, after which they have stabilised, but with high inter-annual variability for juveniles.
+
+-   Juveniles have experienced considerably higher fishing mortality than adults.
+
+-   The diagnostic model in this assessment was one of the most pessimistic models of the uncertainty ensemble used for management advice.
+
+**Stock status management quantities**
+
+-   The median depletion from the uncertainty grid for the recent period (2021-2024; $SB_{recent}$/$SB_{F=0}$) is estimated at 0.277 (80 percentile range including estimation and structural uncertainty 0.172--0.395, 95 percentile range range 0.136--0.442).
+
+-   Fifteen of the 80 models in the ensemble had $SB_{recent}$/$SB_{F=0}$ \< LRP 0.2, the uncertainty ensemble with estimation uncertainty estimates 18.6% probability on being below the LRP.
+
+-   CMM 2025-02 contains an objective to maintain the spawning biomass depletion ratio above the average for 2012-2015, $SB_{2012-2015}$/$SB_{F=0}$, which is a value of 0.296 calculated across the ensemble. Based upon the estimates of $SB_{recent}$/$SB_{F=0}$ of 0.277 the stock status is marginally below this objective.
+
+-   Recent (2020--2023) median fishing mortality $F_{recent}$/$F_{MSY}$ was 0.838 (80 percentile range, including estimation and structural uncertainty 0.592--1.206, 95 percentile rang range 0.460--1.350).
+
+-   While the stock is assessed as more depleted and under going higher fishing mortality than the previous assessment in 2023, according to the ensemble presented it would be considered not overfished (less than 20% probability of being below the LRP), and not undergoing overfishing based on the median $F_{recent}$/$F_{MSY}$ \< 1.
+
+-   Overall, the 2026 assessment presents a more pessimistic stock status than the previous assessment.
+
+The conflict between tag data and other data on the model estimation was considered when constructing the uncertainty ensemble. Sensitivity analyses indicated the influence of tag data could be moderated through altering the value of a parameter referred to as tau ($\tau$). In simple terms the parameter $\tau$ measures the degree of \"overdispersion\" in the tag recapture data. In other words, how much more variable are the recapture observations than the model would expect if all observed recaptures behaved identically, i.e. homogeneity in the processes influencing tag recaptures and reporting rates. A $\tau$ value set at 1 assumes this homogeneity. Larger values assume additional, unmodeled variability, or heterogeneity in the tag recapture and reporting processes, e.g. due to differences among individual releases, years, areas, reporting fisheries etc.. Some of this may be moderated by the adjustment to tag releases numbers (i.e. tagger effects adjustments), but most of these influences the model cannot capture. A $\tau$ value set at 1 is not considered defensible for tag/recapture data. Higher levels admit more uncertainty to the tag/recapture data allowing the model greater flexibility to fit the other data. We found setting $\tau$ at 1.4 or higher achieved the same outcomes in terms of management quantities, including the value of 2 used in the diagnostic model. There is no clear guidance on the $\tau$ setting, except that it should not be close to 1 for tag/recapture data, and other assessments have pointed to a value of 2, but with limited details. Other factors in the ensemble also vary the tag data influence but the $\tau$ overdispersion parameter appeared most important. Given the uncertainty over the value of $\tau$ and its influence on outcomes, and in order to allow the tag data to maintain an influence in the uncertainty ensemble considering the conflict, we include models with $\tau$ of 1.2, 1.3, 1.4, noting 1.4 appears to heavily downweights the influence of tag data on the management quantities. A key area for further research is highlighted by the influence of tag assumptions on this bigeye model (see below).
+
+The assessment has implemented important improvements in key area such as the simpler spatial structure, size data preparation and conversion to length data, increased age at length data, release group specific mixing periods, and CPUE methods, and driven a deeper focus on the modeling of the tag data and related assumptions. The latter area provided the most problematic and challenging aspect of this assessment. Population scaling is a key uncertainty in most assessments, and particularly tuna assessments that rely heavily on fishery dependent data. Tagging data are an important data type that can provide information on population scaling, movement, mortality and relative abundance. Hence it is a key data type used in several tuna assessments across the Pacific, and other important tuna research applications. With the challenges related to understanding the tag data conflict and the methods and assumptions for modeling these data within an integrated assessment framework, we recommend:
+
+-   An analysis of the tag data outside of the MFCL model to better understand the variability and statistical properties (i.e. overdispersion) of these data.
+
+-   A focused technical review of the approaches for use of tag data to inform stock assessment models, both as external and internal data.
+
+-   Support the continued development of the external skipjack tag data analysis proposed by Project 123 (SA-WP01), and consider adding a feasibility analysis for bigeye and yellowfin tagging data.
+
+-   The SC continue to explore options for alternative scheduling of benchmark tuna assessments to allow more time for their development and related data preparation and research work.

@@ -1,0 +1,240 @@
+Tables
+======
+
+\clearpage
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{0.07\linewidth}>{\raggedright\arraybackslash}p{0.30\linewidth}>{\raggedleft\arraybackslash}p{0.08\linewidth}>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedleft\arraybackslash}p{0.18\linewidth}@{}}
+\caption{Definition of fisheries for the 2026 bigeye tuna stock assessment in the western and central Pacific Ocean.}\label{tbl-fisheries-definitions}\\
+\toprule
+Fishery & Name & Region & Data group & Tag-recapture group \\
+\midrule
+\endfirsthead
+\toprule
+Fishery & Name & Region & Data group & Tag-recapture group \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+1 & 01.LL.WEST.1 & 1 & LL & 1 \\
+2 & 02.LL.EAST.1 & 1 & LL & 2 \\
+3 & 03.LL.US.1 & 1 & LL & 3 \\
+4 & 04.LL.ALL.2 & 2 & LL & 4 \\
+5 & 05.LL.OS.2 & 2 & LL & 5 \\
+6 & 06.LL.ARCH.3 & 3 & LL & 6 \\
+7 & 07.LL.WEST.3 & 3 & LL & 7 \\
+8 & 08.LL.EAST.4 & 4 & LL & 8 \\
+9 & 09.LL.OS.3 & 3 & LL & 9 \\
+10 & 10.LL.ALL.5 & 5 & LL & 10 \\
+11 & 11.LL.AU.5 & 5 & LL & 11 \\
+12 & 12.PS.JP.1 & 1 & PS & 12 \\
+13 & 13.PL.JP.1 & 1 & PL & 13 \\
+14 & 14.HL.ID.2 & 2 & HL & 14 \\
+15 & 15.HL.PH.2 & 2 & HL & 14 \\
+16 & 16.PL.ALL.2 & 2 & PL & 15 \\
+17 & 17.PS.ID.2 & 2 & PS & 14 \\
+18 & 18.PS.PH.2 & 2 & PS & 14 \\
+19 & 19.PS.ASS.2 & 2 & PS ASS & 16 \\
+20 & 20.PS.UNA.2 & 2 & PS UNASS & 16 \\
+21 & 21.DOM.ID.2 & 2 & DOM & 14 \\
+22 & 22.DOM.PH.2 & 2 & DOM & 14 \\
+23 & 23.DOM.VN.2 & 2 & DOM & 17 \\
+24 & 24.PL.ALL.WEST.3 & 3 & PL & 18 \\
+25 & 25.PS.ASS.WEST.3 & 3 & PS ASS & 19 \\
+26 & 26.PS.ASS.EAST.4 & 4 & PS ASS & 20 \\
+27 & 27.PS.UNA.WEST.3 & 3 & PS UNASS & 19 \\
+28 & 28.PS.UNA.EAST.4 & 4 & PS UNASS & 20 \\
+29 & 29.Index R1 & 1 & Index & 21 \\
+30 & 30.Index R2 & 2 & Index & 21 \\
+31 & 31.Index R3 & 3 & Index & 21 \\
+32 & 32.Index R4 & 4 & Index & 21 \\
+33 & 33.Index R5 & 5 & Index & 21 \\
+\end{longtable}
+\endgroup
+
+\clearpage
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.06\linewidth}>{\raggedright\arraybackslash}p{0.14\linewidth}>{\raggedright\arraybackslash}p{0.16\linewidth}>{\raggedright\arraybackslash}p{0.12\linewidth}>{\raggedright\arraybackslash}p{0.28\linewidth}>{\raggedright\arraybackslash}p{0.09\linewidth}@{}}
+\caption{Tag-reporting-rate groups, release coverage and estimation status. Pooled denotes groups shared across the stated release programmes.}\label{tbl-tag-definitions}\\
+\toprule
+Group & Tag programme & Fisheries & Release groups & Release years & Estimated \\
+\midrule
+\endfirsthead
+\toprule
+Group & Tag programme & Fisheries & Release groups & Release years & Estimated \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+1 & RTTP/\allowbreak{}PTTP/\allowbreak{}pooled & 1--2, 4--10 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & Yes \\
+2 & RTTP/\allowbreak{}PTTP/\allowbreak{}pooled & 3 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & No \\
+3 & RTTP/\allowbreak{}PTTP/\allowbreak{}pooled & 11 & 1--61 & 1989--1992, 2006--2013, 2015--2021 & No \\
+4 & RTTP & 12 & 1--15 & 1989--1992 & No \\
+5 & RTTP & 13 & 1--15 & 1989--1992 & No \\
+6 & RTTP & 14--18, 21--22 & 1--15 & 1989--1992 & Yes \\
+7 & RTTP & 19--20 & 1--15 & 1989--1992 & Yes \\
+8 & RTTP & 23 & 1--15 & 1989--1992 & No \\
+9 & RTTP & 24 & 1--15 & 1989--1992 & No \\
+10 & RTTP & 25, 27 & 1--15 & 1989--1992 & Yes \\
+11 & RTTP & 26, 28 & 1--15 & 1989--1992 & No \\
+12 & PTTP/\allowbreak{}pooled & 12--13 & 16--61 & 2006--2013, 2015--2021 & No \\
+13 & PTTP/\allowbreak{}pooled & 14--18, 21--22 & 16--61 & 2006--2013, 2015--2021 & Yes \\
+14 & PTTP/\allowbreak{}pooled & 19--20 & 16--61 & 2006--2013, 2015--2021 & Yes \\
+15 & PTTP/\allowbreak{}pooled & 23 & 16--61 & 2006--2013, 2015--2021 & No \\
+16 & PTTP/\allowbreak{}pooled & 24 & 16--61 & 2006--2013, 2015--2021 & No \\
+17 & PTTP/\allowbreak{}pooled & 25, 27 & 16--61 & 2006--2013, 2015--2021 & Yes \\
+18 & PTTP/\allowbreak{}pooled & 26, 28 & 16--61 & 2006--2013, 2015--2021 & Yes \\
+19 & JPTP & 1 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes \\
+20 & JPTP & 2, 4--10 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes \\
+21 & JPTP & 3 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
+22 & JPTP & 11 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
+23 & JPTP & 12--13 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes \\
+24 & JPTP & 14--15, 17--18, 21--22 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
+25 & JPTP & 16 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
+26 & JPTP & 19--20 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
+27 & JPTP & 23 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
+28 & JPTP & 24 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
+29 & JPTP & 25, 27 & 62--98 & 2000--2010, 2012, 2014, 2017 & Yes \\
+30 & JPTP & 26, 28 & 62--98 & 2000--2010, 2012, 2014, 2017 & No \\
+\end{longtable}
+\endgroup
+
+\clearpage
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedleft\arraybackslash}p{0.08\linewidth}>{\raggedleft\arraybackslash}p{0.13\linewidth}>{\raggedleft\arraybackslash}p{0.13\linewidth}>{\raggedleft\arraybackslash}p{0.13\linewidth}@{}}
+\caption{Management quantities from the equal-model-weight structural mixture with available Hessian estimation uncertainty. Each of 62 PDH models contributes 100 joint Hessian draws; each of 18 Near-PDH models contributes its central estimate with equal total model weight. Values are the median and central 50\%, 80\% and 95\% equal-tailed intervals. Estimation uncertainty is unavailable for the Near-PDH fits.}\label{tbl-manage-quant}\\
+\toprule
+Quantity & Period & Median & 50\% interval & 80\% interval & 95\% interval \\
+\midrule
+\endfirsthead
+\toprule
+Quantity & Period & Median & 50\% interval & 80\% interval & 95\% interval \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+$SB_{\mathrm{recent}}/SB_{F=0}$ & 2021--2024 / 2014--2023 & 0.277 & 0.217--0.336 & 0.172--0.395 & 0.136--0.442 \\
+$SB_{\mathrm{recent}}/SB_{\mathrm{MSY}}$ & 2021--2024 / equilibrium $SB_{\mathrm{MSY}}$ & 1.532 & 1.136--2.024 & 0.822--2.572 & 0.635--3.519 \\
+$F_{\mathrm{recent}}/F_{\mathrm{MSY}}$ & 2020--2023 / equilibrium $F_{\mathrm{MSY}}$ & 0.838 & 0.702--0.983 & 0.592--1.206 & 0.460--1.351 \\
+$\overline{D}_{2012\text{--}2015}$ & 2012--2015 & 0.296 & 0.221--0.362 & 0.176--0.431 & 0.140--0.490 \\
+$D_{\mathrm{recent}}/\overline{D}_{2012\text{--}2015}$ & Recent / 2012--2015 & 0.949 & 0.920--0.984 & 0.899--1.007 & 0.872--1.038 \\
+\end{longtable}
+\endgroup
+
+\vspace{1.5em}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.57\linewidth}>{\raggedleft\arraybackslash}p{0.23\linewidth}@{}}
+\caption{Stock status probabilities in relation to reference points and the probability of being below average 2012--2015 depletion objective.}\label{tbl-stock-status-refs}\\
+\toprule
+Criterion & Probability \\
+\midrule
+\endfirsthead
+\toprule
+Criterion & Probability \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+$SB_{\mathrm{recent}}/SB_{F=0}<0.20$ & 18.6\% \\
+$SB_{\mathrm{recent}}/SB_{\mathrm{MSY}}<1$ & 17.3\% \\
+$F_{\mathrm{recent}}/F_{\mathrm{MSY}}>1$ & 24.1\% \\
+$D_{\mathrm{recent}}<\overline{D}_{2012\text{--}2015}$ & 87.1\% \\
+\end{longtable}
+\endgroup
+
+\clearpage
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{1.5pt}
+\renewcommand{\arraystretch}{1.10}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.15\linewidth}>{\raggedright\arraybackslash}p{0.15\linewidth}>{\raggedright\arraybackslash}p{0.10\linewidth}>{\raggedleft\arraybackslash}p{0.07\linewidth}>{\raggedleft\arraybackslash}p{0.07\linewidth}>{\raggedleft\arraybackslash}p{0.07\linewidth}>{\raggedleft\arraybackslash}p{0.07\linewidth}>{\raggedleft\arraybackslash}p{0.07\linewidth}>{\raggedleft\arraybackslash}p{0.07\linewidth}@{}}
+\caption{Reference-point quantities across the 80 retained central model estimates, with equal weight. All ratios and reference points are calculated within each model before summarizing; periods and units are listed in the table. Intervals describe structural uncertainty only. Quantities without propagated estimation uncertainty are omitted.}\label{tbl-ref-points}\\
+\toprule
+Quantity & Period & Unit & Min & 10\% & Median & Mean & 90\% & Max \\
+\midrule
+\endfirsthead
+\toprule
+Quantity & Period & Unit & Min & 10\% & Median & Mean & 90\% & Max \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+$F_{\mathrm{mult}}$ & 2020--2023 & multiplier & 0.695 & 0.837 & 1.192 & 1.253 & 1.682 & 3.026 \\
+$F_{\mathrm{recent}}/F_{\mathrm{MSY}}$ & 2020--2023 & ratio & 0.330 & 0.594 & 0.839 & 0.860 & 1.195 & 1.440 \\
+$SB_{F=0}$ & 2014--2023 mean & thousand MT & 874.7 & 969.7 & 1625.0 & 1851.3 & 3222.4 & 3990.9 \\
+$SB_{\mathrm{latest}}/SB_{F=0}$ & 2024 / 2014--2023 & ratio & 0.113 & 0.151 & 0.242 & 0.248 & 0.350 & 0.428 \\
+$SB_{\mathrm{latest}}/SB_{\mathrm{MSY}}$ & 2024 / equilibrium $SB_{\mathrm{MSY}}$ & ratio & 0.657 & 0.842 & 1.348 & 1.395 & 1.994 & 2.477 \\
+$SB_{\mathrm{recent}}/SB_{F=0}$ & 2021--2024 / 2014--2023 & ratio & 0.126 & 0.175 & 0.278 & 0.280 & 0.384 & 0.503 \\
+$SB_{\mathrm{recent}}/SB_{\mathrm{MSY}}$ & 2021--2024 / equilibrium $SB_{\mathrm{MSY}}$ & ratio & 0.737 & 0.997 & 1.507 & 1.581 & 2.236 & 2.882 \\
+$SB_{\mathrm{MSY}}$ & Equilibrium & thousand MT & 112.6 & 152.6 & 289.0 & 346.1 & 661.8 & 1019.0 \\
+$SB_{\mathrm{MSY}}/SB_{F=0}$ & Equilibrium / 2014--2023 & ratio & 0.128 & 0.156 & 0.176 & 0.179 & 0.200 & 0.255 \\
+\end{longtable}
+\endgroup
+
+\vspace{1.5em}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.18\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedleft\arraybackslash}p{0.18\linewidth}@{}}
+\caption{Estimation-uncertainty sensitivity and Monte Carlo results for the three core stock status quantities. The all-model column gives 62 retained PDH models with 100 joint draws plus 18 retained Near-PDH point masses at equal model weight; the PDH-only column excludes the point masses. The final column is the largest absolute change in q10, median or q90 when the first 50 rather than all 100 draws per model are used, with matching Near-PDH point-mass replication.}\label{tbl-est-uncertainty}\\
+\toprule
+Quantity & All models & PDH only & Maximum 50--100 difference \\
+\midrule
+\endfirsthead
+\toprule
+Quantity & All models & PDH only & Maximum 50--100 difference \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+$SB_{\mathrm{recent}}/SB_{F=0}$ & 0.277 (0.172--0.395) & 0.275 (0.173--0.393) & 0.0005 \\
+$SB_{\mathrm{recent}}/SB_{\mathrm{MSY}}$ & 1.532 (0.822--2.572) & 1.522 (0.828--2.752) & 0.0396 \\
+$F_{\mathrm{recent}}/F_{\mathrm{MSY}}$ & 0.838 (0.592--1.206) & 0.838 (0.577--1.201) & 0.0034 \\
+\end{longtable}
+\endgroup
+
+\clearpage
+
+\begin{landscape}
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}rrrrrr>{\raggedleft\arraybackslash}p{0.22\linewidth}rrr@{}}
+\caption{Projected management quantities at selected years across 80 models and ten recruitment sequences per model. Depletion is the four-year mean spawning biomass divided by the preceding ten-year mean unfished spawning biomass; the LRP is 0.20. Catches are fixed by fishery to their 2022--2024 means, and intervals exclude Hessian parameter uncertainty.}\label{tbl-stock-projections}\\
+\toprule
+Year & $D$ 10\% & $D$ median & $D$ 90\% & Below LRP & Below objective & Spawning median ($10^3$ MT) & $C/\mathrm{MSY}$ 10\% & $C/\mathrm{MSY}$ median & $C/\mathrm{MSY}$ 90\% \\
+\midrule
+\endfirsthead
+\toprule
+Year & $D$ 10\% & $D$ median & $D$ 90\% & Below LRP & Below objective & Spawning median ($10^3$ MT) & $C/\mathrm{MSY}$ 10\% & $C/\mathrm{MSY}$ median & $C/\mathrm{MSY}$ 90\% \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+2030 & 0.225 & 0.355 & 0.514 & 5.2\% & 6.9\% & 523.1 & 0.638 & 0.811 & 1.003 \\
+2040 & 0.409 & 0.517 & 0.628 & 0.0\% & 0.0\% & 690.5 & 0.642 & 0.842 & 1.052 \\
+2054 & 0.455 & 0.545 & 0.641 & 0.0\% & 0.0\% & 720.6 & 0.648 & 0.847 & 1.053 \\
+\end{longtable}
+\endgroup
+\end{landscape}
+
+\clearpage

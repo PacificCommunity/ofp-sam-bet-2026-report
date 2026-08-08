@@ -4,6 +4,7 @@
 .Ruserdata
 model
 *.html
+!.github/pages/index.html
 report/Figures
 *.Rproj
 *.pdf
@@ -14,3 +15,11 @@ report/Figures
 /.kflow-runtime-cache/
 .Rhistory
 .RData
+quarto/_render/
+quarto/.quarto/
+quarto/.freeze/
+quarto/*.tex
+quarto/*.pdf
+release/
+quarto/tools/__pycache__/
+CHAT_HANDOFF_*.md
