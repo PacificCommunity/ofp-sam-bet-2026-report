@@ -175,15 +175,7 @@ A similar approach can be used to estimate depletion associated with specific fi
 
 The unfished spawning potential ($SB_{F=0}$) in each time period was calculated given the estimated recruitments and the Beverton--Holt SRR. For management reporting, annual dynamic depletion compares spawning biomass in year $y$ with mean unfished spawning biomass over the preceding ten years, excluding year $y$.
 
-Two related but distinct depletion quantities were used for management reporting. The WCPFC-adopted limit reference point (LRP) for bigeye is $SB_{recent}/SB_{F=0}=0.20$, where the numerator is mean spawning biomass during 2021--2024 and the denominator is mean unfished spawning biomass during 2014--2023. CMM 2025-02 paragraph 10 separately states that, pending agreement on a target reference point, the spawning-biomass depletion ratio is to be maintained at or above its 2012--2015 average. This comparison was calculated within each model as
-
-$$
-D_y=\frac{SB_y}{\frac{1}{10}\sum_{j=y-10}^{y-1}SB_{j,F=0}},\qquad
-D_{recent}=\frac{1}{4}\sum_{y=2021}^{2024}D_y,\qquad
-D_{2012\text{--}2015}=\frac{1}{4}\sum_{y=2012}^{2015}D_y,
-$$
-
-for each of the 80 central models, excluding estimation uncertainty. The headline comparison is the arithmetic mean of $D_{recent}$ across the equal-weight models divided by the corresponding arithmetic mean of $D_{2012\text{--}2015}$. This recent-to-2012--2015 spawning depletion ratio is a ratio of two depletion quantities, not a probability, and is distinct from the LRP quantity formed from separate fished and unfished period means. The comparison with the CMM 2025-02 objective is reported in @tbl-cmm-depletion, with the other management and reference-point quantities in @tbl-manage-quant and @tbl-ref-points.
+Two depletion quantities were used for management reporting. The WCPFC-adopted limit reference point (LRP) for bigeye is $SB_{recent}/SB_{F=0}=0.20$, where the numerator is mean spawning biomass during 2021--2024 and the denominator is mean unfished spawning biomass during 2014--2023. CMM 2025-02 paragraph 10 separately states that, pending agreement on a target reference point, the spawning-biomass depletion ratio is to be maintained at or above its 2012--2015 average. This comparison used the 80 equal-weight central models and excluded estimation uncertainty; the result is reported in @tbl-cmm-depletion, with the other management and reference-point quantities in @tbl-manage-quant and @tbl-ref-points.
 
 The other key reference point, $F_{recent}$/$F_{MSY}$, is the estimated average fishing mortality at the full assessment area scale over a recent period of time ($F_{recent}$; 2020--2023 for this stock assessment) divided by the fishing mortality producing MSY which is a product of the yield analysis and is detailed in @sec-method-yield.
 
