@@ -1,0 +1,4 @@
+source_url=../ofp-sam-bet-2026-ensemble/results
+source_commit=dfebb9a29cd615d56f29435e65f743b2d1efd822
+223cfb3de4084232acf70ca81cb6dd60c4175226af4ab312ac21e8b29fa8dab9  figures_new/natural-mortality-evidence.png
+3fd8b3a73a764c75aea5666eb8c97cfb67ca0e9617de65425997c28a00651c89  figures_new/projection-stock-trajectories.png

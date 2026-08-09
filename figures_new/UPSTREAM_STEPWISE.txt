@@ -1,0 +1,4 @@
+source_url=../ofp-sam-bet-2026-stepwise-report-assets/results/stepwise-report
+source_commit=842e7150b1ba1d62002665612c09951223a67326
+933d105e5fc06a17c1c8054c9818c55fd687e58b8008c8bc94dce63eeca834fa  figures_new/spatial-structure-comparison.png
+0913f608247a0731a6697c38263a9a88cbf7835bc21037900622d2ec4ad67258  figures_new/maturity-comparison.png

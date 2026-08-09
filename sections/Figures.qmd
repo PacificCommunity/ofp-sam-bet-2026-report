@@ -2,6 +2,8 @@
 
 ![Five-region spatial structure used by the 2026 diagnostic model. Labels identify the fitted fisheries in each region by gear and fishery ID; the IDs correspond to @tbl-fisheries-definitions.](figures_new/region-map.png){#fig-map-5regions width="100%"}
 
+![Comparison of the spatial structures used in the 2023 and 2026 diagnostic models. The 2026 structure consolidates the previous nine regions into five while retaining an eastern equatorial region for the principal tag-recapture information.](figures_new/spatial-structure-comparison.png){#fig-map-spatial-comparison width="100%"}
+
 
 
 ![Annual catches of bigeye by gear type in the WCPO area covered by the assessment.](figures/catch_hist_full.png){#fig-catch-hist-full width="100%"}
@@ -44,15 +46,15 @@
 
 
 
-![Fitted mean length at age for the 2026 diagnostic model. Shading is the mean plus or minus 1.96 length-at-age standard deviations and represents fish-level length variability, not parameter-estimation uncertainty.](figures_new/growth-curve.png){#fig-growth-curve width=100%}
+![Observed age--length data and fitted mean length at age for the five model regions and all regions combined. Circle area is proportional to the number of aged fish. Shading is the fitted mean plus or minus 1.96 length-at-age standard deviations and represents fish-level length variability, not parameter-estimation uncertainty.](figures_new/age-data-growth-by-region.png){#fig-growth-curve width=100%}
 
 
 
-![Maturity-at-age ogive for the 2026 diagnostic model.](figures/maturity_ogive.png){#fig-maturity-ogive width=100%}
+![Maturity-at-age schedules in the 2023 and 2026 diagnostic models. The maturity-at-length relationship was unchanged; the small difference results from applying it to the updated 2026 growth curve.](figures_new/maturity-comparison.png){#fig-maturity-ogive width=100%}
 
 
 
-![Lorenzen natural mortality-at-age (quarters) for the 2026 diagnostic model, based on M at age 40 quarters of 0.078.](figures/natm_at_age.png){#fig-natm-at-age width=100%}
+![Age-specific quarterly natural mortality obtained by applying three assessment-relevant $M_0$ values to the same 2026 diagnostic growth schedule and fixed Lorenzen exponent (-1). Curves show the diagnostic value (0.07814), the model-aligned Hamel--Cope median (0.08082), and the tag estimate from @ducharme-barth_natural_2026 (0.0624). Shading is the tag estimate's 90% confidence interval (0.0500--0.0749) propagated over age. Open the [ensemble report](https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-report.html#fig-natural-mortality-evidence).](figures_new/natural-mortality-evidence.png){#fig-natm-at-age width=100%}
 
 
 
@@ -66,7 +68,7 @@
 
 ![Observed and fitted relative CPUE (left panels) with standardised log-scale residuals (right panels) for the five regional index fisheries. Fit shading gives the central 95% observation interval implied by the fixed regional log-scale error values; it is not parameter-estimation uncertainty. Residual shading marks the corresponding $\pm 1.96$ observation-error SD range. Open the [interactive diagnostic report](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html).](figures_new/cpue-fit-residuals.png){#fig-cpue-fit-residuals width=100%}
 
-![Observed (bars) and fitted (purple lines) length-frequency sample counts by fishery, pooled over years. Shading is the 95% pointwise conditional predictive interval for repeated observations under the fitted Dirichlet--multinomial model; parameter uncertainty is not included. The top-right $\Sigma$ESS is the sum of model-implied incident effective sample sizes in each fishery. Open the [interactive diagnostic report](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html) for fishery- and year-level selections.](figures_new/length-frequency-fit-by-fishery.png){#fig-length-fit-by-fishery width=100%}
+![Observed (bars) and fitted (purple lines) length-frequency sample counts by fishery, pooled over years. Shading is the 95% pointwise conditional predictive interval for repeated observations under the fitted Dirichlet--multinomial model; parameter uncertainty is not included. The top-right $\Sigma$ESS is the sum of model-implied incident effective sample sizes in each fishery. Open the [interactive diagnostic report](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html) for fishery- and year-level selections.](figures_new/length-frequency-fit-by-fishery.png){#fig-length-fit-by-fishery width=100% height=72%}
 
 
 
@@ -90,29 +92,25 @@
 
 ![Fitted tag-reporting rates for the 12 groups estimated in the diagnostic model. Panels identify the MFCL reporting-rate group, tagging programme and recapture fisheries. Black curves show the prior density, red vertical lines show fitted reporting rates and blue dashed lines mark the 0.99 upper bound. Group 23 reached the upper bound. Fixed groups and the inactive Group 31 placeholder assigned to Index fisheries F29--F33 are not shown. Open the [interactive diagnostic report](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html).](figures_new/tag-reporting-rates-active.png){#fig-tag-reporting-rates-active width=100%}
 
-![Model-estimated mean age at length (line) and observed conditional ages (circles), pooled across all samples. The vertical distribution of points shows the observed age distribution at each length.](figures/caal_aggregate_fits.png){#fig-caal-fits width="85%"}
-
 ![Observed and fitted conditional age-at-length distributions for the five model regions and the pooled All regions panel (last). Cells and point sizes show fitted and observed proportions; solid and dashed lines show their corresponding mean ages at length. Open the [interactive diagnostic report](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html) for fishery-level detail.](figures_new/age-data-fit-by-region.png){#fig-caal-fits-regions width="100%"}
 
 
 
-![Parameter standard errors derived from the positive-definite inverse Hessian: (a) ordered standard errors and (b) distributions for the ten most numerous parameter families. Logarithmic axes show the wide range of estimated parameter scales.](figures_new/hessian-parameter-scales.png){#fig-hessian-parameter-scales width="100%"}
+![Jitter convergence diagnostics for the diagnostic model. Each circle represents one of the 25 retained jitter fits and the red diamond identifies the diagnostic model without jitter. Retained fits had a maximum gradient component no greater than $1.0 \times 10^{-4}$; lower objective-function values indicate improved fit. Open the [interactive jitter report](https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html).](figures_new/jitter-diagnostics-diagnostic-model.png){#fig-jitter-scatter-plot width=100%}
 
 
 
-![Jitter convergence diagnostics for the diagnostic model. Each circle represents one of the 25 retained jitter fits and the red diamond identifies the diagnostic model without jitter. Retained fits had a maximum gradient component no greater than $1.0 \times 10^{-4}$; lower objective-function values indicate improved fit. Open the [interactive jitter report](https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html).](figures/jitter_scatter_plot.png){#fig-jitter-scatter-plot width=100%}
+![Annual derived quantities across the 25 retained jitter fits. Thin grey-blue lines are individual fits, the shaded band is the pointwise central 80% interval, the dark line is the jitter median with its terminal value marked by a circle, and the red line is the diagnostic model without jitter. Recruitment is in millions of fish and spawning potential is in thousand metric tonnes. Open the [interactive jitter report](https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html).](figures_new/jitter-derived-diagnostic-model.png){#fig-jitter-derived-values-diag-panel width=100%}
 
 
 
-![Annual derived quantities across the 25 retained jitter fits. Thin grey-blue lines are individual fits, the shaded band is the pointwise central 80% interval, the dark line is the jitter median and the red line is the diagnostic model without jitter. Recruitment is in millions of fish and spawning potential is in thousand metric tonnes.](figures/jitter_derived_values_diag_panel.png){#fig-jitter-derived-values-diag-panel width=100%}
+![Regional and all-region depletion trajectories across the 25 retained jitter fits. Thin grey-blue lines are individual fits, the shaded band is the pointwise central 80% interval, the dark line is the jitter median and the red line is the diagnostic model without jitter.](figures_new/jitter-regional-depletion-diagnostic-model.png){#fig-jitter-regional-depletion width="100%"}
 
 
 
-![Regional and all-region depletion trajectories across the 25 retained jitter fits. Thin grey-blue lines are individual fits, the shaded band is the pointwise central 80% interval, the dark line is the jitter median and the red line is the diagnostic model without jitter.](figures/jitter_regional_depletion.png){#fig-jitter-regional-depletion width="100%"}
+![Relative recovery error for recent management and assessment quantities and selected estimated parameters in the diagnostic model. Points are the 50 pseudo-data refits, boxes show their empirical distributions, the red line marks exact recovery and grey dashed lines mark errors of -5% and +5%. Open the [interactive self-test report](https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html).](figures_new/selftest-key-recovery-diagnostic.png){#fig-selftest-recovery width=100%}
 
-
-
-![Self-test results from 50 simulated-and-refitted data sets: (a) maximum gradient component, (b) recovery of management quantities, (c) terminal derived quantities and (d) selected profile parameters. Relative errors are refitted minus generating values, divided by generating values. Open the [interactive self-test report](https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html).](figures_new/self-test-diagnostics.png){#fig-selftest-diagnostics width=100%}
+![Self-test recovery of annual assessment quantities. The red line is the generating value, the dark-blue line is the median across 50 replicate refits and the nested blue bands are the central 50%, 80% and 95% empirical ranges. Open the [interactive self-test report](https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html).](figures_new/selftest-recovery-diagnostic.png){#fig-selftest-time-series width=100%}
 
 ![Retrospective trajectories for (a) dynamic spawning depletion, (b) spawning potential, (c) recruitment and (d) annual population-weighted fishing mortality. Colours distinguish the diagnostic fit and seven terminal-year peels; labels give Mohn's $\rho$. Open the [interactive retrospective report](https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html).](figures_new/retrospective-diagnostics.png){#fig-retro-analysis width=100%}
 
@@ -150,11 +148,11 @@
 
 
 
-![Estimated fishery selectivity at age for all 33 fisheries, grouped into the five model-region panels. Colours and the complete fishery key identify each fitted cubic-spline curve.](figures_new/fishery-process.png){#fig-select-age width="100%"}
+![Estimated fishery selectivity at age for all 33 fisheries. Each panel shows one fitted fishery-specific cubic-spline curve; panel labels give the fishery ID and definition.](figures_new/fishery-process.png){#fig-select-age width="100%"}
 
 
 
-![Estimated fishery selectivity at length for all 33 fisheries, grouped into the five model-region panels. Length is the fitted mean length at each age class.](figures_new/fishery-selectivity-length.png){#fig-select-length width="100%"}
+![Estimated fishery selectivity at length for all 33 fisheries. Each panel shows one fishery, with age-specific selectivity mapped to the fitted mean length at age.](figures_new/fishery-selectivity-length.png){#fig-select-length width="100%"}
 
 
 
@@ -170,7 +168,7 @@
 
 
 
-![Estimated stock--recruitment relationship between recruitment and spawning potential based on annual estimates from the 2026 diagnostic model. Circle colour progresses from purple for early years to yellow for recent years. Points before 1968 are not used to fit the relationship.](figures/stock_rr.png){#fig-stock-rr width=100%}
+![Fitted Beverton--Holt stock--recruitment relationship for the 2026 diagnostic model. Filled circles are annual recruitment and adult-biomass estimates used in the fit and are coloured by year; open circles denote years before 1968, which were not used to fit the relationship. Open the [diagnostic report](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html#fig-stock-recruitment).](figures_new/stock-recruitment.png){#fig-stock-rr width=100%}
 
 
 
@@ -186,35 +184,35 @@
 
 
 
-![Estimated dynamic spawning depletion (Top left) and spawning potential (Bottom left), recruitment (Top right) and fishing mortality (Bottom right) for the one-off sensitivities from the 2026 diagnostic model for steepness of the stock recruitment relationship. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures/sensitivity_steepness.png){#fig-sensitivity-steepness width=100%}
+![Estimated dynamic spawning depletion (Top left) and spawning potential (Bottom left), recruitment (Top right) and fishing mortality (Bottom right) for the one-off sensitivities from the 2026 diagnostic model for steepness of the stock recruitment relationship. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures_new/sensitivity-steepness.png){#fig-sensitivity-steepness width=100%}
 
 
 
-![Estimated dynamic spawning depletion (Top left) and spawning potential (Bottom left), recruitment (Top right) and fishing mortality (Bottom right) for the one-off sensitivities from the 2026 diagnostic model for natural mortality scale (M at age 40 quarters). Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures/sensitivity_natural_mortality.png){#fig-sensitivity-natural-mortality width=100%}
+![Estimated dynamic spawning depletion (Top left) and spawning potential (Bottom left), recruitment (Top right) and fishing mortality (Bottom right) for the one-off sensitivities from the 2026 diagnostic model for natural mortality scale (M at age 40 quarters). Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures_new/sensitivity-natural-mortality.png){#fig-sensitivity-natural-mortality width=100%}
 
 
 
-![Estimated dynamic spawning depletion (Top left) and spawning potential (Bottom left), recruitment (Top right) and fishing mortality (Bottom right) for the one-off sensitivities from the 2026 diagnostic model for conditional age at length (CAAL) data weighting. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures/sensitivity_CAAL.png){#fig-sensitivity-CAAL width=100%}
+![Estimated dynamic spawning depletion (Top left) and spawning potential (Bottom left), recruitment (Top right) and fishing mortality (Bottom right) for the one-off sensitivities from the 2026 diagnostic model for conditional age at length (CAAL) data weighting. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures_new/sensitivity-conditional-age-at-length.png){#fig-sensitivity-CAAL width=100%}
 
 
 
-![Estimated dynamic spawning depletion (Top left) and spawning potential (Bottom left), recruitment (Top right) and fishing mortality (Bottom right) for the one-off sensitivities from the 2026 diagnostic model for effort creep adjustment to CPUE indices. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures/sensitivity_effort_creep.png){#fig-sensitivity-effort-creep width=100%}
+![Estimated dynamic spawning depletion (Top left) and spawning potential (Bottom left), recruitment (Top right) and fishing mortality (Bottom right) for the one-off sensitivities from the 2026 diagnostic model for effort creep adjustment to CPUE indices. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures_new/sensitivity-effort-creep.png){#fig-sensitivity-effort-creep width=100%}
 
 
 
-![Dynamic spawning depletion (top left), spawning potential (bottom left), recruitment (top right) and fishing mortality (bottom right) for one-off sensitivities to the global-CPUE period used in the regional-scaling penalty. The diagnostic model uses the 1965--1969 period of broad spatial coverage recommended by PAW; the alternative uses the full 1952--2024 series. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures/sensitivity_regional_scaling.png){#fig-sensitivity-regional-scaling width=100%}
+![Dynamic spawning depletion (top left), spawning potential (bottom left), recruitment (top right) and fishing mortality (bottom right) for one-off sensitivities to the global-CPUE period used in the regional-scaling penalty. The diagnostic model uses the 1965--1969 period of broad spatial coverage recommended by PAW; the alternative uses the full 1952--2024 series. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures_new/sensitivity-regional-scaling.png){#fig-sensitivity-regional-scaling width=100%}
 
 
 
-![Estimated dynamic spawning depletion (Top left) and spawning potential (Bottom left), recruitment (Top right) and fishing mortality (Bottom right) for the one-off sensitivities from the 2026 diagnostic model on the K-statistic for assigning release group specific mixing periods - higher value assume less conservative shorter mixing periods, lower value assume more conservative longer mixing periods. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures/sensitivity_tag_mixing_periods_Kstatistic_cutoff.png){#fig-sensitivity-tag-mixing-periods-Kstatistic-cutoff width=100%}
+![Estimated dynamic spawning depletion (Top left) and spawning potential (Bottom left), recruitment (Top right) and fishing mortality (Bottom right) for the one-off sensitivities from the 2026 diagnostic model on the K-statistic for assigning release group specific mixing periods - higher value assume less conservative shorter mixing periods, lower value assume more conservative longer mixing periods. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures_new/sensitivity-tag-mixing-periods-ks-d-statistic-cutoff.png){#fig-sensitivity-tag-mixing-periods-Kstatistic-cutoff width=100%}
 
 
 
-![Estimated dynamic spawning depletion (Top left) and spawning potential (Bottom left), recruitment (Top right) and fishing mortality (Bottom right) for the one-off sensitivities from the 2026 diagnostic model on the option to activate or deactivate reporting rate adjustments during tag mixing periods. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures/sensitivity_premixing_tag_reporting_rate.png){#fig-sensitivity-premixing-tag-reporting-rate width=100%}
+![Estimated dynamic spawning depletion (Top left) and spawning potential (Bottom left), recruitment (Top right) and fishing mortality (Bottom right) for the one-off sensitivities from the 2026 diagnostic model on the option to activate or deactivate reporting rate adjustments during tag mixing periods. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures_new/sensitivity-pre-mixing-tag-reporting.png){#fig-sensitivity-premixing-tag-reporting-rate width=100%}
 
 
 
-![Dynamic spawning depletion (top left), spawning potential (bottom left), recruitment (top right) and fishing mortality (bottom right) for one-off sensitivities to tag overdispersion $\tau$. Lower values assign greater likelihood weight to tag data; higher values allow greater extra-Poisson variation. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures/sensitivity_tag_overdispersion.png){#fig-sensitivity-tag-overdispersion width=100%}
+![Dynamic spawning depletion (top left), spawning potential (bottom left), recruitment (top right) and fishing mortality (bottom right) for one-off sensitivities to tag overdispersion $\tau$. Lower values assign greater likelihood weight to tag data; higher values allow greater extra-Poisson variation. Open the [interactive sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).](figures_new/sensitivity-tag-overdispersion.png){#fig-sensitivity-tag-overdispersion width=100%}
 
 
 

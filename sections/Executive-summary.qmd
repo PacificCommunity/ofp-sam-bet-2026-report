@@ -74,20 +74,14 @@ The assessment has implemented important improvements in key area such as the si
 Open and reproducible assessment resources
 ------------------------------------------
 
-The assessment provides the report, model diagnostics and uncertainty analyses as linked, versioned resources (@tbl-open-science-resources). The browser viewers expose detail that cannot be shown legibly in static figures, while the repositories retain the source data, code and publication assets for the assessment analyses. Direct links are also provided in the captions of the corresponding figures, and the complete list is repeated in @sec-interactive-resources.
+The assessment results and supporting analyses can be opened directly:
 
-| Resource | Browser output | Source repository |
-|:--|:--|:--|
-| Assessment report | [Clean PDF](https://pacificcommunity.github.io/ofp-sam-bet-2026-report/) | [ofp-sam-bet-2026-report](https://github.com/PacificCommunity/ofp-sam-bet-2026-report) |
-| Stepwise development | [Interactive model viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html) | [ofp-sam-bet-2026-stepwise](https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise) |
-| Diagnostic fit and profiles | [Diagnostic report](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html); [profile viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html) | [ofp-sam-bet-2026-diagnostic](https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic) |
-| Jitter | [Jitter report](https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html) | [ofp-sam-bet-2026-jitter](https://github.com/PacificCommunity/ofp-sam-bet-2026-jitter) |
-| Self-test | [Self-test report](https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html) | [ofp-sam-bet-2026-selftest](https://github.com/PacificCommunity/ofp-sam-bet-2026-selftest) |
-| Retrospective analysis | [Retrospective report](https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html) | [ofp-sam-bet-2026-retrospective](https://github.com/PacificCommunity/ofp-sam-bet-2026-retrospective) |
-| One-off sensitivities | [Sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html) | [ofp-sam-bet-2026-sensitivity](https://github.com/PacificCommunity/ofp-sam-bet-2026-sensitivity) |
-| Uncertainty ensemble and projections | [Ensemble viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html) | [ofp-sam-bet-2026-ensemble](https://github.com/PacificCommunity/ofp-sam-bet-2026-ensemble) |
-| Pinned build environment | Report build logs and release checksums | `tuna-flow-private:v2.7` at the immutable digest given below |
+-   **Assessment:** [clean report](https://pacificcommunity.github.io/ofp-sam-bet-2026-report/).
 
-: Public assessment outputs and source repositories. {#tbl-open-science-resources}
+-   **Model development and fit:** [stepwise viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html), [diagnostic report](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html) and [likelihood-profile viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html).
 
-The report builds from a standalone clone with all publication assets checked in. Automated builds use the pinned container `ghcr.io/pacificcommunity/tuna-flow-private:v2.7@sha256:4fee4c40cb6439ff920b1dd233a84bf19d5cc0e37278c99ceff3fd79cb9c8852`; releases include both PDFs, retained LaTeX and a source archive. The combination of public model outputs, interactive diagnostics, immutable build inputs and tracked revisions provides a level of transparent, reproducible assessment exploration beyond that available for previous WCPO tuna assessments.
+-   **Model diagnostics and sensitivities:** [jitter](https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html), [self-test](https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html), [retrospective](https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html) and [one-off sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html).
+
+-   **Management uncertainty and projections:** [ensemble viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html).
+
+The corresponding repositories and pinned build environment are documented once in @tbl-open-science-resources. These linked, versioned resources expose detail that cannot be shown legibly in static figures and support transparent, reproducible exploration beyond that available for previous WCPO tuna assessments.

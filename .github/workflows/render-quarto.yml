@@ -7,6 +7,12 @@ on:
   repository_dispatch:
     types:
       - diagnostic-report-updated
+      - stepwise-report-updated
+      - ensemble-report-updated
+      - jitter-report-updated
+      - selftest-report-updated
+      - retrospective-report-updated
+      - sensitivity-report-updated
   push:
     branches:
       - rev1
@@ -65,46 +71,89 @@ jobs:
       - name: Install tracked-change tooling
         shell: bash
         run: |
-          if ! command -v latexdiff >/dev/null 2>&1; then
+          packages=()
+          command -v latexdiff >/dev/null 2>&1 || packages+=(latexdiff)
+          command -v gs >/dev/null 2>&1 || packages+=(ghostscript)
+          command -v pdfinfo >/dev/null 2>&1 || packages+=(poppler-utils)
+          if (( ${#packages[@]} )); then
             apt-get update
-            apt-get install --yes --no-install-recommends latexdiff
+            apt-get install --yes --no-install-recommends "${packages[@]}"
           fi
           latexdiff --version
+          gs --version
+          pdfinfo -v
 
       - name: Fetch preserved draft baseline
         shell: bash
         run: git fetch --no-tags origin draft:refs/remotes/origin/draft
 
-      - name: Synchronize published diagnostic-report figures
-        if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
+      - name: Synchronize published source-report figures
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
         shell: bash
-        env:
-          DISPATCH_SOURCE_SHA: ${{ github.event.client_payload.sha }}
         run: |
-          if [[ -n "$DISPATCH_SOURCE_SHA" ]]; then
-            DIAGNOSTIC_SOURCE_SHA="$DISPATCH_SOURCE_SHA"
-          else
-            DIAGNOSTIC_SOURCE_SHA=$(git ls-remote \
-              https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic.git \
-              refs/heads/main | cut -f1)
-          fi
+          DIAGNOSTIC_SOURCE_SHA=$(git ls-remote \
+            https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic.git \
+            refs/heads/main | cut -f1)
+          STEPWISE_SOURCE_SHA=$(git ls-remote \
+            https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise.git \
+            refs/heads/main | cut -f1)
+          ENSEMBLE_SOURCE_SHA=$(git ls-remote \
+            https://github.com/PacificCommunity/ofp-sam-bet-2026-ensemble.git \
+            refs/heads/main | cut -f1)
+          JITTER_SOURCE_SHA=$(git ls-remote \
+            https://github.com/PacificCommunity/ofp-sam-bet-2026-jitter.git \
+            refs/heads/main | cut -f1)
+          SELFTEST_SOURCE_SHA=$(git ls-remote \
+            https://github.com/PacificCommunity/ofp-sam-bet-2026-selftest.git \
+            refs/heads/main | cut -f1)
+          RETROSPECTIVE_SOURCE_SHA=$(git ls-remote \
+            https://github.com/PacificCommunity/ofp-sam-bet-2026-retrospective.git \
+            refs/heads/main | cut -f1)
+          SENSITIVITY_SOURCE_SHA=$(git ls-remote \
+            https://github.com/PacificCommunity/ofp-sam-bet-2026-sensitivity.git \
+            refs/heads/main | cut -f1)
           test -n "$DIAGNOSTIC_SOURCE_SHA"
-          echo "DIAGNOSTIC_SOURCE_SHA=$DIAGNOSTIC_SOURCE_SHA" >> "$GITHUB_ENV"
+          test -n "$STEPWISE_SOURCE_SHA"
+          test -n "$ENSEMBLE_SOURCE_SHA"
+          test -n "$JITTER_SOURCE_SHA"
+          test -n "$SELFTEST_SOURCE_SHA"
+          test -n "$RETROSPECTIVE_SOURCE_SHA"
+          test -n "$SENSITIVITY_SOURCE_SHA"
+          {
+            echo "DIAGNOSTIC_SOURCE_SHA=$DIAGNOSTIC_SOURCE_SHA"
+            echo "STEPWISE_SOURCE_SHA=$STEPWISE_SOURCE_SHA"
+            echo "ENSEMBLE_SOURCE_SHA=$ENSEMBLE_SOURCE_SHA"
+            echo "JITTER_SOURCE_SHA=$JITTER_SOURCE_SHA"
+            echo "SELFTEST_SOURCE_SHA=$SELFTEST_SOURCE_SHA"
+            echo "RETROSPECTIVE_SOURCE_SHA=$RETROSPECTIVE_SOURCE_SHA"
+            echo "SENSITIVITY_SOURCE_SHA=$SENSITIVITY_SOURCE_SHA"
+          } >> "$GITHUB_ENV"
           bash scripts/sync-diagnostic-figures.sh \
             https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic \
             "$DIAGNOSTIC_SOURCE_SHA"
+          bash scripts/sync-stepwise-figures.sh \
+            https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise \
+            "$STEPWISE_SOURCE_SHA"
+          bash scripts/sync-ensemble-figures.sh \
+            https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble \
+            "$ENSEMBLE_SOURCE_SHA"
+          JITTER_SOURCE_SHA="$JITTER_SOURCE_SHA" \
+          SELFTEST_SOURCE_SHA="$SELFTEST_SOURCE_SHA" \
+          RETROSPECTIVE_SOURCE_SHA="$RETROSPECTIVE_SOURCE_SHA" \
+          SENSITIVITY_SOURCE_SHA="$SENSITIVITY_SOURCE_SHA" \
+          bash scripts/sync-analysis-figures.sh
 
-      - name: Persist synchronized diagnostic assets on Rev.01
-        if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
+      - name: Persist synchronized source assets on Rev.01
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
         shell: bash
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add figures_new tables/source/tag-reporting-rate-groups.csv
           if git diff --cached --quiet; then
-            echo "Diagnostic figures already match $DIAGNOSTIC_SOURCE_SHA"
+            echo "Source figures are already current"
           else
-            git commit -m "Sync diagnostic figures from $DIAGNOSTIC_SOURCE_SHA [skip ci]"
+            git commit -m "Sync published assessment figures [skip ci]"
             git push origin HEAD:rev1
           fi
 
@@ -122,11 +171,32 @@ jobs:
         run: bash scripts/build-draft-diff.sh origin/draft
 
       - name: Verify rendered report
+        shell: bash
         run: |
           test -s WCPFC-SC22-2026-SA-WP-06.pdf
           test -s WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf
           test -s main.tex
           test -s main-diff.tex
+          test "$(pdfinfo WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf | awk '/^Pages:/ {print $2}')" -gt 0
+          test "$(stat -c %s WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf)" -lt $((20 * 1024 * 1024))
+
+      - name: Persist rendered clean and review reports on Rev.01
+        if: github.ref == 'refs/heads/rev1' && github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add \
+            WCPFC-SC22-2026-SA-WP-06.pdf \
+            WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf \
+            main.tex \
+            main-diff.tex
+          if git diff --cached --quiet; then
+            echo "Rendered reports are already current"
+          else
+            git commit -m "Update rendered clean and review reports [skip ci]"
+            git push origin HEAD:rev1
+          fi
 
       - name: Upload rendered report
         uses: actions/upload-artifact@v4

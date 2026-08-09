@@ -44,6 +44,8 @@ The assessment identifies the following priorities:
 
 -   Extend self-tests to structural cross-tests and the tag-likelihood alternatives, and repeat fixed-movement likelihood profiles to distinguish the direct scaling effect of tags from their indirect effect through movement.
 
+-   Establish a separate MFCL continuous-integration project that exercises assessment-critical flags and their interactions on small verified models, including $\tau$, pre-mixing reporting-rate treatment and mixing-period controls. Automated checks of expected likelihood components, fitted outputs and numerical failures would reduce the risk that complex or poorly documented settings affect an assessment unnoticed.
+
 The general conclusions of this assessment are as follows:
 
 -   The spawning potential of the stock has become more depleted across all model regions until around 2010, after which it has become more stable.

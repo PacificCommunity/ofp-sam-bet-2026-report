@@ -1,3 +1,14 @@
+```{=latex}
+\appendix
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{A\arabic{figure}}
+\setcounter{table}{0}
+\renewcommand{\thetable}{A\arabic{table}}
+```
+
+Appendices {#sec-appendices}
+==========
+
 No-tagging and alternative-movement model comparisons {#sec-appendix-no-tag-movement}
 --------------------------------------------------------------------------
 
@@ -13,25 +24,27 @@ To determine the impact of tagging data on the assessment results, three alterna
 
 The fixed movement estimates used by 5R-MFCL and 5R-SEAP are shown in @fig-appendix-mfcl-movement and @fig-appendix-seapodym-movement. The patterns are qualitatively similar, although seasonal variation is evident in some MFCL-estimated movements but is limited in the SEAPODYM estimates. The SEAPODYM estimates vary with age, whereas the MFCL estimates are age-invariant. For example, SEAPODYM estimates that movement from regions 4 and 3 to region 1 increases with age.
 
-\clearpage
 ```{=latex}
+\isolatefiguresfalse
 \begin{landscape}
 ```
 
-![Bigeye tuna movement probabilities estimated in the MFCL diagnostic model. Columns identify donor regions and rows identify recipient regions; the horizontal axes are quarterly age classes. Q1 is dark blue, Q2 orange, Q3 green and Q4 light blue.](figures_new/appendix-mfcl-movement.png){#fig-appendix-mfcl-movement width=100%}
+![Bigeye tuna movement probabilities estimated in the MFCL diagnostic model. Columns identify donor regions and rows identify recipient regions; the horizontal axes are quarterly age classes. Q1 is dark blue, Q2 orange, Q3 green and Q4 light blue.](figures_new/appendix-mfcl-movement.png){#fig-appendix-mfcl-movement width=92% height=78%}
 
 ```{=latex}
 \end{landscape}
+\isolatefigurestrue
 ```
-\clearpage
 ```{=latex}
+\isolatefiguresfalse
 \begin{landscape}
 ```
 
-![Bigeye tuna movement probabilities from the SEAPODYM reference model. Columns identify donor regions and rows identify recipient regions; the horizontal axes are quarterly age classes. Q1 is dark blue, Q2 orange, Q3 green and Q4 light blue.](figures_new/appendix-seapodym-movement.png){#fig-appendix-seapodym-movement width=100%}
+![Bigeye tuna movement probabilities from the SEAPODYM reference model. Columns identify donor regions and rows identify recipient regions; the horizontal axes are quarterly age classes. Q1 is dark blue, Q2 orange, Q3 green and Q4 light blue.](figures_new/appendix-seapodym-movement.png){#fig-appendix-seapodym-movement width=92% height=78%}
 
 ```{=latex}
 \end{landscape}
+\isolatefigurestrue
 ```
 \clearpage
 
@@ -47,15 +60,16 @@ Overall, the headline estimates were reasonably consistent across models:
 
 -   **Regional spawning-biomass distribution (1952--2024):** 5R-MFCL was most similar to 5R-Diag. The 5R-SEAP distribution was very similar to native SEAPODYM and placed considerably more spawning biomass in region 1 than did 5R-Diag and 5R-MFCL.
 
-\clearpage
 ```{=latex}
+\isolatefiguresfalse
 \begin{landscape}
 ```
 
-![Comparisons of recruitment (upper left), spawning-biomass depletion (upper right), spawning biomass (lower left) and regional spawning-biomass distribution (lower right). The models are the current five-region diagnostic model (5R-Diag), the five-region model without tagging data and with fixed MFCL movement (5R-MFCL), the five-region model without tagging data and with fixed SEAPODYM movement (5R-SEAP), and the single-region model without tagging data (1R). Native SEAPODYM is included only in the regional-distribution panel.](figures_new/appendix-no-tag-model-comparison.png){#fig-appendix-no-tag-comparison width=100%}
+![Comparisons of recruitment (upper left), spawning-biomass depletion (upper right), spawning biomass (lower left) and regional spawning-biomass distribution (lower right). The models are the current five-region diagnostic model (5R-Diag), the five-region model without tagging data and with fixed MFCL movement (5R-MFCL), the five-region model without tagging data and with fixed SEAPODYM movement (5R-SEAP), and the single-region model without tagging data (1R). Native SEAPODYM is included only in the regional-distribution panel.](figures_new/appendix-no-tag-model-comparison.png){#fig-appendix-no-tag-comparison width=92% height=78%}
 
 ```{=latex}
 \end{landscape}
+\isolatefigurestrue
 ```
 \clearpage
 

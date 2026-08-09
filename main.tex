@@ -149,7 +149,7 @@
 
 
 
-
+ 
 
 
 % Use the SC22 class title-page machinery and typography from the source report.
@@ -501,89 +501,40 @@ assessment framework, we recommend:
 \subsection{Open and reproducible assessment
 resources}\label{open-and-reproducible-assessment-resources}
 
-The assessment provides the report, model diagnostics and uncertainty
-analyses as linked, versioned resources
-(Table~\ref{tbl-open-science-resources}). The browser viewers expose
-detail that cannot be shown legibly in static figures, while the
-repositories retain the source data, code and publication assets for the
-assessment analyses. Direct links are also provided in the captions of
-the corresponding figures, and the complete list is repeated in
-Section~\ref{sec-interactive-resources}.
+The assessment results and supporting analyses can be opened directly:
 
-\clearpage
+\begin{itemize}
+\item
+  \textbf{Assessment:}
+  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-report/}{clean
+  report}.
+\item
+  \textbf{Model development and fit:}
+  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html}{stepwise
+  viewer},
+  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html}{diagnostic
+  report} and
+  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{likelihood-profile
+  viewer}.
+\item
+  \textbf{Model diagnostics and sensitivities:}
+  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html}{jitter},
+  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{self-test},
+  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html}{retrospective}
+  and
+  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html}{one-off
+  sensitivity viewer}.
+\item
+  \textbf{Management uncertainty and projections:}
+  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html}{ensemble
+  viewer}.
+\end{itemize}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
-
-\caption{\label{tbl-open-science-resources}Public assessment outputs and
-source repositories.}
-
-\tabularnewline
-
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Resource
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Browser output
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Source repository
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Assessment report &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-report/}{Clean
-PDF} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-report}{ofp-sam-bet-2026-report} \\
-Stepwise development &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html}{Interactive
-model viewer} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise}{ofp-sam-bet-2026-stepwise} \\
-Diagnostic fit and profiles &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html}{Diagnostic
-report};
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{profile
-viewer} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic}{ofp-sam-bet-2026-diagnostic} \\
-Jitter &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html}{Jitter
-report} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-jitter}{ofp-sam-bet-2026-jitter} \\
-Self-test &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{Self-test
-report} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-selftest}{ofp-sam-bet-2026-selftest} \\
-Retrospective analysis &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html}{Retrospective
-report} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-retrospective}{ofp-sam-bet-2026-retrospective} \\
-One-off sensitivities &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html}{Sensitivity
-viewer} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-sensitivity}{ofp-sam-bet-2026-sensitivity} \\
-Uncertainty ensemble and projections &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html}{Ensemble
-viewer} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-ensemble}{ofp-sam-bet-2026-ensemble} \\
-Pinned build environment & Report build logs and release checksums &
-\inlinecode{tuna-flow-private:v2.7} at the immutable digest given
-below \\
-
-\end{longtable}
-
-\clearpage
-
-The report builds from a standalone clone with all publication assets
-checked in. Automated builds use the pinned container
-\inlinecode{ghcr.io/pacificcommunity/tuna-flow-private:v2.7@sha256:4fee4c40cb6439ff920b1dd233a84bf19d5cc0e37278c99ceff3fd79cb9c8852};
-releases include both PDFs, retained LaTeX and a source archive. The
-combination of public model outputs, interactive diagnostics, immutable
-build inputs and tracked revisions provides a level of transparent,
-reproducible assessment exploration beyond that available for previous
-WCPO tuna assessments.
+The corresponding repositories and pinned build environment are
+documented once in Table~\ref{tbl-open-science-resources}. These linked,
+versioned resources expose detail that cannot be shown legibly in static
+figures and support transparent, reproducible exploration beyond that
+available for previous WCPO tuna assessments.
 
 \section{Introduction}\label{sec-introduction}
 
@@ -965,6 +916,10 @@ assessment Figure~\ref{fig-map-5regions}. The PAW also recommended to
 explore a single region fleets-as-area model, excluding all tag data
 (Hamer, 2026). This exploration is provided in a companion paper to SC22
 (Hampton et al., 2026b).
+
+The correspondence between the former nine-region structure and the five
+regions used in 2026 is shown explicitly in
+Figure~\ref{fig-map-spatial-comparison}.
 
 \subsection{Temporal stratification}\label{sec-temporal-stratification}
 
@@ -2778,17 +2733,16 @@ estimated nor plotted.
 
 \subsubsection{Conditional age-at-length}\label{sec-fit-CAAL}
 
-The estimated growth curve for the diagnostic model, which is based on
-both the CAAL data and the size data is shown in
-Figure~\ref{fig-growth-curve}. Aggregate fits to the
+The estimated growth curve for the diagnostic model, which is informed
+by both the CAAL and size-composition data, is shown in
+Figure~\ref{fig-growth-curve}. Regional fits to the
 conditional-age-at-length (CAAL) data are shown in
-Figure~\ref{fig-caal-fits}. For length bins from around 70 to 120 cm,
-which constitute most of the observed CAAL data, the model's predicted
-median ages at lengths fit the observed data very well. At smaller sizes
-the model tends to slightly over predict the observed median age, for
-size bins from around 120 to 150 cm the model under predicts the median
-age, and for the largest sizes, the model prediction is closer to the
-observed median age at length. Overall the fit is reasonable.
+Figure~\ref{fig-caal-fits-regions}. For length bins from around 70 to
+120 cm, which contain most observations, predicted median ages generally
+tracked the data well. At smaller sizes the model tended to slightly
+overpredict median age, whereas median age was generally underpredicted
+from around 120 to 150 cm; predictions were closer to the observations
+at the largest sizes.
 
 At the model-region level, Region 1 had a reasonable amount of data
 after the addition of samples from north of \(10^{\circ}\,\mathrm{N}\)
@@ -2821,9 +2775,7 @@ estimated mean and standard deviation of length at age, and three
 involved regional recruitment distribution in the same quarter. The
 remaining 13 correlations (0.90--0.95 in absolute value) were also
 confined to growth-variability parameters and regional
-recruitment-distribution deviations. The wide range of inverse-Hessian
-standard-error scales is summarised in
-Figure~\ref{fig-hessian-parameter-scales}.
+recruitment-distribution deviations.
 
 \subsubsection{Jitter}\label{sec-diag-jitter}
 
@@ -2854,15 +2806,16 @@ criterion, with maximum gradient components from \(5.13\times10^{-5}\)
 to \(9.97\times10^{-5}\). Median whole-series pseudo-data errors ranged
 from -0.23\% to 0.07\%, and the generating trajectory was inside the
 pointwise central 95\% empirical refit range at 385 of 438 annual
-quantity--year points (87.9\%). Median relative errors for recent and
-native assessment summaries ranged from -2.1\% to 3.5\%; across selected
-recruitment-scale, growth and stock--recruitment parameters they ranged
-from -3.85\% to 2.00\% (Figure~\ref{fig-selftest-diagnostics}).
-Consistent with the purpose of a self-test (Deroba et al., 2015; Kim et
-al., 2024), these results show that the configured model can recover its
-principal derived quantities from simulated observations without
-consistent large bias. They do not test structural realism or form
-confidence intervals for the assessment.
+quantity--year points (87.9\%; Figure~\ref{fig-selftest-time-series}).
+Median relative errors for recent and native assessment summaries ranged
+from -2.1\% to 3.5\%; across the selected fitted recruitment-scale,
+growth and stock--recruitment parameters they ranged from -3.85\% to
+2.00\% (Figure~\ref{fig-selftest-recovery}). Consistent with the purpose
+of a self-test (Deroba et al., 2015; Kim et al., 2024), these results
+show that the configured model can recover its principal derived
+quantities from simulated observations without consistent large bias.
+They do not test structural realism or form confidence intervals for the
+assessment.
 
 The complete self-test results can be viewed in the
 \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{browser
@@ -2974,14 +2927,16 @@ connection with other regions. Region 2 showed some movement to region
 
 \subsubsection{Natural mortality}\label{sec-natM}
 
-The Lorenzen form of natural mortality for the diagnostic model
-(Figure~\ref{fig-natm-at-age}) had the scale set by the fixed M at age
-40 quarter of 0.078/quarter. The Lorenzen shape of the natural mortality
-at age depends on the growth curve estimated in MFCL, and features
-considerably higher levels of natural mortality at age for very young
-fish with quarterly M approaching 0.45 at 1 quarter age, and a lower
-asymptote for mortality of the oldest age classes reached the fixed
-value of 0.078/quarter at age 40 quarters.
+The diagnostic model fixed the Lorenzen natural-mortality scale at
+\(M_{40}=0.07814\) per quarter. Applying the same 2026 growth schedule
+and Lorenzen exponent to the model-aligned Hamel--Cope median
+(\(M_{40}=0.08082\)) produces a very similar age-specific curve, whereas
+the external tag estimate (\(M_{40}=0.0624\); 90\% CI 0.0500--0.0749)
+produces lower mortality throughout the age range
+(Figure~\ref{fig-natm-at-age}). All three curves decline steeply for
+young fish and approach their respective fixed scales at age 40
+quarters; the diagnostic choice is represented as an uncertainty axis
+rather than estimated internally.
 
 \subsubsection{Maturity}\label{sec-maturity-at-age}
 
@@ -3182,10 +3137,15 @@ The planned and retained model numbers by uncertainty category are shown
 in Figure~\ref{fig-ensemble-design-retention}. More models were retained
 at the two higher \(\tau\) values, which assign less weight to tag data,
 and when reporting-rate adjustments were excluded during the mixing
-period. Otherwise, retained models were distributed across the levels of
-each uncertainty component. Equal total model weights prevented these
-differences in retention from giving greater influence to categories
-containing more retained models.
+period. The balanced design contained 50 models per reporting-rate
+treatment, but the retained set contained 34 inclusion and 46 exclusion
+models. Under inclusion, MFCL reconstructs pre-mixing tag catches by
+dividing by the estimated reporting rate; values approaching zero can
+create very large intermediate values and numerical overflow (Davies et
+al., 2026b). The imbalance therefore reflects differential numerical
+stability, not greater scientific support for exclusion. Every retained
+model received equal model weight, and the unequal retention is reported
+explicitly rather than used as an additional weighting criterion.
 
 The influence of each uncertainty component on the management quantities
 across the ensemble of models is displayed in
@@ -3448,6 +3408,14 @@ The assessment identifies the following priorities:
   alternatives, and repeat fixed-movement likelihood profiles to
   distinguish the direct scaling effect of tags from their indirect
   effect through movement.
+\item
+  Establish a separate MFCL continuous-integration project that
+  exercises assessment-critical flags and their interactions on small
+  verified models, including \(\tau\), pre-mixing reporting-rate
+  treatment and mixing-period controls. Automated checks of expected
+  likelihood components, fitted outputs and numerical failures would
+  reduce the risk that complex or poorly documented settings affect an
+  assessment unnoticed.
 \end{itemize}
 
 The general conclusions of this assessment are as follows:
@@ -3508,6 +3476,72 @@ and software-development teams and on the supporting analyses cited
 throughout this report.
 
 \section{Tables}\label{tables}
+
+\clearpage
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+
+\caption{\label{tbl-open-science-resources}Public assessment outputs,
+source repositories and pinned build resource.}
+
+\tabularnewline
+
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Resource
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Browser output
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Source repository
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Assessment report &
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-report/}{Clean
+PDF} &
+\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-report}{ofp-sam-bet-2026-report} \\
+Stepwise development &
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html}{Interactive
+model viewer} &
+\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise}{ofp-sam-bet-2026-stepwise} \\
+Diagnostic fit and profiles &
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html}{Diagnostic
+report};
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{profile
+viewer} &
+\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic}{ofp-sam-bet-2026-diagnostic} \\
+Jitter &
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html}{Jitter
+report} &
+\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-jitter}{ofp-sam-bet-2026-jitter} \\
+Self-test &
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{Self-test
+report} &
+\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-selftest}{ofp-sam-bet-2026-selftest} \\
+Retrospective analysis &
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html}{Retrospective
+report} &
+\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-retrospective}{ofp-sam-bet-2026-retrospective} \\
+One-off sensitivities &
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html}{Sensitivity
+viewer} &
+\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-sensitivity}{ofp-sam-bet-2026-sensitivity} \\
+Uncertainty ensemble and projections &
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html}{Ensemble
+viewer} &
+\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-ensemble}{ofp-sam-bet-2026-ensemble} \\
+Pinned build environment & \inlinecode{tuna-flow-private:v2.7} &
+\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-report/blob/rev1/.github/workflows/render-quarto.yml}{Report
+workflow and full digest} (\inlinecode{sha256:4fee4c40...9c8852}) \\
+
+\end{longtable}
+
+\clearpage
 
 \clearpage
 
@@ -3633,11 +3667,11 @@ DM group & Fisheries & Fishery series & Grouping basis \\
 \endhead
 \bottomrule
 \endlastfoot
-G1 & F1--F4, F6--F8, F10--F11 & LL.WEST.1; LL.EAST.1; LL.US.1; LL.ALL.2; LL.ARCH.3; LL.WEST.3; LL.EAST.3; LL.ALL.5; LL.AU.5 & Main longline composition process \\
+G1 & F1--F4, F6--F8, F10--F11 & LL.WEST.1; LL.EAST.1; LL.US.1; LL.ALL.2; LL.ARCH.3; LL.WEST.3; LL.EAST.4; LL.ALL.5; LL.AU.5 & Main longline composition process \\
 G2 & F5, F9 & LL.OS.2; LL.OS.3 & Offshore longline series with a distinct sampling history \\
 G3 & F12, F17--F18 & PS.JP.1; PS.ID.2; PS.PH.2 & Purse-seine series without associated/unassociated set-type separation \\
-G4 & F19, F25--F26 & PS.ASS.2; PS.ASS.WEST.3; PS.ASS.EAST.3 & Associated purse-seine series \\
-G5 & F20, F27--F28 & PS.UNA.2; PS.UNA.WEST.3; PS.UNA.EAST.3 & Unassociated purse-seine series \\
+G4 & F19, F25--F26 & PS.ASS.2; PS.ASS.WEST.3; PS.ASS.EAST.4 & Associated purse-seine series \\
+G5 & F20, F27--F28 & PS.UNA.2; PS.UNA.WEST.3; PS.UNA.EAST.4 & Unassociated purse-seine series \\
 G6 & F14--F15 & HL.ID.2; HL.PH.2 & Handline series \\
 G7 & F13, F16, F21--F24 & PL.JP.1; PL.ALL.2; DOM.ID.2; DOM.PH.2; DOM.VN.2; PL.ALL.WEST.3 & Other extraction fisheries pooled for stable estimation \\
 G8 & F29--F33 & Index R1; Index R2; Index R3; Index R4; Index R5 & Regional indices sharing the relative-abundance reweighting procedure \\
@@ -3651,9 +3685,9 @@ G8 & F29--F33 & Index R1; Index R2; Index R3; Index R4; Index R5 & Regional indi
 
 \begin{landscape}
 \begingroup
-\scriptsize
-\setlength{\tabcolsep}{3.5pt}
-\renewcommand{\arraystretch}{1.00}
+\fontsize{6.5}{6.8}\selectfont
+\setlength{\tabcolsep}{3.2pt}
+\renewcommand{\arraystretch}{0.94}
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.045\linewidth}>{\raggedright\arraybackslash}p{0.105\linewidth}>{\raggedright\arraybackslash}p{0.075\linewidth}>{\raggedright\arraybackslash}p{0.125\linewidth}>{\raggedright\arraybackslash}p{0.09\linewidth}>{\raggedright\arraybackslash}p{0.215\linewidth}>{\raggedright\arraybackslash}p{0.065\linewidth}>{\raggedleft\arraybackslash}p{0.065\linewidth}@{}}
 
@@ -3966,6 +4000,22 @@ Table~\ref{tbl-fisheries-definitions}.}
 
 \centering{
 
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/spatial-structure-comparison.png}
+
+}
+
+\caption{\label{fig-map-spatial-comparison}Comparison of the spatial
+structures used in the 2023 and 2026 diagnostic models. The 2026
+structure consolidates the previous nine regions into five while
+retaining an eastern equatorial region for the principal tag-recapture
+information.}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+\centering{
+
 \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/catch_hist_full.png}
 
 }
@@ -4104,14 +4154,16 @@ region.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/growth-curve.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/age-data-growth-by-region.png}
 
 }
 
-\caption{\label{fig-growth-curve}Fitted mean length at age for the 2026
-diagnostic model. Shading is the mean plus or minus 1.96 length-at-age
-standard deviations and represents fish-level length variability, not
-parameter-estimation uncertainty.}
+\caption{\label{fig-growth-curve}Observed age--length data and fitted
+mean length at age for the five model regions and all regions combined.
+Circle area is proportional to the number of aged fish. Shading is the
+fitted mean plus or minus 1.96 length-at-age standard deviations and
+represents fish-level length variability, not parameter-estimation
+uncertainty.}
 
 \end{figure}%
 
@@ -4119,12 +4171,14 @@ parameter-estimation uncertainty.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/maturity_ogive.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/maturity-comparison.png}
 
 }
 
-\caption{\label{fig-maturity-ogive}Maturity-at-age ogive for the 2026
-diagnostic model.}
+\caption{\label{fig-maturity-ogive}Maturity-at-age schedules in the 2023
+and 2026 diagnostic models. The maturity-at-length relationship was
+unchanged; the small difference results from applying it to the updated
+2026 growth curve.}
 
 \end{figure}%
 
@@ -4132,13 +4186,19 @@ diagnostic model.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/natm_at_age.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/natural-mortality-evidence.png}
 
 }
 
-\caption{\label{fig-natm-at-age}Lorenzen natural mortality-at-age
-(quarters) for the 2026 diagnostic model, based on M at age 40 quarters
-of 0.078.}
+\caption{\label{fig-natm-at-age}Age-specific quarterly natural mortality
+obtained by applying three assessment-relevant \(M_0\) values to the
+same 2026 diagnostic growth schedule and fixed Lorenzen exponent (-1).
+Curves show the diagnostic value (0.07814), the model-aligned
+Hamel--Cope median (0.08082), and the tag estimate from Ducharme-Barth
+et al. (2026) (0.0624). Shading is the tag estimate's 90\% confidence
+interval (0.0500--0.0749) propagated over age. Open the
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-report.html\#fig-natural-mortality-evidence}{ensemble
+report}.}
 
 \end{figure}%
 
@@ -4200,7 +4260,7 @@ diagnostic report}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/length-frequency-fit-by-fishery.png}
+\includegraphics[width=1\linewidth,height=0.72\textheight]{figures_new/length-frequency-fit-by-fishery.png}
 
 }
 
@@ -4326,21 +4386,6 @@ diagnostic report}.}
 
 \centering{
 
-\includegraphics[width=0.85\linewidth,height=\textheight,keepaspectratio]{figures/caal_aggregate_fits.png}
-
-}
-
-\caption{\label{fig-caal-fits}Model-estimated mean age at length (line)
-and observed conditional ages (circles), pooled across all samples. The
-vertical distribution of points shows the observed age distribution at
-each length.}
-
-\end{figure}%
-
-\begin{figure}[H]
-
-\centering{
-
 \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/age-data-fit-by-region.png}
 
 }
@@ -4355,27 +4400,13 @@ diagnostic report} for fishery-level detail.}
 
 \end{figure}%
 
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/hessian-parameter-scales.png}
-
-}
-
-\caption{\label{fig-hessian-parameter-scales}Parameter standard errors
-derived from the positive-definite inverse Hessian: (a) ordered standard
-errors and (b) distributions for the ten most numerous parameter
-families. Logarithmic axes show the wide range of estimated parameter
-scales.}
-
-\end{figure}%
+\label{fig-caal-fits}
 
 \begin{figure}[H]
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/jitter_scatter_plot.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/jitter-diagnostics-diagnostic-model.png}
 
 }
 
@@ -4394,16 +4425,19 @@ jitter report}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/jitter_derived_values_diag_panel.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/jitter-derived-diagnostic-model.png}
 
 }
 
 \caption{\label{fig-jitter-derived-values-diag-panel}Annual derived
 quantities across the 25 retained jitter fits. Thin grey-blue lines are
 individual fits, the shaded band is the pointwise central 80\% interval,
-the dark line is the jitter median and the red line is the diagnostic
-model without jitter. Recruitment is in millions of fish and spawning
-potential is in thousand metric tonnes.}
+the dark line is the jitter median with its terminal value marked by a
+circle, and the red line is the diagnostic model without jitter.
+Recruitment is in millions of fish and spawning potential is in thousand
+metric tonnes. Open the
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html}{interactive
+jitter report}.}
 
 \end{figure}%
 
@@ -4411,7 +4445,7 @@ potential is in thousand metric tonnes.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/jitter_regional_depletion.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/jitter-regional-depletion-diagnostic-model.png}
 
 }
 
@@ -4427,15 +4461,33 @@ line is the diagnostic model without jitter.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/self-test-diagnostics.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/selftest-key-recovery-diagnostic.png}
 
 }
 
-\caption{\label{fig-selftest-diagnostics}Self-test results from 50
-simulated-and-refitted data sets: (a) maximum gradient component, (b)
-recovery of management quantities, (c) terminal derived quantities and
-(d) selected profile parameters. Relative errors are refitted minus
-generating values, divided by generating values. Open the
+\caption{\label{fig-selftest-recovery}Relative recovery error for recent
+management and assessment quantities and selected estimated parameters
+in the diagnostic model. Points are the 50 pseudo-data refits, boxes
+show their empirical distributions, the red line marks exact recovery
+and grey dashed lines mark errors of -5\% and +5\%. Open the
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{interactive
+self-test report}.}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/selftest-recovery-diagnostic.png}
+
+}
+
+\caption{\label{fig-selftest-time-series}Self-test recovery of annual
+assessment quantities. The red line is the generating value, the
+dark-blue line is the median across 50 replicate refits and the nested
+blue bands are the central 50\%, 80\% and 95\% empirical ranges. Open
+the
 \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{interactive
 self-test report}.}
 
@@ -4600,8 +4652,8 @@ central 50\%, 80\% and 95\% Hessian delta-method intervals.}
 }
 
 \caption{\label{fig-select-age}Estimated fishery selectivity at age for
-all 33 fisheries, grouped into the five model-region panels. Colours and
-the complete fishery key identify each fitted cubic-spline curve.}
+all 33 fisheries. Each panel shows one fitted fishery-specific
+cubic-spline curve; panel labels give the fishery ID and definition.}
 
 \end{figure}%
 
@@ -4614,8 +4666,8 @@ the complete fishery key identify each fitted cubic-spline curve.}
 }
 
 \caption{\label{fig-select-length}Estimated fishery selectivity at
-length for all 33 fisheries, grouped into the five model-region panels.
-Length is the fitted mean length at each age class.}
+length for all 33 fisheries. Each panel shows one fishery, with
+age-specific selectivity mapped to the fitted mean length at age.}
 
 \end{figure}%
 
@@ -4664,15 +4716,17 @@ distribution by region and quarter.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/stock_rr.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/stock-recruitment.png}
 
 }
 
-\caption{\label{fig-stock-rr}Estimated stock--recruitment relationship
-between recruitment and spawning potential based on annual estimates
-from the 2026 diagnostic model. Circle colour progresses from purple for
-early years to yellow for recent years. Points before 1968 are not used
-to fit the relationship.}
+\caption{\label{fig-stock-rr}Fitted Beverton--Holt stock--recruitment
+relationship for the 2026 diagnostic model. Filled circles are annual
+recruitment and adult-biomass estimates used in the fit and are coloured
+by year; open circles denote years before 1968, which were not used to
+fit the relationship. Open the
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html\#fig-stock-recruitment}{diagnostic
+report}.}
 
 \end{figure}%
 
@@ -4730,7 +4784,7 @@ additional panel height; panel y axes are free and begin at zero.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/sensitivity_steepness.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/sensitivity-steepness.png}
 
 }
 
@@ -4748,7 +4802,7 @@ sensitivity viewer}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/sensitivity_natural_mortality.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/sensitivity-natural-mortality.png}
 
 }
 
@@ -4766,7 +4820,7 @@ sensitivity viewer}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/sensitivity_CAAL.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/sensitivity-conditional-age-at-length.png}
 
 }
 
@@ -4784,7 +4838,7 @@ sensitivity viewer}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/sensitivity_effort_creep.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/sensitivity-effort-creep.png}
 
 }
 
@@ -4802,7 +4856,7 @@ sensitivity viewer}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/sensitivity_regional_scaling.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/sensitivity-regional-scaling.png}
 
 }
 
@@ -4822,7 +4876,7 @@ sensitivity viewer}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/sensitivity_tag_mixing_periods_Kstatistic_cutoff.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/sensitivity-tag-mixing-periods-ks-d-statistic-cutoff.png}
 
 }
 
@@ -4842,7 +4896,7 @@ sensitivity viewer}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/sensitivity_premixing_tag_reporting_rate.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/sensitivity-pre-mixing-tag-reporting.png}
 
 }
 
@@ -4861,7 +4915,7 @@ sensitivity viewer}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/sensitivity_tag_overdispersion.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/sensitivity-tag-overdispersion.png}
 
 }
 
@@ -5121,56 +5175,6 @@ ensemble viewer}.}
 
 \section{Appendices}\label{sec-appendices}
 
-\subsection{Interactive supporting
-resources}\label{sec-interactive-resources}
-
-The following self-contained browser reports provide selectable model
-detail that cannot be reproduced legibly in the static figures. All
-links were checked during preparation of Revision 1. The PDF figures and
-tables remain the publication record; the viewers are supporting
-exploration tools.
-
-\begin{itemize}
-\item
-  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html}{Stepwise
-  model-development viewer}: comparison of the 2023 refit, intermediate
-  development steps and the 2026 diagnostic model.
-\item
-  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html}{Diagnostic
-  report}: model-fit, population-dynamics, diagnostic and configuration
-  outputs, including downloadable tables.
-\item
-  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{Likelihood-profile
-  viewer}: selectable overall and component profiles. CPUE can be
-  expanded to index fisheries; length-frequency and CAAL profiles can be
-  expanded from region to fishery; tag profiles can be expanded from
-  tagging programme to release group; and penalty components can be
-  selected individually. The LF profiles refer to length-frequency data;
-  weight-frequency profiles are not present because the assessment model
-  used length compositions after external conversion of longline weight
-  observations.
-\item
-  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html}{Jitter
-  diagnostics}: convergence, objective-function and derived-quantity
-  results for dispersed starting values.
-\item
-  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{Self-test
-  diagnostics}: simulation-estimation recovery summaries and
-  replicate-level results.
-\item
-  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html}{Retrospective
-  diagnostics}: seven terminal-year peels, trajectories and Mohn's
-  \(\rho\) summaries.
-\item
-  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html}{One-off
-  sensitivity viewer}: comparison of the diagnostic model with the
-  one-off sensitivity models.
-\item
-  \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html}{Uncertainty-ensemble
-  viewer}: retained-model design, management quantities and ensemble
-  uncertainty summaries.
-\end{itemize}
-
 \subsection{No-tagging and alternative-movement model
 comparisons}\label{sec-appendix-no-tag-movement}
 
@@ -5220,15 +5224,14 @@ SEAPODYM estimates vary with age, whereas the MFCL estimates are
 age-invariant. For example, SEAPODYM estimates that movement from
 regions 4 and 3 to region 1 increases with age.
 
-\clearpage
-
+\isolatefiguresfalse
 \begin{landscape}
 
 \begin{figure}[H]
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/appendix-mfcl-movement.png}
+\includegraphics[width=0.92\linewidth,height=0.78\textheight]{figures_new/appendix-mfcl-movement.png}
 
 }
 
@@ -5241,16 +5244,16 @@ light blue.}
 \end{figure}%
 
 \end{landscape}
+\isolatefigurestrue
 
-\clearpage
-
+\isolatefiguresfalse
 \begin{landscape}
 
 \begin{figure}[H]
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/appendix-seapodym-movement.png}
+\includegraphics[width=0.92\linewidth,height=0.78\textheight]{figures_new/appendix-seapodym-movement.png}
 
 }
 
@@ -5263,6 +5266,7 @@ blue.}
 \end{figure}%
 
 \end{landscape}
+\isolatefigurestrue
 
 \clearpage
 
@@ -5297,15 +5301,14 @@ models:
   region 1 than did 5R-Diag and 5R-MFCL.
 \end{itemize}
 
-\clearpage
-
+\isolatefiguresfalse
 \begin{landscape}
 
 \begin{figure}[H]
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/appendix-no-tag-model-comparison.png}
+\includegraphics[width=0.92\linewidth,height=0.78\textheight]{figures_new/appendix-no-tag-model-comparison.png}
 
 }
 
@@ -5322,6 +5325,7 @@ regional-distribution panel.}
 \end{figure}%
 
 \end{landscape}
+\isolatefigurestrue
 
 \clearpage
 

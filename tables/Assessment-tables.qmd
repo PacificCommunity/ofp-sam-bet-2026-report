@@ -1,6 +1,20 @@
 Tables
 ======
 
+| Resource | Browser output | Source repository |
+|:--|:--|:--|
+| Assessment report | [Clean PDF](https://pacificcommunity.github.io/ofp-sam-bet-2026-report/) | [ofp-sam-bet-2026-report](https://github.com/PacificCommunity/ofp-sam-bet-2026-report) |
+| Stepwise development | [Interactive model viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html) | [ofp-sam-bet-2026-stepwise](https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise) |
+| Diagnostic fit and profiles | [Diagnostic report](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html); [profile viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html) | [ofp-sam-bet-2026-diagnostic](https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic) |
+| Jitter | [Jitter report](https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html) | [ofp-sam-bet-2026-jitter](https://github.com/PacificCommunity/ofp-sam-bet-2026-jitter) |
+| Self-test | [Self-test report](https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html) | [ofp-sam-bet-2026-selftest](https://github.com/PacificCommunity/ofp-sam-bet-2026-selftest) |
+| Retrospective analysis | [Retrospective report](https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html) | [ofp-sam-bet-2026-retrospective](https://github.com/PacificCommunity/ofp-sam-bet-2026-retrospective) |
+| One-off sensitivities | [Sensitivity viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html) | [ofp-sam-bet-2026-sensitivity](https://github.com/PacificCommunity/ofp-sam-bet-2026-sensitivity) |
+| Uncertainty ensemble and projections | [Ensemble viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html) | [ofp-sam-bet-2026-ensemble](https://github.com/PacificCommunity/ofp-sam-bet-2026-ensemble) |
+| Pinned build environment | `tuna-flow-private:v2.7` | [Report workflow and full digest](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/blob/rev1/.github/workflows/render-quarto.yml) (`sha256:4fee4c40...9c8852`) |
+
+: Public assessment outputs, source repositories and pinned build resource. {#tbl-open-science-resources}
+
 \clearpage
 
 \begin{landscape}
@@ -103,11 +117,11 @@ DM group & Fisheries & Fishery series & Grouping basis \\
 \endhead
 \bottomrule
 \endlastfoot
-G1 & F1--F4, F6--F8, F10--F11 & LL.WEST.1; LL.EAST.1; LL.US.1; LL.ALL.2; LL.ARCH.3; LL.WEST.3; LL.EAST.3; LL.ALL.5; LL.AU.5 & Main longline composition process \\
+G1 & F1--F4, F6--F8, F10--F11 & LL.WEST.1; LL.EAST.1; LL.US.1; LL.ALL.2; LL.ARCH.3; LL.WEST.3; LL.EAST.4; LL.ALL.5; LL.AU.5 & Main longline composition process \\
 G2 & F5, F9 & LL.OS.2; LL.OS.3 & Offshore longline series with a distinct sampling history \\
 G3 & F12, F17--F18 & PS.JP.1; PS.ID.2; PS.PH.2 & Purse-seine series without associated/unassociated set-type separation \\
-G4 & F19, F25--F26 & PS.ASS.2; PS.ASS.WEST.3; PS.ASS.EAST.3 & Associated purse-seine series \\
-G5 & F20, F27--F28 & PS.UNA.2; PS.UNA.WEST.3; PS.UNA.EAST.3 & Unassociated purse-seine series \\
+G4 & F19, F25--F26 & PS.ASS.2; PS.ASS.WEST.3; PS.ASS.EAST.4 & Associated purse-seine series \\
+G5 & F20, F27--F28 & PS.UNA.2; PS.UNA.WEST.3; PS.UNA.EAST.4 & Unassociated purse-seine series \\
 G6 & F14--F15 & HL.ID.2; HL.PH.2 & Handline series \\
 G7 & F13, F16, F21--F24 & PL.JP.1; PL.ALL.2; DOM.ID.2; DOM.PH.2; DOM.VN.2; PL.ALL.WEST.3 & Other extraction fisheries pooled for stable estimation \\
 G8 & F29--F33 & Index R1; Index R2; Index R3; Index R4; Index R5 & Regional indices sharing the relative-abundance reweighting procedure \\
@@ -119,9 +133,9 @@ G8 & F29--F33 & Index R1; Index R2; Index R3; Index R4; Index R5 & Regional indi
 
 \begin{landscape}
 \begingroup
-\scriptsize
-\setlength{\tabcolsep}{3.5pt}
-\renewcommand{\arraystretch}{1.00}
+\fontsize{6.5}{6.8}\selectfont
+\setlength{\tabcolsep}{3.2pt}
+\renewcommand{\arraystretch}{0.94}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.045\linewidth}>{\raggedright\arraybackslash}p{0.105\linewidth}>{\raggedright\arraybackslash}p{0.075\linewidth}>{\raggedright\arraybackslash}p{0.125\linewidth}>{\raggedright\arraybackslash}p{0.09\linewidth}>{\raggedright\arraybackslash}p{0.215\linewidth}>{\raggedright\arraybackslash}p{0.065\linewidth}>{\raggedleft\arraybackslash}p{0.065\linewidth}@{}}
 \caption{Tag-reporting-rate groups, release coverage, estimation status and fitted reporting rates. Group is the MFCL reporting-rate group number. The pooled-matrix-row column indicates whether the same group number is also assigned to MFCL's extra pooled row; pooled is not a tagging programme. Group 31 is assigned to Index fisheries F29--F33 to complete the matrix, but is an inactive technical placeholder with no tag-recapture likelihood and is omitted.}\label{tbl-tag-definitions}\\
 \toprule

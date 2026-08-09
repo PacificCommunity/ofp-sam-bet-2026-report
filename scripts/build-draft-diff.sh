@@ -41,6 +41,7 @@ perl -0pi -e '
   s/\\label\{fig-length-fit-by-fishery\}/$&\\label{fig-length-fit-aggregated-ll}\\label{fig-length-fit-aggregated-dompl}\\label{fig-length-fit-aggregated-ps}/g;
   s/\\label\{fig-tag-attrition-programmes\}/$&\\label{fig-tag-attrition-all}/g;
   s/\\label\{fig-tag-reporting-rates-active\}/$&\\label{fig-tag-report-rates-rttp-pttp}\\label{fig-tag-report-rates-jtpt}/g;
+  s/\\label\{fig-caal-fits-regions\}/$&\\label{fig-caal-fits}/g;
   s/\\label\{fig-selftest-diagnostics\}/$&\\label{fig-selftest-recovery}\\label{fig-selftest-time-series}/g;
   s/\\label\{fig-diag-profile-data-tag-prog\}/$&\\label{fig-diag-profile-data-tag-prog-grps}/g;
 ' "$report_root/main-diff.tex"
@@ -60,4 +61,25 @@ perl -0pi -e '
 )
 
 test -s "$report_root/WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf"
+
+# The review copy contains both deleted and replacement figures and is much
+# larger than the clean publication PDF needs to be.  Downsample only this
+# internal-review copy so GitHub can serve it reliably; keep the clean PDF at
+# its publication resolution.
+if command -v gs >/dev/null 2>&1; then
+  optimized_pdf=$(mktemp --tmpdir="$report_root" draft-diff-optimized-XXXXXX.pdf)
+  gs -q -dNOPAUSE -dBATCH -dSAFER \
+    -sDEVICE=pdfwrite \
+    -dCompatibilityLevel=1.5 \
+    -dPDFSETTINGS=/ebook \
+    -dDetectDuplicateImages=true \
+    -dCompressFonts=true \
+    -sOutputFile="$optimized_pdf" \
+    "$report_root/WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf"
+  test -s "$optimized_pdf"
+  test "$(pdfinfo "$optimized_pdf" | awk '/^Pages:/ {print $2}')" = \
+    "$(pdfinfo "$report_root/WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf" | awk '/^Pages:/ {print $2}')"
+  mv -- "$optimized_pdf" "$report_root/WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf"
+fi
+
 echo "Built tracked changes against $base_ref ($base_commit)"

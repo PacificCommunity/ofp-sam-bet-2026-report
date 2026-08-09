@@ -36,8 +36,6 @@ lang: en
 
 {{< include sections/Figures.qmd >}}
 
-{{< include sections/Appendices.qmd >}}
-
 {{< include sections/Appendix-no-tag-movement.qmd >}}
 
 # References {.unnumbered}
