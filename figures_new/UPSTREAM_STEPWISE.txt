@@ -1,4 +1,4 @@
 source_url=https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise
-source_commit=unknown
+source_commit=569247e5a5c16753ca55b50e5f3f36c194f21a33
 acce3fa987b73325979fda10d1e85bc99921e4fea0579a45a332005188185080  figures_new/spatial-structure-comparison.png
 5fac5d4814872bcdad2c5bee094dd6b1e5c35141ff2a4bda142dbd85c79853e7  figures_new/maturity-comparison.png
