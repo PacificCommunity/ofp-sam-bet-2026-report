@@ -126,7 +126,7 @@ Among tagging programmes, the tropically focused PTTP made the strongest contrib
 
 ### ASPM {#sec-aspm}
 
-The constant-recruitment age-structured production model (ASPM) provided a reduced comparison with the integrated diagnostic model (@fig-aspm-comparison). In 2024 the ASPM estimated $SB/SB_{F=0}=0.480$, spawning potential of 985.6 thousand t, recruitment of 116.6 million fish and annual fishing mortality of 0.146. Corresponding diagnostic-model estimates were 0.162, 233.6 thousand t, 69.3 million fish and 0.433. The ASPM retained the broad historical decline but produced a substantially larger and less depleted terminal population. This contrast is consistent with the population-scaling conflict identified by the likelihood profiles; it does not replace the integrated-model results used to construct the uncertainty ensemble.
+The constant-recruitment age-structured production model (ASPM), conditioned on observed catches and fitted only to the five CPUE indices, provided a reduced comparison with the integrated diagnostic model (@fig-aspm-comparison). In 2024 the ASPM estimated $SB/SB_{F=0}=0.480$, spawning potential of 985.6 thousand t, recruitment of 116.6 million fish and annual fishing mortality of 0.146. Corresponding diagnostic-model estimates were 0.162, 233.6 thousand t, 69.3 million fish and 0.433. The ASPM retained the broad historical decline but produced a substantially larger and less depleted terminal population. This contrast is consistent with the population-scaling conflict identified by the likelihood profiles; it does not replace the integrated-model results used to construct the uncertainty ensemble.
 
 ### No-tagging and alternative-movement comparisons {#sec-no-tag-movement-results}
 

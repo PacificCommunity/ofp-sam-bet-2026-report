@@ -23,9 +23,9 @@ Diagnostic interpretation
 
 The ASPM comparison produced a larger and less depleted terminal population than the integrated diagnostic model, reinforcing the same population-scaling uncertainty. These diagnostics do not identify a single preferred scale; they explain why tag mixing, reporting-rate treatment, tag overdispersion, movement and natural mortality were represented in the ensemble. The diagnostic model was near the pessimistic edge of the retained ensemble, whereas management quantities were calculated from an equal-model-weight mixture that incorporated available Hessian estimation uncertainty.
 
-The ensemble median recent depletion was 0.277, with a central 80% interval of 0.172--0.395, and the probability of recent depletion below the 0.20 LRP was 18.6% (@tbl-manage-quant and @tbl-stock-status-refs). Median $F_{recent}/F_{MSY}$ was 0.838, although 24.1% of the uncertainty distribution exceeded one. Recent depletion was below the 2012--2015 objective in 87.1% of the uncertainty distribution. Consequently, the central assessment outcome is neither below the adopted LRP nor above $F_{MSY}$, but the probabilities around those benchmarks and the high probability of being below the interim depletion objective remain important for management interpretation.
+The ensemble median $SB_{recent}/SB_{F=0}$ was 0.277, with a central 80% interval of 0.172--0.395, and the probability of this LRP quantity being below 0.20 was 18.6% (@tbl-manage-quant and @tbl-stock-status-refs). Median $F_{recent}/F_{MSY}$ was 0.838, although 24.1% of the uncertainty distribution exceeded one. For the separate CMM 2025-02 objective, mean spawning depletion was 27.8% in 2021--2024 and 28.8% in 2012--2015 across the 80 central models, excluding estimation uncertainty, giving a recent-to-2012--2015 spawning depletion ratio of 96.7% (@tbl-cmm-depletion). Stock status was therefore slightly below this objective. The central assessment outcome is neither below the adopted LRP nor above $F_{MSY}$, while the uncertainty around those benchmarks remains important for management interpretation.
 
-The constant-recent-catch projections provide a conditional view of future dynamics rather than a forecast. Under catches fixed at their 2022--2024 fishery- and quarter-specific means, median depletion recovered above both the LRP and the 2012--2015 objective, and the probability below either benchmark declined to zero among the 800 realisations by 2040. This result depends on the assumed catches, model ensemble and resampled recruitment process; it does not account for implementation uncertainty, future changes in fishing patterns or Hessian parameter draws.
+The constant-recent-catch projections provide a conditional view of future dynamics rather than a forecast. Under catches fixed at their 2022--2024 fishery- and quarter-specific means, the median LRP depletion metric increased to 0.355 in 2030 and 0.517 in 2040 (@tbl-stock-projections). This result depends on the assumed catches, model ensemble and resampled recruitment process; it does not account for implementation uncertainty, future changes in fishing patterns or Hessian parameter draws.
 
 Recommendations for further work
 --------------------------------
@@ -60,7 +60,7 @@ The general conclusions of this assessment are as follows:
 
 -   Fifteen of the 80 central model estimates had $SB_{recent}$/$SB_{F=0}<0.2$; after including available estimation uncertainty, the probability below the LRP is 18.6%.
 
--   CMM 2025-02 contains an objective to maintain depletion at or above the 2012--2015 average. The ensemble median of that benchmark is 0.296, compared with median recent depletion of 0.277.
+-   CMM 2025-02 contains an objective to maintain spawning depletion at or above its 2012--2015 average. Across the 80 central models, excluding estimation uncertainty, mean depletion was 27.8% in 2021--2024 and 28.8% in 2012--2015, giving a recent-to-2012--2015 spawning depletion ratio of 96.7%; stock status was therefore slightly below the objective (@tbl-cmm-depletion).
 
 -   Median recent fishing mortality (2020--2023), $F_{recent}$/$F_{MSY}$, is 0.838 (central 80% interval: 0.592--1.206; central 95% interval: 0.460--1.351).
 
@@ -71,7 +71,7 @@ The general conclusions of this assessment are as follows:
 Acknowledgements
 ================
 
-We thank WCPFC members, participating territories and other providers for the fisheries data, and the observers, port samplers, tagging teams and fishers who collected the biological and tagging observations. We also acknowledge the 2026 Pre-assessment Workshop participants and the Pacific Community data, assessment and software teams for their contributions.
+We thank WCPFC members, participating territories and other providers of fisheries data, and the observers, port samplers, tagging teams and fishers who collected the biological and tagging observations. We also acknowledge the 2026 Pre-assessment Workshop participants; the Pacific Community data, assessment and computing-support teams; and the SPC sclerochronology laboratory team, which aged many additional otoliths for this assessment. We thank the Japan Fisheries Research and Education Agency (FRA) for providing additional age--length data from the North Pacific. This assessment was supported through the WCPFC regular Scientific Services and Additional Resourcing to SPC budget lines, including funding for the additional stock-assessment scientist who led this assessment. CPUE data preparation was also supported by the European Union's Pacific--European Union Marine Partnership Programme Phase 2. K. Kim especially thanks his family for their understanding of the long hours required to complete the assessment.
 
 Statement on the use of generative AI
 =====================================

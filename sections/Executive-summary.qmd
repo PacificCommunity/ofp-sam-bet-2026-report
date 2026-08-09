@@ -53,7 +53,7 @@ The general conclusions of this assessment are as follows:
 
 -   Fifteen of the 80 models in the ensemble had $SB_{recent}$/$SB_{F=0}$ \< LRP 0.2, the uncertainty ensemble with estimation uncertainty estimates 18.6% probability on being below the LRP.
 
--   CMM 2025-02 contains an objective to maintain the spawning biomass depletion ratio above the average for 2012-2015, $SB_{2012-2015}$/$SB_{F=0}$, which is a value of 0.296 calculated across the ensemble. Based upon the estimates of $SB_{recent}$/$SB_{F=0}$ of 0.277 the stock status is marginally below this objective.
+-   CMM 2025-02 contains an objective to maintain the spawning biomass depletion ratio at or above the average $SB/SB_{F=0}$ for 2012--2015. Across the 80 ensemble models, excluding estimation uncertainty, this average was 28.8%. The corresponding average for 2021--2024 was 27.8%, giving a recent-to-2012--2015 spawning depletion ratio of 96.7%; stock status was therefore slightly below the objective (@tbl-cmm-depletion).
 
 -   Median recent fishing mortality (2020--2023), $F_{recent}$/$F_{MSY}$, was 0.838 (central 80% interval including structural and available estimation uncertainty: 0.592--1.206; central 95% interval: 0.460--1.351).
 
