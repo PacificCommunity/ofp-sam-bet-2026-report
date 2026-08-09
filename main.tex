@@ -410,11 +410,12 @@ The general conclusions of this assessment are as follows:
   being below the LRP.
 \item
   CMM 2025-02 contains an objective to maintain the spawning biomass
-  depletion ratio above the average for 2012-2015,
-  \(SB_{2012-2015}\)/\(SB_{F=0}\), which is a value of 0.296 calculated
-  across the ensemble. Based upon the estimates of
-  \(SB_{recent}\)/\(SB_{F=0}\) of 0.277 the stock status is marginally
-  below this objective.
+  depletion ratio at or above the average \(SB/SB_{F=0}\) for
+  2012--2015. Across the 80 ensemble models, excluding estimation
+  uncertainty, this average was 28.8\%. The corresponding average for
+  2021--2024 was 27.8\%, giving a recent-to-2012--2015 spawning
+  depletion ratio of 96.7\%; stock status was therefore slightly below
+  the objective (Table~\ref{tbl-cmm-depletion}).
 \item
   Median recent fishing mortality (2020--2023),
   \(F_{recent}\)/\(F_{MSY}\), was 0.838 (central 80\% interval including
@@ -2057,18 +2058,20 @@ intervals and do not determine whether the diagnostic model is an
 unbiased representation of the unknown population. Results are presented
 in Section~\ref{sec-selftest}.
 
-\textbf{ASPM} ASPM diagnostics (Carvalho et al., 2017, 2021; Maunder and
-Piner, 2015; Minte-Vera et al., 2017) for the diagnostic case model were
-estimated by 1) fixing growth and selectivity parameters at their
-estimated values; 2) removing the LF data from the model, leaving only
-the CPUE indices and tagging data as data to be fitted; 3) recruitment
-is calculated deterministically from the stock-recruit relationship, 4)
-re-fitting the model estimating only the population scaling parameters.
-A comparison of biomass and depletion scaling and trends estimated by
-the ASPM and the full model gives an indication of the extent to which
-these estimates are informed by the CPUE indices and tagging data only.
-A second version of the ASPM, in which recruitment variability was
-estimated as for the diagnostic case, was also run
+\textbf{ASPM} A strict age-structured production model (ASPM) diagnostic
+(Carvalho et al., 2017; Carvalho et al., 2021; Maunder \& Piner, 2015;
+Minte-Vera et al., 2021) was fitted by conditioning on the observed
+catches and retaining only the five CPUE indices in the observation
+likelihood. Tagging, length- and weight-frequency, catch-at-age,
+conditional age-at-length and penalty components were excluded. Biology,
+movement, selectivity, regional recruitment allocation and the initial
+age--region structure were fixed at their diagnostic-model values.
+Temporal relative recruitment was set to one, regional recruitment
+deviations were set to zero and the stock--recruit relationship was
+inactive; the only estimated parameter family was mean recruitment,
+which determines the overall population scale. Comparison with the
+integrated model therefore shows the biomass scale and trend supported
+by the catch-conditioned CPUE signal under constant recruitment
 (Section~\ref{sec-aspm}).
 
 \textbf{Retrospective} Retrospective analyses (Hurtado-Ferro et al.,
@@ -2134,23 +2137,36 @@ depletion (impacts) caused by the removed fisheries.
 \subsubsection{Reference points}\label{sec-methods-reference-points}
 
 The unfished spawning potential (\(SB_{F=0}\)) in each time period was
-calculated given the estimated recruitments and the Beverton-Holt SRR.
-This offers a basis for comparing the exploited population relative to
-the population subject to natural mortality only
-i.e.~\(SB\)/\(SB_{F=0}\). The WCPFC adopted limit reference point (LRP)
-for the bigeye stock is \(SB_{recent}\)/\(SB_{F=0}\)=0.20.
-\(SB_{recent}\) refers to the average spawning biomass across year
-2021--2024, whereas \(SB_{F=0}\) refers to the average unfished biomass
-across the years 2014-2023. There is no agreed WCPFC target reference
-point for the bigeye tuna stock however CMM 2025-02 states in para 10
-``Pending agreement of a target reference point the spawning biomass
-depletion ratio (\(SB\)/\(SB_{F=0}\)) is to be maintained at or above
-the average \(SB\)/\(SB_{F=0}\) for 2012--2015''. Stock status was
-referenced against these points by calculating the reference points;
-\(SB_{recent}\)/\(SB_{F=0}\) and \(SB_{latest}\)/\(SB_{F=0}\) where
-\(SB_{F=0}\) is calculated over 2014--2023 and \(SB_{recent}\) and
-\(SB_{latest}\) are the mean of the estimated spawning potential over
-2021--2024, and 2024 respectively (Table~\ref{tbl-ref-points}).
+calculated given the estimated recruitments and the Beverton--Holt SRR.
+For management reporting, annual dynamic depletion compares spawning
+biomass in year \(y\) with mean unfished spawning biomass over the
+preceding ten years, excluding year \(y\).
+
+Two related but distinct depletion quantities were used for management
+reporting. The WCPFC-adopted limit reference point (LRP) for bigeye is
+\(SB_{recent}/SB_{F=0}=0.20\), where the numerator is mean spawning
+biomass during 2021--2024 and the denominator is mean unfished spawning
+biomass during 2014--2023. CMM 2025-02 paragraph 10 separately states
+that, pending agreement on a target reference point, the
+spawning-biomass depletion ratio is to be maintained at or above its
+2012--2015 average. This comparison was calculated within each model as
+
+\[
+D_y=\frac{SB_y}{\frac{1}{10}\sum_{j=y-10}^{y-1}SB_{j,F=0}},\qquad
+D_{recent}=\frac{1}{4}\sum_{y=2021}^{2024}D_y,\qquad
+D_{2012\text{--}2015}=\frac{1}{4}\sum_{y=2012}^{2015}D_y,
+\]
+
+for each of the 80 central models, excluding estimation uncertainty. The
+headline comparison is the arithmetic mean of \(D_{recent}\) across the
+equal-weight models divided by the corresponding arithmetic mean of
+\(D_{2012\text{--}2015}\). This recent-to-2012--2015 spawning depletion
+ratio is a ratio of two depletion quantities, not a probability, and is
+distinct from the LRP quantity formed from separate fished and unfished
+period means. The comparison with the CMM 2025-02 objective is reported
+in Table~\ref{tbl-cmm-depletion}, with the other management and
+reference-point quantities in Table~\ref{tbl-manage-quant} and
+Table~\ref{tbl-ref-points}.
 
 The other key reference point, \(F_{recent}\)/\(F_{MSY}\), is the
 estimated average fishing mortality at the full assessment area scale
@@ -2862,9 +2878,10 @@ curves can be selected in the interactive viewer.
 
 \subsubsection{ASPM}\label{sec-aspm}
 
-The constant-recruitment age-structured production model (ASPM) provided
-a reduced comparison with the integrated diagnostic model
-(Figure~\ref{fig-aspm-comparison}). In 2024 the ASPM estimated
+The constant-recruitment age-structured production model (ASPM),
+conditioned on observed catches and fitted only to the five CPUE
+indices, provided a reduced comparison with the integrated diagnostic
+model (Figure~\ref{fig-aspm-comparison}). In 2024 the ASPM estimated
 \(SB/SB_{F=0}=0.480\), spawning potential of 985.6 thousand t,
 recruitment of 116.6 million fish and annual fishing mortality of 0.146.
 Corresponding diagnostic-model estimates were 0.162, 233.6 thousand t,
@@ -3115,13 +3132,13 @@ mortality decreased (Figure~\ref{fig-sensitivity-tag-overdispersion}).
 \subsubsection{Uncertainty
 ensemble}\label{sec-structural-uncertainty-analysis}
 
-Of the 100 ensemble model runs, 80 met the gradient convergence criteria
-\(\leq 1.0 \times 10^{-4}\) of which 62 had positive definite Hessians.
-The 80 models were retained in the ensemble for management advice; of
-the 20 models that failed ten failed the convergence gradient criterion
-and ten were incomplete. For the 62 positive definite Hessian fits, 100
-correlated inverse-Hessian draws were propagated jointly by the
-multivariate delta method; 18 Near-PDH fits contribute structural
+Of the 100 planned ensemble configurations, 80 met the
+maximum-gradient-component (MGC) criterion \(\leq 1.0 \times 10^{-4}\),
+of which 62 had positive-definite Hessians. The 80 models were retained
+in the ensemble for management advice; ten did not meet the MGC
+criterion and ten were incomplete. For the 62 positive-definite Hessian
+fits, 100 correlated inverse-Hessian draws were propagated jointly by
+the multivariate delta method; 18 Near-PDH fits contribute structural
 uncertainty only. Estimation uncertainty is therefore incorporated into
 the statistics for management advice, but is not complete for all
 models.
@@ -3168,11 +3185,11 @@ and Kobe analyses and fisheries impacts analyses.
 
 We do not present every ancillary result for every model. This section
 relies mainly on the equal-model-weight ensemble summaries in
-Table~\ref{tbl-manage-quant}, Table~\ref{tbl-stock-status-refs},
-Table~\ref{tbl-ref-points} and Table~\ref{tbl-est-uncertainty}, the
-time-series uncertainty in Figure~\ref{fig-ensemble-est-uncert-ribbon},
-and the dynamic Majuro and Kobe plots in
-Figure~\ref{fig-time-dynamic-kobe-majuro}.
+Table~\ref{tbl-manage-quant}, Table~\ref{tbl-cmm-depletion},
+Table~\ref{tbl-stock-status-refs}, Table~\ref{tbl-ref-points} and
+Table~\ref{tbl-est-uncertainty}, the time-series uncertainty in
+Figure~\ref{fig-ensemble-est-uncert-ribbon}, and the dynamic Majuro and
+Kobe plots in Figure~\ref{fig-time-dynamic-kobe-majuro}.
 
 \subsubsection{Majuro and Kobe plots and comparisons with reference
 points}\label{majuro-and-kobe-plots-and-comparisons-with-reference-points}
@@ -3190,6 +3207,15 @@ plot areas to make the uncertainty allocation explicit, following the
 general panel-percentage presentation used by Kim \& Neubauer (2025);
 that study is cited for the visualisation approach, not as evidence for
 the tuna assessment results.
+
+CMM 2025-02 contains an objective to maintain the spawning biomass
+depletion ratio at or above the average \(SB/SB_{F=0}\) for 2012--2015.
+Across the 80 ensemble models, excluding estimation uncertainty, this
+average was 28.8\%. The corresponding average for 2021--2024 was 27.8\%,
+giving a recent-to-2012--2015 spawning depletion ratio of 96.7\%; stock
+status was therefore slightly below the objective
+(Table~\ref{tbl-cmm-depletion}). This comparison is distinct from the
+LRP and MSY-based quantities.
 
 The dynamic Majuro and Kobe trajectories for both the diagnostic model
 and the annual ensemble median show declining stock status and
@@ -3234,18 +3260,17 @@ structural and available estimation uncertainty.
 \subsubsection{Catch-based projections}\label{sec-projection-results}
 
 Under fishery- and quarter-specific catches fixed at their 2022--2024
-means, the ensemble projected recovery in both depletion and spawning
-potential after 2024 (Figure~\ref{fig-projection-stock-trajectories}).
-Across the 800 model--recruitment realisations, median depletion
-increased to 0.355 in 2030, 0.517 in 2040 and 0.545 in 2054
-(Table~\ref{tbl-stock-projections}). In 2030, 5.2\% of realisations were
-below the 0.20 LRP and 6.9\% were below the 2012--2015 depletion
-objective; none of the realisations was below either benchmark in 2040
-or 2054. Median spawning potential increased from 523.1 thousand t in
-2030 to 720.6 thousand t in 2054. These are conditional projections
-under the specified recent-catch scenario, not forecasts of future
-catches or management action, and their intervals include recruitment
-variability but not Hessian parameter uncertainty.
+means, the ensemble projected recovery in both the LRP depletion metric
+and spawning potential after 2024
+(Figure~\ref{fig-projection-stock-trajectories}). Across the 800
+model--recruitment realisations, the median LRP metric increased to
+0.355 in 2030, 0.517 in 2040 and 0.545 in 2054; 5.2\% of realisations
+were below the 0.20 LRP in 2030 and none were below it in 2040 or 2054
+(Table~\ref{tbl-stock-projections}). Median spawning potential increased
+from 523.1 thousand t in 2030 to 720.6 thousand t in 2054. These are
+conditional projections under the specified recent-catch scenario, not
+forecasts of future catches or management action, and their intervals
+include recruitment variability but not Hessian parameter uncertainty.
 
 \section{Discussion and conclusions}\label{sec-discussion}
 
@@ -3347,27 +3372,28 @@ pessimistic edge of the retained ensemble, whereas management quantities
 were calculated from an equal-model-weight mixture that incorporated
 available Hessian estimation uncertainty.
 
-The ensemble median recent depletion was 0.277, with a central 80\%
-interval of 0.172--0.395, and the probability of recent depletion below
-the 0.20 LRP was 18.6\% (Table~\ref{tbl-manage-quant} and
+The ensemble median \(SB_{recent}/SB_{F=0}\) was 0.277, with a central
+80\% interval of 0.172--0.395, and the probability of this LRP quantity
+being below 0.20 was 18.6\% (Table~\ref{tbl-manage-quant} and
 Table~\ref{tbl-stock-status-refs}). Median \(F_{recent}/F_{MSY}\) was
-0.838, although 24.1\% of the uncertainty distribution exceeded one.
-Recent depletion was below the 2012--2015 objective in 87.1\% of the
-uncertainty distribution. Consequently, the central assessment outcome
-is neither below the adopted LRP nor above \(F_{MSY}\), but the
-probabilities around those benchmarks and the high probability of being
-below the interim depletion objective remain important for management
+0.838, although 24.1\% of the uncertainty distribution exceeded one. For
+the separate CMM 2025-02 objective, mean spawning depletion was 27.8\%
+in 2021--2024 and 28.8\% in 2012--2015 across the 80 central models,
+excluding estimation uncertainty, giving a recent-to-2012--2015 spawning
+depletion ratio of 96.7\% (Table~\ref{tbl-cmm-depletion}). Stock status
+was therefore slightly below this objective. The central assessment
+outcome is neither below the adopted LRP nor above \(F_{MSY}\), while
+the uncertainty around those benchmarks remains important for management
 interpretation.
 
 The constant-recent-catch projections provide a conditional view of
 future dynamics rather than a forecast. Under catches fixed at their
-2022--2024 fishery- and quarter-specific means, median depletion
-recovered above both the LRP and the 2012--2015 objective, and the
-probability below either benchmark declined to zero among the 800
-realisations by 2040. This result depends on the assumed catches, model
-ensemble and resampled recruitment process; it does not account for
-implementation uncertainty, future changes in fishing patterns or
-Hessian parameter draws.
+2022--2024 fishery- and quarter-specific means, the median LRP depletion
+metric increased to 0.355 in 2030 and 0.517 in 2040
+(Table~\ref{tbl-stock-projections}). This result depends on the assumed
+catches, model ensemble and resampled recruitment process; it does not
+account for implementation uncertainty, future changes in fishing
+patterns or Hessian parameter draws.
 
 \subsection{Recommendations for further
 work}\label{recommendations-for-further-work}
@@ -3443,9 +3469,12 @@ The general conclusions of this assessment are as follows:
   \(SB_{recent}\)/\(SB_{F=0}<0.2\); after including available estimation
   uncertainty, the probability below the LRP is 18.6\%.
 \item
-  CMM 2025-02 contains an objective to maintain depletion at or above
-  the 2012--2015 average. The ensemble median of that benchmark is
-  0.296, compared with median recent depletion of 0.277.
+  CMM 2025-02 contains an objective to maintain spawning depletion at or
+  above its 2012--2015 average. Across the 80 central models, excluding
+  estimation uncertainty, mean depletion was 27.8\% in 2021--2024 and
+  28.8\% in 2012--2015, giving a recent-to-2012--2015 spawning depletion
+  ratio of 96.7\%; stock status was therefore slightly below the
+  objective (Table~\ref{tbl-cmm-depletion}).
 \item
   Median recent fishing mortality (2020--2023),
   \(F_{recent}\)/\(F_{MSY}\), is 0.838 (central 80\% interval:
@@ -3462,12 +3491,21 @@ The general conclusions of this assessment are as follows:
 
 \section{Acknowledgements}\label{acknowledgements}
 
-We thank WCPFC members, participating territories and other providers
-for the fisheries data, and the observers, port samplers, tagging teams
-and fishers who collected the biological and tagging observations. We
-also acknowledge the 2026 Pre-assessment Workshop participants and the
-Pacific Community data, assessment and software teams for their
-contributions.
+We thank WCPFC members, participating territories and other providers of
+fisheries data, and the observers, port samplers, tagging teams and
+fishers who collected the biological and tagging observations. We also
+acknowledge the 2026 Pre-assessment Workshop participants; the Pacific
+Community data, assessment and computing-support teams; and the SPC
+sclerochronology laboratory team, which aged many additional otoliths
+for this assessment. We thank the Japan Fisheries Research and Education
+Agency (FRA) for providing additional age--length data from the North
+Pacific. This assessment was supported through the WCPFC regular
+Scientific Services and Additional Resourcing to SPC budget lines,
+including funding for the additional stock-assessment scientist who led
+this assessment. CPUE data preparation was also supported by the
+European Union's Pacific--European Union Marine Partnership Programme
+Phase 2. K. Kim especially thanks his family for their understanding of
+the long hours required to complete the assessment.
 
 \section{Statement on the use of generative
 AI}\label{statement-on-the-use-of-generative-ai}
@@ -3806,14 +3844,44 @@ Quantity & Period & Median & 50\% interval & 80\% interval & 95\% interval \\
 $SB_{\mathrm{recent}}/SB_{F=0}$ & 2021--2024 / 2014--2023 & 0.277 & 0.217--0.336 & 0.172--0.395 & 0.136--0.442 \\
 $SB_{\mathrm{recent}}/SB_{\mathrm{MSY}}$ & 2021--2024 / equilibrium $SB_{\mathrm{MSY}}$ & 1.532 & 1.136--2.024 & 0.822--2.572 & 0.635--3.519 \\
 $F_{\mathrm{recent}}/F_{\mathrm{MSY}}$ & 2020--2023 / equilibrium $F_{\mathrm{MSY}}$ & 0.838 & 0.702--0.983 & 0.592--1.206 & 0.460--1.351 \\
-$\overline{D}_{2012\text{--}2015}$ & 2012--2015 & 0.296 & 0.221--0.362 & 0.176--0.431 & 0.140--0.490 \\
-$D_{\mathrm{recent}}/\overline{D}_{2012\text{--}2015}$ & Recent / 2012--2015 & 0.949 & 0.920--0.984 & 0.899--1.007 & 0.872--1.038 \\
 
 \end{longtable}
 
 \endgroup
 
-\vspace{1.5em}
+\vspace{1em}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.12}
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.62\linewidth}>{\raggedleft\arraybackslash}p{0.20\linewidth}@{}}
+
+\caption{\label{tbl-cmm-depletion}Recent spawning depletion relative to the 2012--2015 average across the 80 equal-weight central models, excluding estimation uncertainty. For each year, depletion is spawning biomass divided by mean unfished spawning biomass over the preceding ten years. The period values are arithmetic means across models; the final row is their ratio.}
+
+\tabularnewline
+
+\\
+\toprule
+Quantity & Value \\
+\midrule
+\endfirsthead
+\toprule
+Quantity & Value \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+$D_{\mathrm{recent}}$ (2021--2024) & 0.278 \\
+$D_{2012\text{--}2015}$ & 0.288 \\
+$D_{\mathrm{recent}}/D_{2012\text{--}2015}$ & 0.967 \\
+
+\end{longtable}
+
+\endgroup
+
+\vspace{1em}
 
 \begingroup
 \footnotesize
@@ -3822,7 +3890,7 @@ $D_{\mathrm{recent}}/\overline{D}_{2012\text{--}2015}$ & Recent / 2012--2015 & 0
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.57\linewidth}>{\raggedleft\arraybackslash}p{0.23\linewidth}@{}}
 
-\caption{\label{tbl-stock-status-refs}Stock status probabilities in relation to reference points and the probability of being below average 2012--2015 depletion objective.}
+\caption{\label{tbl-stock-status-refs}Stock status probabilities in relation to the adopted limit and MSY-based reference points.}
 
 \tabularnewline
 
@@ -3840,7 +3908,6 @@ Criterion & Probability \\
 $SB_{\mathrm{recent}}/SB_{F=0}<0.20$ & 18.6\% \\
 $SB_{\mathrm{recent}}/SB_{\mathrm{MSY}}<1$ & 17.3\% \\
 $F_{\mathrm{recent}}/F_{\mathrm{MSY}}>1$ & 24.1\% \\
-$D_{\mathrm{recent}}<\overline{D}_{2012\text{--}2015}$ & 87.1\% \\
 
 \end{longtable}
 
@@ -3924,26 +3991,26 @@ $F_{\mathrm{recent}}/F_{\mathrm{MSY}}$ & 0.838 (0.592--1.206) & 0.838 (0.577--1.
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.12}
 
-\begin{longtable}{@{}rrrrrr>{\raggedleft\arraybackslash}p{0.22\linewidth}rrr@{}}
+\begin{longtable}{@{}rrrrr>{\raggedleft\arraybackslash}p{0.22\linewidth}rrr@{}}
 
-\caption{\label{tbl-stock-projections}Projected management quantities at selected years across 80 models and ten recruitment sequences per model. Depletion is the four-year mean spawning biomass divided by the preceding ten-year mean unfished spawning biomass; the LRP is 0.20. Catches are fixed by fishery to their 2022--2024 means, and intervals exclude Hessian parameter uncertainty.}
+\caption{\label{tbl-stock-projections}Projected management quantities at selected years across 80 models and ten recruitment sequences per model. The LRP metric is the four-year mean spawning biomass divided by the preceding ten-year mean unfished spawning biomass; the LRP is 0.20. Catches are fixed by fishery to their 2022--2024 means, and intervals exclude Hessian parameter uncertainty.}
 
 \tabularnewline
 
 \\
 \toprule
-Year & $D$ 10\% & $D$ median & $D$ 90\% & Below LRP & Below objective & Spawning median ($10^3$ MT) & $C/\mathrm{MSY}$ 10\% & $C/\mathrm{MSY}$ median & $C/\mathrm{MSY}$ 90\% \\
+Year & $D$ 10\% & $D$ median & $D$ 90\% & Below LRP & Spawning median ($10^3$ MT) & $C/\mathrm{MSY}$ 10\% & $C/\mathrm{MSY}$ median & $C/\mathrm{MSY}$ 90\% \\
 \midrule
 \endfirsthead
 \toprule
-Year & $D$ 10\% & $D$ median & $D$ 90\% & Below LRP & Below objective & Spawning median ($10^3$ MT) & $C/\mathrm{MSY}$ 10\% & $C/\mathrm{MSY}$ median & $C/\mathrm{MSY}$ 90\% \\
+Year & $D$ 10\% & $D$ median & $D$ 90\% & Below LRP & Spawning median ($10^3$ MT) & $C/\mathrm{MSY}$ 10\% & $C/\mathrm{MSY}$ median & $C/\mathrm{MSY}$ 90\% \\
 \midrule
 \endhead
 \bottomrule
 \endlastfoot
-2030 & 0.225 & 0.355 & 0.514 & 5.2\% & 6.9\% & 523.1 & 0.638 & 0.811 & 1.003 \\
-2040 & 0.409 & 0.517 & 0.628 & 0.0\% & 0.0\% & 690.5 & 0.642 & 0.842 & 1.052 \\
-2054 & 0.455 & 0.545 & 0.641 & 0.0\% & 0.0\% & 720.6 & 0.648 & 0.847 & 1.053 \\
+2030 & 0.225 & 0.355 & 0.514 & 5.2\% & 523.1 & 0.638 & 0.811 & 1.003 \\
+2040 & 0.409 & 0.517 & 0.628 & 0.0\% & 690.5 & 0.642 & 0.842 & 1.052 \\
+2054 & 0.455 & 0.545 & 0.641 & 0.0\% & 720.6 & 0.648 & 0.847 & 1.053 \\
 
 \end{longtable}
 
@@ -4171,7 +4238,7 @@ longevity-prior median (0.08082) derived following Hamel (2015) and
 Hamel \& Cope (2022), and the tag estimate from Ducharme-Barth et al.
 (2026) (0.0624). Shading is the tag estimate's 90\% confidence interval
 (0.0500--0.0749) propagated over age. Open the
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-report.html\#fig-natural-mortality-evidence}{ensemble
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-report.html\#natural-mortality-evidence}{ensemble
 report}.}
 
 \end{figure}%
@@ -5110,16 +5177,16 @@ current fishing mortality.}
 
 }
 
-\caption{\label{fig-projection-stock-trajectories}All-region spawning
-depletion (a) and spawning potential in thousand metric tonnes (b),
-joining estimates through 2024 to projections for 2025--2054. Depletion
-is the four-year mean spawning biomass divided by the preceding ten-year
-mean no-fishing biomass. Medians and central 50\%, 80\% and 95\%
-intervals use all 800 model--recruitment realisations; ten thin lines
-show individual projection realisations. Historical intervals show
-structural uncertainty; projections add recruitment variability without
-Hessian parameter draws. The 0.20 line in panel a is the stock-wide LRP.
-Open the
+\caption{\label{fig-projection-stock-trajectories}All-region LRP
+depletion metric (a) and spawning potential in thousand metric tonnes
+(b), joining estimates through 2024 to projections for 2025--2054. The
+LRP metric is the four-year mean spawning biomass divided by the
+preceding ten-year mean no-fishing biomass. Medians and central 50\%,
+80\% and 95\% intervals use all 800 model--recruitment realisations; ten
+thin lines show individual projection realisations. Historical intervals
+show structural uncertainty; projections add recruitment variability
+without Hessian parameter draws. The 0.20 line in panel a is the
+stock-wide LRP. Open the
 \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html}{interactive
 ensemble viewer}.}
 
@@ -5344,6 +5411,12 @@ for the retrospective problem in sequential population analysis.
 \emph{{ICES} Journal of Marine Science: Journal Du Conseil},
 \emph{62}(2), 256--265.
 \url{https://doi.org/10.1016/j.icesjms.2004.11.015}
+
+\bibitem[\citeproctext]{ref-carvalho_diagnostic_2017}
+Carvalho, F., Punt, A. E., Chang, Y.-J., Maunder, M. N., \& Piner, K. R.
+(2017). Can diagnostic tests help identify model misspecification in
+integrated stock assessments? \emph{Fisheries Research}, \emph{192},
+28--40. \url{https://doi.org/10.1016/j.fishres.2016.09.018}
 
 \bibitem[\citeproctext]{ref-carvalho_cookbook_2021}
 Carvalho, F., Winker, H., Courtney, D., Kapur, M., Kell, L., Cardinale,
@@ -5678,6 +5751,12 @@ assessment of bigeye tuna in the western and central pacific ocean,
 including an analysis of management options} (No.
 {WCPFC}-{SC}4/{SA}-{WP}-1). WCPFC.
 
+\bibitem[\citeproctext]{ref-maunder_contemporary_2015}
+Maunder, M. N., \& Piner, K. R. (2015). Contemporary fisheries stock
+assessment: Many issues still remain. \emph{ICES Journal of Marine
+Science}, \emph{72}(1), 7--18.
+\url{https://doi.org/10.1093/icesjms/fsu015}
+
 \bibitem[\citeproctext]{ref-mckechnie_sensitivity_2015}
 McKechnie, S., Hampton, J., Abascal, F., Davies, N., \& Harley, S. J.
 (2015a). \emph{Sensitivity of {WCPO} stock assessment results to the
@@ -5710,6 +5789,14 @@ McKechnie, S., Tremblay-Boyer, L., \& Pilling, G. (2017b).
 \emph{Background analyses for the 2017 stock assessments of bigeye and
 yellowfin tuna in the western and central pacific ocean} (No.
 {WCPFC}-{SC}13-2017/{SA}-{IP}-06). WCPFC.
+
+\bibitem[\citeproctext]{ref-minte-vera_auxiliary_2021}
+Minte-Vera, C. V., Maunder, M. N., \& Aires-da-Silva, A. (2021).
+Auxiliary diagnostic analyses used to detect model misspecification and
+highlight potential solutions in stock assessments: Application to
+yellowfin tuna in the eastern {Pacific} {Ocean}. \emph{ICES Journal of
+Marine Science}, \emph{78}(10), 3521--3537.
+\url{https://doi.org/10.1093/icesjms/fsab213}
 
 \bibitem[\citeproctext]{ref-mohn_retrospective_1999}
 Mohn, R. (1999). The retrospective problem in sequential population
