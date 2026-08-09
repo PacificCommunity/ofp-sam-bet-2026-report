@@ -71,4 +71,4 @@ The general conclusions of this assessment are as follows:
 Acknowledgements
 ================
 
-We thank WCPFC members, cooperating non-members and participating territories for providing the fisheries data used in this assessment; the observers, port samplers, tagging teams and fishers whose work generated the underlying biological and tagging observations; and participants in the 2026 Pre-assessment Workshop and Scientific Committee process for their technical advice. The assessment also relied on the work of the Pacific Community fisheries data, stock-assessment and software-development teams and on the supporting analyses cited throughout this report.
+We thank WCPFC members, participating territories and other providers for the fisheries data, and the observers, port samplers, tagging teams and fishers who collected the biological and tagging observations. We also acknowledge the 2026 Pre-assessment Workshop participants and the Pacific Community data, assessment and software teams for their contributions.

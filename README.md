@@ -89,6 +89,9 @@ changed figures are outlined. Its editable LaTeX source is `main-diff.tex`.
 The publication PDF remains `WCPFC-SC22-2026-SA-WP-06.pdf` without change
 markup. A concise change inventory is in `REVISION_CHANGES.md`.
 
+Tagged GitHub releases publish both the clean and tracked-change PDFs, their
+LaTeX sources, a self-contained Quarto source archive and `SHA256SUMS`.
+
 ## Upstream figure synchronization
 
 The report remains self-contained because every publication figure is checked

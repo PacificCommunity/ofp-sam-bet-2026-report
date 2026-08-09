@@ -1,4 +1,4 @@
 source_url=https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble
-source_commit=01852d77e984e4599ebde72bf019eafd8e122fc6
-714e196e953c91d186946d8e786672df499c640b3a5d6fd9973fe728ce20599a  figures_new/natural-mortality-evidence.png
+source_commit=unknown
+f57d7eb59ce2c28c5ebf088a41d74ffe5826b19464c247885640410113aa4c21  figures_new/natural-mortality-evidence.png
 d6a2aee71041f8fa61d434eba3cee1dee3b247a929a3f14ea4c0130e80e1cbeb  figures_new/projection-stock-trajectories.png

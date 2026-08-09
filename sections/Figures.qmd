@@ -54,7 +54,7 @@
 
 
 
-![Age-specific quarterly natural mortality obtained by applying three assessment-relevant $M_0$ values to the same 2026 diagnostic growth schedule and fixed Lorenzen exponent (-1). Curves show the diagnostic value (0.07814), the model-aligned Hamel--Cope median (0.08082), and the tag estimate from @ducharme-barth_natural_2026 (0.0624). Shading is the tag estimate's 90% confidence interval (0.0500--0.0749) propagated over age. Open the [ensemble report](https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-report.html#fig-natural-mortality-evidence).](figures_new/natural-mortality-evidence.png){#fig-natm-at-age width=100%}
+![Age-specific quarterly natural mortality obtained by applying three assessment-relevant $M_0$ values to the same 2026 diagnostic growth schedule and fixed Lorenzen exponent (-1). Curves show the diagnostic value (0.07814), the model-aligned longevity-prior median (0.08082) derived following @hamel_method_2015 and @cope_upgrading_2022, and the tag estimate from @ducharme-barth_natural_2026 (0.0624). Shading is the tag estimate's 90% confidence interval (0.0500--0.0749) propagated over age. Open the [ensemble report](https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-report.html#fig-natural-mortality-evidence).](figures_new/natural-mortality-evidence.png){#fig-natm-at-age width=100%}
 
 
 
@@ -120,23 +120,19 @@
 
 
 
-![CPUE likelihood profile. The upper panel overlays the prominent CPUE total with thin, muted index curves; coloured row keys connect those curves to the five heatmap contributions, each expressed as a change from its own minimum. Open the [interactive profile viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html) to select an index.](figures_new/likelihood-profile-cpue-detail.png){#fig-diag-profile-data-cpue width="100%"}
+![CPUE likelihood profile. The black line is the total CPUE contribution; the coloured lines and matching heatmap rows show the five regional indices. Larger $\Delta$NLL indicates a poorer fit at that biomass, and the dashed line marks $\Delta$NLL = 1.92. Select individual indices in the [interactive profile viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html).](figures_new/likelihood-profile-cpue-detail.png){#fig-diag-profile-data-cpue width="100%"}
 
 
 
-![Length-frequency likelihood profile summarised by model region. The upper panel overlays the prominent LF total with five thin regional curves; coloured row keys connect them to the regional heatmap. Open a region in the [interactive profile viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html) for fishery-level curves.](figures_new/likelihood-profile-lf-detail.png){#fig-diag-profile-data-lf width="100%"}
+![Length-frequency likelihood profile by model region. The black line is the total length-frequency contribution; the coloured lines and matching heatmap rows show the five regions. Larger $\Delta$NLL indicates a poorer fit at that biomass, and the dashed line marks $\Delta$NLL = 1.92. Open a region in the [interactive profile viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html) for fishery-level detail.](figures_new/likelihood-profile-lf-detail.png){#fig-diag-profile-data-lf width="100%"}
 
 
 
-![Conditional age-at-length likelihood profile. The upper panel overlays the prominent CAAL total with thin regional curves; coloured row keys connect them to the five heatmap contributions. Open a region in the [interactive profile viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html) for fishery-level curves.](figures_new/likelihood-profile-caal-region-detail.png){#fig-diag-profile-data-caal width="100%"}
+![Conditional age-at-length likelihood profile by model region. The black line is the total CAAL contribution; the coloured lines and matching heatmap rows show the five regions. Larger $\Delta$NLL indicates a poorer fit at that biomass, and the dashed line marks $\Delta$NLL = 1.92. Open a region in the [interactive profile viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html) for fishery-level detail.](figures_new/likelihood-profile-caal-region-detail.png){#fig-diag-profile-data-caal width="100%"}
 
 
 
-![Tag likelihood profile. The upper panel overlays the prominent tag total with thin programme curves; coloured row keys connect them to the RTTP, PTTP and JPTP heatmap contributions. Open a programme in the [interactive profile viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html) for release-group curves.](figures_new/likelihood-profile-tag-detail.png){#fig-diag-profile-data-tag-prog width="100%"}
-
-
-
-![Penalty likelihood profile. The upper panel overlays the prominent penalty total with thin, translucent component curves; coloured row keys connect them to the heatmap while limiting visual clutter. Open the [interactive profile viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html) to select a component.](figures_new/likelihood-profile-penalty-detail.png){#fig-diag-profile-data-penalty width="100%"}
+![Tag likelihood profile by tagging programme. The black line is the total tag contribution; the coloured lines and matching heatmap rows show RTTP, PTTP and JPTP. Larger $\Delta$NLL indicates a poorer fit at that biomass, and the dashed line marks $\Delta$NLL = 1.92. Open a programme in the [interactive profile viewer](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html) for release-group detail.](figures_new/likelihood-profile-tag-detail.png){#fig-diag-profile-data-tag-prog width="100%"}
 
 
 
@@ -168,7 +164,7 @@
 
 
 
-![Fitted Beverton--Holt stock--recruitment relationship for the 2026 diagnostic model. Filled circles are annual recruitment and adult-biomass estimates used in the fit and are coloured by year; open circles denote years before 1968, which were not used to fit the relationship. Open the [diagnostic report](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html#fig-stock-recruitment).](figures_new/stock-recruitment.png){#fig-stock-rr width=100%}
+![Fitted Beverton--Holt stock--recruitment relationship for the 2026 diagnostic model. Points show annual recruitment and adult-biomass estimates and are coloured by year. Open the [diagnostic report](https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html#fig-stock-recruitment).](figures_new/stock-recruitment.png){#fig-stock-rr width=100%}
 
 
 
