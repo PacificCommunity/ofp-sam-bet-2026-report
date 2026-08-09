@@ -88,7 +88,7 @@ jobs:
         run: git fetch --no-tags origin draft:refs/remotes/origin/draft
 
       - name: Synchronize published source-report figures
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event_name == 'schedule' || (github.event_name == 'push' && github.ref == 'refs/heads/rev1')
         shell: bash
         run: |
           DIAGNOSTIC_SOURCE_SHA=$(git ls-remote \
@@ -144,7 +144,7 @@ jobs:
           bash scripts/sync-analysis-figures.sh
 
       - name: Persist synchronized source assets on Rev.01
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event_name == 'schedule'
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || github.event_name == 'schedule' || (github.event_name == 'push' && github.ref == 'refs/heads/rev1')
         shell: bash
         run: |
           git config user.name github-actions[bot]
