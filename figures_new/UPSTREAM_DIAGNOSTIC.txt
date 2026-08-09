@@ -1,5 +1,5 @@
 source_url=https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic
-source_commit=f93d97c76db2ec2bc611ae0fabde97f99db900c0
+source_commit=8c2a586a8c5abec1a76e305f28f8f0b48fe2fe27
 f880ea6905a4d7597da21d062d305271e43772e06f685a2710d9252920cf64d4  figures_new/aspm-comparison.png
 3760dd1dd9b63f822c27867616c6de473fa9fad6a1c55dce85f54ea2492240b9  figures_new/cpue-fit-residuals.png
 1d7d212df7145bf32dbf0540c0be552b90938e8c1359e02a8fa3b911174474b9  figures_new/diagnostic-population-dynamics.png
