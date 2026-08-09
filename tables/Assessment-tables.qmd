@@ -149,9 +149,9 @@ G8 & F29--F33 & Index R1; Index R2; Index R3; Index R4; Index R5 & Regional indi
 
 \begin{landscape}
 \begingroup
-\fontsize{6.5}{6.8}\selectfont
-\setlength{\tabcolsep}{3.2pt}
-\renewcommand{\arraystretch}{0.94}
+\fontsize{6.2}{6.35}\selectfont
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.90}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.045\linewidth}>{\raggedright\arraybackslash}p{0.105\linewidth}>{\raggedright\arraybackslash}p{0.075\linewidth}>{\raggedright\arraybackslash}p{0.125\linewidth}>{\raggedright\arraybackslash}p{0.09\linewidth}>{\raggedright\arraybackslash}p{0.215\linewidth}>{\raggedright\arraybackslash}p{0.065\linewidth}>{\raggedleft\arraybackslash}p{0.065\linewidth}@{}}
 \caption{Tag-reporting-rate groups, release coverage, estimation status and fitted reporting rates. Group is the MFCL reporting-rate group number. The pooled-matrix-row column indicates whether the same group number is also assigned to MFCL's extra pooled row; pooled is not a tagging programme. Group 31 is assigned to Index fisheries F29--F33 to complete the matrix, but is an inactive technical placeholder with no tag-recapture likelihood and is omitted.}\label{tbl-tag-definitions}\\
 \toprule
