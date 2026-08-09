@@ -1,7 +1,7 @@
 % Options for packages loaded elsewhere
 %DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL /tmp/tmp.mx3DQbCzJm/draft/main.tex                                  Sun Aug  9 11:27:57 2026
-%DIF ADD /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/main.tex   Sun Aug  9 11:25:32 2026
+%DIF DEL /tmp/tmp.RErs28kaEI/draft/main.tex                              Sun Aug  9 01:33:05 2026
+%DIF ADD /__w/ofp-sam-bet-2026-report/ofp-sam-bet-2026-report/main.tex   Sun Aug  9 01:30:28 2026
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
@@ -72,6 +72,7 @@
 
 
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -133,15 +134,12 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
-\usepackage[bidi=basic]{babel}
+\usepackage[bidi=basic,shorthands=off]{babel}
 \else
-\usepackage[bidi=default]{babel}
+\usepackage[bidi=default,shorthands=off]{babel}
 \fi
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
 \ifLuaTeX
-  \usepackage[english]{selnolig} % disable illegal ligatures
+  \usepackage{selnolig} % disable illegal ligatures
 \fi
 
 
@@ -182,7 +180,7 @@
 \AfterEndEnvironment{figure}{\ifisolatefigures\clearpage\fi}
 
 \reportauthor{K. Kim\footnote{\spc}, T.~Teears $^1$, J.~Hampton\footnote{Thunnidae Consulting}, N.~Davies\footnote{TeTakina Ltd}, A.~Magnusson$^1$, C.~Castillo Jordán$^1$, T.~Peatman\footnote{Shearwater Analytics}, J.~Scutt Phillips$^1$, P.~Hamer$^1$}
-%DIF 182-183c182-183
+%DIF 180-181c180-181
 %DIF < \reporttitle{Stock assessment of bigeye tuna in the western and central Pacific Ocean: 2026: \textbf{DRAFT version}}
 %DIF < \reportnumber{WCPFC-SC22-2026/SA-WP-06}
 %DIF -------
@@ -238,7 +236,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-%DIF 233c233
+%DIF 231c231
 %DIF <   pdftitle={Stock assessment of bigeye tuna in the western and central Pacific Ocean: 2026: DRAFT version},
 %DIF -------
   pdftitle={Stock assessment of bigeye tuna in the western and central Pacific Ocean: 2026}, %DIF > 
@@ -320,7 +318,7 @@ Phillips \and P. Hamer}
 \DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
 \DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
 \DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
-%DIF LISTINGS PREAMBLE %DIF PREAMBLE
+%DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
 \RequirePackage{listings} %DIF PREAMBLE
 \RequirePackage{color} %DIF PREAMBLE
 \lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
@@ -339,8 +337,8 @@ Phillips \and P. Hamer}
 %DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}\begin{verbatim}LATEXDIFF comparison
-Old: /tmp/tmp.mx3DQbCzJm/draft/main.tex                                  Sun Aug  9 11:27:57 2026
-New: /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/main.tex   Sun Aug  9 11:25:32 2026\end{verbatim}
+Old: /tmp/tmp.RErs28kaEI/draft/main.tex                              Sun Aug  9 01:33:05 2026
+New: /__w/ofp-sam-bet-2026-report/ofp-sam-bet-2026-report/main.tex   Sun Aug  9 01:30:28 2026\end{verbatim}
 
 \maketitle
 
@@ -362,7 +360,6 @@ New: /home/kyuhank/Desktop/SPC/ofp-sam-bet-2026-report-quarto/main.tex   Sun Aug
 
 \renewcommand*\contentsname{Table of contents}
 {
-\hypersetup{linkcolor=}
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
@@ -1549,17 +1546,21 @@ value of steepness (\emph{h}). Steepness is defined as the ratio of the
 equilibrium recruitment produced by 20\% of the equilibrium unexploited
 spawning potential to that produced by the equilibrium unexploited
 spawning potential (Francis, 1992; Harley, 2011). Typically, fisheries
-data are not very informative about the steepness parameter of the SRR
-parameters (ISSF, 2011); hence, the steepness parameter was fixed at a
-moderate value (diagnostic model: 0.80) and the sensitivity of the model
+data are not very informative about \DIFdelbegin \DIFdel{the steepness parameter of the SRR
+parameters }\DIFdelend \DIFaddbegin \DIFadd{steepness }\DIFaddend (ISSF, 2011); hence, \DIFdelbegin \DIFdel{the steepness parameter }\DIFdelend \DIFaddbegin \DIFadd{it
+}\DIFaddend was fixed at \DIFdelbegin \DIFdel{a
+moderate value (diagnostic model : 0.80) and the sensitivity of the model
 results to the value of steepness was explored by setting it to lower
-(0.65) and higher (0.95) values. The high CV (2.2) of the
-log-recruitment deviates, computed annually, ensured that the SRR had
-negligible impact on the estimation of recruitment and other model
-parameters, as recommended by Ianelli et al. (2012). The SRR was
+(}\DIFdelend \DIFaddbegin \DIFadd{0.90 in the diagnostic model and sensitivity analyses used
+values of }\DIFaddend 0.65\DIFdelbegin \DIFdel{) and higher (}\DIFdelend \DIFaddbegin \DIFadd{, 0.80 and }\DIFaddend 0.95\DIFdelbegin \DIFdel{) values}\DIFdelend . The high CV (2.2) of the \DIFaddbegin \DIFadd{annual
+}\DIFaddend log-recruitment \DIFdelbegin \DIFdel{deviates, computed annually, }\DIFdelend \DIFaddbegin \DIFadd{deviations }\DIFaddend ensured that the SRR had negligible \DIFdelbegin \DIFdel{impact on the estimation of }\DIFdelend \DIFaddbegin \DIFadd{influence
+on }\DIFaddend recruitment and other model \DIFdelbegin \DIFdel{parameters}\DIFdelend \DIFaddbegin \DIFadd{estimates}\DIFaddend , as recommended by Ianelli et
+al. (2012).
+\DIFdelbegin \DIFdel{The SRR was
 estimated over the period 1962--2023 to prevent the earlier recruitments
 (which may not be well estimated), and the terminal recruitments (which
 are not freely estimated), from influencing the relationship.
+}\DIFdelend 
 
 The SRR was incorporated mainly so that yield analysis and population
 projections could be undertaken for stock assessment purposes,
@@ -2042,11 +2043,11 @@ at 1}\DIFdelend \DIFaddbegin \DIFadd{as
 \(N_{\mathrm{eff}}=N_{\max}(1+\lambda)/(N_{\max}+\lambda)\);
 consequently, \(N_{\max}\) is an asymptotic upper bound rather than an
 effective sample size assigned to every composition. Preliminary fits
-evaluated values including 10, 25}\DIFaddend , \DIFdelbegin \DIFdel{000), which resulted in deterioration of the fits to the abundance
+evaluated values including 10}\DIFaddend , \DIFdelbegin \DIFdel{000), which resulted in deterioration of the fits to the abundance
 indices, and it was therefore not applied. For the 2026 assessment we
 revisited Dirichlet-multinomial,with 8 fishery groupings, but rather
 applied a low effective sample size cap of 25. We also initial applied
-the Francis weight method }\DIFdelend \DIFaddbegin \DIFadd{40, 100 and the MFCL default of
+the Francis weight method }\DIFdelend \DIFaddbegin \DIFadd{25, 40, 100 and the MFCL default of
 1,000. From 40 upward, length-frequency fit improved slightly but CPUE
 fit deteriorated as the composition component gained influence. As an
 independent empirical reference, the 95th percentile of
@@ -3232,20 +3233,17 @@ favoured lower biomass, whereas tag data favoured }\DIFaddend higher biomass
 (Figure\DIFdelbegin \DIFdel{Figure}\DIFdelend ~\ref{fig-diag-profile-data-sources}). \DIFdelbegin \DIFdel{The CAAL data tend
 to preferred }\DIFdelend \DIFaddbegin \DIFadd{CAAL data favoured }\DIFaddend higher
 biomass than \DIFdelbegin \DIFdel{the CPUE and size data , }\DIFdelend \DIFaddbegin \DIFadd{CPUE and length-frequency data }\DIFaddend but had a \DIFdelbegin \DIFdel{flat
-profile through most of the biomass range , and the region of the overall likelihood.
-The penalty terms also preferred }\DIFdelend \DIFaddbegin \DIFadd{comparatively flat
-profile across much of the range containing the overall minimum.
-Penalties favoured }\DIFaddend lower biomass. The \DIFdelbegin \DIFdel{conflict
-between the CPUE
-and tagging indicates that tag
-data is the key
-influence on higher biomass scaling}\DIFdelend \DIFaddbegin \DIFadd{component figures show the CPUE
-indices (Figure~\ref{fig-diag-profile-data-cpue}), length-frequency
+profile through most of the biomass range , and the region of the overall likelihood. The penalty terms also preferred lower biomass. The
+conflict
+between the CPUE and tagging indicates that tag data is the key
+influence on higher biomass scaling}\DIFdelend \DIFaddbegin \DIFadd{comparatively flat
+profile across much of the range containing the overall minimum. The
+component figures show the CPUE indices
+(Figure~\ref{fig-diag-profile-data-cpue}), length-frequency
 contributions by region (Figure~\ref{fig-diag-profile-data-lf}), CAAL
-contributions by region (Figure~\ref{fig-diag-profile-data-caal}), tag
-programmes (Figure~\ref{fig-diag-profile-data-tag-prog}) and penalty
-components (Figure~\ref{fig-diag-profile-data-penalty})}\DIFaddend . This conflict
-\DIFdelbegin \DIFdel{is accounted for to
+contributions by region (Figure~\ref{fig-diag-profile-data-caal}) and
+tag programmes (Figure~\ref{fig-diag-profile-data-tag-prog})}\DIFaddend . This
+conflict \DIFdelbegin \DIFdel{is accounted for to
 an extent }\DIFdelend \DIFaddbegin \DIFadd{was represented }\DIFaddend in the uncertainty ensemble through \DIFdelbegin \DIFdel{higher mixing period
 scenarios, the alternative
 approaches to reporting rate adjustments in
@@ -3349,14 +3347,17 @@ connection with other regions. Region 2 showed some movement to region
 The \DIFdelbegin \DIFdel{Lorenzen form of natural mortality for the diagnostic model (Figure
 Figure~\ref{fig-natm-at-age}) had the scale set by the fixed M at
 age 40
-quarter of 0.078/quarter. The Lorenzen shape of the natural mortality at
+quarter of 0.078/}\DIFdelend \DIFaddbegin \DIFadd{diagnostic model fixed the Lorenzen natural-mortality scale at
+\(M_{40}=0.07814\) per }\DIFaddend quarter. The \DIFdelbegin \DIFdel{Lorenzen shape of the natural mortality at
 age depends on the growth curve estimated in MFCL, and features
-considerably higher levels of natural mortality at age for very young fish with quarterly M approaching 0.45 }\DIFdelend \DIFaddbegin \DIFadd{diagnostic model fixed the Lorenzen natural-mortality scale }\DIFaddend at
-\DIFdelbegin \DIFdel{1 quarter age, and a lower
-asymptote for mortality of the oldest age classes reached the fixed value of 0.078/quarter }\DIFdelend \DIFaddbegin \DIFadd{\(M_{40}=0.07814\) per quarter. Applying the same 2026 growth schedule
-and Lorenzen exponent to the model-aligned Hamel--Cope median
-(\(M_{40}=0.08082\)) produces a very similar age-specific curve, whereas
-the external tag estimate (\(M_{40}=0.0624\); 90\% CI 0.0500--0.0749)
+considerably higher levels of natural mortality at age for very young fish with quarterly M approaching 0.45 at 1 quarter age, and a lower
+asymptote for mortality of the oldest age classes reached the fixed value of 0.078/quarter }\DIFdelend \DIFaddbegin \DIFadd{longevity-based prior followed the
+meta-analytical approach of Hamel (2015) and the updated longevity
+formulation of Hamel \& Cope (2022); transforming its adult-mortality
+median to the assessment-model \(M_0\) scale gave \(M_{40}=0.08082\).
+Applying that value to the same 2026 growth schedule and Lorenzen
+exponent produces a curve very close to the diagnostic one, whereas the
+external tag estimate (\(M_{40}=0.0624\); 90\% CI 0.0500--0.0749)
 produces lower mortality throughout the age range
 (Figure~\ref{fig-natm-at-age}). All three curves decline steeply for
 young fish and approach their respective fixed scales }\DIFaddend at age 40
@@ -4001,88 +4002,66 @@ The general conclusions of this assessment are as follows:
 \section{Acknowledgements}\label{acknowledgements}
 
 \DIFdelbegin \DIFdel{To be completed
-}\DIFdelend \DIFaddbegin \DIFadd{We thank WCPFC members, cooperating non-members and participating
-territories for providing the fisheries data used in this assessment;
-the observers, port samplers, tagging teams and fishers whose work
-generated the underlying biological and tagging observations; and
-participants in the 2026 Pre-assessment Workshop and Scientific
-Committee process for their technical advice. The assessment also relied
-on the work of the Pacific Community fisheries data, stock-assessment
-and software-development teams and on the supporting analyses cited
-throughout this report.
-}\DIFaddend 
+}\DIFdelend \DIFaddbegin \DIFadd{We thank WCPFC members, participating territories and other providers
+for the fisheries data, and the observers, port samplers, tagging teams
+and fishers who collected the biological and tagging observations. We
+also acknowledge the 2026 Pre-assessment Workshop participants and the
+Pacific Community data, assessment and software teams for their
+contributions.
+}
+
+\section{\DIFadd{Statement on the use of generative
+AI}}\label{statement-on-the-use-of-generative-ai}
+
+\DIFadd{GitHub Copilot, a generative artificial-intelligence assistant, was used
+to support code development and checking and the preparation of selected
+visualisations for this report.
+}
+
+\clearpage
+\DIFaddend 
 
 \section{Tables}\label{tables}
 
-\clearpage
+\DIFaddbegin \begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
 
-\DIFaddbegin \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.20\linewidth}>{\raggedright\arraybackslash}p{0.32\linewidth}>{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
 
-\caption{\label{tbl-open-science-resources}Public assessment outputs,
-source repositories and pinned build resource.}
+\caption{\label{tbl-open-science-resources}Public assessment outputs, source repositories and pinned build resource.}
 
 \tabularnewline
 
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Resource
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Browser output
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Source repository
-\end{minipage} \\
-\midrule\noalign{}
+\\
+\toprule
+Resource & Browser output & Source repository \\
+\midrule
+\endfirsthead
+\toprule
+Resource & Browser output & Source repository \\
+\midrule
 \endhead
-\bottomrule\noalign{}
+\bottomrule
 \endlastfoot
-Assessment report &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-report/}{Clean
-PDF} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-report}{ofp-sam-bet-2026-report} \\
-Stepwise development &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html}{Interactive
-model viewer} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise}{ofp-sam-bet-2026-stepwise} \\
-Diagnostic fit and profiles &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html}{Diagnostic
-report};
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{profile
-viewer} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic}{ofp-sam-bet-2026-diagnostic} \\
-Jitter &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html}{Jitter
-report} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-jitter}{ofp-sam-bet-2026-jitter} \\
-Self-test &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{Self-test
-report} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-selftest}{ofp-sam-bet-2026-selftest} \\
-Retrospective analysis &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html}{Retrospective
-report} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-retrospective}{ofp-sam-bet-2026-retrospective} \\
-One-off sensitivities &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html}{Sensitivity
-viewer} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-sensitivity}{ofp-sam-bet-2026-sensitivity} \\
-Uncertainty ensemble and projections &
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html}{Ensemble
-viewer} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-ensemble}{ofp-sam-bet-2026-ensemble} \\
-Pinned build environment & \inlinecode{tuna-flow-private:v2.7} &
-\href{https://github.com/PacificCommunity/ofp-sam-bet-2026-report/blob/rev1/.github/workflows/render-quarto.yml}{Report
-workflow and full digest} (\inlinecode{sha256:4fee4c40...9c8852}) \\
+Assessment report & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-report/}{Clean PDF} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-report}{ofp-sam-bet-2026-report} \\
+Stepwise development & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html}{Interactive model viewer} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise}{ofp-sam-bet-2026-stepwise} \\
+Diagnostic fit and profiles & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html}{Diagnostic report}; \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{profile viewer} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic}{ofp-sam-bet-2026-diagnostic} \\
+Jitter & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html}{Jitter report} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-jitter}{ofp-sam-bet-2026-jitter} \\
+Self-test & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{Self-test report} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-selftest}{ofp-sam-bet-2026-selftest} \\
+Retrospective analysis & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html}{Retrospective report} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-retrospective}{ofp-sam-bet-2026-retrospective} \\
+One-off sensitivities & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-sensitivity/bet-2026-sensitivity-interactive-viewer.html}{Sensitivity viewer} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-sensitivity}{ofp-sam-bet-2026-sensitivity} \\
+Uncertainty ensemble and projections & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-interactive-viewer.html}{Ensemble viewer} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-ensemble}{ofp-sam-bet-2026-ensemble} \\
+Pinned build environment & \texttt{tuna-flow-private:v2.7} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-report/blob/rev1/.github/workflows/render-quarto.yml}{Report workflow and full digest} (\texttt{sha256:4fee4c40...9c8852}) \\
 
 \end{longtable}
 
-\clearpage
+\endgroup
 
-\clearpage
+\DIFaddend \clearpage
 
-\begin{landscape}
+\DIFaddbegin \begin{landscape}
 \DIFaddend \begingroup
 \DIFdelbegin %DIFDELCMD < \footnotesize
 %DIFDELCMD < %%%
@@ -4952,9 +4931,10 @@ unchanged; the small difference results from applying it to the updated
 obtained by applying three assessment-relevant \(M_0\) values to the
 same 2026 diagnostic growth schedule and fixed Lorenzen exponent (-1).
 Curves show the diagnostic value (0.07814), the model-aligned
-Hamel--Cope median (0.08082), and the tag estimate from Ducharme-Barth
-et al. (2026) (0.0624). Shading is the tag estimate's 90\% confidence
-interval (0.0500--0.0749) propagated over age. Open the
+longevity-prior median (0.08082) derived following Hamel (2015) and
+Hamel \& Cope (2022), and the tag estimate from Ducharme-Barth et al.
+(2026) (0.0624). Shading is the tag estimate's 90\% confidence interval
+(0.0500--0.0749) propagated over age. Open the
 \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-report.html\#fig-natural-mortality-evidence}{ensemble
 report}.}
 
@@ -4996,6 +4976,27 @@ HTML viewer}.}
 %DIFDELCMD < 
 
 %DIFDELCMD < \end{figure}%%%
+%DIF < 
+%DIFDELCMD < 
+
+%DIFDELCMD < \begin{figure}[H]
+%DIFDELCMD < 
+
+%DIFDELCMD < \centering{
+%DIFDELCMD < 
+
+%DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/diag_time_series.png}
+%DIFDELCMD < 
+
+%DIFDELCMD < }
+%DIFDELCMD < 
+
+%DIFDELCMD < \caption{\label{fig-diag-time-series}Population dynamics summary for
+%DIFDELCMD < depletion (\(SB\)/\(SB_{F=0}\)), recruitment, spawning potential and
+%DIFDELCMD < fishing mortality, for the diagnostic model}
+%DIFDELCMD < 
+
+%DIFDELCMD < \end{figure}%%%
 \DIFdelend \DIFaddbegin \begin{figure}[H]
 
 \centering{
@@ -5020,15 +5021,14 @@ stepwise viewer}.}
 %DIFDELCMD < \centering{
 %DIFDELCMD < 
 
-%DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/diag_time_series.png}
+%DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/cpue_fit_1_5.png}
 %DIFDELCMD < 
 
 %DIFDELCMD < }
 %DIFDELCMD < 
 
-%DIFDELCMD < \caption{\label{fig-diag-time-series}Population dynamics summary for
-%DIFDELCMD < depletion (\(SB\)/\(SB_{F=0}\)), recruitment, spawning potential and
-%DIFDELCMD < fishing mortality, for the diagnostic model}
+%DIFDELCMD < \caption{\label{fig-cpue-fit-1-5}Fits (orange line) to the standardised
+%DIFDELCMD < CPUE (gray dots) for the longline index fisheries in region 1-5.}
 %DIFDELCMD < 
 
 %DIFDELCMD < \end{figure}%%%
@@ -5058,14 +5058,14 @@ diagnostic report}.}
 %DIFDELCMD < \centering{
 %DIFDELCMD < 
 
-%DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/cpue_fit_1_5.png}
+%DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/cpue_resids_1_5.png}
 %DIFDELCMD < 
 
 %DIFDELCMD < }
 %DIFDELCMD < 
 
-%DIFDELCMD < \caption{\label{fig-cpue-fit-1-5}Fits (orange line) to the standardised
-%DIFDELCMD < CPUE (gray dots) for the longline index fisheries in region 1-5.}
+%DIFDELCMD < \caption{\label{fig-cpue-resids-1-5}Residuals for the standardised CPUE
+%DIFDELCMD < for the longline index fisheries in region 1-5.}
 %DIFDELCMD < 
 
 %DIFDELCMD < \end{figure}%%%
@@ -5095,14 +5095,16 @@ diagnostic report} for fishery- and year-level selections.}
 %DIFDELCMD < \centering{
 %DIFDELCMD < 
 
-%DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/cpue_resids_1_5.png}
+%DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/length_fit_aggregated_ll.png}
 %DIFDELCMD < 
 
 %DIFDELCMD < }
 %DIFDELCMD < 
 
-%DIFDELCMD < \caption{\label{fig-cpue-resids-1-5}Residuals for the standardised CPUE
-%DIFDELCMD < for the longline index fisheries in region 1-5.}
+%DIFDELCMD < \caption{\label{fig-length-fit-aggregated-ll}Composite (all time periods
+%DIFDELCMD < combined) observed (blue histograms) and predicted (red line) length
+%DIFDELCMD < frequency for fisheries with length frequency data for longline
+%DIFDELCMD < extraction and index fisheries in the 2026 diagnostic model.}
 %DIFDELCMD < 
 
 %DIFDELCMD < \end{figure}%%%
@@ -5134,16 +5136,16 @@ diagnostic report} for fishery- and year-level selections.}
 %DIFDELCMD < \centering{
 %DIFDELCMD < 
 
-%DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/length_fit_aggregated_ll.png}
+%DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/length_fit_aggregated_dompl.png}
 %DIFDELCMD < 
 
 %DIFDELCMD < }
 %DIFDELCMD < 
 
-%DIFDELCMD < \caption{\label{fig-length-fit-aggregated-ll}Composite (all time periods
-%DIFDELCMD < combined) observed (blue histograms) and predicted (red line) length
-%DIFDELCMD < frequency for fisheries with length frequency data for longline
-%DIFDELCMD < extraction and index fisheries in the 2026 diagnostic model.}
+%DIFDELCMD < \caption{\label{fig-length-fit-aggregated-dompl}Composite (all time
+%DIFDELCMD < periods combined) observed (blue histograms) and predicted (red line)
+%DIFDELCMD < length frequency for fisheries with length frequency data for domestic,
+%DIFDELCMD < handline and pole and line fisheries in the 2026 diagnostic model.}
 %DIFDELCMD < 
 
 %DIFDELCMD < \end{figure}%%%
@@ -5170,42 +5172,6 @@ more than 250 fish per quarter/fishery strata are plotted.}
 %DIFDELCMD < \centering{
 %DIFDELCMD < 
 
-%DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/length_fit_aggregated_dompl.png}
-%DIFDELCMD < 
-
-%DIFDELCMD < }
-%DIFDELCMD < 
-
-%DIFDELCMD < \caption{\label{fig-length-fit-aggregated-dompl}Composite (all time
-%DIFDELCMD < periods combined) observed (blue histograms) and predicted (red line)
-%DIFDELCMD < length frequency for fisheries with length frequency data for domestic,
-%DIFDELCMD < handline and pole and line fisheries in the 2026 diagnostic model.}
-%DIFDELCMD < 
-
-%DIFDELCMD < \end{figure}%%%
-\DIFdelend \DIFaddbegin \begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=0.75\linewidth,height=\textheight,keepaspectratio]{figures/length_fit_time_series_other.png}
-
-}
-
-\caption{\label{fig-length-fit-timeseries-other}Observed (red points)
-and predicted (red line) median fish lengths (FL, cm) for the other
-fisheries for the 2026 diagnostic model. The uncertainty intervals (gray
-shading) represent the values encompassed by the 25\% and 75\%
-quantiles. Sampling data are by quarter and only length samples with
-more than 100 fish per quarter/fishery strata are plotted.}
-
-\end{figure}\DIFaddend %
-
-\DIFdelbegin %DIFDELCMD < \begin{figure}[H]
-%DIFDELCMD < 
-
-%DIFDELCMD < \centering{
-%DIFDELCMD < 
-
 %DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/length_fit_aggregated_ps.png}
 %DIFDELCMD < 
 
@@ -5223,15 +5189,16 @@ more than 100 fish per quarter/fishery strata are plotted.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/tag-attrition-by-program.png}
+\includegraphics[width=0.75\linewidth,height=\textheight,keepaspectratio]{figures/length_fit_time_series_other.png}
 
 }
 
-\caption{\label{fig-tag-attrition-programmes}\label{fig-tag-attrition-all}Observed (black points) and
-model-predicted (red line) tag recaptures by time at liberty in quarters
-for RTTP, PTTP, JPTP and all recaptures. Programme predictions apply
-MFCL's premixing reporting-rate rule and reconcile to the official
-all-recapture diagnostic within its printed precision.}
+\caption{\label{fig-length-fit-timeseries-other}Observed (red points)
+and predicted (red line) median fish lengths (FL, cm) for the other
+fisheries for the 2026 diagnostic model. The uncertainty intervals (gray
+shading) represent the values encompassed by the 25\% and 75\%
+quantiles. Sampling data are by quarter and only length samples with
+more than 100 fish per quarter/fishery strata are plotted.}
 
 \end{figure}\DIFaddend %
 
@@ -5260,13 +5227,15 @@ all-recapture diagnostic within its printed precision.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/tag_recapture_fit_years_groups.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/tag-attrition-by-program.png}
 
 }
 
-\caption{\label{fig-tag-recapture-fit-years-groups}Observed (black
-points) and model-predicted (red lines) tag recaptures through time for
-the principal tag-recapture groups in the 2026 diagnostic model.}
+\caption{\label{fig-tag-attrition-programmes}\label{fig-tag-attrition-all}Observed (black points) and
+model-predicted (red line) tag recaptures by time at liberty in quarters
+for RTTP, PTTP, JPTP and all recaptures. Programme predictions apply
+MFCL's premixing reporting-rate rule and reconcile to the official
+all-recapture diagnostic within its printed precision.}
 
 \end{figure}\DIFaddend %
 
@@ -5288,6 +5257,38 @@ the principal tag-recapture groups in the 2026 diagnostic model.}
 %DIFDELCMD < shading) represent the values encompassed by the 25\% and 75\%
 %DIFDELCMD < quantiles. Sampling data are by quarter and only length samples with
 %DIFDELCMD < more than 100 fish per quarter/fishery strata are plotted.}
+%DIFDELCMD < 
+
+%DIFDELCMD < \end{figure}%%%
+\DIFdelend \DIFaddbegin \begin{figure}[H]
+
+\centering{
+
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/tag_recapture_fit_years_groups.png}
+
+}
+
+\caption{\label{fig-tag-recapture-fit-years-groups}Observed (black
+points) and model-predicted (red lines) tag recaptures through time for
+the principal tag-recapture groups in the 2026 diagnostic model.}
+
+\end{figure}\DIFaddend %
+
+\DIFdelbegin %DIFDELCMD < \begin{figure}[H]
+%DIFDELCMD < 
+
+%DIFDELCMD < \centering{
+%DIFDELCMD < 
+
+%DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/tag_attrition_all.png}
+%DIFDELCMD < 
+
+%DIFDELCMD < }
+%DIFDELCMD < 
+
+%DIFDELCMD < \caption{\label{fig-tag-attrition-all}Observed (black points) and
+%DIFDELCMD < model-predicted (red line) tag attrition across all tag release events
+%DIFDELCMD < for the 2026 diagnostic model.}
 %DIFDELCMD < 
 
 %DIFDELCMD < \end{figure}%%%
@@ -5317,42 +5318,6 @@ diagnostic report}.}
 %DIFDELCMD < \centering{
 %DIFDELCMD < 
 
-%DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/tag_attrition_all.png}
-%DIFDELCMD < 
-
-%DIFDELCMD < }
-%DIFDELCMD < 
-
-%DIFDELCMD < \caption{\label{fig-tag-attrition-all}Observed (black points) and
-%DIFDELCMD < model-predicted (red line) tag attrition across all tag release events
-%DIFDELCMD < for the 2026 diagnostic model.}
-%DIFDELCMD < 
-
-%DIFDELCMD < \end{figure}%%%
-\DIFdelend \DIFaddbegin \begin{figure}[H]
-
-\centering{
-
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/age-data-fit-by-region.png}
-
-}
-
-\caption{\label{fig-caal-fits-regions}Observed and fitted conditional
-age-at-length distributions for the five model regions and the pooled
-All regions panel (last). Cells and point sizes show fitted and observed
-proportions; solid and dashed lines show their corresponding mean ages
-at length. Open the
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html}{interactive
-diagnostic report} for fishery-level detail.}
-
-\end{figure}\DIFaddend %
-
-\DIFdelbegin %DIFDELCMD < \begin{figure}[H]
-%DIFDELCMD < 
-
-%DIFDELCMD < \centering{
-%DIFDELCMD < 
-
 %DIFDELCMD < \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/tag_recapture_fit_years_groups.png}
 %DIFDELCMD < 
 
@@ -5365,24 +5330,21 @@ diagnostic report} for fishery-level detail.}
 %DIFDELCMD < 
 
 %DIFDELCMD < \end{figure}%%%
-\DIFdelend \DIFaddbegin \label{fig-caal-fits}
-
-\begin{figure}[H]
+\DIFdelend \DIFaddbegin \begin{figure}[H]
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/jitter-diagnostics-diagnostic-model.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/age-data-fit-by-region.png}
 
 }
 
-\caption{\label{fig-jitter-scatter-plot}Jitter convergence diagnostics
-for the diagnostic model. Each circle represents one of the 25 retained
-jitter fits and the red diamond identifies the diagnostic model without
-jitter. Retained fits had a maximum gradient component no greater than
-\(1.0 \times 10^{-4}\); lower objective-function values indicate
-improved fit. Open the
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html}{interactive
-jitter report}.}
+\caption{\label{fig-caal-fits-regions}\label{fig-caal-fits}Observed and fitted conditional
+age-at-length distributions for the five model regions and the pooled
+All regions panel (last). Cells and point sizes show fitted and observed
+proportions; solid and dashed lines show their corresponding mean ages
+at length. Open the
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html}{interactive
+diagnostic report} for fishery-level detail.}
 
 \end{figure}\DIFaddend %
 
@@ -5412,17 +5374,16 @@ jitter report}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/jitter-derived-diagnostic-model.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/jitter-diagnostics-diagnostic-model.png}
 
 }
 
-\caption{\label{fig-jitter-derived-values-diag-panel}Annual derived
-quantities across the 25 retained jitter fits. Thin grey-blue lines are
-individual fits, the shaded band is the pointwise central 80\% interval,
-the dark line is the jitter median with its terminal value marked by a
-circle, and the red line is the diagnostic model without jitter.
-Recruitment is in millions of fish and spawning potential is in thousand
-metric tonnes. Open the
+\caption{\label{fig-jitter-scatter-plot}Jitter convergence diagnostics
+for the diagnostic model. Each circle represents one of the 25 retained
+jitter fits and the red diamond identifies the diagnostic model without
+jitter. Retained fits had a maximum gradient component no greater than
+\(1.0 \times 10^{-4}\); lower objective-function values indicate
+improved fit. Open the
 \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html}{interactive
 jitter report}.}
 
@@ -5454,15 +5415,19 @@ jitter report}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/jitter-regional-depletion-diagnostic-model.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/jitter-derived-diagnostic-model.png}
 
 }
 
-\caption{\label{fig-jitter-regional-depletion}Regional and all-region
-depletion trajectories across the 25 retained jitter fits. Thin
-grey-blue lines are individual fits, the shaded band is the pointwise
-central 80\% interval, the dark line is the jitter median and the red
-line is the diagnostic model without jitter.}
+\caption{\label{fig-jitter-derived-values-diag-panel}Annual derived
+quantities across the 25 retained jitter fits. Thin grey-blue lines are
+individual fits, the shaded band is the pointwise central 80\% interval,
+the dark line is the jitter median with its terminal value marked by a
+circle, and the red line is the diagnostic model without jitter.
+Recruitment is in millions of fish and spawning potential is in thousand
+metric tonnes. Open the
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html}{interactive
+jitter report}.}
 
 \end{figure}\DIFaddend %
 
@@ -5490,17 +5455,15 @@ line is the diagnostic model without jitter.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/selftest-key-recovery-diagnostic.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/jitter-regional-depletion-diagnostic-model.png}
 
 }
 
-\caption{\label{fig-selftest-recovery}Relative recovery error for recent
-management and assessment quantities and selected estimated parameters
-in the diagnostic model. Points are the 50 pseudo-data refits, boxes
-show their empirical distributions, the red line marks exact recovery
-and grey dashed lines mark errors of -5\% and +5\%. Open the
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{interactive
-self-test report}.}
+\caption{\label{fig-jitter-regional-depletion}Regional and all-region
+depletion trajectories across the 25 retained jitter fits. Thin
+grey-blue lines are individual fits, the shaded band is the pointwise
+central 80\% interval, the dark line is the jitter median and the red
+line is the diagnostic model without jitter.}
 
 \end{figure}\DIFaddend %
 
@@ -5516,7 +5479,7 @@ self-test report}.}
 %DIFDELCMD < }
 %DIFDELCMD < 
 
-%DIFDELCMD < \caption{\label{fig-caal-fits-regions}Model estimated median age at
+%DIFDELCMD < \caption{\label{fig-caal-fits-regions}\label{fig-caal-fits}Model estimated median age at
 %DIFDELCMD < length (orange line), versus observed age at length (black circles), and
 %DIFDELCMD < median observed age at lengths (orange circles), aggregate across all
 %DIFDELCMD < samples (top) and by model regions (bottom), The distribution of
@@ -5529,15 +5492,15 @@ self-test report}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/selftest-recovery-diagnostic.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/selftest-key-recovery-diagnostic.png}
 
 }
 
-\caption{\label{fig-selftest-time-series}Self-test recovery of annual
-assessment quantities. The red line is the generating value, the
-dark-blue line is the median across 50 replicate refits and the nested
-blue bands are the central 50\%, 80\% and 95\% empirical ranges. Open
-the
+\caption{\label{fig-selftest-recovery}Relative recovery error for recent
+management and assessment quantities and selected estimated parameters
+in the diagnostic model. Points are the 50 pseudo-data refits, boxes
+show their empirical distributions, the red line marks exact recovery
+and grey dashed lines mark errors of -5\% and +5\%. Open the
 \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{interactive
 self-test report}.}
 
@@ -5568,17 +5531,17 @@ self-test report}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/retrospective-diagnostics.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/selftest-recovery-diagnostic.png}
 
 }
 
-\caption{\label{fig-retro-analysis}Retrospective trajectories for (a)
-dynamic spawning depletion, (b) spawning potential, (c) recruitment and
-(d) annual population-weighted fishing mortality. Colours distinguish
-the diagnostic fit and seven terminal-year peels; labels give Mohn's
-\(\rho\). Open the
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html}{interactive
-retrospective report}.}
+\caption{\label{fig-selftest-time-series}Self-test recovery of annual
+assessment quantities. The red line is the generating value, the
+dark-blue line is the median across 50 replicate refits and the nested
+blue bands are the central 50\%, 80\% and 95\% empirical ranges. Open
+the
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{interactive
+self-test report}.}
 
 \end{figure}\DIFaddend %
 
@@ -5609,16 +5572,17 @@ retrospective report}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/likelihood-profile-components.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/retrospective-diagnostics.png}
 
 }
 
-\caption{\label{fig-diag-profile-data-sources}Overall-objective and
-component likelihood profiles overlaid on the absolute
-total-average-biomass scale. Each curve is expressed as a change from
-its own minimum; the horizontal line marks a change of 1.92. Open the
-\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{interactive
-profile viewer}.}
+\caption{\label{fig-retro-analysis}Retrospective trajectories for (a)
+dynamic spawning depletion, (b) spawning potential, (c) recruitment and
+(d) annual population-weighted fishing mortality. Colours distinguish
+the diagnostic fit and seven terminal-year peels; labels give Mohn's
+\(\rho\). Open the
+\href{https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html}{interactive
+retrospective report}.}
 
 \end{figure}\DIFaddend %
 
@@ -5647,16 +5611,16 @@ profile viewer}.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/likelihood-profile-cpue-detail.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/likelihood-profile-components.png}
 
 }
 
-\caption{\label{fig-diag-profile-data-cpue}CPUE likelihood profile. The
-upper panel overlays the prominent CPUE total with thin, muted index
-curves; coloured row keys connect those curves to the five heatmap
-contributions, each expressed as a change from its own minimum. Open the
+\caption{\label{fig-diag-profile-data-sources}Overall-objective and
+component likelihood profiles overlaid on the absolute
+total-average-biomass scale. Each curve is expressed as a change from
+its own minimum; the horizontal line marks a change of 1.92. Open the
 \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{interactive
-profile viewer} to select an index.}
+profile viewer}.}
 
 \end{figure}\DIFaddend %
 
@@ -5688,16 +5652,17 @@ profile viewer} to select an index.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/likelihood-profile-lf-detail.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/likelihood-profile-cpue-detail.png}
 
 }
 
-\caption{\label{fig-diag-profile-data-lf}Length-frequency likelihood
-profile summarised by model region. The upper panel overlays the
-prominent LF total with five thin regional curves; coloured row keys
-connect them to the regional heatmap. Open a region in the
+\caption{\label{fig-diag-profile-data-cpue}CPUE likelihood profile. The
+black line is the total CPUE contribution; the coloured lines and
+matching heatmap rows show the five regional indices. Larger
+\(\Delta\)NLL indicates a poorer fit at that biomass, and the dashed
+line marks \(\Delta\)NLL = 1.92. Select individual indices in the
 \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{interactive
-profile viewer} for fishery-level curves.}
+profile viewer}.}
 
 \end{figure}\DIFaddend %
 
@@ -5727,16 +5692,17 @@ profile viewer} for fishery-level curves.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/likelihood-profile-caal-region-detail.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/likelihood-profile-lf-detail.png}
 
 }
 
-\caption{\label{fig-diag-profile-data-caal}Conditional age-at-length
-likelihood profile. The upper panel overlays the prominent CAAL total
-with thin regional curves; coloured row keys connect them to the five
-heatmap contributions. Open a region in the
+\caption{\label{fig-diag-profile-data-lf}Length-frequency likelihood
+profile by model region. The black line is the total length-frequency
+contribution; the coloured lines and matching heatmap rows show the five
+regions. Larger \(\Delta\)NLL indicates a poorer fit at that biomass,
+and the dashed line marks \(\Delta\)NLL = 1.92. Open a region in the
 \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{interactive
-profile viewer} for fishery-level curves.}
+profile viewer} for fishery-level detail.}
 
 \end{figure}\DIFaddend %
 
@@ -5765,16 +5731,17 @@ profile viewer} for fishery-level curves.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/likelihood-profile-tag-detail.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/likelihood-profile-caal-region-detail.png}
 
 }
 
-\caption{\label{fig-diag-profile-data-tag-prog}\label{fig-diag-profile-data-tag-prog-grps}Tag likelihood profile.
-The upper panel overlays the prominent tag total with thin programme
-curves; coloured row keys connect them to the RTTP, PTTP and JPTP
-heatmap contributions. Open a programme in the
+\caption{\label{fig-diag-profile-data-caal}Conditional age-at-length
+likelihood profile by model region. The black line is the total CAAL
+contribution; the coloured lines and matching heatmap rows show the five
+regions. Larger \(\Delta\)NLL indicates a poorer fit at that biomass,
+and the dashed line marks \(\Delta\)NLL = 1.92. Open a region in the
 \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{interactive
-profile viewer} for release-group curves.}
+profile viewer} for fishery-level detail.}
 
 \end{figure}\DIFaddend %
 
@@ -5801,16 +5768,17 @@ profile viewer} for release-group curves.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/likelihood-profile-penalty-detail.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/likelihood-profile-tag-detail.png}
 
 }
 
-\caption{\label{fig-diag-profile-data-penalty}Penalty likelihood
-profile. The upper panel overlays the prominent penalty total with thin,
-translucent component curves; coloured row keys connect them to the
-heatmap while limiting visual clutter. Open the
+\caption{\label{fig-diag-profile-data-tag-prog}\label{fig-diag-profile-data-tag-prog-grps}Tag likelihood profile by
+tagging programme. The black line is the total tag contribution; the
+coloured lines and matching heatmap rows show RTTP, PTTP and JPTP.
+Larger \(\Delta\)NLL indicates a poorer fit at that biomass, and the
+dashed line marks \(\Delta\)NLL = 1.92. Open a programme in the
 \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{interactive
-profile viewer} to select a component.}
+profile viewer} for release-group detail.}
 
 \end{figure}\DIFaddend %
 
@@ -6052,10 +6020,9 @@ distribution by region and quarter.}
 }
 
 \caption{\label{fig-stock-rr}Fitted Beverton--Holt stock--recruitment
-relationship for the 2026 diagnostic model. Filled circles are annual
-recruitment and adult-biomass estimates used in the fit and are coloured
-by year; open circles denote years before 1968, which were not used to
-fit the relationship. Open the
+relationship for the 2026 diagnostic model. Points show annual
+recruitment and adult-biomass estimates and are coloured by year. Open
+the
 \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html\#fig-stock-recruitment}{diagnostic
 report}.}
 
@@ -7107,7 +7074,7 @@ consistency of the headline assessment quantities is reassuring.
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
 
-\phantomsection\label{refs}
+\protect\phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
 \bibitem[\citeproctext]{ref-aires-da-silva_improved_2015}
 Aires-da-Silva, A. M., Maunder, M. N., Schaefer, K. M., \& Fuller, D. W.
@@ -7127,7 +7094,7 @@ spatiotemporal random fields} {[}Preprint{]}. Ecology.
 Berger, A. M., McKechnie, S., Abascal, F., Kumasi, B., Usu, T., \&
 Nichol, S. J. (2014). \emph{Analysis of tagging data for the 2014
 tropical tuna assessments: Data quality rules, tagger effects, and
-reporting rates} ({WCPFC}-{SC}10-2014/{SA}-{IP}-06). WCPFC.
+reporting rates} (No. {WCPFC}-{SC}10-2014/{SA}-{IP}-06). WCPFC.
 
 \bibitem[\citeproctext]{ref-cadigan_local_2005}
 Cadigan, N. G., \& Farrell, P. J. (2005). Local influence diagnostics
@@ -7149,7 +7116,7 @@ Castillo Jordan, C., Teears, T., Hampton, J., Davies, N., Scutt
 Phillips, J., McKechnie, S., Peatman, T., Macdonald, J., Day, J.,
 Magnusson, A., Scott, R., Scott, F., Pilling, G., \& Hamer, P. (2022).
 \emph{Stock assessment of skipjack tuna in the western and central
-pacific ocean: 2022} ({WCPFC}-{SC}18-{SA}-{WP}-01). WCPFC.
+pacific ocean: 2022} (No. {WCPFC}-{SC}18-{SA}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-chow_genetic_2000}
 Chow, S., Okamoto, H., Miyabe, N., Hiramatsu, K., \& Barut, N. (2000).
@@ -7160,8 +7127,8 @@ Ecology}, \emph{9}(2), 221--227.
 
 \bibitem[\citeproctext]{ref-davies_developments_2026}
 Davies, N., Bouye, F., Kim, K., Magnusson, A., \& Hampton, J. (2026a).
-\emph{Developments in the {MULTIFAN}-{CL} software 2025-26}
-({WCPFC}-{SC}22-2026/{SA}-{IP}-02). WCPFC.
+\emph{Developments in the {MULTIFAN}-{CL} software 2025-26} (No.
+{WCPFC}-{SC}22-2026/{SA}-{IP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-davies_multifan-cl_2026}
 Davies, N., Fournier, D. A., Hampton, J., Kleiber, P., Bouye, F., Kim,
@@ -7170,20 +7137,21 @@ guide version 2.2.7.8}. WCPFC.
 
 \bibitem[\citeproctext]{ref-davies_developments_2019}
 Davies, N., Fournier, D., \& Hampton, J. (2019). \emph{Developments in
-the {MULTIFAN}-{CL} software 2018-2019}
-({WCPFC}-{SC}15-2019/{SA}-{IP}-02). WCPFC.
+the {MULTIFAN}-{CL} software 2018-2019} (No.
+{WCPFC}-{SC}15-2019/{SA}-{IP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-davies_stock_2011}
 Davies, N., Hoyle, S., Harley, S., Langley, A., Kleiber, P., \& Hampton,
 J. (2011). \emph{Stock assessment of bigeye tuna in the western and
-central pacific ocean} ({WCPFC}-{SC}7-2011/{SA}-{WP}-02). WCPFC.
+central pacific ocean} (No. {WCPFC}-{SC}7-2011/{SA}-{WP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-day_stock_2023}
 Day, J., Magnusson, A., Teears, T., Hampton, J., Davies, N., Castillo
 Jordán, C., Peatman, T., Scott, R., Scutt Phillips, J., McKechnie, S.,
 Scott, F., Yao, N., Natadra, R., Pilling, G., Williams, P., \& Hamer, P.
 (2023). \emph{Stock assessment of bigeye tuna in the western and central
-pacific ocean: 2023} ({WCPFC}-{SC}19-2023/{SA}-{WP}-05 (Rev. 2)). WCPFC.
+pacific ocean: 2023} (No. {WCPFC}-{SC}19-2023/{SA}-{WP}-05 (Rev. 2)).
+WCPFC.
 
 \DIFaddbegin \bibitem[\citeproctext]{ref-deroba_simulation_2015}
 \DIFadd{Deroba, J. J., Butterworth, D. S., Methot, R. D., De Oliveira, J. A. A.,
@@ -7199,20 +7167,20 @@ Journal of Marine Science}}\DIFadd{, }\emph{72}(1)\DIFadd{, 19--30.
 \DIFaddend \bibitem[\citeproctext]{ref-ducharme-barth_natural_2026}
 Ducharme-Barth, N., Peatman, T., Scutt Phillips, J., \& Minte-Vera, C.
 (2026). \emph{Natural mortality estimation for {WCPO} bigeye tuna: A
-joint cohort analysis of coral sea and region 4 tagging data}
-({WCPFC}-{SC}22-2026/{SA}-{IP}-14). WCPFC.
+joint cohort analysis of coral sea and region 4 tagging data} (No.
+{WCPFC}-{SC}22-2026/{SA}-{IP}-14). WCPFC.
 
 \bibitem[\citeproctext]{ref-ducharme-barth_stock_2020}
 Ducharme-Barth, N., Vincent, M., Hampton, J., Hamer, P., Williams, P.,
 \& Pilling, G. (2020a). \emph{Stock assessment of bigeye tuna in the
-western and central pacific ocean} ({WCPFC}-{SC}16-2020/{SA}-{WP}-03
+western and central pacific ocean} (No. {WCPFC}-{SC}16-2020/{SA}-{WP}-03
 {[}{REV}3{]}). WCPFC.
 
 \bibitem[\citeproctext]{ref-ducharme-barth_analysis_2020}
 Ducharme-Barth, N., Vincent, M., Vidal, T., \& Hamer, P. (2020b).
 \emph{Analysis of pacific-wide operational longline dataset for bigeye
-and yellowfin tuna catch-per-unit-effort ({CPUE})}
-({SC}16-{SA}-{IP}-07). WCPFC.
+and yellowfin tuna catch-per-unit-effort ({CPUE})} (No.
+{SC}16-{SA}-{IP}-07). WCPFC.
 
 \bibitem[\citeproctext]{ref-evans_behaviour_2008}
 Evans, K., Langley, A., Clear, N. P., Williams, P., Patterson, T.,
@@ -7224,20 +7192,20 @@ Journal of Fisheries and Aquatic Sciences}, \emph{65}, 2427--2443.
 \bibitem[\citeproctext]{ref-eveson_integrated_2020}
 Eveson, P., Vincent, M., Farley, J., Krusic-Golub, K., \& Hampton, J.
 (2020). \emph{Integrated growth models from otolith and tagging data for
-yellowfin and bigeye tuna in the western and central pacific ocean}
-({SC}16-{SA}-{IP}-03). WCPFC.
+yellowfin and bigeye tuna in the western and central pacific ocean} (No.
+{SC}16-{SA}-{IP}-03). WCPFC.
 
 \bibitem[\citeproctext]{ref-farley_age_2017}
 Farley, J., Eveson, P., Krusic-Golub, K., Sanchez, C., Rouspard, F.,
 McKechnie, S., Nichol, S., Leroy, B., Smith, N., \& Chang, S.-K. (2017).
-\emph{Age, growth and maturity of bigeye tuna in the pacific}
-({WCPFC}-{SC}13- 2017/{SA}-{WP}-01). WCPFC.
+\emph{Age, growth and maturity of bigeye tuna in the pacific} (No.
+{WCPFC}-{SC}13- 2017/{SA}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-farley_age_2020}
 Farley, J., Krusic-Golub, K., Eveson, P., Clear, N., Rouspard, F.,
 Sanchez, C., Nicol, S., \& Hampton, J. (2020). \emph{Age and growth of
 yellowfin and bigeye tuna in the western and central pacific ocean from
-otoliths} ({SC}16-{SA}-{WP}-02). WCPFC.
+otoliths} (No. {SC}16-{SA}-{WP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-fournier_multifan-cl_1998}
 Fournier, D. A., Hampton, J., \& Sibert, J. R. (1998). {MULTIFAN}-{CL}:
@@ -7288,40 +7256,42 @@ Grewe, P. M., Wudianto, C. H., Proctor, C. H., Adam, M. S., Jauhary, A.
 R., Schaefer, K., Itano, D. G., Evans, K., Killian, A., Foster, S. D.,
 Gosselin, T., Feutry, P., Aulich, J., Gunasekera, R. M., Lansdell, M.,
 \& Davies, C. R. (2019). \emph{Population structure and connectivity of
-tropical tuna species across the indo pacific ocean region}
-({WCPFC}-{SC}15-2019/{SA}-{IP}-15). WCPFC.
+tropical tuna species across the indo pacific ocean region} (No.
+{WCPFC}-{SC}15-2019/{SA}-{IP}-15). WCPFC.
 
-\DIFdelbegin \bibitem[\citeproctext]{ref-hamel_method_2015}
-\DIFdel{Hamel, O. S. (2015). A method for calculating a meta-analytical prior
+\bibitem[\citeproctext]{ref-hamel_method_2015}
+Hamel, O. S. (2015). A method for calculating a meta-analytical prior
 for the natural mortality rate using multiple life history correlates.
-}\emph{\DIFdel{Ices Journal of Marine Science}}%DIFAUXCMD
-\DIFdel{, }%DIFDELCMD < \emph{72}(1)%%%
-\DIFdel{, 62--69.
-}%DIFDELCMD < \url{https://doi.org/10.1093/icesjms/fsu131}
-%DIFDELCMD < 
+\emph{Ices Journal of Marine Science}, \emph{72}(1), 62--69.
+\url{https://doi.org/10.1093/icesjms/fsu131}
 
-%DIFDELCMD < %%%
-\DIFdelend \bibitem[\citeproctext]{ref-hamer_summary_2026}
+\DIFaddbegin \bibitem[\citeproctext]{ref-hamel_development_2022}
+\DIFadd{Hamel, O. S., \& Cope, J. M. (2022). Development and considerations for
+application of a longevity-based prior for the natural mortality rate.
+}\emph{\DIFadd{Fisheries Research}}\DIFadd{, }\emph{\DIFadd{256}}\DIFadd{, 106477.
+}\url{https://doi.org/10.1016/j.fishres.2022.106477}
+
+\DIFaddend \bibitem[\citeproctext]{ref-hamer_summary_2026}
 Hamer, P. (2026). \emph{Summary report from the {SPC} pre-assessment
-workshop - march 2026} ({WCPFC}-{SC}22-2026/{SA}-{IP}-01). WCPFC.
+workshop - march 2026} (No. {WCPFC}-{SC}22-2026/{SA}-{IP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-hamer_wcpfc_2026}
 Hamer, P., Castillo Jordán, C., Panizza, A., \& Peatman, T. (2026).
 \emph{{WCPFC} Project127/127a - review and reconciliation of size data
 collected in the {WCPFC}-{CA} for stock assessment purposes: Phase 2
-progress report} ({WCPFC}-{SC}22-2026/{ST}-{WP}-02). WCPFC.
+progress report} (No. {WCPFC}-{SC}22-2026/{ST}-{WP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-hamer_review_2023}
 Hamer, P., Potts, J., Macdonald, J., \& Senina, I. (2023). \emph{Review
 and analyses to inform conceptual models of population structure and
 spatial stratification of bigeye and yellowfin tuna assessments in the
-western and central pacific ocean} ({SC}19-{SA}-{WP}-02). WCPFC.
+western and central pacific ocean} (No. {SC}19-{SA}-{WP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-hamer_progress_2025}
 Hamer, P., Schneiter, E., Vidal, T., \& Williams, P. (2025).
 \emph{Progress report: Review and reconciliation of size data collected
 in the {WCPFC}-{CA} for stock assessment purposes ({WCPFC} project:
-127)} ({WCPFC}-{SC}21-{ST}-{WP}-02). WCPFC.
+127)} (No. {WCPFC}-{SC}21-{ST}-{WP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-hampton_natural_2000}
 Hampton, J. (2000). Natural mortality rates in tropical tunas: Size
@@ -7331,7 +7301,7 @@ Science}, \emph{57}, 1002--1010.
 \bibitem[\citeproctext]{ref-hampton_investigation_2026-1}
 Hampton, J., Davies, N., \& Hamer, P. (2026a). \emph{Investigation of
 the impacts of regional growth variation on the 2023 bigeye tuna stock
-assessment} ({WCPFC}-{SC}22-2026/{SA}-{IP}11). WCPFC.
+assessment} (No. {WCPFC}-{SC}22-2026/{SA}-{IP}11). WCPFC.
 
 \bibitem[\citeproctext]{ref-hampton_spatially-disaggregated_2001}
 Hampton, J., \& Fournier, D. A. (2001). A spatially-disaggregated,
@@ -7342,13 +7312,13 @@ Freshwater Research}, \emph{52}, 937--963.
 \bibitem[\citeproctext]{ref-hampton_investigation_2026}
 Hampton, J., Teears, T., Kim, K., Magnusson, A., Davies, N., \& Hamer,
 P. (2026b). \emph{Investigation of single region fleets as areas models
-for bigeye and yellowfin tuna in the {WCPO}}
-({WCPFC}-{SC}22-2026/{SA}-{IP}-09). WCPFC.
+for bigeye and yellowfin tuna in the {WCPO}} (No.
+{WCPFC}-{SC}22-2026/{SA}-{IP}-09). WCPFC.
 
 \bibitem[\citeproctext]{ref-hampton_annual_2016}
 Hampton, J., \& Williams, P. (2016). \emph{Annual estimates of purse
-seine catches by species based on alternative data sources}
-({WCPFC}-{SC}12-2016/{ST}-{IP}-03). WCPFC.
+seine catches by species based on alternative data sources} (No.
+{WCPFC}-{SC}12-2016/{ST}-{IP}-03). WCPFC.
 
 \bibitem[\citeproctext]{ref-hare_western_2025}
 Hare, S., Vidal, T., Castillo Jordán, C., Day, J., Hamer, P., Hill, N.,
@@ -7361,56 +7331,56 @@ overview and status of stocks} {[}Tuna Fisheries Assessment Report No.
 \bibitem[\citeproctext]{ref-hare_compendium_2026}
 Hare, S., Vidal, T., Scott, R., \& Pilling, G. (2026). \emph{A
 compendium of fisheries indicators for target tuna stocks in the {WCPFC}
-convention area} ({WCPFC}-{SC}22-2026/{SA}-{WP}-07). WCPFC.
+convention area} (No. {WCPFC}-{SC}22-2026/{SA}-{WP}-07). WCPFC.
 
 \bibitem[\citeproctext]{ref-harley_preliminary_2011}
 Harley, S. J. (2011). \emph{A preliminary investigation of steepness in
-tunas based on stock assessment results}
-({WCPFC}-{SC}7-2011/{SA}-{IP}-08). WCPFC.
+tunas based on stock assessment results} (No.
+{WCPFC}-{SC}7-2011/{SA}-{IP}-08). WCPFC.
 
 \bibitem[\citeproctext]{ref-harley_stock_2014}
 Harley, S. J., Davies, N., Hampton, J., \& McKechnie, S. (2014).
 \emph{Stock assessment of bigeye tuna in the western and central pacific
-ocean} ({WCPFC}-{SC}10-2014/{SA}-{WP}-01). WCPFC.
+ocean} (No. {WCPFC}-{SC}10-2014/{SA}-{WP}-01). WCPFC.
 \url{http://wcpfc.int/system/files/SC10-SA-WP-01\%20BET\%20Assessment.pdf}
 
 \bibitem[\citeproctext]{ref-harley_stock_2010}
 Harley, S. J., Hoyle, S., Hampton, J., \& Kleiber, P. (2010).
 \emph{Stock assessment of bigeye tuna in the western and central pacific
-ocean} ({WCPFC}-{SC}6-2010/{SA}-{WP}-01). WCPFC.
+ocean} (No. {WCPFC}-{SC}6-2010/{SA}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-harley_simple_2003}
 Harley, S. J., \& Maunder, M. N. (2003). \emph{A simple model for
-age-structured natural mortality based on changes in sex ratios}
-({SAR}-4-01). Inter-American Tropical Tuna Commission.
+age-structured natural mortality based on changes in sex ratios} (No.
+{SAR}-4-01). Inter-American Tropical Tuna Commission.
 
 \bibitem[\citeproctext]{ref-harley_stock_2009}
 Harley, S., Hoyle, S., \& Langley, A. (2009). \emph{Stock assessment of
-bigeye tuna in the western and central pacific ocean.}
-({WCPFC}-{SC}5-2009/{SA}-{WP}-04). WCPFC.
+bigeye tuna in the western and central pacific ocean.} (No.
+{WCPFC}-{SC}5-2009/{SA}-{WP}-04). WCPFC.
 
 \bibitem[\citeproctext]{ref-hasegawa_new_2026}
 Hasegawa, T., Okamoto, K., Ijima, H., Kim, K., Hamer, P., Wakefield, C.,
 Pons, A., Widdrington, J., \& Davies, N. (2026). \emph{New age-at-length
 data for {WCPO} bigeye and yellowfin tuna from the temperate north
 pacific and approaches to address spatial sampling bias in growth
-estimation within {MFCL}} ({WCPFC}-{SC}22-2026/{IP}-08). WCPFC.
+estimation within {MFCL}} (No. {WCPFC}-{SC}22-2026/{IP}-08). WCPFC.
 
 \bibitem[\citeproctext]{ref-hoyle_effort_2024}
 Hoyle, S. (2024). \emph{Effort creep in longline and purse seine {CPUE}
-and its application in tropical tuna assessments}
-({WCPFC}-{SC}20-2024/{SA}-{IP}-09). WCPFC.
+and its application in tropical tuna assessments} (No.
+{WCPFC}-{SC}20-2024/{SA}-{IP}-09). WCPFC.
 
 \bibitem[\citeproctext]{ref-hoyle_adjusted_2008}
 Hoyle, S. D. (2008). \emph{Adjusted biological parameters and spawning
 biomass calculations for south pacific albacore tuna, and their
-implications for stock assessments} ({WCPFC}-{SC}4-2008/{ME}-{WP}-02).
-WCPFC.
+implications for stock assessments} (No.
+{WCPFC}-{SC}4-2008/{ME}-{WP}-02). WCPFC.
 
 \bibitem[\citeproctext]{ref-hoyle_sensitivity_2008}
 Hoyle, S., \& Nicol, S. (2008). \emph{Sensitivity of bigeye stock
-assessment to alternative biological and reproductive assumptions}
-({WCPFC}-{SC}4-2008/{ME}-{WP}-01). WCPFC.
+assessment to alternative biological and reproductive assumptions} (No.
+{WCPFC}-{SC}4-2008/{ME}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-hurtado-ferro_looking_2015}
 Hurtado-Ferro, F., Szuwalski, C. S., Valero, J. L., Anderson, S. C.,
@@ -7423,8 +7393,8 @@ models. \emph{Ices Journal of Marine Science}, \emph{72}(1), 99--110.
 
 \bibitem[\citeproctext]{ref-ianelli_independent_2012}
 Ianelli, J., Maunder, M. N., \& Punt, Andre. E. (2012).
-\emph{Independent review of the 2011 {WCPO} bigeye tuna assessment}
-({WCPFC}-{SC}8-2012/{SA}-{WP}-01). WCPFC.
+\emph{Independent review of the 2011 {WCPO} bigeye tuna assessment} (No.
+{WCPFC}-{SC}8-2012/{SA}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-ijima_tuna_2023}
 Ijima, H., \& Jusup, M. (2023). \emph{Tuna and billfish larval
@@ -7433,12 +7403,12 @@ distributions in a warming ocean}. {arXiv}.
 
 \bibitem[\citeproctext]{ref-issf_report_2011}
 ISSF. (2011). \emph{Report of the 2011 {ISSF} stock assessment workshop}
-({ISSF} Technical Report 2011-02). ISSF.
+(No. {ISSF} Technical Report 2011-02). ISSF.
 
 \bibitem[\citeproctext]{ref-itano_reproductive_2000}
 Itano, D. (2000). \emph{The reproductive biology of yellowfin tuna
 ({\emph{Thunnus albacares}}) in hawaiian waters and the western tropical
-pacific ocean: Project summary} (JIMAR Contribution 00-328 {SOEST}
+pacific ocean: Project summary} (JIMAR Contribution 00-328 No. {SOEST}
 00-01). University of Hawai'i.
 
 \DIFaddbegin \bibitem[\citeproctext]{ref-kim_quantitative_2025}
@@ -7463,41 +7433,41 @@ western pacific ocean skipjack tuna stock assessment models.
 \bibitem[\citeproctext]{ref-langley_stock_2008}
 Langley, A., Hampton, J., Kleiber, P., \& Hoyle, S. (2008). \emph{Stock
 assessment of bigeye tuna in the western and central pacific ocean,
-including an analysis of management options}
-({WCPFC}-{SC}4/{SA}-{WP}-1). WCPFC.
+including an analysis of management options} (No.
+{WCPFC}-{SC}4/{SA}-{WP}-1). WCPFC.
 
 \bibitem[\citeproctext]{ref-mckechnie_sensitivity_2015}
 McKechnie, S., Hampton, J., Abascal, F., Davies, N., \& Harley, S. J.
 (2015a). \emph{Sensitivity of {WCPO} stock assessment results to the
-inclusion of {EPO} dynamics within a pacific-wide analysis}
-({WCPFC}-{SC}11-2015/{SA}-{WP}-04). WCPFC.
+inclusion of {EPO} dynamics within a pacific-wide analysis} (No.
+{WCPFC}-{SC}11-2015/{SA}-{WP}-04). WCPFC.
 
 \bibitem[\citeproctext]{ref-mckechnie_construction_2016}
 McKechnie, S., Ochi, D., Kiyofuji, H., Peatman, T., \& Caillot, S.
 (2016). \emph{Construction of tagging data input files for the 2016
 skipjack tuna stock assessment in the western and central pacific ocean}
-({WCPFC}-{SC}12-2016/{SA}-{IP}-05). WCPFC.
+(No. {WCPFC}-{SC}12-2016/{SA}-{IP}-05). WCPFC.
 
 \bibitem[\citeproctext]{ref-mckechnie_stock_2017}
 McKechnie, S., Pilling, G., \& Hampton, J. (2017a). \emph{Stock
-assessment of bigeye tuna in the western and central pacific ocean}
-({WCPFC}-{SC}13-2017/{SA}-{WP}-05). WCPFC.
+assessment of bigeye tuna in the western and central pacific ocean} (No.
+{WCPFC}-{SC}13-2017/{SA}-{WP}-05). WCPFC.
 
 \bibitem[\citeproctext]{ref-mckechnie_summaries_2026}
 McKechnie, S., Pilling, G., \& Vidal, T. (2026). \emph{Summaries of
 bigeye tuna catch and effort to support management procedure
-discussions} ({WCPFC}-{SC}22-2026/{SA}-{IP}-12). WCPFC.
+discussions} (No. {WCPFC}-{SC}22-2026/{SA}-{IP}-12). WCPFC.
 
 \bibitem[\citeproctext]{ref-mckechnie_analysis_2015}
 McKechnie, S., Tremblay-Boyer, L., \& Harley, S. J. (2015b).
 \emph{Analysis of pacific-wide operational longline {CPUE} data for
-bigeye tuna} ({WCPFC}-{SC}11-2015/{SA}-{WP}-03). WCPFC.
+bigeye tuna} (No. {WCPFC}-{SC}11-2015/{SA}-{WP}-03). WCPFC.
 
 \bibitem[\citeproctext]{ref-mckechnie_background_2017}
 McKechnie, S., Tremblay-Boyer, L., \& Pilling, G. (2017b).
 \emph{Background analyses for the 2017 stock assessments of bigeye and
-yellowfin tuna in the western and central pacific ocean}
-({WCPFC}-{SC}13-2017/{SA}-{IP}-06). WCPFC.
+yellowfin tuna in the western and central pacific ocean} (No.
+{WCPFC}-{SC}13-2017/{SA}-{IP}-06). WCPFC.
 
 \bibitem[\citeproctext]{ref-mohn_retrospective_1999}
 Mohn, R. (1999). The retrospective problem in sequential population
@@ -7530,7 +7500,7 @@ single nucleotide polymorphisms. \emph{Front. Mar. Sci.}, \emph{9},
 \bibitem[\citeproctext]{ref-nicol_bigeye_2011}
 Nicol, S., Hoyle, S., Farley, J., Muller, B., Retalmai, S., Sisior, K.,
 \& Williams, A. (2011). \emph{Bigeye tuna age, growth, and reproductive
-biology (project 35)} ({WCPFC}-{SC}7-2011/{SA}-{WP}-01). WCPFC.
+biology (project 35)} (No. {WCPFC}-{SC}7-2011/{SA}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-nishikawa_average_1985}
 Nishikawa, Y., Honma, M., Ueyanagi, S., \& Kikawa, S. (1985). Average
@@ -7545,39 +7515,39 @@ Progress on the project 60 work plan.} {[}Technical Report{]}. SPC.
 \bibitem[\citeproctext]{ref-peatman_analysis_2026-2}
 Peatman, T., Gislard, S., Scutt Phillips, J., Potts, J., \& Nicol, S.
 (2026a). \emph{Analysis of tag seeding data for the 2026 yellowfin \&
-bigeye assessments: Reporting rates for purse seine fleets}
-({WCPFC}-{SC}22-2026/{SA}-{IP}-05). WCPFC.
+bigeye assessments: Reporting rates for purse seine fleets} (No.
+{WCPFC}-{SC}22-2026/{SA}-{IP}-05). WCPFC.
 
 \bibitem[\citeproctext]{ref-peatman_analysis_2026}
 Peatman, T., Kim, K., Magnusson, A., Castillo Jordan, C., \& Hamer, P.
 (2026b). \emph{Analysis of size frequency data for the 2026 bigeye and
-yellowfin assessments} ({WCPFC}-{SC}22-{SA}-{IP}06). WCPFC.
+yellowfin assessments} (No. {WCPFC}-{SC}22-{SA}-{IP}06). WCPFC.
 
 \bibitem[\citeproctext]{ref-peatman_analysis_2026-1}
 Peatman, T., Scutt Phillips, J., Potts, J., \& Nicol, S. (2026c).
 \emph{Analysis of tagging data for the 2026 yellowfin \& bigeye
-assessments: Corrections to tag releases for tagging conditions}
-({WCPFC}-{SC}22-2026/{SA}-{IP}-04). WCPFC.
+assessments: Corrections to tag releases for tagging conditions} (No.
+{WCPFC}-{SC}22-2026/{SA}-{IP}-04). WCPFC.
 
 \bibitem[\citeproctext]{ref-peatman_project_2021}
 Peatman, T., Williams, P., \& Nicol, S. (2021). \emph{Project 60:
-Progress towards achieving {SC}16 recommendations}
-({WCPFC}-{SC}17-2021/{ST}-{IP}-04). WCPFC.
+Progress towards achieving {SC}16 recommendations} (No.
+{WCPFC}-{SC}17-2021/{ST}-{IP}-04). WCPFC.
 
 \bibitem[\citeproctext]{ref-peatman_project_2023}
 Peatman, T., Williams, P., \& Nicol, S. (2023). \emph{Project 60:
 {Progress} report - improving purse seine species composition} (WCPFC
-Scientific Committee Paper SC19-ST-IP-03).
+Scientific Committee Paper No. SC19-ST-IP-03).
 
 \bibitem[\citeproctext]{ref-pilling_approaches_2016}
 Pilling, G., Scott, R., Davies, N., \& Hampton, J. (2016).
 \emph{Approaches used to undertake management projections of {WCPO} tuna
-stocks based upon {MULTIFAN}-{CL} stock assessments}
-({WCPFC}-{SC}12-2016/{MI}-{IP}-04). Bali, Indonesia, 3-11 August 2016.
+stocks based upon {MULTIFAN}-{CL} stock assessments} (No.
+{WCPFC}-{SC}12-2016/{MI}-{IP}-04). Bali, Indonesia, 3-11 August 2016.
 
 \bibitem[\citeproctext]{ref-piner_meta-analysis_2011}
 Piner, K., \& Lee, H. (2011). \emph{Meta-analysis of striped marlin
-natural mortality} ({ISC}/11/{BILLWG}‐1/10). ISC.
+natural mortality} (No. {ISC}/11/{BILLWG}‐1/10). ISC.
 
 \bibitem[\citeproctext]{ref-proctor_population_2019}
 Proctor, C. H., Lester, R. G. J., Clear, N. P., Grewe, P. M., Moore, B.
@@ -7586,8 +7556,8 @@ Lansdell, M. J., Hill, P. L., Dietz, C., Thompson, J. M., Cutmore, S.
 C., Foster, S. D., Gosselin, T., \& Davies, C. R. (2019).
 \emph{Population structure of yellowfin tuna ({\emph{Thunnus
 albacares}}) and bigeye tuna ({\emph{T. obesus}}) in the indonesian
-region.} (Final Report as output of {ACIAR} Project {FIS}/2009/059; pp.
-139 pp.). ACIAR.
+region.} (No. Final Report as output of {ACIAR} Project {FIS}/2009/059;
+pp. 139 pp.). ACIAR.
 
 \DIFdelbegin \bibitem[\citeproctext]{ref-punt_consequences_2021}
 \DIFdel{Punt, A. E., Castillo-Jordán, C., Hamel, O. S., Cope, J. M., Maunder, M.
@@ -7602,8 +7572,8 @@ Research}}%DIFAUXCMD
 %DIFDELCMD < %%%
 \DIFdelend \bibitem[\citeproctext]{ref-punt_independent_2023}
 Punt, A. E., Maunder, M. N., \& Ianelli, J. (2023). \emph{Independent
-review of recent {WCPO} yellowfin tuna assessment}
-({SC}19-{SA}-{WP}-01). WCPFC.
+review of recent {WCPO} yellowfin tuna assessment} (No.
+{SC}19-{SA}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-rooker_natal_2016}
 Rooker, J. R., David Wells, R. J., Itano, D. G., Thorrold, S. R., \&
@@ -7614,7 +7584,7 @@ and yellowfin tuna in the pacific ocean. \emph{Fish. Oceanogr.},
 \bibitem[\citeproctext]{ref-schaefer_reproductive_2005}
 Schaefer, K. M., Fuller, D. W., \& Miyabe, N. (2005). \emph{Reproductive
 biology of bigeye tuna ({\emph{Thunnus obesus}}) in the eastern and
-central pacific ocean} (23(1). 35p.). {IATTC} Bulletin.
+central pacific ocean} (No. 23(1). 35p.). {IATTC} Bulletin.
 
 \bibitem[\citeproctext]{ref-schaefer_movements_2015}
 Schaefer, K., Fuller, D., Hampton, J., Caillot, S., Leroy, B., \& Itano,
@@ -7626,7 +7596,7 @@ Research}, \emph{161}, 336--355.
 \bibitem[\citeproctext]{ref-scutt_phillips_quantifying_2022}
 Scutt Phillips, J., Lehodey, J., Hampton, J., Senina, I., \& Nicol, S.
 (2022). \emph{Quantifying rates of mixing in tagged, {WCPO} skipjack
-tuna} ({WCPFC}-{SC}18-2022/{SA}-{WP}-04). WCPFC.
+tuna} (No. {WCPFC}-{SC}18-2022/{SA}-{WP}-04). WCPFC.
 
 \bibitem[\citeproctext]{ref-scutt_phillips_individual-based_2018}
 Scutt Phillips, J., Sen Gupta, A., Senina, I., Sebille, E., Lange, M.,
@@ -7636,20 +7606,21 @@ skipjack tuna katsuwonus pelamis movement in the tropical pacific ocean.
 
 \bibitem[\citeproctext]{ref-scutt_phillips_estimation_2026}
 Scutt Phillips, J., Senina, I., \& Bonin, L. (2026). \emph{Estimation of
-tag mixing periods for the 2026 {WCPO} tuna stock assessments}
-({WCPFC}-{SC}22-2026-{SA}-{IP}-10). WCPFC.
+tag mixing periods for the 2026 {WCPO} tuna stock assessments} (No.
+{WCPFC}-{SC}22-2026-{SA}-{IP}-10). WCPFC.
 
 \DIFaddbegin \bibitem[\citeproctext]{ref-senina_updated_2026}
 \DIFadd{Senina, I., Bonnin, L., Forestier, R., Lengaigne, M., Guihou, K.,
 Temple-Boyer, J., \& Nicol, S. (2026). }\emph{\DIFadd{Updated }{\DIFadd{SEAPODYM}}
-\DIFadd{reference models for four pacific tuna species}}
-\DIFadd{(}{\DIFadd{WCPFC}}\DIFadd{-}{\DIFadd{SC}}\DIFadd{22-2026/}{\DIFadd{EB}}\DIFadd{-}{\DIFadd{IP}}\DIFadd{-04). WCPFC.
+\DIFadd{reference models for four pacific tuna species}} \DIFadd{(No.
+}{\DIFadd{WCPFC}}\DIFadd{-}{\DIFadd{SC}}\DIFadd{22-2026/}{\DIFadd{EB}}\DIFadd{-}{\DIFadd{IP}}\DIFadd{-04). WCPFC.
 }\url{https://meetings.wcpfc.int/node/32435}
 
 \DIFaddend \bibitem[\citeproctext]{ref-senina_seapodym_2020}
 Senina, I., Lehodey, P., Nicol, S., Scutt Phillips, J., \& Hampton, J.
 (2020). \emph{{SEAPODYM}: Revisiting bigeye reference model with
-conventional tagging data} ({WCPFC}-{SC}16-2020/{EB}-{IP}-05). WCPFC.
+conventional tagging data} (No. {WCPFC}-{SC}16-2020/{EB}-{IP}-05).
+WCPFC.
 \DIFaddbegin 
 
 \bibitem[\citeproctext]{ref-subbey_parameter_2018}
@@ -7661,32 +7632,33 @@ Science}}\DIFadd{, }\emph{75}(5)\DIFadd{, 1553--1559.
 
 \bibitem[\citeproctext]{ref-sun_reproductive_2006}
 Sun, C.-L., Chu, S.-L., \& Yeh, S.-Z. (2006). \emph{Reproductive biology
-of bigeye tuna in the western and central pacific ocean}
-({WCPFC}-{SC}2-2006/{BI}-{WP}-01). WCPFC.
+of bigeye tuna in the western and central pacific ocean} (No.
+{WCPFC}-{SC}2-2006/{BI}-{WP}-01). WCPFC.
 
 \bibitem[\citeproctext]{ref-teears_background_2026}
 Teears, T. (2026). \emph{Background analyses and data inputs for the
-2026 {WCPO} yellowfin and bigeye tuna stock assessment}
-({WCPFC}-{SC}22-2026-{SA}-{IP}03). WCPFC.
+2026 {WCPO} yellowfin and bigeye tuna stock assessment} (No.
+{WCPFC}-{SC}22-2026-{SA}-{IP}03). WCPFC.
 
 \bibitem[\citeproctext]{ref-teears_stock_2024}
 Teears, T., Castillo Jordán, C., Davies, N., Day, J., Hampton, J.,
 Magnusson, A., Peatman, T., Pilling, G., Xu, H., Vidal, T., Williams,
 P., \& Hamer, P. (2024). \emph{Stock assessment of south pacific
-albacore: 2024} ({WCPFC}-{SC}20-2024/{SA}-{WP}-02-Rev 2). WCPFC.
+albacore: 2024} (No. {WCPFC}-{SC}20-2024/{SA}-{WP}-02-Rev 2). WCPFC.
 
 \bibitem[\citeproctext]{ref-teears_stock_2025}
 Teears, T., Davies, N., Hamer, P., Magnusson, A., Peatman, T., Scutt
 Phillips, J., Vidal, T., \& Hampton, J. (2025). \emph{Stock assessment
 of skipjack tuna in the western and central pacific ocean: 2025 (rev 3)}
-({WCPFC}-{SC}21-2025/{SA}-{WP}-02\_rev\_3). WCPFC.
+(No. {WCPFC}-{SC}21-2025/{SA}-{WP}-02\_rev\_3). WCPFC.
 \url{https://meetings.wcpfc.int/node/26679}
 
 \bibitem[\citeproctext]{ref-teears_cpue_2023}
 Teears, T., Day, J., Hampton, J., Magnusson, A., McKechnie, S., Peatman,
 T., Scutt Phillips, J., Williams, P., \& Hamer, P. (2023). \emph{{CPUE}
 analysis and data inputs for the 2023 bigeye and yellowfin tuna
-assessments in the {WCPO}} ({WCPFC}-{SC}19-2023/{SA}-{WP}-03). WCPFC.
+assessments in the {WCPO}} (No. {WCPFC}-{SC}19-2023/{SA}-{WP}-03).
+WCPFC.
 
 \bibitem[\citeproctext]{ref-thorson_model-based_2017}
 Thorson, J. T., Johnson, K. F., Methot, R. D., \& Taylor, I. G. (2017).
@@ -7704,13 +7676,13 @@ Journal of Marine Science}, \emph{72}(5), 1297--1310.
 \bibitem[\citeproctext]{ref-tremblay-boyer_stock_2017}
 Tremblay-Boyer, L., McKechnie, S., Pilling, G., \& Hampton, J. (2017).
 \emph{Stock assessment of yellowfin tuna in the western and central
-pacific ocean.} ({WCPFC}-{SC}13-2017/{SA}-{WP}-06). WCPFC.
+pacific ocean.} (No. {WCPFC}-{SC}13-2017/{SA}-{WP}-06). WCPFC.
 
 \bibitem[\citeproctext]{ref-vidal_data_2026}
 Vidal, T., Heather, F., Satria, F., Hai, V., Barcoma, S., Duong, N.,
 Sadiyah, L., Anas, M., Januar, A., Rachmadi, D., \& Suadela, P. (2026).
 \emph{Data improvements in the west pacific east asia ({WPEA}) region of
-{WCPFC}} ({WCPFC}-{SC}22-2026/{ST}-{IP}-05). WCPFC.
+{WCPFC}} (No. {WCPFC}-{SC}22-2026/{ST}-{IP}-05). WCPFC.
 
 \bibitem[\citeproctext]{ref-vincent_stock_2020}
 Vincent, M., Ducharme-Barth, N., Hamer, P., Hampton, J., Williams, P.,
@@ -7722,14 +7694,14 @@ WCPFC.
 Vincent, M., Pilling, G., \& Hampton, J. (2018). \emph{Incorporation of
 updated growth information within the 2017 {WCPO} bigeye stock
 assessment grid, and examination of the sensitivity of estimates to
-alternative model spatial structures} ({WCPFC}-{SC}14-2018/
+alternative model spatial structures} (No. {WCPFC}-{SC}14-2018/
 {SA}-{WP}-03). Oceanic Fisheries Programme, The Pacific Community.
 
 \bibitem[\citeproctext]{ref-wakefield_project_2026}
 Wakefield, C., Widdrington, J., Krusic-Golub, K., Pons, A., Reis-Santos,
 P., Gillanders, B., Farley, J., Nicol, S., \& Hamer, P. (2026).
 \emph{Project 129 update: Building an age-length data stream for tuna
-assessments} ({WCPFC}-{SC}22-2026/{SA}-{WP}-12). WCPFC.
+assessments} (No. {WCPFC}-{SC}22-2026/{SA}-{WP}-12). WCPFC.
 
 \bibitem[\citeproctext]{ref-williams_overview_2023}
 Williams, P., \& Ruaia, T. (2023). \emph{Overview of tuna fisheries in
