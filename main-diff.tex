@@ -1,7 +1,7 @@
 % Options for packages loaded elsewhere
 %DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL /tmp/tmp.RErs28kaEI/draft/main.tex                              Sun Aug  9 01:33:05 2026
-%DIF ADD /__w/ofp-sam-bet-2026-report/ofp-sam-bet-2026-report/main.tex   Sun Aug  9 01:30:28 2026
+%DIF DEL /tmp/tmp.8CdK8It9Zo/draft/main.tex                              Sun Aug  9 01:49:45 2026
+%DIF ADD /__w/ofp-sam-bet-2026-report/ofp-sam-bet-2026-report/main.tex   Sun Aug  9 01:47:07 2026
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
@@ -160,6 +160,9 @@
 \usepackage{placeins}
 \usepackage{pdflscape}
 \usepackage{array}
+%DIF 160a160
+\usepackage{needspace} %DIF > 
+%DIF -------
 
 % The source title uses a figure environment for the WCPFC logo. Enable page
 % isolation only after that title has rendered, then keep each report figure on
@@ -180,7 +183,7 @@
 \AfterEndEnvironment{figure}{\ifisolatefigures\clearpage\fi}
 
 \reportauthor{K. Kim\footnote{\spc}, T.~Teears $^1$, J.~Hampton\footnote{Thunnidae Consulting}, N.~Davies\footnote{TeTakina Ltd}, A.~Magnusson$^1$, C.~Castillo Jordán$^1$, T.~Peatman\footnote{Shearwater Analytics}, J.~Scutt Phillips$^1$, P.~Hamer$^1$}
-%DIF 180-181c180-181
+%DIF 180-181c181-182
 %DIF < \reporttitle{Stock assessment of bigeye tuna in the western and central Pacific Ocean: 2026: \textbf{DRAFT version}}
 %DIF < \reportnumber{WCPFC-SC22-2026/SA-WP-06}
 %DIF -------
@@ -236,7 +239,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-%DIF 231c231
+%DIF 231c232
 %DIF <   pdftitle={Stock assessment of bigeye tuna in the western and central Pacific Ocean: 2026: DRAFT version},
 %DIF -------
   pdftitle={Stock assessment of bigeye tuna in the western and central Pacific Ocean: 2026}, %DIF > 
@@ -337,8 +340,8 @@ Phillips \and P. Hamer}
 %DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}\begin{verbatim}LATEXDIFF comparison
-Old: /tmp/tmp.RErs28kaEI/draft/main.tex                              Sun Aug  9 01:33:05 2026
-New: /__w/ofp-sam-bet-2026-report/ofp-sam-bet-2026-report/main.tex   Sun Aug  9 01:30:28 2026\end{verbatim}
+Old: /tmp/tmp.8CdK8It9Zo/draft/main.tex                              Sun Aug  9 01:49:45 2026
+New: /__w/ofp-sam-bet-2026-report/ofp-sam-bet-2026-report/main.tex   Sun Aug  9 01:47:07 2026\end{verbatim}
 
 \maketitle
 
@@ -499,7 +502,9 @@ The general conclusions of this assessment are as follows:
   advice.
 \end{itemize}
 
-\textbf{Stock status management quantities}
+\DIFaddbegin \Needspace{6\baselineskip}
+
+\DIFaddend \textbf{Stock status management quantities}
 
 \begin{itemize}
 \item
@@ -1661,7 +1666,8 @@ EPO (Harley \& Maunder, 2003; S. D. Hoyle, 2008; Hoyle \& Nicol, 2008).
 peer review had some difficulty with tracing the sources of data for
 some of the inputs to the external \(M\)-at-age function applied in 2020
 that requires fitting a model that }\DIFdelend \DIFaddbegin \DIFadd{That external function }\DIFaddend depends on empirical \DIFdelbegin \DIFdel{data on the
-sex-ratio at length, a growthcurve, a base \(M\) assumption for males, assumptions on critical lengthsfor inflections and a multiplier that
+sex-ratio at length, a growthcurve, a base \(M\) assumption for males,
+assumptions on critical lengthsfor inflections and a multiplier that
 determines the linear decline in \(M\) for young ages to the base \(M\), plus a length at which female mortality is assumed to begin to increase.
 There are uncertainties in all these empirical data and assumptions, and
 the data for sex ratio is limited especially for larger and older fish. While the peer review generally supported the method, the construction
@@ -1886,7 +1892,7 @@ A key aspect of fitting to tag-recapture data is the assumptions on
 mixing periods. The allocation of appropriate ``mixing periods'' in
 stock assessments that use tag-recapture data is problematic as model
 estimations are sensitive to this assumption and misspecification can
-bias estimation of management quantities (Kolody \& Hoyle, 2014). Mixing
+bias estimation of management quantities (Kolody \& Hoyle, \DIFdelbegin \DIFdel{2014}\DIFdelend \DIFaddbegin \DIFadd{2015}\DIFaddend ). Mixing
 rates may vary depending on release locations and times depending on
 various factors, including; oceanographic dynamics, contexts of releases
 (e.g., FADs versus free schools, archipelagic waters versus oceanic),
@@ -3073,7 +3079,7 @@ PTTP \DIFdelbegin \DIFdel{the reporting rate estimates for
 those groupings that received higher penalties (based on external
 estimated reporting rates from tag seeding i.e.~10, }\DIFdelend \DIFaddbegin \DIFadd{penalties based on tag-seeding data constrained groups }\DIFaddend 7, \DIFaddbegin \DIFadd{10, }\DIFaddend 14,
 17 and 18\DIFdelbegin \DIFdel{)
-were closer to the prior mean, for example groups 10, 7}\DIFdelend , \DIFdelbegin \DIFdel{14 but }\DIFdelend \DIFaddbegin \DIFadd{although }\DIFaddend groups 17 and 18 \DIFdelbegin \DIFdel{wanted }\DIFdelend \DIFaddbegin \DIFadd{favoured }\DIFaddend higher reporting rates.
+were closer to the prior mean, for example groups 10}\DIFdelend , \DIFdelbegin \DIFdel{7, 14 but }\DIFdelend \DIFaddbegin \DIFadd{although }\DIFaddend groups 17 and 18 \DIFdelbegin \DIFdel{wanted }\DIFdelend \DIFaddbegin \DIFadd{favoured }\DIFaddend higher reporting rates.
 \DIFdelbegin \DIFdel{One reporting rate group was
 stuck on the upper bound of 0.99. For the JPTP, where there are no informed reporting rate penalties, one group preferred higher reporting
 rates (group 19), two preferred lower (group 20 and 29) and one was on
@@ -4047,7 +4053,7 @@ Resource & Browser output & Source repository \\
 \endlastfoot
 Assessment report & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-report/}{Clean PDF} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-report}{ofp-sam-bet-2026-report} \\
 Stepwise development & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html}{Interactive model viewer} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise}{ofp-sam-bet-2026-stepwise} \\
-Diagnostic fit and profiles & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html}{Diagnostic report}; \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{profile viewer} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic}{ofp-sam-bet-2026-diagnostic} \\
+Diagnostic fit and profiles & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html}{Diagnostic report}; \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{Likelihood-profile viewer} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic}{ofp-sam-bet-2026-diagnostic} \\
 Jitter & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html}{Jitter report} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-jitter}{ofp-sam-bet-2026-jitter} \\
 Self-test & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{Self-test report} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-selftest}{ofp-sam-bet-2026-selftest} \\
 Retrospective analysis & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html}{Retrospective report} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-retrospective}{ofp-sam-bet-2026-retrospective} \\
@@ -4315,9 +4321,9 @@ G8 & F29--F33 & Index R1; Index R2; Index R3; Index R4; Index R5 & Regional indi
 
 \begin{landscape}
 \begingroup
-\fontsize{6.5}{6.8}\selectfont
-\setlength{\tabcolsep}{3.2pt}
-\renewcommand{\arraystretch}{0.94}
+\fontsize{6.2}{6.35}\selectfont
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.90}
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.045\linewidth}>{\raggedright\arraybackslash}p{0.105\linewidth}>{\raggedright\arraybackslash}p{0.075\linewidth}>{\raggedright\arraybackslash}p{0.125\linewidth}>{\raggedright\arraybackslash}p{0.09\linewidth}>{\raggedright\arraybackslash}p{0.215\linewidth}>{\raggedright\arraybackslash}p{0.065\linewidth}>{\raggedleft\arraybackslash}p{0.065\linewidth}@{}}
 
@@ -4379,7 +4385,7 @@ Group & Tag programmes & Pooled matrix row & Fisheries & Release groups & Releas
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.03}
 
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.29\linewidth}>{\raggedright\arraybackslash}p{0.61\linewidth}>{\raggedleft\arraybackslash}p{0.05\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.29\linewidth}>{\raggedright\arraybackslash}p{0.61\linewidth}>{\raggedleft\arraybackslash}p{0.07\linewidth}@{}}
 
 \caption{\label{tbl-parameter-bounds}Estimated parameters that MFCL flagged as on or close to a bound in the diagnostic model. Parameter names are descriptive rather than MFCL internal variable names.}
 
@@ -4405,7 +4411,7 @@ Tag reporting rate & Upper bound (0.99); reporting-rate group 23 (JPTP, fisherie
 
 \vspace{0.7em}
 
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedleft\arraybackslash}p{0.08\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedleft\arraybackslash}p{0.10\linewidth}@{}}
 
 \caption{\label{tbl-parameter-correlations}Strongest estimated-parameter correlations in the diagnostic model ($|r| > 0.95$), calculated from the inverse Hessian.}
 
@@ -7425,10 +7431,13 @@ Aquatic Sciences}}\DIFadd{, }\emph{81}(10)\DIFadd{, 1433--1455.
 }\url{https://doi.org/10.1139/cjfas-2023-0358}
 
 \DIFaddend \bibitem[\citeproctext]{ref-kolody_evaluation_2014}
-Kolody, D., \& Hoyle, S. (2014). Evaluation of tag mixing assumptions in
+Kolody, D., \& Hoyle, S. (\DIFdelbegin \DIFdel{2014}\DIFdelend \DIFaddbegin \DIFadd{2015}\DIFaddend ). Evaluation of tag mixing assumptions in
 western pacific ocean skipjack tuna stock assessment models.
-\emph{Fisheries Research},
-\emph{http://dx.doi.org/101016/j.fishres.2014.05.008}.
+\emph{Fisheries Research}, \emph{\DIFdelbegin \DIFdel{http://dx.doi.org/101016/j.fishres.2014.05.008}%DIFDELCMD < \MBLOCKRIGHTBRACE%%%
+\DIFdel{.
+}\DIFdelend \DIFaddbegin \DIFadd{163}}\DIFadd{, 127--140.
+}\url{https://doi.org/10.1016/j.fishres.2014.05.008}
+\DIFaddend 
 
 \bibitem[\citeproctext]{ref-langley_stock_2008}
 Langley, A., Hampton, J., Kleiber, P., \& Hoyle, S. (2008). \emph{Stock

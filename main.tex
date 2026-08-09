@@ -157,6 +157,7 @@
 \usepackage{placeins}
 \usepackage{pdflscape}
 \usepackage{array}
+\usepackage{needspace}
 
 % The source title uses a figure environment for the WCPFC logo. Enable page
 % isolation only after that title has rendered, then keep each report figure on
@@ -391,6 +392,8 @@ The general conclusions of this assessment are as follows:
   pessimistic models of the uncertainty ensemble used for management
   advice.
 \end{itemize}
+
+\Needspace{6\baselineskip}
 
 \textbf{Stock status management quantities}
 
@@ -1667,7 +1670,7 @@ A key aspect of fitting to tag-recapture data is the assumptions on
 mixing periods. The allocation of appropriate ``mixing periods'' in
 stock assessments that use tag-recapture data is problematic as model
 estimations are sensitive to this assumption and misspecification can
-bias estimation of management quantities (Kolody \& Hoyle, 2014). Mixing
+bias estimation of management quantities (Kolody \& Hoyle, 2015). Mixing
 rates may vary depending on release locations and times depending on
 various factors, including; oceanographic dynamics, contexts of releases
 (e.g., FADs versus free schools, archipelagic waters versus oceanic),
@@ -3501,7 +3504,7 @@ Resource & Browser output & Source repository \\
 \endlastfoot
 Assessment report & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-report/}{Clean PDF} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-report}{ofp-sam-bet-2026-report} \\
 Stepwise development & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise/interactive-model-viewer.html}{Interactive model viewer} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise}{ofp-sam-bet-2026-stepwise} \\
-Diagnostic fit and profiles & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html}{Diagnostic report}; \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{profile viewer} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic}{ofp-sam-bet-2026-diagnostic} \\
+Diagnostic fit and profiles & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-diagnostic-report.html}{Diagnostic report}; \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic/bet-2026-likelihood-profile-viewer.html}{Likelihood-profile viewer} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic}{ofp-sam-bet-2026-diagnostic} \\
 Jitter & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter/jitter-report.html}{Jitter report} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-jitter}{ofp-sam-bet-2026-jitter} \\
 Self-test & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest/selftest-report.html}{Self-test report} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-selftest}{ofp-sam-bet-2026-selftest} \\
 Retrospective analysis & \href{https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective/retrospective-report.html}{Retrospective report} & \href{https://github.com/PacificCommunity/ofp-sam-bet-2026-retrospective}{ofp-sam-bet-2026-retrospective} \\
@@ -3655,9 +3658,9 @@ G8 & F29--F33 & Index R1; Index R2; Index R3; Index R4; Index R5 & Regional indi
 
 \begin{landscape}
 \begingroup
-\fontsize{6.5}{6.8}\selectfont
-\setlength{\tabcolsep}{3.2pt}
-\renewcommand{\arraystretch}{0.94}
+\fontsize{6.2}{6.35}\selectfont
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.90}
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.045\linewidth}>{\raggedright\arraybackslash}p{0.105\linewidth}>{\raggedright\arraybackslash}p{0.075\linewidth}>{\raggedright\arraybackslash}p{0.125\linewidth}>{\raggedright\arraybackslash}p{0.09\linewidth}>{\raggedright\arraybackslash}p{0.215\linewidth}>{\raggedright\arraybackslash}p{0.065\linewidth}>{\raggedleft\arraybackslash}p{0.065\linewidth}@{}}
 
@@ -3719,7 +3722,7 @@ Group & Tag programmes & Pooled matrix row & Fisheries & Release groups & Releas
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.03}
 
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.29\linewidth}>{\raggedright\arraybackslash}p{0.61\linewidth}>{\raggedleft\arraybackslash}p{0.05\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.29\linewidth}>{\raggedright\arraybackslash}p{0.61\linewidth}>{\raggedleft\arraybackslash}p{0.07\linewidth}@{}}
 
 \caption{\label{tbl-parameter-bounds}Estimated parameters that MFCL flagged as on or close to a bound in the diagnostic model. Parameter names are descriptive rather than MFCL internal variable names.}
 
@@ -3745,7 +3748,7 @@ Tag reporting rate & Upper bound (0.99); reporting-rate group 23 (JPTP, fisherie
 
 \vspace{0.7em}
 
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedleft\arraybackslash}p{0.08\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedleft\arraybackslash}p{0.10\linewidth}@{}}
 
 \caption{\label{tbl-parameter-correlations}Strongest estimated-parameter correlations in the diagnostic model ($|r| > 0.95$), calculated from the inverse Hessian.}
 
@@ -5664,10 +5667,10 @@ Aquatic Sciences}, \emph{81}(10), 1433--1455.
 \url{https://doi.org/10.1139/cjfas-2023-0358}
 
 \bibitem[\citeproctext]{ref-kolody_evaluation_2014}
-Kolody, D., \& Hoyle, S. (2014). Evaluation of tag mixing assumptions in
+Kolody, D., \& Hoyle, S. (2015). Evaluation of tag mixing assumptions in
 western pacific ocean skipjack tuna stock assessment models.
-\emph{Fisheries Research},
-\emph{http://dx.doi.org/101016/j.fishres.2014.05.008}.
+\emph{Fisheries Research}, \emph{163}, 127--140.
+\url{https://doi.org/10.1016/j.fishres.2014.05.008}
 
 \bibitem[\citeproctext]{ref-langley_stock_2008}
 Langley, A., Hampton, J., Kleiber, P., \& Hoyle, S. (2008). \emph{Stock
