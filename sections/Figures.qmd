@@ -54,7 +54,7 @@
 
 
 
-![Age-specific quarterly natural mortality obtained by applying three assessment-relevant $M_0$ values to the same 2026 diagnostic growth schedule and fixed Lorenzen exponent (-1). Curves show the diagnostic value (0.07814), the model-aligned longevity-prior median (0.08082) derived following @hamel_method_2015 and @cope_upgrading_2022, and the tag estimate from @ducharme-barth_natural_2026 (0.0624). Shading is the tag estimate's 90% confidence interval (0.0500--0.0749) propagated over age. Open the [ensemble report](https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-report.html#fig-natural-mortality-evidence).](figures_new/natural-mortality-evidence.png){#fig-natm-at-age width=100%}
+![Age-specific quarterly natural mortality obtained by applying three assessment-relevant $M_0$ values to the same 2026 diagnostic growth schedule and fixed Lorenzen exponent (-1). Curves show the diagnostic value (0.07814), the model-aligned longevity-prior median (0.08082) derived following @hamel_method_2015 and @hamel_development_2022, and the tag estimate from @ducharme-barth_natural_2026 (0.0624). Shading is the tag estimate's 90% confidence interval (0.0500--0.0749) propagated over age. Open the [ensemble report](https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble/bet-2026-ensemble-report.html#fig-natural-mortality-evidence).](figures_new/natural-mortality-evidence.png){#fig-natm-at-age width=100%}
 
 
 
