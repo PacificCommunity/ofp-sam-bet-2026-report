@@ -1,7 +1,7 @@
 % Options for packages loaded elsewhere
 %DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL /tmp/tmp.2mV4uyVtvy/draft/main.tex                              Sun Aug  9 05:29:08 2026
-%DIF ADD /__w/ofp-sam-bet-2026-report/ofp-sam-bet-2026-report/main.tex   Sun Aug  9 05:26:34 2026
+%DIF DEL /tmp/tmp.Q3gDeLluYi/draft/main.tex                              Sun Aug  9 05:50:41 2026
+%DIF ADD /__w/ofp-sam-bet-2026-report/ofp-sam-bet-2026-report/main.tex   Sun Aug  9 05:48:45 2026
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
@@ -340,8 +340,8 @@ Phillips \and P. Hamer}
 %DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}\begin{verbatim}LATEXDIFF comparison
-Old: /tmp/tmp.2mV4uyVtvy/draft/main.tex                              Sun Aug  9 05:29:08 2026
-New: /__w/ofp-sam-bet-2026-report/ofp-sam-bet-2026-report/main.tex   Sun Aug  9 05:26:34 2026\end{verbatim}
+Old: /tmp/tmp.Q3gDeLluYi/draft/main.tex                              Sun Aug  9 05:50:41 2026
+New: /__w/ofp-sam-bet-2026-report/ofp-sam-bet-2026-report/main.tex   Sun Aug  9 05:48:45 2026\end{verbatim}
 
 \maketitle
 
@@ -1672,7 +1672,8 @@ EPO (Harley \& Maunder, 2003; S. D. Hoyle, 2008; Hoyle \& Nicol, 2008).
 peer review had some difficulty with tracing the sources of data for
 some of the inputs to the external \(M\)-at-age function applied in 2020
 that requires fitting a model that }\DIFdelend \DIFaddbegin \DIFadd{That external function }\DIFaddend depends on empirical \DIFdelbegin \DIFdel{data on the
-sex-ratio at length, a growthcurve, a base \(M\) assumption for males, assumptions on critical lengthsfor inflections and a multiplier that
+sex-ratio at length, a growthcurve, a base \(M\) assumption for males,
+assumptions on critical lengthsfor inflections and a multiplier that
 determines the linear decline in \(M\) for young ages to the base \(M\), plus a length at which female mortality is assumed to begin to increase.
 There are uncertainties in all these empirical data and assumptions, and
 the data for sex ratio is limited especially for larger and older fish. While the peer review generally supported the method, the construction
@@ -1693,8 +1694,7 @@ https://www.capamresearch.org/Tuna \_Stock \_Assessment \_Good \_Practices
 \_Workshop)
 and provided a strong endorsement for applying a simpler Lorenzen
 functional form for estimation of \(M\)-at-age for tuna. Other CAPAM
-reviews of approaches for estimating \(M\) have also, where possible,
-favoured estimating \(M\) within the model, ``let the data speak for
+reviews of approaches for estimating \(M\) have also, where possible, favoured estimating \(M\) within the model, ``let the data speak for
 themselves'', while being careful to review model diagnostics and
 plausibility of model estimated \(M\) against external estimates (Hamel,
 2015; Punt et al., 2021). For }\DIFdelend \DIFaddbegin \DIFadd{and the CAPAM Tuna Stock Assessment Good Practices
@@ -1783,11 +1783,11 @@ age-specific \DIFdelbegin \DIFdel{parameters. This provides a form of smoothing,
 number of parameters for each fishery is the number of cubic spline `nodes ' that are deemed sufficient to
 characterize selectivity over the age range. The number of nodes may vary among fisheries to allow for
 reasonably complex selectivity patterns, however we found that 5 nodes was sufficient for all fisheries in this case. In all cases, selectivity
-is assumed to be }\DIFdelend \DIFaddbegin \DIFadd{estimates. The number of spline nodes was chosen to
+is assumed to be time-invariant and }\DIFdelend \DIFaddbegin \DIFadd{estimates. The number of spline nodes was chosen to
 represent the required complexity: five nodes were used for most
 fisheries and seven for the two associated purse-seine fisheries
 spanning Regions 3 and 4 (Table~\ref{tbl-fisheries-definitions}).
-Selectivity was }\DIFaddend time-invariant and fishery-specific \DIFdelbegin \DIFdel{. However, a single
+Selectivity was time-invariant and }\DIFaddend fishery-specific \DIFdelbegin \DIFdel{. However, a single
 selectivity function cab be ``grouped'' or ``shared'' among a group of
 fisheries that have similar size compositions or were assumed to operate
 in a similar manner. This grouping of selectivity facilitates a
@@ -2054,11 +2054,11 @@ at 1}\DIFdelend \DIFaddbegin \DIFadd{as
 \(N_{\mathrm{eff}}=N_{\max}(1+\lambda)/(N_{\max}+\lambda)\);
 consequently, \(N_{\max}\) is an asymptotic upper bound rather than an
 effective sample size assigned to every composition. Preliminary fits
-evaluated values including 10, 25}\DIFaddend , \DIFdelbegin \DIFdel{000), which resulted in deterioration of the fits to the abundance
+evaluated values including 10}\DIFaddend , \DIFdelbegin \DIFdel{000), which resulted in deterioration of the fits to the abundance
 indices, and it was therefore not applied. For the 2026 assessment we
 revisited Dirichlet-multinomial,with 8 fishery groupings, but rather
 applied a low effective sample size cap of 25. We also initial applied
-the Francis weight method }\DIFdelend \DIFaddbegin \DIFadd{40, 100 and the MFCL default of
+the Francis weight method }\DIFdelend \DIFaddbegin \DIFadd{25, 40, 100 and the MFCL default of
 1,000. From 40 upward, length-frequency fit improved slightly but CPUE
 fit deteriorated as the composition component gained influence. As an
 independent empirical reference, the 95th percentile of
@@ -2451,14 +2451,15 @@ This offers a basis for comparing the exploited population relative to
 the
 population subject to natural mortality only
 i.e.
-~\(SB\)/\(SB_{F=0}\). The WCPFC adopted }\DIFdelend \DIFaddbegin \DIFadd{Beverton--Holt SRR.
+~\(SB\)/\(SB_{F=0}\). The
+WCPFC adopted }\DIFdelend \DIFaddbegin \DIFadd{Beverton--Holt SRR.
 For management reporting, annual dynamic depletion compares spawning
 biomass in year \(y\) with mean unfished spawning biomass over the
 preceding ten years, excluding year \(y\).
 }
 
-\DIFadd{Two related but distinct depletion quantities were used for management
-reporting. The WCPFC-adopted }\DIFaddend limit reference point (LRP) for \DIFdelbegin \DIFdel{the bigeye stock is
+\DIFadd{Two depletion quantities were used for management reporting. The
+WCPFC-adopted }\DIFaddend limit reference point (LRP) for \DIFdelbegin \DIFdel{the bigeye stock is
 \(SB_{recent}\)/\(SB_{F=0}\)=0.20.
 \(SB_{recent}\) refers to the average spawning
 biomass across year
@@ -2471,27 +2472,13 @@ biomass during 2014--2023. }\DIFaddend CMM 2025-02 \DIFdelbegin \DIFdel{states i
 that, pending agreement on }\DIFaddend a target reference point\DIFdelbegin \DIFdel{the spawning biomass
 depletion ratio (\(SB\)/\(SB_{F=0}\)) }\DIFdelend \DIFaddbegin \DIFadd{, the
 spawning-biomass depletion ratio }\DIFaddend is to be maintained at or above \DIFdelbegin \DIFdel{the average \(SB\)/\(SB_{F=0}\) for }\DIFdelend \DIFaddbegin \DIFadd{its
-}\DIFaddend 2012--2015 \DIFdelbegin \DIFdel{''. Stock status was referenced against these points by calculating the reference points;
+}\DIFaddend 2012--2015 \DIFdelbegin \DIFdel{''. Stock status was
+referenced against these points by calculating the reference points;
 \(SB_{recent}\)/\(SB_{F=0}\) and \(SB_{latest}\)/\(SB_{F=0}\) where
-\(SB_{F=0}\) is calculated over 2014--2023 and \(SB_{recent}\) and
-\(SB_{latest}\) are the mean of }\DIFdelend \DIFaddbegin \DIFadd{average. This comparison was calculated within each model as
-}
-
-\[
-\DIFadd{D_y=\frac{SB_y}{\frac{1}{10}\sum_{j=y-10}^{y-1}SB_{j,F=0}},\qquad
-D_{recent}=\frac{1}{4}\sum_{y=2021}^{2024}D_y,\qquad
-D_{2012\text{--}2015}=\frac{1}{4}\sum_{y=2012}^{2015}D_y,
-}\]
-
-\DIFadd{for each of the 80 central models, excluding estimation uncertainty. The
-headline comparison is }\DIFaddend the \DIFdelbegin \DIFdel{estimated spawning potential over
-2021--2024, and 2024 respectively (Table}\DIFdelend \DIFaddbegin \DIFadd{arithmetic mean of \(D_{recent}\) across the
-equal-weight models divided by the corresponding arithmetic mean of
-\(D_{2012\text{--}2015}\). This recent-to-2012--2015 spawning depletion
-ratio is a ratio of two depletion quantities, not a probability, and is
-distinct from the LRP quantity formed from separate fished and unfished
-period means. The comparison with the CMM 2025-02 objective is reported
-in Table~\ref{tbl-cmm-depletion}, with the other management and
+\(SB_{F=0}\) is calculated over 2014--2023 and \(SB_{recent}\) and \(SB_{latest}\) are the mean of the estimated spawning potential over
+2021--2024, and 2024 respectively (Table}\DIFdelend \DIFaddbegin \DIFadd{average. This comparison used the 80 equal-weight central
+models and excluded estimation uncertainty; the result is reported in
+Table~\ref{tbl-cmm-depletion}, with the other management and
 reference-point quantities in Table~\ref{tbl-manage-quant} and
 }\DIFaddend Table~\ref{tbl-ref-points}\DIFdelbegin \DIFdel{)}\DIFdelend .
 
@@ -3732,8 +3719,7 @@ general panel-percentage presentation used by Kim \& Neubauer (2025);
 that study is cited for the visualisation approach, not as evidence for
 the tuna assessment results}\DIFaddend .
 
-\DIFdelbegin \DIFdel{Both the
-}\DIFdelend \DIFaddbegin \DIFadd{CMM 2025-02 contains an objective to maintain the spawning biomass
+\DIFdelbegin \DIFdel{Both the }\DIFdelend \DIFaddbegin \DIFadd{CMM 2025-02 contains an objective to maintain the spawning biomass
 depletion ratio at or above the average \(SB/SB_{F=0}\) for 2012--2015.
 Across the 80 ensemble models, excluding estimation uncertainty, this
 average was 28.8\%. The corresponding average for 2021--2024 was 27.8\%,
