@@ -243,6 +243,33 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
+  mark-rev1-build:
+    if: github.ref == 'refs/heads/rev1'
+    needs:
+      - render
+      - deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
+    steps:
+      - name: Mark the published Rev.01 commit as passing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          PUBLISHED_SHA=$(gh api \
+            "repos/${GITHUB_REPOSITORY}/git/ref/heads/rev1" \
+            --jq '.object.sha')
+          test -n "$PUBLISHED_SHA"
+          gh api \
+            --method POST \
+            "repos/${GITHUB_REPOSITORY}/statuses/${PUBLISHED_SHA}" \
+            -f state=success \
+            -f context='Render Quarto PDF' \
+            -f description='Clean and review PDFs rendered; Pages deployed' \
+            -f target_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+
   release:
     if: startsWith(github.ref, 'refs/tags/v')
     needs: render
