@@ -1,4 +1,4 @@
-source_url=../ofp-sam-bet-2026-stepwise-report-assets/results/stepwise-report
-source_commit=842e7150b1ba1d62002665612c09951223a67326
-933d105e5fc06a17c1c8054c9818c55fd687e58b8008c8bc94dce63eeca834fa  figures_new/spatial-structure-comparison.png
-0913f608247a0731a6697c38263a9a88cbf7835bc21037900622d2ec4ad67258  figures_new/maturity-comparison.png
+source_url=https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise
+source_commit=2b5d6dcd1687bbee4e039faac719c647f058239c
+acce3fa987b73325979fda10d1e85bc99921e4fea0579a45a332005188185080  figures_new/spatial-structure-comparison.png
+318d1b24af712a826c266d6214f122f909d0ec7a92960fd74a25fa4adc2e4fa2  figures_new/maturity-comparison.png

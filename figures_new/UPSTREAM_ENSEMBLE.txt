@@ -1,4 +1,4 @@
-source_url=../ofp-sam-bet-2026-ensemble/results
-source_commit=dfebb9a29cd615d56f29435e65f743b2d1efd822
-223cfb3de4084232acf70ca81cb6dd60c4175226af4ab312ac21e8b29fa8dab9  figures_new/natural-mortality-evidence.png
-3fd8b3a73a764c75aea5666eb8c97cfb67ca0e9617de65425997c28a00651c89  figures_new/projection-stock-trajectories.png
+source_url=https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble
+source_commit=01852d77e984e4599ebde72bf019eafd8e122fc6
+714e196e953c91d186946d8e786672df499c640b3a5d6fd9973fe728ce20599a  figures_new/natural-mortality-evidence.png
+d6a2aee71041f8fa61d434eba3cee1dee3b247a929a3f14ea4c0130e80e1cbeb  figures_new/projection-stock-trajectories.png
