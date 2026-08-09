@@ -72,3 +72,8 @@ Acknowledgements
 ================
 
 We thank WCPFC members, participating territories and other providers for the fisheries data, and the observers, port samplers, tagging teams and fishers who collected the biological and tagging observations. We also acknowledge the 2026 Pre-assessment Workshop participants and the Pacific Community data, assessment and software teams for their contributions.
+
+Statement on the use of generative AI
+=====================================
+
+GitHub Copilot, a generative artificial-intelligence assistant, was used to support code development and checking and the preparation of selected visualisations for this report.
