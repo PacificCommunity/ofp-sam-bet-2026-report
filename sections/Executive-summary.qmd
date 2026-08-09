@@ -45,6 +45,8 @@ The general conclusions of this assessment are as follows:
 
 -   The diagnostic model in this assessment was one of the most pessimistic models of the uncertainty ensemble used for management advice.
 
+\Needspace{6\baselineskip}
+
 **Stock status management quantities**
 
 -   Median recent depletion (2021--2024; $SB_{recent}$/$SB_{F=0}$) is estimated at 0.277 (central 80% interval including structural and available estimation uncertainty: 0.172--0.395; central 95% interval: 0.136--0.442).

@@ -204,7 +204,7 @@ Group & Tag programmes & Pooled matrix row & Fisheries & Release groups & Releas
 \scriptsize
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.03}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.29\linewidth}>{\raggedright\arraybackslash}p{0.61\linewidth}>{\raggedleft\arraybackslash}p{0.05\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.29\linewidth}>{\raggedright\arraybackslash}p{0.61\linewidth}>{\raggedleft\arraybackslash}p{0.07\linewidth}@{}}
 \caption{Estimated parameters that MFCL flagged as on or close to a bound in the diagnostic model. Parameter names are descriptive rather than MFCL internal variable names.}\label{tbl-parameter-bounds}\\
 \toprule
 Parameter type & Bound location(s) & Number \\
@@ -224,7 +224,7 @@ Tag reporting rate & Upper bound (0.99); reporting-rate group 23 (JPTP, fisherie
 
 \vspace{0.7em}
 
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedleft\arraybackslash}p{0.08\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedleft\arraybackslash}p{0.10\linewidth}@{}}
 \caption{Strongest estimated-parameter correlations in the diagnostic model ($|r| > 0.95$), calculated from the inverse Hessian.}\label{tbl-parameter-correlations}\\
 \toprule
 Parameter 1 & Parameter 2 & Correlation \\
