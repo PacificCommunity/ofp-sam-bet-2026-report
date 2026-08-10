@@ -1,5 +1,5 @@
 jitter_url=https://pacificcommunity.github.io/ofp-sam-bet-2026-jitter
-jitter_commit=317b8b01c4e439fb6c35d3655e9c12b6284b5920
+jitter_commit=9745cd2a19bd20b0a225bb63e39b769745a370aa
 selftest_url=https://pacificcommunity.github.io/ofp-sam-bet-2026-selftest
 selftest_commit=84a1e2356292996979bc95c37ebc636bd5786783
 retrospective_url=https://pacificcommunity.github.io/ofp-sam-bet-2026-retrospective
