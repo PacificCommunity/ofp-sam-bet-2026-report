@@ -78,10 +78,8 @@ def main():
         == report[0].get_pixmap(dpi=144, clip=clip).samples for clip in clips)
     new_caption = report[132].get_text().split("Figure 66:", 1)[1]
     expected_caption = (
-        "Estimated fishery impacts for the diagnostic model, by region and over all regions (bottom right). "
-        "Total impact (%) is 100(1−SBt/SBt,F=0), where SBt and SBt,F=0 are annual mean spawning potential "
-        "with and without fishing in year t, respectively. Coloured areas allocate this reduction among "
-        "fishery groups in proportion to the spawning-potential gains from removing each group separately. 133")
+        "Estimates of fishery impact (%) by region and over all regions (bottom right), attributed to fishery "
+        "groups for the diagnostic model. Total impact (%) is 100(1−SBt/SBt,F=0). 133")
     # Ignore text-extraction hyphens at line wraps, while retaining the mathematical minus.
     result["figure66_caption_matches_requested_edit"] = (
         normalized(expected_caption).replace("-", "") == normalized(new_caption).replace("-", ""))

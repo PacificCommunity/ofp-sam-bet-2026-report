@@ -47,8 +47,8 @@ resolution of Figure 29. There is no overall title, subtitle or comparison
 curve. Axis titles are 16 pt and tick labels 14 pt in the 11.5-inch source
 figure (previously 12 pt and 9.6 pt); panel headings are 14 pt and legend text
 13 pt. The caption uses "diagnostic model" without the assessment year and
-states the percentage scale, annual spawning-potential reference and
-proportional group allocation. The Figure 66 cross-reference is retained.
+gives the percentage formula without additional spawning-potential or
+spawning-biomass terminology. The Figure 66 cross-reference is retained.
 The companion PDF is an optional vector export, not the embedded report asset.
 
 Run this from the repository root with Docker and access to the report's
