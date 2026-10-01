@@ -5,8 +5,8 @@ Issued 1 October 2026.
 - Corrected and replaced Figure 66.
 - Updated the official WCPFC cover to Rev.02 and 1 October 2026, and added
   the Figure 66 replacement to the revision history.
-- Shortened the Figure 66 caption to "diagnostic model"; retained all other
-  narrative, tables and figures.
+- Clarified the Figure 66 caption and enlarged its axis titles and tick labels;
+  retained all other narrative, tables and figures.
 
 The comparison baseline is the official WCPFC Rev.01 PDF at
 <https://meetings.wcpfc.int/file/21634/download>, not the repository's different

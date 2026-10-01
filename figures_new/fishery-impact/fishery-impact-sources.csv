@@ -2,7 +2,7 @@
 "reference","inputs/reference.csv"
 "Longline","inputs/longline.csv"
 "Pole-and-line","inputs/pole_line.csv"
-"PS","inputs/ps.csv"
+"PS (unspecified)","inputs/ps.csv"
 "PS-associated","inputs/ps_associated.csv"
 "PS-unassociated","inputs/ps_unassociated.csv"
 "Miscellaneous","inputs/miscellaneous.csv"

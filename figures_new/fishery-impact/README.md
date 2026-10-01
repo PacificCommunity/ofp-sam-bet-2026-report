@@ -7,6 +7,12 @@ were retained. All group runs reproduce the reference fitted biomass at all
 1,460 season-region coordinates. Extraction fisheries 1-28 are partitioned
 between the groups; index fisheries 29-33 do not contribute removals.
 
+`PS (unspecified)` contains the Japanese (F12), Indonesian (F17), and
+Philippine (F18) purse-seine series without associated/unassociated set-type
+separation. It is not a subtotal of all purse-seine fisheries. The associated
+group contains F19, F25 and F26; the unassociated group contains F20, F27 and F28.
+These three groups do not overlap.
+
 The annual total is `100 * (1 - mean(SB) / mean(SB_F=0))`, with matching
 seasons. The same-year unfished biomass is used, rather than the multi-year
 denominator of the recent management depletion statistic. Group shares are
@@ -38,8 +44,11 @@ has not been established. These files document the replacement calculation.
 The report embeds `fishery-impact.png`: RGB, 3450 x 2250 pixels, 300 dpi,
 white background and serif text. This follows the PNG format and 300 dpi
 resolution of Figure 29. There is no overall title, subtitle or comparison
-curve. The caption uses "diagnostic model" without the assessment year; the
-Figure 66 cross-reference is retained.
+curve. Axis titles are 16 pt and tick labels 14 pt in the 11.5-inch source
+figure (previously 12 pt and 9.6 pt); panel headings are 14 pt and legend text
+13 pt. The caption uses "diagnostic model" without the assessment year and
+states the percentage scale, annual spawning-potential reference and
+proportional group allocation. The Figure 66 cross-reference is retained.
 The companion PDF is an optional vector export, not the embedded report asset.
 
 Run this from the repository root with Docker and access to the report's

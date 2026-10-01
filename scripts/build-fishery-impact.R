@@ -18,7 +18,7 @@ stopifnot(identical(unname(actual_hash), checksums$sha256))
 source(file.path(root, "scripts/vendor/mfclshiny/fishery-impact.R"))
 source(file.path(root, "scripts/fishery-impact-style.R"))
 groups <- jsonlite::read_json(file.path(input, "groups.json"), simplifyVector = TRUE)
-labels <- c("Longline", "Pole-and-line", "PS", "PS-associated", "PS-unassociated", "Miscellaneous")
+labels <- c("Longline", "Pole-and-line", "PS (unspecified)", "PS-associated", "PS-unassociated", "Miscellaneous")
 stopifnot(identical(names(groups), c("longline", "pole_line", "ps", "ps_associated",
                                     "ps_unassociated", "miscellaneous")),
           identical(sort(as.integer(unlist(groups))), 1:28))

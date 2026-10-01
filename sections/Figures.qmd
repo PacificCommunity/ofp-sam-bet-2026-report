@@ -248,7 +248,7 @@
 
 
 
-![Estimates of fishery impact, or reduction in spawning potential due to fishing (fishery impact = $1-SB_{t}/SB_{t,F=0}$), by region and over all regions (bottom right), attributed to fishery groups for the diagnostic model.](figures_new/fishery-impact/fishery-impact.png){#fig-impact-region width=100%}
+![Estimated fishery impacts for the diagnostic model, by region and over all regions (bottom right). Total impact (%) is $100(1-SB_{t}/SB_{t,F=0})$, where $SB_{t}$ and $SB_{t,F=0}$ are annual mean spawning potential with and without fishing in year $t$, respectively. Coloured areas allocate this reduction among fishery groups in proportion to the spawning-potential gains from removing each group separately.](figures_new/fishery-impact/fishery-impact.png){#fig-impact-region width=100%}
 
 
 

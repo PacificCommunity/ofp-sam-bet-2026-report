@@ -1,13 +1,13 @@
 {
   "baseline_url": "https://meetings.wcpfc.int/file/21634/download",
   "baseline_sha256": "263726a1d8abce66a2b951b63e975961d9c945cb0d4d1ae80e200e33fec7934d",
-  "report_sha256": "c3bf137eac8b48a54ec559161beecc6d0701fe46ad162ba7f3e3a0e414e9d06c",
+  "report_sha256": "0aa6521818fb2c9abbc72ea14dc9ad8ad30abfb7215697bdb8a0286d85aeb407",
   "baseline_pages": 148,
   "report_pages": 148,
   "expected_changed_pages": {
     "1": "revision and issue date on the official cover",
     "2": "Figure 66 replacement added to revision history",
-    "133": "Figure 66 replaced; caption uses diagnostic model without the year"
+    "133": "Figure 66 replaced; larger axis text and clarified caption without the assessment year"
   },
   "render_dpi": 144,
   "renderer": "PyMuPDF 1.28.2",
@@ -33,7 +33,7 @@
     2250
   ],
   "figure66_embeds_committed_png": true,
-  "figure66_png_sha256": "026709541cc8877cbe62231a41f29bf21cf26704e02245c7c5b449e30342ce0e",
+  "figure66_png_sha256": "79832c61b585feed8fa8039314a89bd49c9d79f3478808878603ae3f05b18f67",
   "unchanged_pages": 145,
   "passed": true
 }

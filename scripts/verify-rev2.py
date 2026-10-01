@@ -37,7 +37,7 @@ def main():
     report = pymupdf.open(args.report)
     expected_changes = {1: "revision and issue date on the official cover",
                         2: "Figure 66 replacement added to revision history",
-                        133: "Figure 66 replaced; caption uses diagnostic model without the year"}
+                        133: "Figure 66 replaced; larger axis text and clarified caption without the assessment year"}
     result = {
         "baseline_url": BASELINE_URL,
         "baseline_sha256": BASELINE_SHA256,
@@ -76,13 +76,15 @@ def main():
     result["cover_unchanged_outside_issue_fields"] = all(
         baseline[0].get_pixmap(dpi=144, clip=clip).samples
         == report[0].get_pixmap(dpi=144, clip=clip).samples for clip in clips)
-    old_caption = baseline[132].get_text().split("Figure 66:", 1)[1]
     new_caption = report[132].get_text().split("Figure 66:", 1)[1]
-    old_caption = normalized(old_caption)
+    expected_caption = (
+        "Estimated fishery impacts for the diagnostic model, by region and over all regions (bottom right). "
+        "Total impact (%) is 100(1−SBt/SBt,F=0), where SBt and SBt,F=0 are annual mean spawning potential "
+        "with and without fishing in year t, respectively. Coloured areas allocate this reduction among "
+        "fishery groups in proportion to the spawning-potential gains from removing each group separately. 133")
+    # Ignore text-extraction hyphens at line wraps, while retaining the mathematical minus.
     result["figure66_caption_matches_requested_edit"] = (
-        old_caption.count("the2026diagnosticmodel") == 1
-        and old_caption.replace("the2026diagnosticmodel", "thediagnosticmodel", 1)
-        == normalized(new_caption))
+        normalized(expected_caption).replace("-", "") == normalized(new_caption).replace("-", ""))
     figure = pymupdf.Pixmap("figures_new/fishery-impact/fishery-impact.png")
     result["figure66_png_dimensions"] = [figure.width, figure.height]
     result["figure66_embeds_committed_png"] = False
