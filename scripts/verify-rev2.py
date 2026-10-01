@@ -37,7 +37,7 @@ def main():
     report = pymupdf.open(args.report)
     expected_changes = {1: "revision and issue date on the official cover",
                         2: "Figure 66 replacement added to revision history",
-                        133: "Figure 66 replaced; caption retained"}
+                        133: "Figure 66 replaced; caption uses diagnostic model without the year"}
     result = {
         "baseline_url": BASELINE_URL,
         "baseline_sha256": BASELINE_SHA256,
@@ -64,7 +64,8 @@ def main():
     cover = normalized(report[0].get_text())
     revision = normalized(report[1].get_text())
     result["revision_and_date_correct"] = "WP06_Rev02" in cover and "1October2026" in cover
-    result["revision_note_present"] = "Revision2(1October2026)" in revision and "ReplacedFigure66" in revision
+    result["revision_note_present"] = (
+        "Revision2(1October2026)" in revision and "CorrectedandreplacedFigure66." in revision)
     old_revision = normalized(baseline[1].get_text()).removesuffix("2")
     result["revision1_history_retained"] = revision.startswith(old_revision)
     # Only the two issue fields on the official cover may change. Compare all
@@ -77,7 +78,11 @@ def main():
         == report[0].get_pixmap(dpi=144, clip=clip).samples for clip in clips)
     old_caption = baseline[132].get_text().split("Figure 66:", 1)[1]
     new_caption = report[132].get_text().split("Figure 66:", 1)[1]
-    result["figure66_caption_unchanged"] = normalized(old_caption) == normalized(new_caption)
+    old_caption = normalized(old_caption)
+    result["figure66_caption_matches_requested_edit"] = (
+        old_caption.count("the2026diagnosticmodel") == 1
+        and old_caption.replace("the2026diagnosticmodel", "thediagnosticmodel", 1)
+        == normalized(new_caption))
     figure = pymupdf.Pixmap("figures_new/fishery-impact/fishery-impact.png")
     result["figure66_png_dimensions"] = [figure.width, figure.height]
     result["figure66_embeds_committed_png"] = False
@@ -93,7 +98,7 @@ def main():
                         and result["revision_note_present"]
                         and result["revision1_history_retained"]
                         and result["cover_unchanged_outside_issue_fields"]
-                        and result["figure66_caption_unchanged"]
+                        and result["figure66_caption_matches_requested_edit"]
                         and result["figure66_embeds_committed_png"]
                         and result["figure66_png_dimensions"] == [3450, 2250])
     args.output.parent.mkdir(parents=True, exist_ok=True)

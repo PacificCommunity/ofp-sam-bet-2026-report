@@ -38,7 +38,8 @@ has not been established. These files document the replacement calculation.
 The report embeds `fishery-impact.png`: RGB, 3450 x 2250 pixels, 300 dpi,
 white background and serif text. This follows the PNG format and 300 dpi
 resolution of Figure 29. There is no overall title, subtitle or comparison
-curve. The original report caption and Figure 66 cross-reference are retained.
+curve. The caption uses "diagnostic model" without the assessment year; the
+Figure 66 cross-reference is retained.
 The companion PDF is an optional vector export, not the embedded report asset.
 
 Run this from the repository root with Docker and access to the report's

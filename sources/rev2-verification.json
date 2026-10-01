@@ -1,19 +1,20 @@
 {
   "baseline_url": "https://meetings.wcpfc.int/file/21634/download",
   "baseline_sha256": "263726a1d8abce66a2b951b63e975961d9c945cb0d4d1ae80e200e33fec7934d",
-  "report_sha256": "642adb1fe1e27c4043225b494e2799e534644f2654babfb848c987b6953b42f2",
+  "report_sha256": "c3bf137eac8b48a54ec559161beecc6d0701fe46ad162ba7f3e3a0e414e9d06c",
   "baseline_pages": 148,
   "report_pages": 148,
   "expected_changed_pages": {
     "1": "revision and issue date on the official cover",
     "2": "Figure 66 replacement added to revision history",
-    "133": "Figure 66 replaced; caption retained"
+    "133": "Figure 66 replaced; caption uses diagnostic model without the year"
   },
   "render_dpi": 144,
   "renderer": "PyMuPDF 1.28.2",
   "text_changed_pages": [
     1,
-    2
+    2,
+    133
   ],
   "visually_changed_pages": [
     1,
@@ -26,7 +27,7 @@
   "revision_note_present": true,
   "revision1_history_retained": true,
   "cover_unchanged_outside_issue_fields": true,
-  "figure66_caption_unchanged": true,
+  "figure66_caption_matches_requested_edit": true,
   "figure66_png_dimensions": [
     3450,
     2250
