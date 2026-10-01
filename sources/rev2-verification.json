@@ -1,7 +1,7 @@
 {
   "baseline_url": "https://meetings.wcpfc.int/file/21634/download",
   "baseline_sha256": "263726a1d8abce66a2b951b63e975961d9c945cb0d4d1ae80e200e33fec7934d",
-  "report_sha256": "1393151ba43aa037313405a35aebed0eedb5d690a603d3f54355a46597843a47",
+  "report_sha256": "642adb1fe1e27c4043225b494e2799e534644f2654babfb848c987b6953b42f2",
   "baseline_pages": 148,
   "report_pages": 148,
   "expected_changed_pages": {

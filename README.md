@@ -9,8 +9,8 @@ assessment report. The source is deliberately self-contained: all chapter
 files, figures, tables and bibliography needed to render the report are stored
 here.
 
-**Revision 2, issued 1 October 2026:** Figure 66 has been replaced with the
-verified fishery-impact calculation. The official WCPFC cover has the updated
+**Revision 2, issued 1 October 2026:** Replaced Figure 66.
+The official WCPFC cover has the updated
 date and revision, and the revision history records the replacement. All other
 pages are checked against the published Rev.01 by text and 144-dpi rendered
 pixels. See `sources/rev2-verification.json` for the comparison record.

@@ -2,10 +2,7 @@
 
 Issued 1 October 2026.
 
-- Replaced Figure 66 with recalculated regional and overall fishery impacts
-  for the diagnostic model. Total impact is consistent with the contemporaneous
-  spawning-potential depletion trajectories in Figure 29; fishery-group shares
-  use proportional allocation of the separate removal-run biomass gains.
+- Replaced Figure 66.
 - Updated the official WCPFC cover to Rev.02 and 1 October 2026, and added
   the Figure 66 replacement to the revision history.
 - Retained all other narrative, tables, figures and the Figure 66 caption.
