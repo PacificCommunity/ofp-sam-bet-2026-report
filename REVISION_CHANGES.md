@@ -2,7 +2,7 @@
 
 Issued 1 October 2026.
 
-- Corrected and replaced Figure 66.
+- Corrected and replaced the regional and overall fishery-impact plots (Figure 66).
 - Updated the official WCPFC cover to Rev.02 and 1 October 2026, and added
   the Figure 66 replacement to the revision history.
 - Clarified the Figure 66 caption and enlarged its axis titles and tick labels;

@@ -9,7 +9,7 @@ assessment report. The source is deliberately self-contained: all chapter
 files, figures, tables and bibliography needed to render the report are stored
 here.
 
-**Revision 2, issued 1 October 2026:** Corrected and replaced Figure 66.
+**Revision 2, issued 1 October 2026:** Corrected and replaced the regional and overall fishery-impact plots (Figure 66).
 
 [Download Rev.02 directly](https://raw.githubusercontent.com/PacificCommunity/ofp-sam-bet-2026-report/rev2/WCPFC-SC22-2026-SA-WP-06.pdf).
 

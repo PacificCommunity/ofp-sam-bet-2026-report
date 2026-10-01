@@ -65,7 +65,8 @@ def main():
     revision = normalized(report[1].get_text())
     result["revision_and_date_correct"] = "WP06_Rev02" in cover and "1October2026" in cover
     result["revision_note_present"] = (
-        "Revision2(1October2026)" in revision and "CorrectedandreplacedFigure66." in revision)
+        "Revision2(1October2026)" in revision and
+        "Correctedandreplacedtheregionalandoverallfishery-impactplots(Figure66)." in revision)
     old_revision = normalized(baseline[1].get_text()).removesuffix("2")
     result["revision1_history_retained"] = revision.startswith(old_revision)
     # Only the two issue fields on the official cover may change. Compare all
