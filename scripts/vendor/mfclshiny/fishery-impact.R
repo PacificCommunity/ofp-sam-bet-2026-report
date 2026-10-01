@@ -183,7 +183,9 @@ mfclshiny_impact_frame <- function(x, label) {
   if (anyDuplicated(x[c("year", "season", "region")])) {
     stop(label, ": duplicate year-season-region rows.", call. = FALSE)
   }
-  x <- x[order(x$region, x$year, x$season), ]
+  # Numeric region identifiers retain natural order even for 10+ regions.
+  region_order <- if (all(grepl("^[0-9]+$", x$region))) as.numeric(x$region) else x$region
+  x <- x[order(region_order, x$region, x$year, x$season), ]
   rownames(x) <- NULL
   x
 }
@@ -214,19 +216,35 @@ read_fishery_impact <- function(reference, manifest, ...) {
   result
 }
 
-#' Plot regional fishery impacts in the BET report style
+#' Plot regional fishery impacts for any model configuration
 #' @param x A result from [calculate_fishery_impact()].
-#' @param ncol Facet columns.
-#' @param colours Optional named vector with one colour per group.
+#' @param ncol Facet columns, or NULL for an automatic layout.
+#' @param colours Optional named vector with one colour per group. By default
+#'   a qualitative palette is generated for the observed number of groups.
 #' @param base_size Base text size.
-#' @param base_family Font family, default serif.
+#' @param base_family Font family, default sans.
+#' @param region_labels Optional character vector named by every region in
+#'   x$totals (including All regions when present), with unique display labels.
+#' @param theme Optional ggplot2 theme added to the neutral default theme.
+#'   Pass report-specific styling here rather than changing the calculation.
+#' @param total_colour Colour of the line showing total impact.
+#' @param legend_ncol Legend columns, or NULL to choose from the group count.
 #' @return A ggplot with no title, subtitle, comparison curve or author label.
 #' @export
-plot_fishery_impact <- function(x, ncol = 3L, colours = NULL,
-                                base_size = 12, base_family = "serif") {
+plot_fishery_impact <- function(x, ncol = NULL, colours = NULL,
+                                base_size = 12, base_family = "sans",
+                                region_labels = NULL, theme = NULL,
+                                total_colour = "black", legend_ncol = NULL) {
   if (!inherits(x, "mfcl_fishery_impact")) stop("x must be a mfcl_fishery_impact result.", call. = FALSE)
-  if (length(ncol) != 1L || !is.numeric(ncol) || !is.finite(ncol) || ncol < 1 || ncol != as.integer(ncol)) {
-    stop("ncol must be a positive integer.", call. = FALSE)
+  valid_columns <- function(value) {
+    is.null(value) || (is.numeric(value) && length(value) == 1L &&
+      is.finite(value) && value >= 1 && value == as.integer(value))
+  }
+  if (!valid_columns(ncol) || !valid_columns(legend_ncol)) {
+    stop("ncol and legend_ncol must be NULL or positive integers.", call. = FALSE)
+  }
+  if (!is.null(theme) && !inherits(theme, "theme")) {
+    stop("theme must be a ggplot2 theme or NULL.", call. = FALSE)
   }
   groups <- unique(x$groups$group)
   regions <- unique(x$totals$region)
@@ -234,14 +252,21 @@ plot_fishery_impact <- function(x, ncol = 3L, colours = NULL,
   totals <- x$totals
   data$group <- factor(data$group, levels = groups)
   labels <- ifelse(grepl("^[0-9]+$", regions), paste("Region", regions), regions)
+  if (!is.null(region_labels)) {
+    if (!is.character(region_labels) || is.null(names(region_labels)) ||
+        anyDuplicated(names(region_labels)) || !all(regions %in% names(region_labels)) ||
+        anyNA(region_labels[regions]) || any(!nzchar(trimws(region_labels[regions]))) ||
+        anyDuplicated(region_labels[regions])) {
+      stop("region_labels must provide a unique, nonempty label for every region.", call. = FALSE)
+    }
+    labels <- unname(region_labels[regions])
+  }
   data$region <- factor(data$region, levels = regions, labels = labels)
   totals$region <- factor(totals$region, levels = regions, labels = labels)
   if (is.null(colours)) {
-    palette <- c("#164C63", "#B692AF", "#2C7F91", "#78B8C6", "#B6DCE2", "#D9C39A")
-    if (length(groups) > length(palette)) palette <- grDevices::hcl.colors(length(groups), "Dark 3")
-    colours <- stats::setNames(palette[seq_along(groups)], groups)
+    colours <- stats::setNames(grDevices::hcl.colors(length(groups), "Dark 3"), groups)
   }
-  if (!all(groups %in% names(colours)) || anyNA(colours[groups])) {
+  if (anyDuplicated(names(colours)) || !all(groups %in% names(colours)) || anyNA(colours[groups])) {
     stop("colours must be named for every group.", call. = FALSE)
   }
   p <- ggplot2::ggplot(data, ggplot2::aes(x = .data$year, y = .data$impact_percent, fill = .data$group))
@@ -258,29 +283,22 @@ plot_fishery_impact <- function(x, ncol = 3L, colours = NULL,
     breaks <- breaks[breaks >= left & breaks <= last & last - breaks > 0.08 * (last - left)]
     p <- p + ggplot2::geom_area(stat = "identity", position = ggplot2::position_stack(reverse = TRUE)) +
       ggplot2::geom_line(data = totals, ggplot2::aes(x = .data$year, y = .data$impact_percent),
-                         inherit.aes = FALSE, colour = "#172B3A", linewidth = 0.55) +
+                         inherit.aes = FALSE, colour = total_colour, linewidth = 0.55) +
       ggplot2::scale_x_continuous(limits = c(left, last), breaks = c(breaks, last),
                                  expand = ggplot2::expansion(mult = 0))
   }
+  if (is.null(legend_ncol)) legend_ncol <- ceiling(sqrt(length(groups)))
   p +
     ggplot2::facet_wrap(~region, ncol = ncol) +
     ggplot2::scale_fill_manual(values = colours, breaks = groups) +
     ggplot2::scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, 20),
                                expand = ggplot2::expansion(mult = 0)) +
     ggplot2::labs(x = "Year", y = "Fishery impact (%)", fill = NULL) +
-    ggplot2::guides(fill = ggplot2::guide_legend(nrow = ceiling(length(groups) / 3), byrow = TRUE)) +
+    ggplot2::guides(fill = ggplot2::guide_legend(nrow = ceiling(length(groups) / legend_ncol), byrow = TRUE)) +
     ggplot2::theme_bw(base_size = base_size, base_family = base_family) +
     ggplot2::theme(
-      panel.grid.minor = ggplot2::element_blank(),
-      panel.grid.major = ggplot2::element_line(colour = "#E2E8EC", linewidth = 0.28),
-      panel.border = ggplot2::element_rect(colour = "#263238", fill = NA, linewidth = 0.45),
-      strip.background = ggplot2::element_rect(fill = "#E8F1F4", colour = "#B7C9D0", linewidth = 0.4),
-      strip.text = ggplot2::element_text(face = "bold", colour = "#172B3A"),
-      axis.title = ggplot2::element_text(face = "bold", colour = "#172B3A"),
-      axis.text = ggplot2::element_text(colour = "#334E5C"),
-      panel.spacing.x = grid::unit(2.3, "lines"),
-      legend.position = "bottom", legend.key.width = grid::unit(0.95, "cm"),
-      plot.margin = ggplot2::margin(8, 16, 5, 8))
+      panel.grid.minor = ggplot2::element_blank(), legend.position = "bottom") +
+    theme
 }
 
 mfclshiny_impact_caption <- function() {

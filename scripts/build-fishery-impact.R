@@ -16,6 +16,7 @@ actual_hash <- vapply(file.path(root, checksums$path), digest::digest, character
                       algo = "sha256", file = TRUE)
 stopifnot(identical(unname(actual_hash), checksums$sha256))
 source(file.path(root, "scripts/vendor/mfclshiny/fishery-impact.R"))
+source(file.path(root, "scripts/fishery-impact-style.R"))
 groups <- jsonlite::read_json(file.path(input, "groups.json"), simplifyVector = TRUE)
 labels <- c("Longline", "Pole-and-line", "PS", "PS-associated", "PS-unassociated", "Miscellaneous")
 stopifnot(identical(names(groups), c("longline", "pole_line", "ps", "ps_associated",
@@ -52,8 +53,9 @@ stopifnot(nrow(terminal) == 6L, all(terminal$impact_percent > 70))
 
 # Match the regional-depletion figure: RGB PNG, 300 dpi, white, serif text.
 # Keep the established Figure 66 aspect ratio and three-column facet layout.
-export <- build_fishery_impact_report(x, out, width = 11.5, height = 7.5,
-                                     dpi = 300, ncol = 3, base_family = "serif")
+export <- do.call(build_fishery_impact_report, c(
+  list(x = x, output_dir = out, width = 11.5, height = 7.5, dpi = 300),
+  bet_fishery_impact_style()))
 area <- ggplot2::ggplot_build(export$plot)$data[[1L]]
 stopifnot(max(area$x) == 2024, !any(area$x > 2024),
           max(abs(tapply(area$ymax[area$x == 2024], area$PANEL[area$x == 2024], max) -

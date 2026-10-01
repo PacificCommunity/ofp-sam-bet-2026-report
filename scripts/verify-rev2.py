@@ -47,7 +47,8 @@ def main():
         "render_dpi": 144, "renderer": f"PyMuPDF {pymupdf.VersionBind}",
         "text_changed_pages": [], "visually_changed_pages": [],
         "unexpected_changed_pages": [],
-        "mfclshiny_commit": "9d8eab27696b6f72dabb25dfe2fc68fc296294ee",
+        "mfclshiny_commit": json.loads(Path(
+            "figures_new/fishery-impact/inputs/provenance.json").read_text())["mfclshiny_commit"],
     }
     if len(baseline) != 148 or len(report) != 148:
         raise SystemExit("Expected 148 pages in both report revisions.")

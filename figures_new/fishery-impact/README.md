@@ -30,7 +30,7 @@ has not been established. These files document the replacement calculation.
 - `fishery-impact.rds` retains the calculation tables, checks and method.
   The CSV files make the annual totals and allocation independently inspectable.
 - The figure uses `mfclshiny` commit
-  `9d8eab27696b6f72dabb25dfe2fc68fc296294ee`. The area plot retains the actual
+  `6df3d40a1621ec3e6cac4646ed77df98cfc32579`. The area plot retains the actual
   terminal observations, without automatic zero padding after 2024.
 
 ## Rebuild from a clean checkout
@@ -62,6 +62,15 @@ is byte-identical to the upstream commit identified above; its original
 copyright and license are included under `scripts/vendor/mfclshiny/`.
 With equivalent local packages, `Rscript scripts/build-fishery-impact.R .`
 also works, but another operating system's fonts can change PNG pixels.
+
+The reusable mfclshiny functions infer model years, regions, groups and seasons
+from their inputs. BET-specific fishery IDs and numerical reference checks are
+confined to this report's build script and archived input files. The palette,
+serif font, panel layout and other report styling are supplied separately by
+`scripts/fishery-impact-style.R`. The generic plotting function supports an
+automatic layout, any number of groups, custom region labels and caller-supplied
+colours and ggplot2 themes. This separation reproduces the published BET PNG
+without making other assessments inherit the BET appearance or configuration.
 
 ## Inputs and checks
 

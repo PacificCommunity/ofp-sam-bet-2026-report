@@ -51,7 +51,7 @@
     "all_off": "d71ad46bc353fd7480287f7c68ce5dff2ad6e95da96634c6f48c9a2963751d82"
   },
   "extraction_reader": "FLR4MFCL 1.7.2",
-  "mfclshiny_commit": "9d8eab27696b6f72dabb25dfe2fc68fc296294ee",
+  "mfclshiny_commit": "6df3d40a1621ec3e6cac4646ed77df98cfc32579",
   "runtime": "ghcr.io/pacificcommunity/tuna-flow-private:v2.7@sha256:4fee4c40cb6439ff920b1dd233a84bf19d5cc0e37278c99ceff3fd79cb9c8852",
   "reproduction_scope": "Archived seasonal spawning-biomass model outputs through annual calculation and publication figure; does not refit or rerun MFCL.",
   "figure29_source": {
