@@ -1,6 +1,6 @@
 # BET 2026 assessment manuscript
 
-[![Render Quarto PDF](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/render-quarto.yml/badge.svg?branch=rev1)](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/render-quarto.yml)
+[![Render Quarto PDF](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/render-quarto.yml/badge.svg?branch=rev2)](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/render-quarto.yml)
 
 [Open WCPFC-SC22-2026-SA-WP-06 in the browser](https://pacificcommunity.github.io/ofp-sam-bet-2026-report/WCPFC-SC22-2026-SA-WP-06.pdf)
 
@@ -9,6 +9,14 @@ assessment report. The source is deliberately self-contained: all chapter
 files, figures, tables and bibliography needed to render the report are stored
 here.
 
+**Revision 2, issued 1 October 2026:** Figure 66 has been replaced with the
+verified fishery-impact calculation. The official WCPFC cover has the updated
+date and revision, and the revision history records the replacement. All other
+pages are checked against the published Rev.01 by text and 144-dpi rendered
+pixels. See `sources/rev2-verification.json` for the comparison record.
+
+[Download Rev.02 directly](https://raw.githubusercontent.com/PacificCommunity/ofp-sam-bet-2026-report/rev2/WCPFC-SC22-2026-SA-WP-06.pdf).
+
 ## Clone and build
 
 The checked-in figures make the report self-contained: cloning this repository
@@ -16,29 +24,32 @@ is sufficient to build the current report without cloning the source-analysis
 repositories.
 
 ```bash
-git clone --branch rev1 \
+git clone --branch rev2 \
   https://github.com/PacificCommunity/ofp-sam-bet-2026-report.git
 cd ofp-sam-bet-2026-report
-git fetch --no-tags origin draft:refs/remotes/origin/draft
 ```
 
 ### RStudio or local command line
 
-Install Quarto 1.7 or newer, R, a LaTeX distribution containing `pdflatex`,
-`latexdiff`, Ghostscript and `pdfinfo` (Poppler). From the repository root,
-the same preflight and build sequence used by GitHub Actions is:
+Use the pinned Docker environment below for a publication-identical build.
+Other Quarto/Pandoc versions can change citation formatting and the table of
+contents. PDF verification also requires Python and `PyMuPDF==1.28.2`.
+From the repository root, the preflight and build sequence is:
 
 ```bash
 Rscript scripts/audit-cross-references.R .
 Rscript scripts/audit-assessment-values.R .
 quarto render main.qmd --to pdf
-bash scripts/build-draft-diff.sh origin/draft
+python3 scripts/finalize-rev2-cover.py
+python3 scripts/verify-rev2.py
 ```
 
 In RStudio, open `main.qmd` and click **Render** (or press
-`Ctrl+Shift+K`) to build the clean publication PDF. The RStudio Render button
-does not build the tracked-change copy; run the final `build-draft-diff.sh`
-command in the RStudio Terminal when that copy is also required.
+`Ctrl+Shift+K`) to build the publication PDF, then run the finalization and
+verification commands. Finalization retains the official cover at its exact
+original size instead of LaTeX's slightly scaled PDF-page embedding.
+The official Rev.01 is archived in `sources/`; the verifier checks its SHA-256
+before comparison. It can download the official file if the archive is absent.
 
 ### Docker
 
@@ -54,14 +65,14 @@ docker run --rm \
   ghcr.io/pacificcommunity/tuna-flow-private:v2.7@sha256:4fee4c40cb6439ff920b1dd233a84bf19d5cc0e37278c99ceff3fd79cb9c8852 \
   -lc 'Rscript scripts/audit-cross-references.R . && \
        Rscript scripts/audit-assessment-values.R . && \
-       quarto render main.qmd --to pdf && \
-       bash scripts/build-draft-diff.sh origin/draft'
+       quarto render main.qmd --to pdf'
 ```
 
-Both methods create the clean
-`WCPFC-SC22-2026-SA-WP-06.pdf`, the review
-`WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf`, and their retained LaTeX sources
-`main.tex` and `main-diff.tex`.
+The build creates `WCPFC-SC22-2026-SA-WP-06.pdf` and its retained LaTeX source
+`main.tex`. Run `python3 scripts/finalize-rev2-cover.py` and then
+`python3 scripts/verify-rev2.py` afterwards. The older
+`WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf` and `main-diff.tex` remain the
+archived Rev.01 comparison against the draft; they are not a Rev.02 comparison.
 
 ## Structure
 
@@ -69,10 +80,11 @@ Both methods create the clean
 - `sections/` contains one editable Quarto file per narrative section.
 - `tables/` contains report tables.
 - `figures/` retains the original report figure assets.
-- `figures_new/` contains Rev.01 replacement and additional figures, with
+- `figures_new/` contains revision replacement and additional figures, with
   provenance recorded in `figures_new/README.md`.
 - `sources/` retains the source document for the no-tagging and
-  alternative-movement appendix.
+  alternative-movement appendix, the official WCPFC Rev.01 PDF, and the
+  updated WCPFC cover used in Rev.02.
 - `references/references.bib` contains the bibliography.
 - `references/apa.csl` contains the report's reference style.
 
@@ -89,8 +101,10 @@ changed figures are outlined. Its editable LaTeX source is `main-diff.tex`.
 The publication PDF remains `WCPFC-SC22-2026-SA-WP-06.pdf` without change
 markup. A concise change inventory is in `REVISION_CHANGES.md`.
 
-Tagged GitHub releases publish both the clean and tracked-change PDFs, their
-LaTeX sources, a self-contained Quarto source archive and `SHA256SUMS`.
+The Rev.02 workflow validates and publishes the clean PDF without making
+automatic commits. Figure 66 data and reproduction instructions are in
+`figures_new/fishery-impact/README.md`; the reusable functions are in
+[`PacificCommunity/mfclshiny`](https://github.com/PacificCommunity/mfclshiny/commit/9d8eab27696b6f72dabb25dfe2fc68fc296294ee).
 
 ## Upstream figure synchronization
 
@@ -124,9 +138,8 @@ SENSITIVITY_SOURCE_SHA="$(git -C ../ofp-sam-bet-2026-sensitivity rev-parse HEAD)
 bash scripts/sync-analysis-figures.sh
 ```
 
-Each source repository's Pages workflow may send its corresponding
-`*-report-updated` repository dispatch after deployment. The Rev.01 workflow
-then synchronizes all published assets, records source commits and checksums,
-and rebuilds both PDFs. A six-hour scheduled check provides a token-free
-fallback. The no-tagging and alternative-movement appendix and its figures are
-retained from the original Word document.
+These synchronization commands are retained for future assessment revisions.
+Rev.02 freezes the published Rev.01 assets except for Figure 66 and does not
+automatically synchronize newer upstream figures. The no-tagging and
+alternative-movement appendix and its figures are retained from the original
+Word document.

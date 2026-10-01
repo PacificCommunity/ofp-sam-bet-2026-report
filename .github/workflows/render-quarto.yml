@@ -2,20 +2,8 @@ name: Render Quarto PDF
 
 on:
   workflow_dispatch:
-  repository_dispatch:
-    types:
-      - diagnostic-report-updated
-      - stepwise-report-updated
-      - ensemble-report-updated
-      - jitter-report-updated
-      - selftest-report-updated
-      - retrospective-report-updated
-      - sensitivity-report-updated
   push:
-    branches:
-      - rev1
-    tags:
-      - "v*"
+    branches: [rev2]
     paths:
       - "**.qmd"
       - "_quarto.yml"
@@ -25,24 +13,11 @@ on:
       - "references/**"
       - "scripts/**"
       - "sections/**"
+      - "sources/**"
       - "styles/**"
       - "tables/**"
       - "*.lua"
-      - ".github/pages/**"
-      - ".github/workflows/render-quarto.yml"
-  pull_request:
-    paths:
-      - "**.qmd"
-      - "_quarto.yml"
-      - "SCreport.cls"
-      - "figures/**"
-      - "figures_new/**"
-      - "references/**"
-      - "scripts/**"
-      - "sections/**"
-      - "styles/**"
-      - "tables/**"
-      - "*.lua"
+      - "WCPFC-SC22-2026-SA-WP-06.pdf"
       - ".github/pages/**"
       - ".github/workflows/render-quarto.yml"
 
@@ -56,192 +31,68 @@ concurrency:
 jobs:
   render:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
     container:
       image: ghcr.io/pacificcommunity/tuna-flow-private:v2.7@sha256:4fee4c40cb6439ff920b1dd233a84bf19d5cc0e37278c99ceff3fd79cb9c8852
     timeout-minutes: 45
-
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
-      - name: Check out repository
-        if: github.event_name != 'repository_dispatch'
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Check out Rev.01 for upstream synchronization
-        if: github.event_name == 'repository_dispatch'
-        uses: actions/checkout@v4
-        with:
-          ref: rev1
-          fetch-depth: 0
-
-      - name: Trust the container workspace
-        shell: bash
-        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
-
-      - name: Install tracked-change tooling
+      - name: Install the pinned PDF verifier
         shell: bash
         run: |
-          packages=()
-          command -v latexdiff >/dev/null 2>&1 || packages+=(latexdiff)
-          command -v gs >/dev/null 2>&1 || packages+=(ghostscript)
-          command -v pdfinfo >/dev/null 2>&1 || packages+=(poppler-utils)
-          if (( ${#packages[@]} )); then
+          if ! python3 -m pip --version >/dev/null 2>&1; then
             apt-get update
-            apt-get install --yes --no-install-recommends "${packages[@]}"
+            apt-get install --yes --no-install-recommends python3-pip
           fi
-          latexdiff --version
-          gs --version
-          pdfinfo -v
+          python3 -m pip install --target /tmp/rev2-python PyMuPDF==1.28.2
+          echo "PYTHONPATH=/tmp/rev2-python" >> "$GITHUB_ENV"
 
-      - name: Fetch preserved draft baseline
-        shell: bash
-        run: git fetch --no-tags origin draft:refs/remotes/origin/draft
-
-      - name: Synchronize published source-report figures
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/rev1')
+      - name: Verify the committed publication PDF
         shell: bash
         run: |
-          DIAGNOSTIC_SOURCE_SHA=$(git ls-remote \
-            https://github.com/PacificCommunity/ofp-sam-bet-2026-diagnostic.git \
-            refs/heads/main | cut -f1)
-          STEPWISE_SOURCE_SHA=$(git ls-remote \
-            https://github.com/PacificCommunity/ofp-sam-bet-2026-stepwise.git \
-            refs/heads/main | cut -f1)
-          ENSEMBLE_SOURCE_SHA=$(git ls-remote \
-            https://github.com/PacificCommunity/ofp-sam-bet-2026-ensemble.git \
-            refs/heads/main | cut -f1)
-          JITTER_SOURCE_SHA=$(git ls-remote \
-            https://github.com/PacificCommunity/ofp-sam-bet-2026-jitter.git \
-            refs/heads/main | cut -f1)
-          SELFTEST_SOURCE_SHA=$(git ls-remote \
-            https://github.com/PacificCommunity/ofp-sam-bet-2026-selftest.git \
-            refs/heads/main | cut -f1)
-          RETROSPECTIVE_SOURCE_SHA=$(git ls-remote \
-            https://github.com/PacificCommunity/ofp-sam-bet-2026-retrospective.git \
-            refs/heads/main | cut -f1)
-          SENSITIVITY_SOURCE_SHA=$(git ls-remote \
-            https://github.com/PacificCommunity/ofp-sam-bet-2026-sensitivity.git \
-            refs/heads/main | cut -f1)
-          test -n "$DIAGNOSTIC_SOURCE_SHA"
-          test -n "$STEPWISE_SOURCE_SHA"
-          test -n "$ENSEMBLE_SOURCE_SHA"
-          test -n "$JITTER_SOURCE_SHA"
-          test -n "$SELFTEST_SOURCE_SHA"
-          test -n "$RETROSPECTIVE_SOURCE_SHA"
-          test -n "$SENSITIVITY_SOURCE_SHA"
-          {
-            echo "DIAGNOSTIC_SOURCE_SHA=$DIAGNOSTIC_SOURCE_SHA"
-            echo "STEPWISE_SOURCE_SHA=$STEPWISE_SOURCE_SHA"
-            echo "ENSEMBLE_SOURCE_SHA=$ENSEMBLE_SOURCE_SHA"
-            echo "JITTER_SOURCE_SHA=$JITTER_SOURCE_SHA"
-            echo "SELFTEST_SOURCE_SHA=$SELFTEST_SOURCE_SHA"
-            echo "RETROSPECTIVE_SOURCE_SHA=$RETROSPECTIVE_SOURCE_SHA"
-            echo "SENSITIVITY_SOURCE_SHA=$SENSITIVITY_SOURCE_SHA"
-          } >> "$GITHUB_ENV"
-          bash scripts/sync-diagnostic-figures.sh \
-            https://pacificcommunity.github.io/ofp-sam-bet-2026-diagnostic \
-            "$DIAGNOSTIC_SOURCE_SHA"
-          bash scripts/sync-stepwise-figures.sh \
-            https://pacificcommunity.github.io/ofp-sam-bet-2026-stepwise \
-            "$STEPWISE_SOURCE_SHA"
-          bash scripts/sync-ensemble-figures.sh \
-            https://pacificcommunity.github.io/ofp-sam-bet-2026-ensemble \
-            "$ENSEMBLE_SOURCE_SHA"
-          JITTER_SOURCE_SHA="$JITTER_SOURCE_SHA" \
-          SELFTEST_SOURCE_SHA="$SELFTEST_SOURCE_SHA" \
-          RETROSPECTIVE_SOURCE_SHA="$RETROSPECTIVE_SOURCE_SHA" \
-          SENSITIVITY_SOURCE_SHA="$SENSITIVITY_SOURCE_SHA" \
-          bash scripts/sync-analysis-figures.sh
+          python3 scripts/verify-rev2.py --output _render/committed-rev2-verification.json
+          cp WCPFC-SC22-2026-SA-WP-06.pdf _render/committed-rev2.pdf
 
-      - name: Persist synchronized source assets on Rev.01
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/rev1')
+      - name: Render the frozen revision sources
         shell: bash
         run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add figures_new tables/source/tag-reporting-rate-groups.csv
-          if git diff --cached --quiet; then
-            echo "Source figures are already current"
-          else
-            git commit -m "Sync published assessment figures [skip ci]"
-            git push origin HEAD:rev1
-          fi
-
-      - name: Render report
-        shell: bash
-        run: |
-          quarto --version
-          pdflatex --version | head -n 1
           Rscript scripts/audit-cross-references.R .
           Rscript scripts/audit-assessment-values.R .
           quarto render main.qmd --to pdf
+          python3 scripts/finalize-rev2-cover.py
+          python3 scripts/verify-rev2.py --output _render/rebuilt-rev2-verification.json
 
-      - name: Build tracked-change report against draft
-        shell: bash
-        run: bash scripts/build-draft-diff.sh origin/draft
-
-      - name: Verify rendered report
+      - name: Prepare the verified publication
         shell: bash
         run: |
-          test -s WCPFC-SC22-2026-SA-WP-06.pdf
-          test -s WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf
-          test -s main.tex
-          test -s main-diff.tex
-          test "$(pdfinfo WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf | awk '/^Pages:/ {print $2}')" -gt 0
-          test "$(stat -c %s WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf)" -lt $((20 * 1024 * 1024))
-
-      - name: Persist rendered clean and review reports on Rev.01
-        if: github.ref == 'refs/heads/rev1' && github.event_name != 'pull_request'
-        shell: bash
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add \
-            WCPFC-SC22-2026-SA-WP-06.pdf \
-            WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf \
-            main.tex \
-            main-diff.tex
-          if git diff --cached --quiet; then
-            echo "Rendered reports are already current"
-          else
-            git commit -m "Update rendered clean and review reports [skip ci]"
-            git push origin HEAD:rev1
-          fi
-
-      - name: Upload rendered report
-        uses: actions/upload-artifact@v4
-        with:
-          name: WCPFC-SC22-2026-SA-WP-06
-          path: |
-            WCPFC-SC22-2026-SA-WP-06.pdf
-            WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf
-            main.tex
-            main-diff.tex
-          if-no-files-found: error
-          retention-days: 30
-
-      - name: Configure GitHub Pages
-        if: github.ref == 'refs/heads/rev1'
-        uses: actions/configure-pages@v5
-
-      - name: Prepare GitHub Pages artifact
-        if: github.ref == 'refs/heads/rev1'
-        shell: bash
-        run: |
+          # Publish the exact checked-in PDF after validating the source rebuild.
+          # No upstream synchronization or automatic commits are made in Rev.02.
+          cp _render/committed-rev2.pdf WCPFC-SC22-2026-SA-WP-06.pdf
           install -d _pages
           install -m 0644 WCPFC-SC22-2026-SA-WP-06.pdf _pages/WCPFC-SC22-2026-SA-WP-06.pdf
           install -m 0644 .github/pages/index.html _pages/index.html
 
-      - name: Upload GitHub Pages artifact
-        if: github.ref == 'refs/heads/rev1'
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload report and verification records
+        uses: actions/upload-artifact@v4
+        with:
+          name: WCPFC-SC22-2026-SA-WP06-Rev02
+          path: |
+            WCPFC-SC22-2026-SA-WP-06.pdf
+            main.tex
+            _render/*-rev2-verification.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: _pages
 
   deploy:
-    if: github.ref == 'refs/heads/rev1'
     needs: render
     runs-on: ubuntu-latest
     permissions:
@@ -251,79 +102,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy GitHub Pages
+      - name: Deploy the verified Rev.02 PDF
         id: deployment
         uses: actions/deploy-pages@v4
-
-  mark-rev1-build:
-    if: github.ref == 'refs/heads/rev1'
-    needs:
-      - render
-      - deploy
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      statuses: write
-    steps:
-      - name: Mark the published Rev.01 commit as passing
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          PUBLISHED_SHA=$(gh api \
-            "repos/${GITHUB_REPOSITORY}/git/ref/heads/rev1" \
-            --jq '.object.sha')
-          test -n "$PUBLISHED_SHA"
-          gh api \
-            --method POST \
-            "repos/${GITHUB_REPOSITORY}/statuses/${PUBLISHED_SHA}" \
-            -f state=success \
-            -f context='Render Quarto PDF' \
-            -f description='Clean and review PDFs rendered; Pages deployed' \
-            -f target_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-
-  release:
-    if: startsWith(github.ref, 'refs/tags/v')
-    needs: render
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Download rendered report
-        uses: actions/download-artifact@v4
-        with:
-          name: WCPFC-SC22-2026-SA-WP-06
-          path: release
-
-      - name: Build Quarto source archive
-        shell: bash
-        run: |
-          git archive \
-            --format=tar.gz \
-            --output=release/WCPFC-SC22-2026-SA-WP-06-quarto-source.tar.gz \
-            HEAD
-
-          (
-            cd release
-            sha256sum \
-              WCPFC-SC22-2026-SA-WP-06.pdf \
-              WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf \
-              main.tex \
-              main-diff.tex \
-              WCPFC-SC22-2026-SA-WP-06-quarto-source.tar.gz \
-              > SHA256SUMS
-          )
-
-      - name: Publish release assets
-        uses: softprops/action-gh-release@v2
-        with:
-          files: |
-            release/WCPFC-SC22-2026-SA-WP-06.pdf
-            release/WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf
-            release/main.tex
-            release/main-diff.tex
-            release/WCPFC-SC22-2026-SA-WP-06-quarto-source.tar.gz
-            release/SHA256SUMS

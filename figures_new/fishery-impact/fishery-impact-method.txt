@@ -1,0 +1,6 @@
+Regional and overall fishing impacts from fixed-parameter removal simulations. Total impact is 100(1 - SB_y/SB_y,F=0), using contemporaneous annual mean spawning biomass. Group contributions allocate that total in proportion to annual biomass increases when each group is removed separately. Overall ratios use spatial biomass sums. Recruitment settings must be consistent across simulations. The allocation follows ISC (2013, 2023) and Harley (2024); it is not a unique causal decomposition.
+
+contemporaneous annual mean SB / annual mean all-fishing-removed SB
+proportional annual group-removal biomass gains
+spatial biomass sums before ratios and allocation
+Caller must verify identical parameters/recruitment settings and a complete, non-overlapping fishery partition.

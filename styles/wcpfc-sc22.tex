@@ -6,6 +6,7 @@
 \usepackage{pdflscape}
 \usepackage{array}
 \usepackage{needspace}
+\usepackage{pdfpages}
 
 % The source title uses a figure environment for the WCPFC logo. Enable page
 % isolation only after that title has rendered, then keep each report figure on
@@ -27,8 +28,10 @@
 
 \reportauthor{K. Kim\footnote{\spc}, T.~Teears $^1$, J.~Hampton\footnote{Thunnidae Consulting}, N.~Davies\footnote{TeTakina Ltd}, A.~Magnusson$^1$, C.~Castillo Jordán$^1$, T.~Peatman\footnote{Shearwater Analytics}, J.~Scutt Phillips$^1$, P.~Hamer$^1$}
 \reporttitle{Stock assessment of bigeye tuna in the western and central Pacific Ocean: 2026}
-\reportnumber{WCPFC-SC22-2026/SA-WP-06 (Rev.01)}
+\reportnumber{WCPFC-SC22-2026-SA-WP06_Rev02}
 \reporttype{SC22}
-\reportdate{August 8, 2026}
+\reportdate{October 1, 2026}
 
-\renewcommand{\maketitle}{\wcpfctitlepage\global\isolatefigurestrue\global\reportfirstfiguretrue}
+% Retain the official cover and its four affiliation footnotes so subsequent
+% footnote numbering remains identical to the published Rev.01.
+\renewcommand{\maketitle}{\includepdf[pages=1,fitpaper=true]{sources/wcpfc-sc22-cover-rev2.pdf}\setcounter{footnote}{4}\global\isolatefigurestrue\global\reportfirstfiguretrue}

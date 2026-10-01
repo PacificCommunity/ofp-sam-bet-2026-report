@@ -1,0 +1,33 @@
+{
+  "baseline_url": "https://meetings.wcpfc.int/file/21634/download",
+  "baseline_sha256": "263726a1d8abce66a2b951b63e975961d9c945cb0d4d1ae80e200e33fec7934d",
+  "report_sha256": "bf39f77d2432a7ac76e54a050184a7965dfbac5b2c4ced21c02a197d4c76b46e",
+  "baseline_pages": 148,
+  "report_pages": 148,
+  "expected_changed_pages": {
+    "1": "revision and issue date on the official cover",
+    "2": "Figure 66 replacement added to revision history",
+    "133": "Figure 66 replaced; caption retained"
+  },
+  "render_dpi": 144,
+  "renderer": "PyMuPDF 1.28.2",
+  "text_changed_pages": [
+    1,
+    2,
+    133
+  ],
+  "visually_changed_pages": [
+    1,
+    2,
+    133
+  ],
+  "unexpected_changed_pages": [],
+  "mfclshiny_commit": "9d8eab27696b6f72dabb25dfe2fc68fc296294ee",
+  "revision_and_date_correct": true,
+  "revision_note_present": true,
+  "revision1_history_retained": true,
+  "cover_unchanged_outside_issue_fields": true,
+  "figure66_caption_unchanged": true,
+  "unchanged_pages": 145,
+  "passed": true
+}

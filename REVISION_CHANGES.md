@@ -1,3 +1,20 @@
+# Rev.02 changes from the published Rev.01
+
+Issued 1 October 2026.
+
+- Replaced Figure 66 with recalculated regional and overall fishery impacts
+  for the diagnostic model. Total impact is consistent with the contemporaneous
+  spawning-potential depletion trajectories in Figure 29; fishery-group shares
+  use proportional allocation of the separate removal-run biomass gains.
+- Updated the official WCPFC cover to Rev.02 and 1 October 2026, and added
+  the Figure 66 replacement to the revision history.
+- Retained all other narrative, tables, figures and the Figure 66 caption.
+
+The comparison baseline is the official WCPFC Rev.01 PDF at
+<https://meetings.wcpfc.int/file/21634/download>, not the repository's different
+pre-publication cover. Verification details are recorded in
+`sources/rev2-verification.json`.
+
 # Rev.01 changes from `draft`
 
 Comparison baseline: `origin/draft` commit

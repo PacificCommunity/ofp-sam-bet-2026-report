@@ -158,6 +158,7 @@
 \usepackage{pdflscape}
 \usepackage{array}
 \usepackage{needspace}
+\usepackage{pdfpages}
 
 % The source title uses a figure environment for the WCPFC logo. Enable page
 % isolation only after that title has rendered, then keep each report figure on
@@ -179,11 +180,13 @@
 
 \reportauthor{K. Kim\footnote{\spc}, T.~Teears $^1$, J.~Hampton\footnote{Thunnidae Consulting}, N.~Davies\footnote{TeTakina Ltd}, A.~Magnusson$^1$, C.~Castillo Jordán$^1$, T.~Peatman\footnote{Shearwater Analytics}, J.~Scutt Phillips$^1$, P.~Hamer$^1$}
 \reporttitle{Stock assessment of bigeye tuna in the western and central Pacific Ocean: 2026}
-\reportnumber{WCPFC-SC22-2026/SA-WP-06 (Rev.01)}
+\reportnumber{WCPFC-SC22-2026-SA-WP06_Rev02}
 \reporttype{SC22}
-\reportdate{August 8, 2026}
+\reportdate{October 1, 2026}
 
-\renewcommand{\maketitle}{\wcpfctitlepage\global\isolatefigurestrue\global\reportfirstfiguretrue}
+% Retain the official cover and its four affiliation footnotes so subsequent
+% footnote numbering remains identical to the published Rev.01.
+\renewcommand{\maketitle}{\includepdf[pages=1,fitpaper=true]{sources/wcpfc-sc22-cover-rev2.pdf}\setcounter{footnote}{4}\global\isolatefigurestrue\global\reportfirstfiguretrue}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -245,7 +248,7 @@ Pacific Ocean: 2026}
 \author{K. Kim \and T. Teears \and J. Hampton \and N. Davies \and A.
 Magnusson \and C. Castillo Jordán \and T. Peatman \and J. Scutt
 Phillips \and P. Hamer}
-\date{2026-08-08}
+\date{2026-10-01}
 \begin{document}
 \maketitle
 
@@ -256,6 +259,13 @@ Phillips \and P. Hamer}
   \item Updated diagnostic, model-fit, likelihood-profile and population-dynamics figures; added ASPM, Hessian and ensemble-projection figures while retaining the original figure files.
   \item Expanded the fishery-definition, eight-group Dirichlet--multinomial and MFCL tag-reporting-rate tables using the final model controls.
   \item Added the no-tagging and alternative-movement appendix and the interactive-resource index; aligned the concise interpretation, captions, values and cross-references with the revised evidence.
+\end{itemize}
+
+\bigskip
+\textbf{Revision 2 (1 October 2026)}
+
+\begin{itemize}
+  \item Replaced Figure 66 with recalculated regional and overall fishery impacts for the diagnostic model, consistent with the contemporaneous depletion trajectories in Figure 29.
 \end{itemize}
 
 \clearpage
@@ -5130,7 +5140,7 @@ main gear types. Note that this is a `dynamic' MSY.}
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/impact_region.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures_new/fishery-impact/fishery-impact.pdf}
 
 }
 

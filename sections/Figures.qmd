@@ -248,7 +248,7 @@
 
 
 
-![Estimates of fishery impact, or reduction in spawning potential due to fishing (fishery impact = $1-SB_{t}/SB_{t,F=0}$), by region and over all regions (bottom right), attributed to fishery groups for the 2026 diagnostic model.](figures/impact_region.png){#fig-impact-region width=100%}
+![Estimates of fishery impact, or reduction in spawning potential due to fishing (fishery impact = $1-SB_{t}/SB_{t,F=0}$), by region and over all regions (bottom right), attributed to fishery groups for the 2026 diagnostic model.](figures_new/fishery-impact/fishery-impact.pdf){#fig-impact-region width=100%}
 
 
 
