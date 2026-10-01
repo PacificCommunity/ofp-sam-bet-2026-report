@@ -41,6 +41,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Reproduce Figure 66 from archived seasonal biomass
+        shell: bash
+        run: Rscript scripts/build-fishery-impact.R . --check
+
       - name: Install the pinned PDF verifier
         shell: bash
         run: |

@@ -1,7 +1,7 @@
 {
   "baseline_url": "https://meetings.wcpfc.int/file/21634/download",
   "baseline_sha256": "263726a1d8abce66a2b951b63e975961d9c945cb0d4d1ae80e200e33fec7934d",
-  "report_sha256": "bf39f77d2432a7ac76e54a050184a7965dfbac5b2c4ced21c02a197d4c76b46e",
+  "report_sha256": "1393151ba43aa037313405a35aebed0eedb5d690a603d3f54355a46597843a47",
   "baseline_pages": 148,
   "report_pages": 148,
   "expected_changed_pages": {
@@ -13,8 +13,7 @@
   "renderer": "PyMuPDF 1.28.2",
   "text_changed_pages": [
     1,
-    2,
-    133
+    2
   ],
   "visually_changed_pages": [
     1,
@@ -28,6 +27,12 @@
   "revision1_history_retained": true,
   "cover_unchanged_outside_issue_fields": true,
   "figure66_caption_unchanged": true,
+  "figure66_png_dimensions": [
+    3450,
+    2250
+  ],
+  "figure66_embeds_committed_png": true,
+  "figure66_png_sha256": "026709541cc8877cbe62231a41f29bf21cf26704e02245c7c5b449e30342ce0e",
   "unchanged_pages": 145,
   "passed": true
 }

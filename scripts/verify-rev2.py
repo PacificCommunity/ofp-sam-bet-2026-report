@@ -77,13 +77,24 @@ def main():
     old_caption = baseline[132].get_text().split("Figure 66:", 1)[1]
     new_caption = report[132].get_text().split("Figure 66:", 1)[1]
     result["figure66_caption_unchanged"] = normalized(old_caption) == normalized(new_caption)
+    figure = pymupdf.Pixmap("figures_new/fishery-impact/fishery-impact.png")
+    result["figure66_png_dimensions"] = [figure.width, figure.height]
+    result["figure66_embeds_committed_png"] = False
+    for item in report[132].get_images(full=True):
+        embedded = pymupdf.Pixmap(report, item[0])
+        if (embedded.width, embedded.height, embedded.n, embedded.samples) == (
+                figure.width, figure.height, figure.n, figure.samples):
+            result["figure66_embeds_committed_png"] = True
+    result["figure66_png_sha256"] = sha256(Path("figures_new/fishery-impact/fishery-impact.png"))
     result["unchanged_pages"] = 148 - len(changes)
     result["passed"] = (not result["unexpected_changed_pages"]
                         and result["revision_and_date_correct"]
                         and result["revision_note_present"]
                         and result["revision1_history_retained"]
                         and result["cover_unchanged_outside_issue_fields"]
-                        and result["figure66_caption_unchanged"])
+                        and result["figure66_caption_unchanged"]
+                        and result["figure66_embeds_committed_png"]
+                        and result["figure66_png_dimensions"] == [3450, 2250])
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result, indent=2))

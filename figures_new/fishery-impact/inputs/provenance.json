@@ -1,0 +1,63 @@
+{
+  "model": "BET 2026 diagnostic Job 21641",
+  "parameter_sha256": "21dcaea9db8c89ddc8c29fa3c3a5e514b50bef6e26587c168c00c05f35fbebc3",
+  "stock_recruitment_age_flag_171": 1,
+  "seasons_per_year": 4,
+  "extraction_fisheries": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+  ],
+  "index_fisheries_disabled": [
+    29,
+    30,
+    31,
+    32,
+    33
+  ],
+  "native_report_sha256": {
+    "reference": "bdc4468ea540da966bed821c2179c0d0e8bcc82698d4ac4665bfa04685928e3f",
+    "longline": "dda31a6fd80be94e97e0933cad3b9fb5d9f713d7a66bc76d6e0158bd3d4aa656",
+    "pole_line": "0bbe29c9f8b7f2ee7ccb8314a0d8ef6b69319b26fa94b185dec0c7d0e67d87f0",
+    "ps": "7587500aac4f0ea8bd9a4b0fd372cd1fa5948e4a6bdc89852e805b83ed4095bc",
+    "ps_associated": "2bbb209de33ebd1848940862997f0c2a1e0d797adc613c704cd0940c902e0c2e",
+    "ps_unassociated": "06e7549987b7494565d8c742c1de388c04aee1f9d1af2a01bd7389c7c9b1cb96",
+    "miscellaneous": "1064ad17e503ba246ed9d12fe532c7b4018533dc025a21304382364624c9ad4d",
+    "all_off": "d71ad46bc353fd7480287f7c68ce5dff2ad6e95da96634c6f48c9a2963751d82"
+  },
+  "extraction_reader": "FLR4MFCL 1.7.2",
+  "mfclshiny_commit": "9d8eab27696b6f72dabb25dfe2fc68fc296294ee",
+  "runtime": "ghcr.io/pacificcommunity/tuna-flow-private:v2.7@sha256:4fee4c40cb6439ff920b1dd233a84bf19d5cc0e37278c99ceff3fd79cb9c8852",
+  "reproduction_scope": "Archived seasonal spawning-biomass model outputs through annual calculation and publication figure; does not refit or rerun MFCL.",
+  "figure29_source": {
+    "repository": "https://github.com/PacificCommunity/ofp-sam-bet-2026-jitter",
+    "commit": "6e0ce9cd89a695449b4e80fad3c2e38f836af710",
+    "path": "data/diagnostic/jitter-regional-timeseries.rds",
+    "sha256": "d3fcc4b2d8545a438b8bb433d83c9575ace31e7c0b2e8eb55860f127be8ada93"
+  }
+}

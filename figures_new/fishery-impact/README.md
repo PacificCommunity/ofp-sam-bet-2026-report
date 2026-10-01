@@ -32,10 +32,63 @@ has not been established. These files document the replacement calculation.
 - The figure uses `mfclshiny` commit
   `9d8eab27696b6f72dabb25dfe2fc68fc296294ee`. The area plot retains the actual
   terminal observations, without automatic zero padding after 2024.
-- Run `Rscript scripts/build-fishery-impact.R .` from the repository root to
-  regenerate the figure with that package version. For recalculation from raw
-  native reports, use `mfclshiny::read_fishery_impact()` with the reference and
-  a `group,rep_file` manifest of completed removal runs.
 
-The publication figure has no overall title, subtitle or comparison curve.
-Its original report caption and Figure 66 cross-reference are retained.
+## Rebuild from a clean checkout
+
+The report embeds `fishery-impact.png`: RGB, 3450 x 2250 pixels, 300 dpi,
+white background and serif text. This follows the PNG format and 300 dpi
+resolution of Figure 29. There is no overall title, subtitle or comparison
+curve. The original report caption and Figure 66 cross-reference are retained.
+The companion PDF is an optional vector export, not the embedded report asset.
+
+Run this from the repository root with Docker and access to the report's
+existing GHCR container. Its digest pins R, packages, fonts and rendering tools:
+
+```sh
+docker run --rm --platform linux/amd64 --network none \
+  -v "$PWD:/work" -w /work --entrypoint Rscript \
+  ghcr.io/pacificcommunity/tuna-flow-private:v2.7@sha256:4fee4c40cb6439ff920b1dd233a84bf19d5cc0e37278c99ceff3fd79cb9c8852 \
+  scripts/build-fishery-impact.R .
+```
+
+Append `--check` to recalculate into a temporary directory and compare the
+annual CSV tables and exact PNG SHA-256 with the committed publication assets.
+The report's GitHub workflow runs this check before compiling and verifying
+the full PDF. A differing calculation or PNG fails the build.
+
+No local model directories, existing result RDS, installed development package
+or access to the mfclshiny repository are needed. The checked-in function copy
+is byte-identical to the upstream commit identified above; its original
+copyright and license are included under `scripts/vendor/mfclshiny/`.
+With equivalent local packages, `Rscript scripts/build-fishery-impact.R .`
+also works, but another operating system's fonts can change PNG pixels.
+
+## Inputs and checks
+
+`inputs/reference.csv` stores `year,season,region,sb,sb_nofish` extracted
+using FLR4MFCL 1.7.2 from the native diagnostic report. Its 1,460 rows span
+1952-2024, four quarters and five regions. `all_off.csv` independently stores
+the matching all-fishing-off run and must agree exactly. The six named group
+CSVs have the same schema; their `sb_nofish` is the counterfactual spawning
+biomass when only that group (plus inactive index fisheries) is removed.
+
+The calculation starts from these seasonal model outputs, not from the annual
+impact CSVs or RDS. `groups.json` and `controls/` archive the fishery partition
+and native run settings. `provenance.json` identifies the source reports by
+SHA-256 and records the fitted parameter checksum. `checksums.csv` protects
+the archived inputs and pinned function source against accidental changes.
+
+Every rebuild checks all 438 diagnostic depletion points against the separate
+Figure 29 source extract, unchanged fitted biomass across removal runs, the
+complete fishery partition and quarterly calendar, additive allocated impacts,
+and the true nonzero 2024 endpoint of the plotted areas.
+
+This reproduces the calculation and figure **from archived native model
+outputs**; it does not refit the assessment or rerun the native MFCL simulations.
+Custodians of the original run directory can repeat the extraction with
+`scripts/extract-fishery-impact-inputs.R`; the script checks each native report
+against its recorded SHA-256 before reading it. The original extraction runtime
+was `ghcr.io/pacificcommunity/bet-2026:v1.9` at digest
+`sha256:798eb25f8e5e9d97b53c5a682f9597bd74e7e42ec2e02a65ec1e066db5c08386`.
+For other assessments, use the upstream `mfclshiny::read_fishery_impact()` with
+the reference report and a `group,rep_file` manifest of completed removal runs.
