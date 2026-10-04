@@ -1,0 +1,1262 @@
+{
+  "repository": "PacificCommunity/ofp-sam-bet-2026-report",
+  "source_branch": "rev2",
+  "source_commit": "d7f230f8fa54b8b6481a4f872f325624426d09a8",
+  "hash_algorithm": "sha256",
+  "files": [
+    {
+      "path": ".github/pages/index.html",
+      "mode": "100644",
+      "git_blob": "3d3e982ea22993ac318011323aec9b1dc5fd2928",
+      "sha256": "db271a29ad5b6bf62aaba480f7e9db946046a8d598764e4cbfbc417ec8c99706"
+    },
+    {
+      "path": ".github/workflows/render-quarto.yml",
+      "mode": "100644",
+      "git_blob": "69469be703ed2bb0ae8e94e5aa368a26d42ef2de",
+      "sha256": "680f53246baf99dc60cfee08d82736373d289a4c59e91c626278c4dfd9cca5ee"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "git_blob": "02129a7ed8dbc85d9dcce6c6e6fbd9386db5090a",
+      "sha256": "79227c5c72e0d92cb4b7dc49e2e2fddb96d34a3c914d6827f38e8c33adb78ca4"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "git_blob": "22ffb2df0c00efd8e8104cdc5c1b423b4f3b3cd9",
+      "sha256": "f2772b4c8a33c9960acc7d1342bf3f6fc7befa1809bd374ce533a21ab8278a1f"
+    },
+    {
+      "path": "REVISION_CHANGES.md",
+      "mode": "100644",
+      "git_blob": "cc4112a0fe5f724613a81792ccf03986fb9456b8",
+      "sha256": "b30ccc76e07b304f279d6c4058c73c6b26b1759fe8a0dd801b3ef40f036e06ff"
+    },
+    {
+      "path": "SCreport.cls",
+      "mode": "100644",
+      "git_blob": "c798a5e7f2237d9845c2acb60a9304d73fdae3a6",
+      "sha256": "6a7e0cdf28f05644a5f6d8f483ccba48f28f271063e346536256f369ba075003"
+    },
+    {
+      "path": "WCPFC-SC22-2026-SA-WP-06-draft-diff.pdf",
+      "mode": "100644",
+      "git_blob": "b8543426cce95186cbdeb24654ccf0ff8d4ded42",
+      "sha256": "c4769cd159526ee7e52d29217fb8613effb59c45dd5a5101740f00cd6581fa1d"
+    },
+    {
+      "path": "WCPFC-SC22-2026-SA-WP-06.pdf",
+      "mode": "100644",
+      "git_blob": "0c843232bb65cde8f7a2b2a59205f9958a1fcb84",
+      "sha256": "541adc4d9831b8a623bc644210379bd47c857c00eac2b8d7bf148290b80e9583"
+    },
+    {
+      "path": "_quarto.yml",
+      "mode": "100644",
+      "git_blob": "b3fdcb31eb531659af658f021978bc80f2001a7a",
+      "sha256": "9ce2f69ac8ad409faf318b083443713403340a53fee789d07c49bded0074e2b0"
+    },
+    {
+      "path": "figures/F_adult_juv_regions.png",
+      "mode": "100644",
+      "git_blob": "760167815a0d10e80eb8e9f2df953046f3ddfab0",
+      "sha256": "1661a688d4f42753a369013116c8c374196a1ccb2a3ccfe3cbacda3a7fb46821"
+    },
+    {
+      "path": "figures/WCPFC-logo.png",
+      "mode": "100644",
+      "git_blob": "400fee90b3633eed5b9c1e7387f66404d8fd486d",
+      "sha256": "6bbab657d8d384c39314248cd3b6bfae6e407de2aff4b4f434c9835b540ca414"
+    },
+    {
+      "path": "figures/caal_aggregate_fits.png",
+      "mode": "100644",
+      "git_blob": "ee41a51b7a471b207b10960ae3b376aef9f3a3ee",
+      "sha256": "a59d72a271850ce02e2e06e05fd5261caab2e96c9ac0ff5f6c605ff1cd78e824"
+    },
+    {
+      "path": "figures/caal_fits_regions.png",
+      "mode": "100644",
+      "git_blob": "4e6ff85155cf177078456809c93bb6878581fbd4",
+      "sha256": "1fa8bb310f5e03910534a2dfad41d9d3783917d49e964d3b34121bc350845814"
+    },
+    {
+      "path": "figures/catch_by_fishery_longline.png",
+      "mode": "100644",
+      "git_blob": "8c220c3eb657040761038e5b4b5f8e01c02a28ce",
+      "sha256": "33446bae38fffa717036f0231c2615105c62d69f8d047b9a5399c68035f60d6f"
+    },
+    {
+      "path": "figures/catch_by_fishery_other.png",
+      "mode": "100644",
+      "git_blob": "ba1f4af46f5a63a9f1bd87a457187db241a2f369",
+      "sha256": "f50050e2e59778a0d9854729bd1e229a73a6e1eb8a89cab82e7249243d6666de"
+    },
+    {
+      "path": "figures/catch_by_fishery_ps.png",
+      "mode": "100644",
+      "git_blob": "ceead539369be5a9b59354919c02fd4dabea215a",
+      "sha256": "754c3efd0e097f2235a71de798017abe2e0541c45ed6a07ad2cec74cfa8f0635"
+    },
+    {
+      "path": "figures/catch_by_gear.png",
+      "mode": "100644",
+      "git_blob": "739769f6f616b1ac363b1dbf946ff59d8cfe1753",
+      "sha256": "f8914f4aaef7f8516b6d8f12666c6cbf723ef62899e3c0d52ba4cbd08c26db3c"
+    },
+    {
+      "path": "figures/catch_hist_full.png",
+      "mode": "100644",
+      "git_blob": "1abb59e4f053fb45935c711290f6b4367622fffc",
+      "sha256": "db4e10335d896a791b8d4b89471c1932496f261a9b17afad4b9a4e410d568580"
+    },
+    {
+      "path": "figures/catch_hist_regional.png",
+      "mode": "100644",
+      "git_blob": "2e814842d332f7ae193e7c178ea3ed2afe700cb4",
+      "sha256": "3fc722a9a07af798fa5f965e2346895abda207e1c39e0bc7d0cacf0fb1b2fcbf"
+    },
+    {
+      "path": "figures/catch_map.png",
+      "mode": "100644",
+      "git_blob": "a882a5b36923108bcd03062e3d316ed61cc77185",
+      "sha256": "281c469c7a242e8a284deb1ea97e73c6a01d885532c1a483066689030770688f"
+    },
+    {
+      "path": "figures/combined_kobe_majuro_status.png",
+      "mode": "100644",
+      "git_blob": "2141e8a795c4697580966be2563fe84bca37947a",
+      "sha256": "c8e763ca039a1b32657affad2b51307e70637323025862f495fe94e9b6be924c"
+    },
+    {
+      "path": "figures/cpue_fit_1_5.png",
+      "mode": "100644",
+      "git_blob": "eb7cc8d1be4c791a37db70f76920a1ae4b204429",
+      "sha256": "4f17f3cf92d81e34868101f7ade3ecb7d9b455bd70d48c129a3611a3ba9dc0e1"
+    },
+    {
+      "path": "figures/cpue_nom_maps.png",
+      "mode": "100644",
+      "git_blob": "fd57cdb77d1e9af4244de7585f9438128f9d098a",
+      "sha256": "cea2075df278e9cf82369b27ff3a2023cb65366f14b26d6eb68c347fac3f36ec"
+    },
+    {
+      "path": "figures/cpue_resids_1_5.png",
+      "mode": "100644",
+      "git_blob": "da3148da220800270c61c243c5348124ddf8fc28",
+      "sha256": "a7b120b73b78a8e963e87affa5df60f3fd3b0724fec6f22c60164e504807d206"
+    },
+    {
+      "path": "figures/data_coverage_tile.png",
+      "mode": "100644",
+      "git_blob": "81846d1adb1330ba985361053c5c9dd93ee16d03",
+      "sha256": "aa0edb2e92e199141413caa6bbe5e0a2f2d2cc4ea64c2bb4fbc7ab25ef76b7aa"
+    },
+    {
+      "path": "figures/diag_profile_data_sources.png",
+      "mode": "100644",
+      "git_blob": "93d2a08646febedb35c0769459231829c79fbbd6",
+      "sha256": "7bd5173e03c1f3f9aa34af221029c3856d0e16916185105918672f339cefe2f1"
+    },
+    {
+      "path": "figures/diag_profile_data_tag_programmes.png",
+      "mode": "100644",
+      "git_blob": "d6b7892b7c66fb2bec8910763c101284ccdfb652",
+      "sha256": "0e85ed6f4989ad3167a50113450fe41b8412fc43cce5e47dc7f967bea07b9f03"
+    },
+    {
+      "path": "figures/diag_profile_data_tag_rel_groups.png",
+      "mode": "100644",
+      "git_blob": "53fbc6b668ad4efdf7a716fb3afe8d7a1eb71463",
+      "sha256": "9d05b99f006ff933a92afd089b4931147accac7cd39265ffc59b2d7b44d2627d"
+    },
+    {
+      "path": "figures/diag_time_series.png",
+      "mode": "100644",
+      "git_blob": "168e8ef6ebb2cfe65cd3b279e9c7469a8020dd05",
+      "sha256": "8c4e62c0a52dc8e1fb03fde15529f253ef64510a30f58da8aced85c522cdf86c"
+    },
+    {
+      "path": "figures/dynamic_msy.png",
+      "mode": "100644",
+      "git_blob": "1a831169764d93a8e5406ec42633bac5cfa25331",
+      "sha256": "3a2a0c02e52cfa29c95374b3d0829b6bdac327fe7dbcb807a09bbb1c1181d47c"
+    },
+    {
+      "path": "figures/ensemble_design_retention.png",
+      "mode": "100644",
+      "git_blob": "3ad69437f2e063eb8f378ebe60274b8a2176ba8a",
+      "sha256": "159ee14dc105dfe9b764935a622a8ca44488864f0cf66c9738e2f4806d07d252"
+    },
+    {
+      "path": "figures/ensemble_est_uncert_ribbon.png",
+      "mode": "100644",
+      "git_blob": "097b6450d0f39bf98597f8295ffe9fbc218db850",
+      "sha256": "c170fddea835ff42d20fb6c98c24c045935157a3f431cd7750d38ade25c143b5"
+    },
+    {
+      "path": "figures/ensemble_individual.png",
+      "mode": "100644",
+      "git_blob": "685f86c8e68e3d2b8a010152f1353bb5445e2935",
+      "sha256": "4b89870ef92c44bb6c59b35b8526048afd2dd41936260310ddb11cdddabe3cdb"
+    },
+    {
+      "path": "figures/growth_curve.png",
+      "mode": "100644",
+      "git_blob": "7fe84c76c6b87006d9ef01332d77b5dd55d2e937",
+      "sha256": "b0e73d49cf21f8a98ba8f7145919ec3471c9c8f8689f05c96761e468ceb7167e"
+    },
+    {
+      "path": "figures/impact_region.png",
+      "mode": "100644",
+      "git_blob": "84656d401370c8dd2266d4a62979fd7bf897a403",
+      "sha256": "fe35992bf56b1d029002dc3d362d3ddb42f2be9544459ac3a490e63e14217236"
+    },
+    {
+      "path": "figures/jitter_derived_values_diag_panel.png",
+      "mode": "100644",
+      "git_blob": "f65f648678acd546082f92e0f27b7774bb777ed3",
+      "sha256": "d563f0190fb1289c1d4bcdd18373c541eb06294fbd32f00d10d744fa18932cee"
+    },
+    {
+      "path": "figures/jitter_regional_depletion.png",
+      "mode": "100644",
+      "git_blob": "a9eb4100c18a05af1f8f4c3d1f9332637109854b",
+      "sha256": "ca02911ddd48dae9a0a7d2bcb1c9bbd8fa7d2644f5e0d521b561e94bd2114c39"
+    },
+    {
+      "path": "figures/jitter_scatter_plot.png",
+      "mode": "100644",
+      "git_blob": "a271c328332679908aa63c58bf9f8813aa20ad93",
+      "sha256": "31ca6ef1eec12f1bc70e3fefc5e885e21e5637c6c710c52f4b007fe24628b811"
+    },
+    {
+      "path": "figures/length_fit_aggregated_dompl.png",
+      "mode": "100644",
+      "git_blob": "96c6043b65b548103300294b513d37bb9322adf4",
+      "sha256": "3f164fd39d506b4468b7139d49263c1cb2d6546cf3061cf42b5e5e1ee9f94dc6"
+    },
+    {
+      "path": "figures/length_fit_aggregated_ll.png",
+      "mode": "100644",
+      "git_blob": "8e2dbae74b815fc56a1f226861703c1b8c384f2f",
+      "sha256": "924926c6df8388eff3c8e9f5d1bed0eb189d6b57ef2d4c1668efecf397807ab3"
+    },
+    {
+      "path": "figures/length_fit_aggregated_ps.png",
+      "mode": "100644",
+      "git_blob": "8ccdf082e7b8badb1a3251dc17753e6e30b2c3e6",
+      "sha256": "3cd72b0568685b37755bd49992d7f444cebf7fb8f3b6abf25f852eae0a88c06c"
+    },
+    {
+      "path": "figures/length_fit_time_series_ll.png",
+      "mode": "100644",
+      "git_blob": "2dc20bf4a2761efc037b867cdb69eb047b4db118",
+      "sha256": "fd37bf0a48ddd055efe9e818a592cca70abdf7173d40dde85247c6eccaf89060"
+    },
+    {
+      "path": "figures/length_fit_time_series_other.png",
+      "mode": "100644",
+      "git_blob": "9991d1ad25fc60733af37dcc0f2fc358861c330e",
+      "sha256": "f27b513e369154754b8e0b133f2759a0b54e5c457918529ded69fc50ac574118"
+    },
+    {
+      "path": "figures/management-uncertainty-continuous-axes_steep_M.png",
+      "mode": "100644",
+      "git_blob": "ed057c34bba94c76a5e9e7c097e50b5880cb2a13",
+      "sha256": "181a3c30cb9ae51f449806ba369063021a678f44b926f767441df4b1de770b50"
+    },
+    {
+      "path": "figures/management-uncertainty-discrete-axes_tag_rep_effcrp.png",
+      "mode": "100644",
+      "git_blob": "ee3ee31ddd383847b625d1e316c8bfa160c42f94",
+      "sha256": "61cd8ad5bd027c882ba6c0701c11b3706927688e5b417ac5ed76cef66153fc0b"
+    },
+    {
+      "path": "figures/management-uncertainty-discrete-axes_tau_mix.png",
+      "mode": "100644",
+      "git_blob": "4dcb7424653a3bc0e2a0417a0d4d8d116d80572b",
+      "sha256": "3f600526a4a857ea7ff23ed894256552c467187c3d9aa7f2447fef66f2696e57"
+    },
+    {
+      "path": "figures/map_5regions.png",
+      "mode": "100644",
+      "git_blob": "7bda2f7cb487b9894c9a57fd75cf475f112fbe53",
+      "sha256": "837ce33ffc977a78b056fcde00efd2ce86585cf27a18b7d5de2527c6a9b5f1b9"
+    },
+    {
+      "path": "figures/maturity_ogive.png",
+      "mode": "100644",
+      "git_blob": "5e43b7e6a63fda8e2d93de702cfdc2e5cab1aec0",
+      "sha256": "0ef0e139602dfd5d32af324ecba64639b241da4d717bc287e39ac7d00017da9c"
+    },
+    {
+      "path": "figures/movement_bar_plots.png",
+      "mode": "100644",
+      "git_blob": "83ee2f8d71d0b0f7d6e34f3f0e2c080e10eaa82c",
+      "sha256": "05e4c52a8d407da55da44d65d97a95ce7c2f570f45407ba55a9dd568ae897bcd"
+    },
+    {
+      "path": "figures/natm_at_age.png",
+      "mode": "100644",
+      "git_blob": "0aa5ff85af4b5ab9aceb46cccb03a927d7e7539f",
+      "sha256": "afffc54386ab788cf1699ebef12f7f2fc7c9f75b2250494eb41ef484946d695a"
+    },
+    {
+      "path": "figures/recruitment_annual.png",
+      "mode": "100644",
+      "git_blob": "235661201a642d8cb63751b4ae91734994bd0dc2",
+      "sha256": "a06f1c2d8757c35a86d75412024589ee4d9db6274e58fcddaa95b7824ed13f85"
+    },
+    {
+      "path": "figures/recruitment_regions.png",
+      "mode": "100644",
+      "git_blob": "63226b3dfde23c3fa3370c8656f9cf5edfaacb6f",
+      "sha256": "448458ff15afd9f1b9a7d6e8d15fb8fadc8813b8d58fdf4d914313f86279747f"
+    },
+    {
+      "path": "figures/retrospective_diag_panel.png",
+      "mode": "100644",
+      "git_blob": "a3ef99a2bc4b320d0f1a1ef48cfe78877e4a74e3",
+      "sha256": "cc0b0fe5bee564c8439afdd4aa644d13c9b89685f066eb974e398b84ffdbfe89"
+    },
+    {
+      "path": "figures/select_age.png",
+      "mode": "100644",
+      "git_blob": "f1723778a61f839d026824c68d22bbb6371da615",
+      "sha256": "74112bef9b9db742e9e49d6fed858b7284adbfaba66ca518417e15857d59c64b"
+    },
+    {
+      "path": "figures/select_length.png",
+      "mode": "100644",
+      "git_blob": "99cf4f6e29152b410349024d800dc2a154d30b8a",
+      "sha256": "dbe7e5e8e7a4d59b98cbb201e4dcbd94c1eadd73660c5ef4b83e07fcf558429f"
+    },
+    {
+      "path": "figures/selftest_recovery_diag.png",
+      "mode": "100644",
+      "git_blob": "edac51469293403f4553c655a13ad0b27255db7d",
+      "sha256": "4c12ed79081fea3118089ed731d13508f260f3bdf8780b2e11f0dce6cc02e4b3"
+    },
+    {
+      "path": "figures/selftest_time_series.png",
+      "mode": "100644",
+      "git_blob": "2aa6657b216e7d8a7699a2ece789c395decb7973",
+      "sha256": "8cdcc411ea2338c3558f85c59714e9ff80273b369fa4eaea433bd7c6f2bce2a2"
+    },
+    {
+      "path": "figures/sensitivity_CAAL.png",
+      "mode": "100644",
+      "git_blob": "91798182de31f6a2325070f293d60f44027435ce",
+      "sha256": "98ba1a1174ebce82890b310bb831b110936ebf66a4e71818a664636b392fba04"
+    },
+    {
+      "path": "figures/sensitivity_effort_creep.png",
+      "mode": "100644",
+      "git_blob": "42b648c52e43574a1c3345f4f2566e0c26bae8b5",
+      "sha256": "84254f1e5515575c8605a9057d84ce571c8553d24484abecb1283e4f23326797"
+    },
+    {
+      "path": "figures/sensitivity_natural_mortality.png",
+      "mode": "100644",
+      "git_blob": "95b5b9068329951426ebcb897df357651d177014",
+      "sha256": "7290912dcfe89e397dfa46e96432dbbb8dfb09c07aea96724b3ab1951e6c2c97"
+    },
+    {
+      "path": "figures/sensitivity_premixing_tag_reporting_rate.png",
+      "mode": "100644",
+      "git_blob": "0a7463f2e02c1552261e09a233b81f68b61d3cb6",
+      "sha256": "59fa91509e2f899d6222bc002a5b337655920f4044c66605720f63603357b22d"
+    },
+    {
+      "path": "figures/sensitivity_regional_scaling.png",
+      "mode": "100644",
+      "git_blob": "0aeb04c7978d1fa36439d57bcaa992b06ac99254",
+      "sha256": "cabf87264c53410d8481c169f411a7ce4b79564d4d7433f8ae085587f44330c1"
+    },
+    {
+      "path": "figures/sensitivity_steepness.png",
+      "mode": "100644",
+      "git_blob": "a768b05a875082d21d079208145a8a6b77da8f9f",
+      "sha256": "aad85b9beaf9096d1ba4d84cce9fdde4bcb0e0a42ad0038061e0df79486a20a3"
+    },
+    {
+      "path": "figures/sensitivity_tag_mixing_periods_Kstatistic_cutoff.png",
+      "mode": "100644",
+      "git_blob": "deec04131b6c96863fb1452b84cb702825857cae",
+      "sha256": "199115ce1f7078e7ade6aeef879f09acbee5eb7d9ae165fbcd9e3bf5eb1d809b"
+    },
+    {
+      "path": "figures/sensitivity_tag_overdispersion.png",
+      "mode": "100644",
+      "git_blob": "ae8457abfcff6c444ccdc2fba5f6a61cd7ed5de3",
+      "sha256": "4fe21e593a4d5cb87fccc8e8004294a672034fb5474baa95afdae999ea5b677e"
+    },
+    {
+      "path": "figures/stepwise_panel.png",
+      "mode": "100644",
+      "git_blob": "25c13963f4696b439818db90bf78a974bc8d7bb7",
+      "sha256": "e284ae5ffe2b49691c9e11946a41bd1517d3a7a17abc15659e451b3f8b3348df"
+    },
+    {
+      "path": "figures/stepwise_panel_reduce.png",
+      "mode": "100644",
+      "git_blob": "ae11c4c59d1e0045a6af5dd3846f1aed73385960",
+      "sha256": "5e6ba64cf9afc904d3409f87a37c0ed83573c7fbdf9e9af218cb4c506c5546d8"
+    },
+    {
+      "path": "figures/stock_rr.png",
+      "mode": "100644",
+      "git_blob": "3a09e48bb70966b57986f5dc37a415441df4828c",
+      "sha256": "718e35b2f4b411a989abb59a391864792a2e824c87253b67a5d9421b9c3eeff3"
+    },
+    {
+      "path": "figures/tag.histograms.png",
+      "mode": "100644",
+      "git_blob": "98260d5a92311ec41c1947b480b5aad67adfbdc9",
+      "sha256": "f339932e731bfdf42682014572a98409b968fedd0ac86691628f83f70273091f"
+    },
+    {
+      "path": "figures/tag.histograms.regional.png",
+      "mode": "100644",
+      "git_blob": "b582fce154c62352eefedb44e56d85af3a8ee399",
+      "sha256": "bed1a09544f2201a34b62c489dcbb7152e06f0647afa1d4790ea3fbfaf698f28"
+    },
+    {
+      "path": "figures/tag.plot.png",
+      "mode": "100644",
+      "git_blob": "73eb47e7a73b311c5a31f045e9a21d3e5402b7bd",
+      "sha256": "286de35ce45c05c1409f005fc441ad6b0a5290f58c1fe26b3e002cfba88886cd"
+    },
+    {
+      "path": "figures/tag_attrition_all.png",
+      "mode": "100644",
+      "git_blob": "ac11849d30a5fee6056b51cb86032f0eb9b27c4f",
+      "sha256": "280303882656ebcd3b8df054c4f5a1b93bfd70bfbb4c795a017deb7c72755f2b"
+    },
+    {
+      "path": "figures/tag_displacement_map.png",
+      "mode": "100644",
+      "git_blob": "62da63fc3cb6cb6d5cbde96f0060ed7270a061b6",
+      "sha256": "8600147f07cf7175f5119209f8fb0009cf438a7551afccbfa37925f8bd330425"
+    },
+    {
+      "path": "figures/tag_recapture_fit_years_groups.png",
+      "mode": "100644",
+      "git_blob": "6219d8e655ca3e334fa9b10ddc575435eab9663d",
+      "sha256": "71d02eed4d1a44ac478f447619f13d5ea9719e05e6a45ea3bc8bdb8968bfec8b"
+    },
+    {
+      "path": "figures/tag_release_recapt.png",
+      "mode": "100644",
+      "git_blob": "73eb47e7a73b311c5a31f045e9a21d3e5402b7bd",
+      "sha256": "286de35ce45c05c1409f005fc441ad6b0a5290f58c1fe26b3e002cfba88886cd"
+    },
+    {
+      "path": "figures/tag_report_rate_jptp.png",
+      "mode": "100644",
+      "git_blob": "285a8c4b13721b3adc5915c32fee018918f34d5d",
+      "sha256": "a8db7af74356978245c75520277f3cec1f9ddd9498b65b8945c405cab52deb2f"
+    },
+    {
+      "path": "figures/tag_report_rate_rttp_pttp.png",
+      "mode": "100644",
+      "git_blob": "5ad00dfc9977fa3200a096916c51a357e25306d9",
+      "sha256": "618cc5eff25ef29e28e39498c31420a8a5dfb7948e0fa522ea4c40aabde89427"
+    },
+    {
+      "path": "figures/time-dynamic-kobe-majuro.png",
+      "mode": "100644",
+      "git_blob": "82241cca0f4d09b2a86cc6584b77c6dd362e6e56",
+      "sha256": "6591e5e2a077d5a5b39e7e22a5b94dedc06d52af82f7fe46080d33aaa8520bfb"
+    },
+    {
+      "path": "figures/timeseries_model_regions_stack.png",
+      "mode": "100644",
+      "git_blob": "1ecfa37ab903674b7444d673240c560d5d0a848c",
+      "sha256": "883699a1c9272dfdc9c6c6975cdf2c97082fc47b123b1ec9a420857da99a8369"
+    },
+    {
+      "path": "figures/yield.png",
+      "mode": "100644",
+      "git_blob": "2708cb818b91bbfced67353619d89b23dd932d35",
+      "sha256": "0f5f98d5fd101f6e315cb086658c994f3421ffdaebd8671a4be82f33e2c09dae"
+    },
+    {
+      "path": "figures_new/README.md",
+      "mode": "100644",
+      "git_blob": "a8d36df7ade13fc6bb3c0f62122bb40e0750629e",
+      "sha256": "74712c37be673243244680549ba05ba4b119872e3433dd3fecb8b2fc7adb9c53"
+    },
+    {
+      "path": "figures_new/UPSTREAM_ANALYSES.txt",
+      "mode": "100644",
+      "git_blob": "0dfd3987346e8114246607f4f7545f5909110325",
+      "sha256": "695ace3c65cd2e2a701611aab7c9165ae72cee937ca6a7773be3b359cffd5ac1"
+    },
+    {
+      "path": "figures_new/UPSTREAM_DIAGNOSTIC.txt",
+      "mode": "100644",
+      "git_blob": "b24b1ae5cc0b4ae616ebc705de5ced7b395fee25",
+      "sha256": "078ddf704f8da96c7f217b7f3796e3b39e4056a7f410ebfd73a4aca33df61020"
+    },
+    {
+      "path": "figures_new/UPSTREAM_ENSEMBLE.txt",
+      "mode": "100644",
+      "git_blob": "74f927e0a722972482b8805d1b5c6ccaf095733a",
+      "sha256": "32598175c6b76c6ec5ba8f34855e1e78a22ad958423b04403130fa707de1f6d7"
+    },
+    {
+      "path": "figures_new/UPSTREAM_STEPWISE.txt",
+      "mode": "100644",
+      "git_blob": "6b168599e24c15fcd6e2c6636343f67b49b5ab01",
+      "sha256": "95e86e21c6043bcb6c5c88833bcb4fd6d53d36b933f43f9c7069c1edf24903ad"
+    },
+    {
+      "path": "figures_new/age-data-fit-by-region.png",
+      "mode": "100644",
+      "git_blob": "ca12a01ad2543a69a65e887f00fc1dbee4abf398",
+      "sha256": "88a85171040f25bd39d7800b70e0f415115da3727749ecb4d0a92435e3bb6522"
+    },
+    {
+      "path": "figures_new/age-data-growth-by-region.png",
+      "mode": "100644",
+      "git_blob": "ea04d19ee7f1b81d42d484d918600d981651db4e",
+      "sha256": "a310198c8ae277a9df8ff5f2ea8289dab18da82ba10dcd49674d910dedd157b9"
+    },
+    {
+      "path": "figures_new/appendix-mfcl-movement.png",
+      "mode": "100644",
+      "git_blob": "a71fe352e78184bd6c8cef3c26346f0960aed652",
+      "sha256": "b4361dab7fe7e9e14d2f2c3ce0b7bc4526b863a7ce68c59fab726814f24048e3"
+    },
+    {
+      "path": "figures_new/appendix-no-tag-model-comparison.png",
+      "mode": "100644",
+      "git_blob": "310985ff2a7e82dc70d42712cc04897bae4d6c95",
+      "sha256": "dffdf496bd3a7d0f3cfe2e89dc7ce8e4b5eaeed210b8b432153bd6ff4b6ceeeb"
+    },
+    {
+      "path": "figures_new/appendix-seapodym-movement.png",
+      "mode": "100644",
+      "git_blob": "6f1ee3c5ac8e62d19634b2b9a33fafd46fa2e56d",
+      "sha256": "b6c3531f9e807e71ec4764bd7950e23ec979ece957815d4477965a1bbb60ae67"
+    },
+    {
+      "path": "figures_new/aspm-comparison.png",
+      "mode": "100644",
+      "git_blob": "d481cfe2204cef5160f2ad7c9d650119fe2eb971",
+      "sha256": "f880ea6905a4d7597da21d062d305271e43772e06f685a2710d9252920cf64d4"
+    },
+    {
+      "path": "figures_new/cpue-fit-residuals.png",
+      "mode": "100644",
+      "git_blob": "84df8f4f8499c7cecb310c4e0373dd80a589d201",
+      "sha256": "3760dd1dd9b63f822c27867616c6de473fa9fad6a1c55dce85f54ea2492240b9"
+    },
+    {
+      "path": "figures_new/diagnostic-population-dynamics.png",
+      "mode": "100644",
+      "git_blob": "7ddfeef8af16f877acc67977afd0c51955133725",
+      "sha256": "1d7d212df7145bf32dbf0540c0be552b90938e8c1359e02a8fa3b911174474b9"
+    },
+    {
+      "path": "figures_new/f-juvenile-adult-by-area-2col.png",
+      "mode": "100644",
+      "git_blob": "afa108ff9df6e2a8089969433321275c8b1f5e00",
+      "sha256": "df185deb7f88ec87533617cf58118f005a2b525761d965d2bd75ee67704baae6"
+    },
+    {
+      "path": "figures_new/f-juvenile-adult-by-area.png",
+      "mode": "100644",
+      "git_blob": "3903a0c4a45165097f86ee60caad4ea5a2b71591",
+      "sha256": "845c13156c67444b22cbde9289990ea2536d704936842df50cea042ecc9ae912"
+    },
+    {
+      "path": "figures_new/fishery-impact/README.md",
+      "mode": "100644",
+      "git_blob": "04b5835d524a558b2b8ddb04acd59e8b6ba7ca3e",
+      "sha256": "fe3f0f4fdd006e3e704a10e40a2142bd6bec68f9c249ab7ecfee6ccee70d3d86"
+    },
+    {
+      "path": "figures_new/fishery-impact/figure-index.csv",
+      "mode": "100644",
+      "git_blob": "a13167bc1d44eee82444682c1c604cd948602b0d",
+      "sha256": "bf74dd23a0c9944d13c0412e2a1cedbfe340a1eabfca56487ecd17dbf2160839"
+    },
+    {
+      "path": "figures_new/fishery-impact/fishery-impact-groups.csv",
+      "mode": "100644",
+      "git_blob": "cce69fadd260eca6753302bde1af8df61de4a8be",
+      "sha256": "208cb520e5d188dc79991ac275c8bf6e5e4ea284a14086bf9cce5bc202908b5b"
+    },
+    {
+      "path": "figures_new/fishery-impact/fishery-impact-method.txt",
+      "mode": "100644",
+      "git_blob": "79e3a68cb19cf697fe4ab93729af5ae7095ed4b9",
+      "sha256": "0df5f4a343d72038a290e7a4f3b2e222b7920a01125f8cdcea873bd9fce96461"
+    },
+    {
+      "path": "figures_new/fishery-impact/fishery-impact-sources.csv",
+      "mode": "100644",
+      "git_blob": "da65cb14b02ae82c4772a97de712991f71725dfe",
+      "sha256": "b74ffaf2abfafa4a27254bc348d46129f823ee12165a86f5a6a84da53dcc0fab"
+    },
+    {
+      "path": "figures_new/fishery-impact/fishery-impact-totals.csv",
+      "mode": "100644",
+      "git_blob": "d77f7c270e02045ba51e5dc8000650557d802553",
+      "sha256": "0973d3eaa0f54bfea81b12fc0169a649863dc6d5d8cfc1b711eca2f1d9b15032"
+    },
+    {
+      "path": "figures_new/fishery-impact/fishery-impact.pdf",
+      "mode": "100644",
+      "git_blob": "a3ec1fcd84b38e7fa1765ae68506cf664e582a5a",
+      "sha256": "3a1080fc1dc6260b762f5a311707b87c49353db4ddac0ea0437d401b726deea9"
+    },
+    {
+      "path": "figures_new/fishery-impact/fishery-impact.png",
+      "mode": "100644",
+      "git_blob": "bb76e474e59e1a3141a616a2a00a2031d6a49913",
+      "sha256": "79832c61b585feed8fa8039314a89bd49c9d79f3478808878603ae3f05b18f67"
+    },
+    {
+      "path": "figures_new/fishery-impact/fishery-impact.rds",
+      "mode": "100644",
+      "git_blob": "8c29d7d0b5488d1108bf7beb645397eeaef1af66",
+      "sha256": "313bc28cd57b401bf96cfc80c048e2c3f9997e2d98c111a564b93dd3dcb60ef0"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/all_off.csv",
+      "mode": "100644",
+      "git_blob": "d071980fc7fabc67d66f3aa5731f2058b55b8ad3",
+      "sha256": "275a2738f3d8e8bf5102623fb8732dbc57b8d41b6c551f492f41127407d6baf3"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/checksums.csv",
+      "mode": "100644",
+      "git_blob": "d2d652e5bec62f9bfece4df6b6739b6faa7f704b",
+      "sha256": "34b4507142574b4eeff9ea84793f5143594c4228b629572c0cbd17f34cd31150"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/controls/all_off.txt",
+      "mode": "100644",
+      "git_blob": "f88f6fa9b0ec889e1deaa292d4933a72389f1661",
+      "sha256": "847b2eea96da1d48c5dbc3d2c7d215b57cf2a3820c4d2576794b39be67fee1ed"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/controls/longline.txt",
+      "mode": "100644",
+      "git_blob": "199715c73764bdb5abfda8683916f35f5eb329dd",
+      "sha256": "76eca52c7503c59e998513066c380c93dfce20c8b685d31aa6931ca6276bde76"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/controls/miscellaneous.txt",
+      "mode": "100644",
+      "git_blob": "19e9f86c0b9fe018792fd548b0b2a0a8926094da",
+      "sha256": "5be7b02d2d973487e1e2b6929433d2e8ab2ae564469b4be87c0c1f5ac5d41256"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/controls/pole_line.txt",
+      "mode": "100644",
+      "git_blob": "78275c49c9c34e796a9338fa9b24ece45d34babc",
+      "sha256": "df8514846dac4cfa221f1b188b05ed2e41b7a74acd7184b75d04f1e5a680d676"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/controls/ps.txt",
+      "mode": "100644",
+      "git_blob": "6dea21db2ceff7cd9a641c5db5597af672f9cc10",
+      "sha256": "1e5fc5db3799288e0de8a0d38209147f53eadd3da5ee7aa544afa28e9a94c3fe"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/controls/ps_associated.txt",
+      "mode": "100644",
+      "git_blob": "dd29f6c5c36d2b116734b7dab670c970b018a935",
+      "sha256": "f82cbe27676641c09a41753b4d33915f65b4c87a6b30589475e05ffccc67a693"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/controls/ps_unassociated.txt",
+      "mode": "100644",
+      "git_blob": "88fe17adc8bb6d2a77d350e75320ccb6f385be15",
+      "sha256": "73e91f58e088f1ab5d6059912e92a07108cc84c563c502f2d05cf9f3064243b8"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/figure29-diagnostic-depletion.csv",
+      "mode": "100644",
+      "git_blob": "9992b6f68021c6aff0d91cb53fb74afe52310b2c",
+      "sha256": "7112a0e91c5d286d3c9f8574183539577c5f247ce0aff10442132629843641f1"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/groups.json",
+      "mode": "100644",
+      "git_blob": "f2fad2ea12c3112a3f9d90befd095228bf1b269e",
+      "sha256": "6297aece2bc3f9c1e481f834756979f937c5212714ec9f627ee827c5e573e787"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/longline.csv",
+      "mode": "100644",
+      "git_blob": "7feecec119cf109f48593bc9894f7d9ada4649e8",
+      "sha256": "248f90588bb42a768c4161cd59a98579e5b5d7f619f3a9444f8de8788868dc9b"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/miscellaneous.csv",
+      "mode": "100644",
+      "git_blob": "e85047c933a243d2f5ef3359539ff157888d7fe5",
+      "sha256": "1e39dcaa0e6d34e71d1b7cd01b0823d871aaac834532bc173fe892d71c12fa48"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/pole_line.csv",
+      "mode": "100644",
+      "git_blob": "96511da1d154123f7eea142705168aef859bbacc",
+      "sha256": "07a37cc19e4f294bafcebec4499cfd088219cc07d63f4f7c826ac865e2eb2993"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/provenance.json",
+      "mode": "100644",
+      "git_blob": "fe04df3b5268cb6ccfb21df11e8a93ef891716b1",
+      "sha256": "ba3218921498cadfc3e3478c4dcb6072cda0da8f829f80b0aa578da15741c28a"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/ps.csv",
+      "mode": "100644",
+      "git_blob": "4f060b3cca050dac311823a435057205a1cb2479",
+      "sha256": "8c89c5365affc64823e89a67333b47201741c52bc2a583ed6b6c9c28fe883644"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/ps_associated.csv",
+      "mode": "100644",
+      "git_blob": "ed5dba0a56addef50e2ce38480d8b0d6f99aad99",
+      "sha256": "fa9529520aba75a7cf1ca6f393b00be33f530b68f934e2237b569e5de9b91cff"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/ps_unassociated.csv",
+      "mode": "100644",
+      "git_blob": "8327fc7b90dd8cc510ad87ed2a8a0279fcddbd8a",
+      "sha256": "2e907a5022e3b18ecbdb356ea0273f5576ee2404b7ae0956c874cd02fa53f6cd"
+    },
+    {
+      "path": "figures_new/fishery-impact/inputs/reference.csv",
+      "mode": "100644",
+      "git_blob": "d071980fc7fabc67d66f3aa5731f2058b55b8ad3",
+      "sha256": "275a2738f3d8e8bf5102623fb8732dbc57b8d41b6c551f492f41127407d6baf3"
+    },
+    {
+      "path": "figures_new/fishery-process.png",
+      "mode": "100644",
+      "git_blob": "52137b4cb413e8bc5de3bca059ef3033e0899457",
+      "sha256": "d6db6a0466c2f853e2881f83145ea1dee5a1a73a87c32b50b95b9f60ce3829e9"
+    },
+    {
+      "path": "figures_new/fishery-selectivity-length.png",
+      "mode": "100644",
+      "git_blob": "3adf5871a27c4c94681a8ca1b4575afaf99fa5d8",
+      "sha256": "31c60b43b2ff4c04ae8ac36a5a7c1e49932961b72b3c5e01588430d8d4345497"
+    },
+    {
+      "path": "figures_new/growth-curve.png",
+      "mode": "100644",
+      "git_blob": "5274cebdbbc30d1be7b4271b1ec68575388e0baf",
+      "sha256": "44a0f3068539d9f6086037372d3881fc3ba6a2d2e8a35e72cfb6f44ebc33cd87"
+    },
+    {
+      "path": "figures_new/hessian-parameter-scales.png",
+      "mode": "100644",
+      "git_blob": "525144ae98493244c93ed92db9e952b4018aed53",
+      "sha256": "ca54776674711c333ad874cd83fd914ecf50f6719813170afcbcb61e7ea956ad"
+    },
+    {
+      "path": "figures_new/jitter-derived-diagnostic-model.png",
+      "mode": "100644",
+      "git_blob": "ad89d99ea359c933cb291484f1b2e92caa90041b",
+      "sha256": "5866854fafc2e2f87cd4e7b63f69228352137f23484de4da7bf85e05f99f26e8"
+    },
+    {
+      "path": "figures_new/jitter-diagnostics-diagnostic-model.png",
+      "mode": "100644",
+      "git_blob": "a271c328332679908aa63c58bf9f8813aa20ad93",
+      "sha256": "31ca6ef1eec12f1bc70e3fefc5e885e21e5637c6c710c52f4b007fe24628b811"
+    },
+    {
+      "path": "figures_new/jitter-diagnostics.png",
+      "mode": "100644",
+      "git_blob": "c40d29ff6ee15fbbfa003482accb62d3a23df5ef",
+      "sha256": "2fa0590ddaa5b00d9d6a6a1c13412f75043a3520ce6b20d9f76b25e268d56308"
+    },
+    {
+      "path": "figures_new/jitter-regional-depletion-diagnostic-model.png",
+      "mode": "100644",
+      "git_blob": "a9eb4100c18a05af1f8f4c3d1f9332637109854b",
+      "sha256": "ca02911ddd48dae9a0a7d2bcb1c9bbd8fa7d2644f5e0d521b561e94bd2114c39"
+    },
+    {
+      "path": "figures_new/length-frequency-fit-by-fishery.png",
+      "mode": "100644",
+      "git_blob": "5556fa75693263fe2d14cefd93cacc3493ff84f1",
+      "sha256": "bc87fddd2e6bef1ce08fc454a414380b55be32d92c9dd24764fda47cc8a14e0c"
+    },
+    {
+      "path": "figures_new/length-frequency-fit-by-region.png",
+      "mode": "100644",
+      "git_blob": "fe80a2341346bd7f023d53d621806d3f8eb75ce7",
+      "sha256": "09add2adde4acaacfb1de556ab7c954942db5d6016f0320f67815c7e88665ef0"
+    },
+    {
+      "path": "figures_new/likelihood-profile-caal-region-detail.png",
+      "mode": "100644",
+      "git_blob": "91b61b265c40b160e61c5ed44c439bffc6bfcaf4",
+      "sha256": "021a39880b3907b4e63398251359f3f1ed0d19fdf86e00f7fa0421081252e4f5"
+    },
+    {
+      "path": "figures_new/likelihood-profile-components.png",
+      "mode": "100644",
+      "git_blob": "055a1ca1996da45ab791da26f78f4bfcfde4fafa",
+      "sha256": "7266cf2160a91085c3b4fca9713b9551a5ef9e71682ff393ed700a972b6f3e5f"
+    },
+    {
+      "path": "figures_new/likelihood-profile-cpue-detail.png",
+      "mode": "100644",
+      "git_blob": "037adaf9736d8dd031eadf402e5055c6becfa2aa",
+      "sha256": "c05f89fe0f191360971ba5d0f8eca4e035cea2446dac3599ba0cf45ed48bd3ef"
+    },
+    {
+      "path": "figures_new/likelihood-profile-lf-detail.png",
+      "mode": "100644",
+      "git_blob": "9a49cf451f0ab313097631242141d321ca3c50c0",
+      "sha256": "a64bd9b4ee70d0c29071f47d1da68f56343493745be95431c8b64f74978607be"
+    },
+    {
+      "path": "figures_new/likelihood-profile-penalty-detail.png",
+      "mode": "100644",
+      "git_blob": "c308055f7ec73ca131b236e6aa3d1085a00f4a85",
+      "sha256": "38b42ea830fb1e08bf7ce93abbd3dd9bbfbd1d835785a0a4106fca0c120b1e6e"
+    },
+    {
+      "path": "figures_new/likelihood-profile-tag-detail.png",
+      "mode": "100644",
+      "git_blob": "7c022167e6e315a6464fb6251eb55db73c88a7ca",
+      "sha256": "9a96a066865f74cf7dfef2e332009229e04c36c54ff7a37c3c1620ba72a1208e"
+    },
+    {
+      "path": "figures_new/maturity-comparison.png",
+      "mode": "100644",
+      "git_blob": "f5ac06c6d463f7f63d09069b7490ad4fb63f1dd8",
+      "sha256": "5fac5d4814872bcdad2c5bee094dd6b1e5c35141ff2a4bda142dbd85c79853e7"
+    },
+    {
+      "path": "figures_new/natural-mortality-evidence.png",
+      "mode": "100644",
+      "git_blob": "f487d552c9c8d480eb65402b90af29cc1479ece9",
+      "sha256": "f57d7eb59ce2c28c5ebf088a41d74ffe5826b19464c247885640410113aa4c21"
+    },
+    {
+      "path": "figures_new/projection-stock-trajectories.png",
+      "mode": "100644",
+      "git_blob": "114c57df112a04d2a67b0e07defff059a74396cf",
+      "sha256": "fc43007e28e9148ae33b975bd860145886877af4d0767017a120f5c7951ec288"
+    },
+    {
+      "path": "figures_new/recruitment-by-area-2col.png",
+      "mode": "100644",
+      "git_blob": "a1e4a7e852aecb8ccb28996dfa7cf421db558f6e",
+      "sha256": "47c513801db7ba6e542c330c456dfdaca4b1782ebc61267505977a012e7715a0"
+    },
+    {
+      "path": "figures_new/recruitment-by-area.png",
+      "mode": "100644",
+      "git_blob": "ed2acbed4b4407e1659b1b7c19520eecf1828943",
+      "sha256": "583d006f8ac6cbe409fae2806c3461c35427848261584a3457908d8b17445e48"
+    },
+    {
+      "path": "figures_new/region-map.png",
+      "mode": "100644",
+      "git_blob": "91a6c86faf1f50baa19d605bff3729432f1e2ad2",
+      "sha256": "987c8000ca90b906502713de402b2c09c599f99b590fa14ccd0596b85e29f12c"
+    },
+    {
+      "path": "figures_new/regional-movement.png",
+      "mode": "100644",
+      "git_blob": "7908531a48b31fbf99ce8b86b15776f0d6ed119a",
+      "sha256": "ee318a041fe0ad5a3906ef12d25e6d700cafc14fc989bc624f01bc88b4501211"
+    },
+    {
+      "path": "figures_new/retrospective-diagnostics.png",
+      "mode": "100644",
+      "git_blob": "a3ef99a2bc4b320d0f1a1ef48cfe78877e4a74e3",
+      "sha256": "cc0b0fe5bee564c8439afdd4aa644d13c9b89685f066eb974e398b84ffdbfe89"
+    },
+    {
+      "path": "figures_new/self-test-diagnostics.png",
+      "mode": "100644",
+      "git_blob": "4fa1fcf8b9818c4a87ac7d407faffed18af132cb",
+      "sha256": "dffccce61e1f016c39a418680d2648b3a823b86598cf9c5f34082cd58767fa30"
+    },
+    {
+      "path": "figures_new/selftest-key-recovery-diagnostic.png",
+      "mode": "100644",
+      "git_blob": "f03125e6fd723212efc21d73027b4fb6082dd015",
+      "sha256": "df1e2f0181a19c1a8f9c4f7c53181f47614cbd396465a37889fb70ee98f36cad"
+    },
+    {
+      "path": "figures_new/selftest-recovery-diagnostic.png",
+      "mode": "100644",
+      "git_blob": "2aa6657b216e7d8a7699a2ece789c395decb7973",
+      "sha256": "8cdcc411ea2338c3558f85c59714e9ff80273b369fa4eaea433bd7c6f2bce2a2"
+    },
+    {
+      "path": "figures_new/sensitivity-conditional-age-at-length.png",
+      "mode": "100644",
+      "git_blob": "91798182de31f6a2325070f293d60f44027435ce",
+      "sha256": "98ba1a1174ebce82890b310bb831b110936ebf66a4e71818a664636b392fba04"
+    },
+    {
+      "path": "figures_new/sensitivity-effort-creep.png",
+      "mode": "100644",
+      "git_blob": "42b648c52e43574a1c3345f4f2566e0c26bae8b5",
+      "sha256": "84254f1e5515575c8605a9057d84ce571c8553d24484abecb1283e4f23326797"
+    },
+    {
+      "path": "figures_new/sensitivity-natural-mortality.png",
+      "mode": "100644",
+      "git_blob": "95b5b9068329951426ebcb897df357651d177014",
+      "sha256": "7290912dcfe89e397dfa46e96432dbbb8dfb09c07aea96724b3ab1951e6c2c97"
+    },
+    {
+      "path": "figures_new/sensitivity-pre-mixing-tag-reporting.png",
+      "mode": "100644",
+      "git_blob": "0a7463f2e02c1552261e09a233b81f68b61d3cb6",
+      "sha256": "59fa91509e2f899d6222bc002a5b337655920f4044c66605720f63603357b22d"
+    },
+    {
+      "path": "figures_new/sensitivity-regional-scaling.png",
+      "mode": "100644",
+      "git_blob": "0aeb04c7978d1fa36439d57bcaa992b06ac99254",
+      "sha256": "cabf87264c53410d8481c169f411a7ce4b79564d4d7433f8ae085587f44330c1"
+    },
+    {
+      "path": "figures_new/sensitivity-steepness.png",
+      "mode": "100644",
+      "git_blob": "a768b05a875082d21d079208145a8a6b77da8f9f",
+      "sha256": "aad85b9beaf9096d1ba4d84cce9fdde4bcb0e0a42ad0038061e0df79486a20a3"
+    },
+    {
+      "path": "figures_new/sensitivity-tag-mixing-periods-ks-d-statistic-cutoff.png",
+      "mode": "100644",
+      "git_blob": "deec04131b6c96863fb1452b84cb702825857cae",
+      "sha256": "199115ce1f7078e7ade6aeef879f09acbee5eb7d9ae165fbcd9e3bf5eb1d809b"
+    },
+    {
+      "path": "figures_new/sensitivity-tag-overdispersion.png",
+      "mode": "100644",
+      "git_blob": "ae8457abfcff6c444ccdc2fba5f6a61cd7ed5de3",
+      "sha256": "4fe21e593a4d5cb87fccc8e8004294a672034fb5474baa95afdae999ea5b677e"
+    },
+    {
+      "path": "figures_new/spatial-structure-comparison.png",
+      "mode": "100644",
+      "git_blob": "8deb7980d083f0e5b9e96215df4379075333dfa3",
+      "sha256": "acce3fa987b73325979fda10d1e85bc99921e4fea0579a45a332005188185080"
+    },
+    {
+      "path": "figures_new/stock-recruitment.png",
+      "mode": "100644",
+      "git_blob": "ed345c3a20f3f8d124912c5aa6eeaa604095358c",
+      "sha256": "c00205b15e4dc7168169fe83f08852f3d89c292788f73c910285e5e9e4f0931b"
+    },
+    {
+      "path": "figures_new/tag-attrition-by-program.png",
+      "mode": "100644",
+      "git_blob": "b933ada68059640c8907733776018a11ea57e097",
+      "sha256": "0a5c99ff17b6093ac074a45d925fcad7a70b70a78275cf49b6c1116de7be2c3a"
+    },
+    {
+      "path": "figures_new/tag-reporting-rates-active.png",
+      "mode": "100644",
+      "git_blob": "fde2b294a78d83641cea74cbba9b4892a09006f5",
+      "sha256": "5039d3677ccba440c07620ad9a914fa1585b48c307716cb4d1043a9a15bc3587"
+    },
+    {
+      "path": "figures_new/total-biomass-with-without-fishing-2col.png",
+      "mode": "100644",
+      "git_blob": "13a2b5348a808c02a4f592a92ef7180c58a0bde6",
+      "sha256": "a077fa1cb0f1c575faf3e8afe32ec726a65110c5d361ce09bba31eee818ddefe"
+    },
+    {
+      "path": "inline-code.lua",
+      "mode": "100644",
+      "git_blob": "4d65fb5358f77f9ae0632de9f4e212280affce91",
+      "sha256": "ad136651de034661b0e44feea7e5b0f839eb0b49ba73ab95b9aea2029ca8d68d"
+    },
+    {
+      "path": "main-diff.tex",
+      "mode": "100644",
+      "git_blob": "1786568863255306f26f2ed619b325b911904a93",
+      "sha256": "5046c7c7f82292a036864d6cf8ce0126ada159e1a827c9c0b8b0890499a15dac"
+    },
+    {
+      "path": "main.qmd",
+      "mode": "100644",
+      "git_blob": "ee31b305b54ef78cba384a7bbb562b0d1b04f8d1",
+      "sha256": "d46320c22ef6636cf14d69379461b254cb9528580faad42ff1a5dba162d3470c"
+    },
+    {
+      "path": "main.tex",
+      "mode": "100644",
+      "git_blob": "ba1fa1bba3e57935dcec935bd257db809e7c00b0",
+      "sha256": "ba368cd6e2e7ac98b963dca6e3b66796bd1d0f65a0a911104e023d02b1c051d5"
+    },
+    {
+      "path": "page-breaks.lua",
+      "mode": "100644",
+      "git_blob": "555fdf2064daa56217e2094110fea6322c0171da",
+      "sha256": "2f5ba1632719b8028176a55bbff9391c4c7fdc85315efe9470706ee94d9e6d3c"
+    },
+    {
+      "path": "references/apa.csl",
+      "mode": "100644",
+      "git_blob": "70e5523c104e3e3045eedd4f672eceebac8a5702",
+      "sha256": "558a07de253222c61146abdb312daea66ec6b426d7237b5643f2391abbd143bb"
+    },
+    {
+      "path": "references/references.bib",
+      "mode": "100644",
+      "git_blob": "882baea2bd6e826a5c520e83f3cc3b8162cc558b",
+      "sha256": "0076c9d12e30f88de06d64083a4bbec0e118d3242f02226c2b1a55cdd1028a59"
+    },
+    {
+      "path": "scripts/audit-assessment-values.R",
+      "mode": "100644",
+      "git_blob": "f796e3ebbf79c651b7e08e5cb666645be3e2b91d",
+      "sha256": "ac80c227217f727bc67bed052b805a6d8e0316cf2ba682567d8db3d5d1c26577"
+    },
+    {
+      "path": "scripts/audit-cross-references.R",
+      "mode": "100644",
+      "git_blob": "842661c9a653de8a37c1cd7cf22e44b380696eb2",
+      "sha256": "8c2426318f771c0218fa77a5439b431300ddf41797e1f33d5e62a2389b9531a9"
+    },
+    {
+      "path": "scripts/build-draft-diff.sh",
+      "mode": "100755",
+      "git_blob": "b69db0ecd37d03ad97884476a6c042b3eed4eab4",
+      "sha256": "28a82a9f461eb25c4014a695c1af481ea6f942e854a8377d31e3cb1cd551106f"
+    },
+    {
+      "path": "scripts/build-fishery-impact.R",
+      "mode": "100644",
+      "git_blob": "e772417524706ea4d713d797b8d9553ca1608d26",
+      "sha256": "b41e77516e3965290c7a4ae5dce43920d627baaeae215ed3e475f1ab5854f22a"
+    },
+    {
+      "path": "scripts/build-john-appendix-figures.sh",
+      "mode": "100755",
+      "git_blob": "cb4c156d1108451054774e31c195e23e4f1da86f",
+      "sha256": "3d73cd3061ebe1b058d74626b527002bb2db2feee9ca11bd9e56c1304e248ebe"
+    },
+    {
+      "path": "scripts/build-revision-regional-figures.R",
+      "mode": "100644",
+      "git_blob": "8f49fb37f6819ae2d558f918c03ba182c4739478",
+      "sha256": "f893f651bd57ee5499ee8a3df90a7684bdbf4c5f4bbe0981594cb47233df45c7"
+    },
+    {
+      "path": "scripts/extract-fishery-impact-inputs.R",
+      "mode": "100644",
+      "git_blob": "b0ba2fa64446dac13b723be1c35953423b7749b8",
+      "sha256": "b2b12125f8deddd9c5a551fa64ed7cca4407c65b43f89c5033c0c8913cf7def5"
+    },
+    {
+      "path": "scripts/finalize-rev2-cover.py",
+      "mode": "100644",
+      "git_blob": "418d53cc125ba72e72a433c62bc0ec72dd3eb5ae",
+      "sha256": "c2d6cf7a96feb782c47ca369f9163bd9b6dd28e07f828c1762df5a2c13bcd8b2"
+    },
+    {
+      "path": "scripts/fishery-impact-style.R",
+      "mode": "100644",
+      "git_blob": "3b443623773d277fe0de023c3e5f04572ba8d77f",
+      "sha256": "9dfb9be5d3260bc4db767e1e70cf20ec94372b07ac860173973e0baa2a68ee03"
+    },
+    {
+      "path": "scripts/prepare-rev2-cover.py",
+      "mode": "100644",
+      "git_blob": "21724e630f44b2aa7898bc1070ba3c58f4eae84c",
+      "sha256": "d4c68acfb21c5bf72a803bbb5be2037ad705faf556fe2b0319349f799dad7da4"
+    },
+    {
+      "path": "scripts/sync-analysis-figures.sh",
+      "mode": "100755",
+      "git_blob": "cc052eced00f2b188bb125f36dbc0bc8c763ebf4",
+      "sha256": "3841a0648a0796b454321bfa4a9e08713e2831d33a78b12ec73816b83e20cde0"
+    },
+    {
+      "path": "scripts/sync-diagnostic-figures.sh",
+      "mode": "100755",
+      "git_blob": "1af55f35db241fc92d70ebc1273f0dc965fc2b36",
+      "sha256": "d257671f205ff0535fb58a9b555f0aa4e6b585e8bf3aee4fa7cbaff5401d75d2"
+    },
+    {
+      "path": "scripts/sync-ensemble-figures.sh",
+      "mode": "100755",
+      "git_blob": "94a1bda14f1f92e16f824c150150aaac92c8ad41",
+      "sha256": "0056079d8ffdd26b61676b1900fc8c20af1fac09c7e73dcd073a8c32a412b828"
+    },
+    {
+      "path": "scripts/sync-stepwise-figures.sh",
+      "mode": "100755",
+      "git_blob": "58c887659654ef6fd2ef054ef119e3d5d3407827",
+      "sha256": "ff43f8b7482b789c9e9a47ee52852ed9e3a21f770ecc178429648a2889cf030d"
+    },
+    {
+      "path": "scripts/vendor/mfclshiny/LICENSE",
+      "mode": "100644",
+      "git_blob": "ea173d05fc103102c91c8e60b494f799b1e9de16",
+      "sha256": "19d7949a9e8c4cc829cce22875dcd6aacd0287e887d3f12eed6fd7c330be3abc"
+    },
+    {
+      "path": "scripts/vendor/mfclshiny/README.md",
+      "mode": "100644",
+      "git_blob": "39fb14ad7798ac53210afc1d686aa39162c01906",
+      "sha256": "cb4c8eac848f61a4e0cbaafdfd5f5ad3c3bf50ac5b37c1c4e523d9a2a1ef8b5b"
+    },
+    {
+      "path": "scripts/vendor/mfclshiny/fishery-impact.R",
+      "mode": "100644",
+      "git_blob": "76cc467d7b4a482d89e6266260b61efd61ed5a9f",
+      "sha256": "d18dfb87f607c24264c51bcb7017c55677f56c1f35779e0f3efcec1eb2e8b9ff"
+    },
+    {
+      "path": "scripts/verify-rev2.py",
+      "mode": "100644",
+      "git_blob": "e753c039d5ac96f40eec4b89bdfe9247437acb90",
+      "sha256": "ba4fff40ddb202ffd5be032bbca3b421cdab296d98053b0a4d37faf84b6da034"
+    },
+    {
+      "path": "sections/Appendices.qmd",
+      "mode": "100644",
+      "git_blob": "e73938764e08e232d2c931d2631ba86045e5c0b6",
+      "sha256": "ed92edab2976460a0d0e7c58a8124b6574cc1b01dc4060fee850c5eba95ff615"
+    },
+    {
+      "path": "sections/Appendix-no-tag-movement.qmd",
+      "mode": "100644",
+      "git_blob": "e3dccc6bb1b6edd65c1da4afda14ef5270c1b288",
+      "sha256": "37c7972ec07d859605c53f1c103143b1a16ccf89e19cec48fff148f6aa9a682b"
+    },
+    {
+      "path": "sections/Data-compilation.qmd",
+      "mode": "100644",
+      "git_blob": "cdf80a3bcef208c5714e4ee74f9ad33c9334383c",
+      "sha256": "9956d52456ab6989af8246365e243a63ada7ddfea5c2f9d39ebe44c859b3d599"
+    },
+    {
+      "path": "sections/Discussion.qmd",
+      "mode": "100644",
+      "git_blob": "68c5a390eb304f724553e3ebd9511a24e75c55e8",
+      "sha256": "f4fee112c32423b177240631f5f09ceef64dda98234d692b760b5f9a33fe81f6"
+    },
+    {
+      "path": "sections/Executive-summary.qmd",
+      "mode": "100644",
+      "git_blob": "aff890422b28fe8da31903efaf8aca24835de965",
+      "sha256": "12cecb4d71beaff73145809ccc15b53d10926830214a8f2cf4905b69a9d0fb70"
+    },
+    {
+      "path": "sections/Figures.qmd",
+      "mode": "100644",
+      "git_blob": "57cf5010545128da962b38cec82145a8f1e624d4",
+      "sha256": "fdf30d3cb046ed046baa1dd9f217868e03591024ce7c620016e5f80bd8645efc"
+    },
+    {
+      "path": "sections/Introduction.qmd",
+      "mode": "100644",
+      "git_blob": "0efd5e560053311a79c125e74c89e3fc90a8ac01",
+      "sha256": "e272040205cc6c4844c414230d3f647c227799dfb55830ea9be6c4af074baa9f"
+    },
+    {
+      "path": "sections/Model-description.qmd",
+      "mode": "100644",
+      "git_blob": "dadac66b75a046efdd7bc82b2fea7ee0876d1499",
+      "sha256": "23d812262d45052d0ddc8027c9c56e043f004e5ceee63bd9e209b965d05053e0"
+    },
+    {
+      "path": "sections/Model-development.qmd",
+      "mode": "100644",
+      "git_blob": "d88fb06e55a38dae4f867f2598da1d282f084477",
+      "sha256": "0e5e16d80f6389ae1f9e8048fc3fc03d7a34621f2808c47b05a873a4223d9278"
+    },
+    {
+      "path": "sections/Results.qmd",
+      "mode": "100644",
+      "git_blob": "36445dbda11ddffb4f95c3626a81abf6c40bbcc4",
+      "sha256": "c0764ce1314f240e81c66af412670bb47c6e70998a6c825276e7092061f95966"
+    },
+    {
+      "path": "sections/Stock-assessment-results.qmd",
+      "mode": "100644",
+      "git_blob": "966545c3454361493053fdc76d580a0258efed2b",
+      "sha256": "73b515b6827246243535eaf8193f9fb31b63736382c528f6faae6ed5deb4eefa"
+    },
+    {
+      "path": "sources/Appendix for bigeye.docx",
+      "mode": "100644",
+      "git_blob": "3e7452714277ac19404d8b58bb1cf866068f7c8d",
+      "sha256": "ce004d33f8f13cfdd6727680443ecd29b8f573957059f74311a5b7c1cb010b42"
+    },
+    {
+      "path": "sources/WCPFC-SC22-2026-SA-WP06_Rev01.pdf",
+      "mode": "100644",
+      "git_blob": "042a791e1d282215fa3899827fd8a56d10ea3343",
+      "sha256": "263726a1d8abce66a2b951b63e975961d9c945cb0d4d1ae80e200e33fec7934d"
+    },
+    {
+      "path": "sources/rev2-verification.json",
+      "mode": "100644",
+      "git_blob": "205c70b1ee618e1af6f4dfde64710b3cf167746e",
+      "sha256": "fc3ec79465c6894cc086cd827790e1e6d4b0d486e0e766d4bc01f99cc9a45665"
+    },
+    {
+      "path": "sources/wcpfc-sc22-cover-rev2.pdf",
+      "mode": "100644",
+      "git_blob": "895cd9367ceb927c13f8ec5ab7d328ceea794d00",
+      "sha256": "ba8ad6b7f12a14c60f93b4e6875722cf93da76c60c4b1e46804c85ad172bab8a"
+    },
+    {
+      "path": "styles/revision.tex",
+      "mode": "100644",
+      "git_blob": "b9ec2bce432557f0dc15082b382fa25a4bfb8c2d",
+      "sha256": "a2dfe81a715f3a20d856093abc16788b42b52ec27d7405055cc8cfab78c050e7"
+    },
+    {
+      "path": "styles/wcpfc-sc22.tex",
+      "mode": "100644",
+      "git_blob": "f66f2b559c79d7f27595cf5dc6ba8297d2785d7a",
+      "sha256": "26adcd9ca9b2fdd5e0d45e699850c84e8e78ca5bddd6cb2488b193e8a376c6f8"
+    },
+    {
+      "path": "tables/Assessment-tables.qmd",
+      "mode": "100644",
+      "git_blob": "de3d2e22510e75ec3da9fdcb06d130eafa70a54c",
+      "sha256": "986cdd89f022d842fdb186f73f8a74f863db8780d40743029e12ea50adaf5ef4"
+    },
+    {
+      "path": "tables/source/dm-configuration.csv",
+      "mode": "100644",
+      "git_blob": "4047cfd8ede0baf2da603570ba4cf69563d239c0",
+      "sha256": "bc31a95f71b2207fdd3238dbb987bae0c1bac63b97624d349f74a071da7632aa"
+    },
+    {
+      "path": "tables/source/dm-groups.csv",
+      "mode": "100644",
+      "git_blob": "b6fe9f016d71cca31204188275b82a1c57064147",
+      "sha256": "aea0b43e2423996458cc5e0f795a618133c545232b1c4e967392ff45c48cd9fb"
+    },
+    {
+      "path": "tables/source/tag-reporting-rate-groups.csv",
+      "mode": "100644",
+      "git_blob": "5ecf21097f4b7b735da6fb64bc2cf660ae7df994",
+      "sha256": "c1d12c0ef0ad997a1ec5d109f55a9541fe9fa2f1b2512537caa4a92e1db92168"
+    }
+  ]
+}
