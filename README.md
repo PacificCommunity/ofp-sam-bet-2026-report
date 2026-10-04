@@ -20,13 +20,14 @@ The default branch is `rev2`.
 From a clone of `rev2`, run the checks and build:
 
 ```sh
-Rscript scripts/audit-cross-references.R .
-Rscript scripts/audit-assessment-values.R .
-quarto render main.qmd --to pdf
-python3 scripts/finalize-rev2-cover.py
-python3 scripts/verify-rev2.py
+make help
+make verify
+make rerun CASE=all OUT=/tmp/bet-figure66
+make build OUT=/tmp/bet-report-build
 ```
 
+`make rerun` reproduces the eight original Figure 66 REP reports on Linux
+x86-64. `make build` works in a new directory outside the checkout.
 Use the pinned runtime and PyMuPDF 1.28.2 in
 [build instructions](docs/reproduction.md) for matching publication layout.
 The checked-in figures allow a build without cloning the analysis repositories.
