@@ -2,6 +2,7 @@
 """Regenerate the preserved Figure 66 native reports in a new directory."""
 import argparse
 import concurrent.futures
+import contextlib
 import hashlib
 import json
 import math
@@ -11,6 +12,7 @@ import re
 import subprocess
 import sys
 import restore
+from native_directory import NativeDirectory, original_files
 
 HERE = Path(__file__).resolve().parent
 BASELINE = b"1 1 1\n1 50 -4\n1 121 0\n1 246 1\n"
@@ -31,57 +33,59 @@ def par_number(data, heading):
     raise ValueError("Missing PAR value: " + heading)
 
 
-def evaluate(model, output, expected):
-    subprocess.run([sys.executable, str(HERE / "restore.py"), model, str(output)], check=True)
-    saved = json.loads((output / "saved-inputs.json").read_text())["files"]
+def evaluate(model, output, expected, directory=None):
+    if directory is None:
+        subprocess.run([sys.executable, str(HERE / "restore.py"), model, str(output)], check=True)
+    with (contextlib.nullcontext(directory) if directory is not None else NativeDirectory(output)) as output:
+        saved = json.loads(output.read_bytes("saved-inputs.json"))["files"]
 
-    def unchanged():
-        for name, row in saved.items():
-            path = output / name
-            if path.is_symlink() or not path.is_file():
-                raise ValueError("Saved input replaced: " + name)
-            data = path.read_bytes()
-            if len(data) != row["bytes"] or sha(data) != row["sha256"]:
-                raise ValueError("Saved input changed: " + name)
+        def unchanged():
+            for name, row in saved.items():
+                data = output.read_bytes(name)
+                if len(data) != row["bytes"] or sha(data) != row["sha256"]:
+                    raise ValueError("Saved input changed: " + name)
 
-    unchanged()
-    before = (output / "final.par").read_bytes()
-    controls = BASELINE if model == "reference" else (output / "controls.txt").read_bytes()
-    input_name, output_name = (("10.par", "11.par") if model == "reference"
-                               else ("base.par", "evaluated.par"))
-    with (output / input_name).open("xb") as stream:
-        stream.write(before)
-    with (output / "mfcl-native.log").open("xb") as log:
-        result = subprocess.run(["./mfclo64", "bet.frq", input_name, output_name, "-file", "-"],
-                                input=controls, cwd=output, stdout=log, stderr=subprocess.STDOUT,
-                                timeout=600)
-    unchanged()
-    if result.returncode not in (0, 3):
-        raise ValueError(f"Native evaluation failed for {model}: status {result.returncode}")
-    if sha((output / input_name).read_bytes()) != sha(before):
-        raise ValueError("Staged final PAR changed for " + model)
-    par = (output / output_name).read_bytes()
-    report = (output / ("plot-" + output_name + ".rep")).read_bytes()
-    if not par or not report or sha(report) != expected:
-        raise ValueError(f"Native report differs for {model}: {sha(report)}; expected {expected}")
-    count = par_number(par, "# The number of parameters")
-    if count != par_number(before, "# The number of parameters"):
-        raise ValueError("Active parameter count differs for " + model)
-    objective = par_number(par, "# Objective function value")
-    if model == "reference":
-        saved_objective = par_number(before, "# Objective function value")
-        values = re.findall(r"^\s*Total func\s+([^\s]+)\s*$",
-                            (output / "mfcl-native.log").read_text(), re.MULTILINE)
-        if not values or not math.isfinite(float(values[0])):
-            raise ValueError("Missing fitted objective in native log")
-        if abs(objective - saved_objective) > 1e-6 or abs(float(values[0]) - saved_objective) > 1e-6:
-            raise ValueError("Fitted objective differs for reference")
-    receipt = {"case": model, "input_par_sha256": sha(before), "report_sha256": sha(report),
-               "active_parameters": int(count), "objective": objective,
-               "native_status": result.returncode, "function_evaluations": 1}
-    (output / "native-check.json").write_text(json.dumps(receipt, indent=2) + "\n")
-    print(model + ": original native report reproduced", flush=True)
-    return receipt
+        unchanged()
+        before = output.read_bytes("final.par")
+        controls = BASELINE if model == "reference" else output.read_bytes("controls.txt")
+        input_name, output_name = (("10.par", "11.par") if model == "reference"
+                                   else ("base.par", "evaluated.par"))
+        output.write_new(input_name, before)
+        with output.open_input("mfclo64") as (engine_fd, engine_bytes):
+            if sha(engine_bytes) != saved["mfclo64"]["sha256"]:
+                raise ValueError("Native executable changed before evaluation")
+            with output.open_new("mfcl-native.log") as log:
+                result = subprocess.run(["./mfclo64", "bet.frq", input_name, output_name, "-file", "-"],
+                                        input=controls, stdout=log, stderr=subprocess.STDOUT, timeout=600,
+                                        executable=output.child_file(engine_fd),
+                                        **output.child_kwargs(engine_fd))
+        unchanged()
+        if result.returncode not in (0, 3):
+            raise ValueError(f"Native evaluation failed for {model}: status {result.returncode}")
+        if sha(output.read_bytes(input_name)) != sha(before):
+            raise ValueError("Staged final PAR changed for " + model)
+        par = output.read_bytes(output_name)
+        report = output.read_bytes("plot-" + output_name + ".rep")
+        if not par or not report or sha(report) != expected:
+            raise ValueError(f"Native report differs for {model}: {sha(report)}; expected {expected}")
+        count = par_number(par, "# The number of parameters")
+        if count != par_number(before, "# The number of parameters"):
+            raise ValueError("Active parameter count differs for " + model)
+        objective = par_number(par, "# Objective function value")
+        if model == "reference":
+            saved_objective = par_number(before, "# Objective function value")
+            values = re.findall(r"^\s*Total func\s+([^\s]+)\s*$",
+                                output.read_bytes("mfcl-native.log").decode(), re.MULTILINE)
+            if not values or not math.isfinite(float(values[0])):
+                raise ValueError("Missing fitted objective in native log")
+            if abs(objective - saved_objective) > 1e-6 or abs(float(values[0]) - saved_objective) > 1e-6:
+                raise ValueError("Fitted objective differs for reference")
+        receipt = {"case": model, "input_par_sha256": sha(before), "report_sha256": sha(report),
+                   "active_parameters": int(count), "objective": objective,
+                   "native_status": result.returncode, "function_evaluations": 1}
+        output.write_new("native-check.json", (json.dumps(receipt, indent=2) + "\n").encode())
+        print(model + ": original native report reproduced", flush=True)
+        return receipt
 
 
 def main():
@@ -104,11 +108,17 @@ def main():
         parser.error("Output inside the checkout must be beneath outputs/")
     if args.case == "all":
         restore.save_files(args.output, {}, "fishery-impact-collection")
-        with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
-            futures = [pool.submit(evaluate, case, args.output / case, digest)
-                       for case, digest in expected.items()]
-            receipts = [item.result() for item in futures]
-        (args.output / "native-checks.json").write_text(json.dumps(receipts, indent=2) + "\n")
+        with NativeDirectory(args.output) as collection:
+            def check(case, digest):
+                files = original_files(restore, case)
+                with collection.create_child(case) as directory:
+                    directory.stage_files(files, case)
+                    return evaluate(case, directory.path, digest, directory)
+            with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+                futures = [pool.submit(check, case, digest) for case, digest in expected.items()]
+                receipts = [item.result() for item in futures]
+            collection.write_new("native-checks.json", (json.dumps(receipts, indent=2) + "\n").encode())
+
     else:
         evaluate(args.case, args.output, expected[args.case])
 
