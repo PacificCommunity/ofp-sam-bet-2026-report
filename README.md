@@ -1,3 +1,5 @@
+[![Preservation checks](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/verify-preserved-results.yml/badge.svg?branch=rev2)](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/verify-preserved-results.yml?query=branch%3Arev2)
+
 # BET 2026 assessment manuscript
 
 <a id="clone-and-build"></a>
