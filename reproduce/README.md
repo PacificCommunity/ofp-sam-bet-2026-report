@@ -1,11 +1,22 @@
 # Figure 66 native outputs
 
+The [source list](closure.json) pins each file used for restoration. The shared
+helper uses an empty `native.tar.gz`; the model files are fetched from those
+checksum-verified public Git sources. A normal clone retains the controls and
+restoration recipe.
+
 The fitted PAR, six MFCL inputs and executable reuse the public Diagnostic
 repository at pinned commits. The seven removal controls are already retained
 under `figures_new/fishery-impact/inputs/controls/`; generated REP files are
 omitted from this bundle.
 
-On 64-bit x86 Linux, from the report repository root:
+Restore inputs without executing MFCL, from the repository root:
+
+```sh
+python3 reproduce/restore.py reference /tmp/bet-fishery-impact-inputs
+```
+
+To regenerate all native outputs on 64-bit x86 Linux:
 
 ```sh
 python3 reproduce/run-native.py all /tmp/bet-fishery-impact
