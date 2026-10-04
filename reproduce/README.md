@@ -16,7 +16,7 @@ Restore inputs without executing MFCL, from the repository root:
 python3 reproduce/restore.py reference /tmp/bet-fishery-impact-inputs
 ```
 
-To regenerate all native outputs on 64-bit x86 Linux:
+To regenerate all eight Figure 66 REP reports on 64-bit x86 Linux:
 
 ```sh
 python3 reproduce/run-native.py all /tmp/bet-fishery-impact
