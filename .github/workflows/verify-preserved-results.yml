@@ -26,3 +26,17 @@ jobs:
           Rscript scripts/audit-cross-references.R .
           python3 ci/verify-preserved-files.py
           git diff --exit-code
+
+  native-fishery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify compact native source recipe
+        run: python3 reproduce/restore.py --verify
+      - name: Regenerate all eight original fishery-impact reports
+        shell: bash
+        run: |
+          python3 reproduce/run-native.py all "$RUNNER_TEMP/bet-fishery-impact"
+          python3 ci/verify-preserved-files.py
+          git diff --exit-code

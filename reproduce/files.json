@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "family": "report",
+  "files": [],
+  "native_byte_scope": "No generated MFCL output is duplicated. Required native bytes already exist in pinned public repositories."
+}

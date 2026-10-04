@@ -1,0 +1,762 @@
+{
+  "schema_version": 1,
+  "family": "report",
+  "models": [
+    {
+      "model": "reference",
+      "reused_git_files": [
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "results/reference/final.par",
+          "sha256": "21dcaea9db8c89ddc8c29fa3c3a5e514b50bef6e26587c168c00c05f35fbebc3",
+          "bytes": 2956541,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "final.par"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.age_length",
+          "sha256": "426859b825bd815aa69c8d97c9dd93097027ed1eb6b9e444d88b69562097a00c",
+          "bytes": 1403841,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.age_length"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.frq",
+          "sha256": "d0d84f0a498e6a62681f2a58ffc1ba53dab9e3d6af856b4ad1fd907196250004",
+          "bytes": 2932052,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.frq"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.ini",
+          "sha256": "fbd064c3d0ccb4d2e1b9beb06fe3eacf0180677821e6a1773d20b308474d984e",
+          "bytes": 66791,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.ini"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.reg_scaling",
+          "sha256": "5f047ddb4053d1f6df9ace18e85e440b11553de246d024ce8138b427f5f9f7e3",
+          "bytes": 1186,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.reg_scaling"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.tag",
+          "sha256": "b140e66eb52f2b7e022ef2c562134f8bc9baf3dede18ce95283a001acd2b013f",
+          "bytes": 110051,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.tag"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/mfcl.cfg",
+          "sha256": "2ec8a291fae62c6f37541aec1de37444626d42b3290b371bb42b63d510034eae",
+          "bytes": 31,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "mfcl.cfg"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/doitall.sh",
+          "target_name": "doitall.sh",
+          "sha256": "96ea1dae6e8119a142d6a9cc3f5c3b99d20da8e31b1067e02e5701fbb0bf51fa",
+          "bytes": 50762,
+          "mode": 493,
+          "role": "native_input_or_doitall"
+        }
+      ]
+    },
+    {
+      "model": "longline",
+      "reused_git_files": [
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "results/reference/final.par",
+          "sha256": "21dcaea9db8c89ddc8c29fa3c3a5e514b50bef6e26587c168c00c05f35fbebc3",
+          "bytes": 2956541,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "final.par"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.age_length",
+          "sha256": "426859b825bd815aa69c8d97c9dd93097027ed1eb6b9e444d88b69562097a00c",
+          "bytes": 1403841,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.age_length"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.frq",
+          "sha256": "d0d84f0a498e6a62681f2a58ffc1ba53dab9e3d6af856b4ad1fd907196250004",
+          "bytes": 2932052,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.frq"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.ini",
+          "sha256": "fbd064c3d0ccb4d2e1b9beb06fe3eacf0180677821e6a1773d20b308474d984e",
+          "bytes": 66791,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.ini"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.reg_scaling",
+          "sha256": "5f047ddb4053d1f6df9ace18e85e440b11553de246d024ce8138b427f5f9f7e3",
+          "bytes": 1186,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.reg_scaling"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.tag",
+          "sha256": "b140e66eb52f2b7e022ef2c562134f8bc9baf3dede18ce95283a001acd2b013f",
+          "bytes": 110051,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.tag"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/mfcl.cfg",
+          "sha256": "2ec8a291fae62c6f37541aec1de37444626d42b3290b371bb42b63d510034eae",
+          "bytes": 31,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "mfcl.cfg"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/doitall.sh",
+          "target_name": "doitall.sh",
+          "sha256": "96ea1dae6e8119a142d6a9cc3f5c3b99d20da8e31b1067e02e5701fbb0bf51fa",
+          "bytes": 50762,
+          "mode": 493,
+          "role": "native_input_or_doitall"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-report",
+          "commit": "d7f230f8fa54b8b6481a4f872f325624426d09a8",
+          "path": "figures_new/fishery-impact/inputs/controls/longline.txt",
+          "target_name": "controls.txt",
+          "sha256": "76eca52c7503c59e998513066c380c93dfce20c8b685d31aa6931ca6276bde76",
+          "bytes": 190,
+          "mode": 420,
+          "role": "native_input_or_doitall"
+        }
+      ]
+    },
+    {
+      "model": "pole_line",
+      "reused_git_files": [
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "results/reference/final.par",
+          "sha256": "21dcaea9db8c89ddc8c29fa3c3a5e514b50bef6e26587c168c00c05f35fbebc3",
+          "bytes": 2956541,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "final.par"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.age_length",
+          "sha256": "426859b825bd815aa69c8d97c9dd93097027ed1eb6b9e444d88b69562097a00c",
+          "bytes": 1403841,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.age_length"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.frq",
+          "sha256": "d0d84f0a498e6a62681f2a58ffc1ba53dab9e3d6af856b4ad1fd907196250004",
+          "bytes": 2932052,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.frq"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.ini",
+          "sha256": "fbd064c3d0ccb4d2e1b9beb06fe3eacf0180677821e6a1773d20b308474d984e",
+          "bytes": 66791,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.ini"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.reg_scaling",
+          "sha256": "5f047ddb4053d1f6df9ace18e85e440b11553de246d024ce8138b427f5f9f7e3",
+          "bytes": 1186,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.reg_scaling"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.tag",
+          "sha256": "b140e66eb52f2b7e022ef2c562134f8bc9baf3dede18ce95283a001acd2b013f",
+          "bytes": 110051,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.tag"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/mfcl.cfg",
+          "sha256": "2ec8a291fae62c6f37541aec1de37444626d42b3290b371bb42b63d510034eae",
+          "bytes": 31,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "mfcl.cfg"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/doitall.sh",
+          "target_name": "doitall.sh",
+          "sha256": "96ea1dae6e8119a142d6a9cc3f5c3b99d20da8e31b1067e02e5701fbb0bf51fa",
+          "bytes": 50762,
+          "mode": 493,
+          "role": "native_input_or_doitall"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-report",
+          "commit": "d7f230f8fa54b8b6481a4f872f325624426d09a8",
+          "path": "figures_new/fishery-impact/inputs/controls/pole_line.txt",
+          "target_name": "controls.txt",
+          "sha256": "df8514846dac4cfa221f1b188b05ed2e41b7a74acd7184b75d04f1e5a680d676",
+          "bytes": 127,
+          "mode": 420,
+          "role": "native_input_or_doitall"
+        }
+      ]
+    },
+    {
+      "model": "ps",
+      "reused_git_files": [
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "results/reference/final.par",
+          "sha256": "21dcaea9db8c89ddc8c29fa3c3a5e514b50bef6e26587c168c00c05f35fbebc3",
+          "bytes": 2956541,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "final.par"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.age_length",
+          "sha256": "426859b825bd815aa69c8d97c9dd93097027ed1eb6b9e444d88b69562097a00c",
+          "bytes": 1403841,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.age_length"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.frq",
+          "sha256": "d0d84f0a498e6a62681f2a58ffc1ba53dab9e3d6af856b4ad1fd907196250004",
+          "bytes": 2932052,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.frq"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.ini",
+          "sha256": "fbd064c3d0ccb4d2e1b9beb06fe3eacf0180677821e6a1773d20b308474d984e",
+          "bytes": 66791,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.ini"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.reg_scaling",
+          "sha256": "5f047ddb4053d1f6df9ace18e85e440b11553de246d024ce8138b427f5f9f7e3",
+          "bytes": 1186,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.reg_scaling"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.tag",
+          "sha256": "b140e66eb52f2b7e022ef2c562134f8bc9baf3dede18ce95283a001acd2b013f",
+          "bytes": 110051,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.tag"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/mfcl.cfg",
+          "sha256": "2ec8a291fae62c6f37541aec1de37444626d42b3290b371bb42b63d510034eae",
+          "bytes": 31,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "mfcl.cfg"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/doitall.sh",
+          "target_name": "doitall.sh",
+          "sha256": "96ea1dae6e8119a142d6a9cc3f5c3b99d20da8e31b1067e02e5701fbb0bf51fa",
+          "bytes": 50762,
+          "mode": 493,
+          "role": "native_input_or_doitall"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-report",
+          "commit": "d7f230f8fa54b8b6481a4f872f325624426d09a8",
+          "path": "figures_new/fishery-impact/inputs/controls/ps.txt",
+          "target_name": "controls.txt",
+          "sha256": "1e5fc5db3799288e0de8a0d38209147f53eadd3da5ee7aa544afa28e9a94c3fe",
+          "bytes": 127,
+          "mode": 420,
+          "role": "native_input_or_doitall"
+        }
+      ]
+    },
+    {
+      "model": "ps_associated",
+      "reused_git_files": [
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "results/reference/final.par",
+          "sha256": "21dcaea9db8c89ddc8c29fa3c3a5e514b50bef6e26587c168c00c05f35fbebc3",
+          "bytes": 2956541,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "final.par"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.age_length",
+          "sha256": "426859b825bd815aa69c8d97c9dd93097027ed1eb6b9e444d88b69562097a00c",
+          "bytes": 1403841,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.age_length"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.frq",
+          "sha256": "d0d84f0a498e6a62681f2a58ffc1ba53dab9e3d6af856b4ad1fd907196250004",
+          "bytes": 2932052,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.frq"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.ini",
+          "sha256": "fbd064c3d0ccb4d2e1b9beb06fe3eacf0180677821e6a1773d20b308474d984e",
+          "bytes": 66791,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.ini"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.reg_scaling",
+          "sha256": "5f047ddb4053d1f6df9ace18e85e440b11553de246d024ce8138b427f5f9f7e3",
+          "bytes": 1186,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.reg_scaling"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.tag",
+          "sha256": "b140e66eb52f2b7e022ef2c562134f8bc9baf3dede18ce95283a001acd2b013f",
+          "bytes": 110051,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.tag"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/mfcl.cfg",
+          "sha256": "2ec8a291fae62c6f37541aec1de37444626d42b3290b371bb42b63d510034eae",
+          "bytes": 31,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "mfcl.cfg"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/doitall.sh",
+          "target_name": "doitall.sh",
+          "sha256": "96ea1dae6e8119a142d6a9cc3f5c3b99d20da8e31b1067e02e5701fbb0bf51fa",
+          "bytes": 50762,
+          "mode": 493,
+          "role": "native_input_or_doitall"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-report",
+          "commit": "d7f230f8fa54b8b6481a4f872f325624426d09a8",
+          "path": "figures_new/fishery-impact/inputs/controls/ps_associated.txt",
+          "target_name": "controls.txt",
+          "sha256": "f82cbe27676641c09a41753b4d33915f65b4c87a6b30589475e05ffccc67a693",
+          "bytes": 127,
+          "mode": 420,
+          "role": "native_input_or_doitall"
+        }
+      ]
+    },
+    {
+      "model": "ps_unassociated",
+      "reused_git_files": [
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "results/reference/final.par",
+          "sha256": "21dcaea9db8c89ddc8c29fa3c3a5e514b50bef6e26587c168c00c05f35fbebc3",
+          "bytes": 2956541,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "final.par"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.age_length",
+          "sha256": "426859b825bd815aa69c8d97c9dd93097027ed1eb6b9e444d88b69562097a00c",
+          "bytes": 1403841,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.age_length"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.frq",
+          "sha256": "d0d84f0a498e6a62681f2a58ffc1ba53dab9e3d6af856b4ad1fd907196250004",
+          "bytes": 2932052,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.frq"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.ini",
+          "sha256": "fbd064c3d0ccb4d2e1b9beb06fe3eacf0180677821e6a1773d20b308474d984e",
+          "bytes": 66791,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.ini"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.reg_scaling",
+          "sha256": "5f047ddb4053d1f6df9ace18e85e440b11553de246d024ce8138b427f5f9f7e3",
+          "bytes": 1186,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.reg_scaling"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.tag",
+          "sha256": "b140e66eb52f2b7e022ef2c562134f8bc9baf3dede18ce95283a001acd2b013f",
+          "bytes": 110051,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.tag"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/mfcl.cfg",
+          "sha256": "2ec8a291fae62c6f37541aec1de37444626d42b3290b371bb42b63d510034eae",
+          "bytes": 31,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "mfcl.cfg"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/doitall.sh",
+          "target_name": "doitall.sh",
+          "sha256": "96ea1dae6e8119a142d6a9cc3f5c3b99d20da8e31b1067e02e5701fbb0bf51fa",
+          "bytes": 50762,
+          "mode": 493,
+          "role": "native_input_or_doitall"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-report",
+          "commit": "d7f230f8fa54b8b6481a4f872f325624426d09a8",
+          "path": "figures_new/fishery-impact/inputs/controls/ps_unassociated.txt",
+          "target_name": "controls.txt",
+          "sha256": "73e91f58e088f1ab5d6059912e92a07108cc84c563c502f2d05cf9f3064243b8",
+          "bytes": 127,
+          "mode": 420,
+          "role": "native_input_or_doitall"
+        }
+      ]
+    },
+    {
+      "model": "miscellaneous",
+      "reused_git_files": [
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "results/reference/final.par",
+          "sha256": "21dcaea9db8c89ddc8c29fa3c3a5e514b50bef6e26587c168c00c05f35fbebc3",
+          "bytes": 2956541,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "final.par"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.age_length",
+          "sha256": "426859b825bd815aa69c8d97c9dd93097027ed1eb6b9e444d88b69562097a00c",
+          "bytes": 1403841,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.age_length"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.frq",
+          "sha256": "d0d84f0a498e6a62681f2a58ffc1ba53dab9e3d6af856b4ad1fd907196250004",
+          "bytes": 2932052,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.frq"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.ini",
+          "sha256": "fbd064c3d0ccb4d2e1b9beb06fe3eacf0180677821e6a1773d20b308474d984e",
+          "bytes": 66791,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.ini"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.reg_scaling",
+          "sha256": "5f047ddb4053d1f6df9ace18e85e440b11553de246d024ce8138b427f5f9f7e3",
+          "bytes": 1186,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.reg_scaling"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.tag",
+          "sha256": "b140e66eb52f2b7e022ef2c562134f8bc9baf3dede18ce95283a001acd2b013f",
+          "bytes": 110051,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.tag"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/mfcl.cfg",
+          "sha256": "2ec8a291fae62c6f37541aec1de37444626d42b3290b371bb42b63d510034eae",
+          "bytes": 31,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "mfcl.cfg"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/doitall.sh",
+          "target_name": "doitall.sh",
+          "sha256": "96ea1dae6e8119a142d6a9cc3f5c3b99d20da8e31b1067e02e5701fbb0bf51fa",
+          "bytes": 50762,
+          "mode": 493,
+          "role": "native_input_or_doitall"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-report",
+          "commit": "d7f230f8fa54b8b6481a4f872f325624426d09a8",
+          "path": "figures_new/fishery-impact/inputs/controls/miscellaneous.txt",
+          "target_name": "controls.txt",
+          "sha256": "5be7b02d2d973487e1e2b6929433d2e8ab2ae564469b4be87c0c1f5ac5d41256",
+          "bytes": 145,
+          "mode": 420,
+          "role": "native_input_or_doitall"
+        }
+      ]
+    },
+    {
+      "model": "all_off",
+      "reused_git_files": [
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "results/reference/final.par",
+          "sha256": "21dcaea9db8c89ddc8c29fa3c3a5e514b50bef6e26587c168c00c05f35fbebc3",
+          "bytes": 2956541,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "final.par"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.age_length",
+          "sha256": "426859b825bd815aa69c8d97c9dd93097027ed1eb6b9e444d88b69562097a00c",
+          "bytes": 1403841,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.age_length"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.frq",
+          "sha256": "d0d84f0a498e6a62681f2a58ffc1ba53dab9e3d6af856b4ad1fd907196250004",
+          "bytes": 2932052,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.frq"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.ini",
+          "sha256": "fbd064c3d0ccb4d2e1b9beb06fe3eacf0180677821e6a1773d20b308474d984e",
+          "bytes": 66791,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.ini"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.reg_scaling",
+          "sha256": "5f047ddb4053d1f6df9ace18e85e440b11553de246d024ce8138b427f5f9f7e3",
+          "bytes": 1186,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.reg_scaling"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/bet.tag",
+          "sha256": "b140e66eb52f2b7e022ef2c562134f8bc9baf3dede18ce95283a001acd2b013f",
+          "bytes": 110051,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "bet.tag"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/mfcl.cfg",
+          "sha256": "2ec8a291fae62c6f37541aec1de37444626d42b3290b371bb42b63d510034eae",
+          "bytes": 31,
+          "mode": 420,
+          "role": "shared_fishery_native_input_or_central_PAR",
+          "target_name": "mfcl.cfg"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+          "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+          "path": "model/doitall.sh",
+          "target_name": "doitall.sh",
+          "sha256": "96ea1dae6e8119a142d6a9cc3f5c3b99d20da8e31b1067e02e5701fbb0bf51fa",
+          "bytes": 50762,
+          "mode": 493,
+          "role": "native_input_or_doitall"
+        },
+        {
+          "repository": "PacificCommunity/ofp-sam-bet-2026-report",
+          "commit": "d7f230f8fa54b8b6481a4f872f325624426d09a8",
+          "path": "figures_new/fishery-impact/inputs/controls/all_off.txt",
+          "target_name": "controls.txt",
+          "sha256": "847b2eea96da1d48c5dbc3d2c7d215b57cf2a3820c4d2576794b39be67fee1ed",
+          "bytes": 55,
+          "mode": 420,
+          "role": "native_input_or_doitall"
+        }
+      ]
+    }
+  ],
+  "shared_reused_git_files": [],
+  "reuse_scope": "All inputs, the central fitted PAR and the original fitting script reuse pinned public Git blobs. Removal cases evaluate the same fitted PAR with the preserved controls.",
+  "limits_and_gaps": [
+    "Original historical external engine SHA-256 is unknown. Native CI tests compatibility with the preserved public executable; it does not establish historical executable identity.",
+    "The Figure 66 calculation and published assets remain unchanged."
+  ]
+}

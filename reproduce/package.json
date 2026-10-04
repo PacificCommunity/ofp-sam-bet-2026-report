@@ -1,0 +1,28 @@
+{
+  "archive": {
+    "path": "native.tar.gz",
+    "sha256": "272adeccafe73e7009d51f2ec2be9871db5e0eb14239f483ea429be26c3c6402",
+    "bytes": 45
+  },
+  "manifest": {
+    "path": "files.json",
+    "sha256": "72a8c0b6c3be59e1ca1dcc6f7f257a99555bd3f440c14090c1a903a58f119e45"
+  },
+  "closure": {
+    "path": "closure.json",
+    "sha256": "8e1e6ae4e9a7d12976a07629fd9da2c6da2db188e9d6a12f5d8d03794d983752"
+  },
+  "engine": {
+    "repository": "PacificCommunity/ofp-sam-bet-2026-diagnostic",
+    "commit": "81c11f06fcc7450f69b379160cbd77fbc636212b",
+    "path": "mfclo64",
+    "sha256": "8995f72019869863c1d1c0b4f44fc6a6268d1f79031f5bc79dc354ee10f0a63e",
+    "bytes": 9433720,
+    "mode": 493,
+    "role": "shared_fishery_native_input_or_central_PAR"
+  },
+  "expected_reports": {
+    "path": "expected-reports.json",
+    "sha256": "899a9dda9654334a6d3cdc7ed2a13120025226b81d21e86a8046989b6ca82771"
+  }
+}

@@ -25,8 +25,8 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "git_blob": "22ffb2df0c00efd8e8104cdc5c1b423b4f3b3cd9",
-      "sha256": "f2772b4c8a33c9960acc7d1342bf3f6fc7befa1809bd374ce533a21ab8278a1f"
+      "git_blob": "860269ab86f96a46de85754f3ea682538ff5c3ea",
+      "sha256": "a2549c5c338e93040a7a8b073b4502605ae42ce7abfe21c1990f618111cf52a9"
     },
     {
       "path": "REVISION_CHANGES.md",
@@ -1257,6 +1257,15 @@
       "mode": "100644",
       "git_blob": "5ecf21097f4b7b735da6fb64bc2cf660ae7df994",
       "sha256": "c1d12c0ef0ad997a1ec5d109f55a9541fe9fa2f1b2512537caa4a92e1db92168"
+    }
+  ],
+  "approved_updates": [
+    {
+      "path": "README.md",
+      "reason": "Condense build and review instructions; retain old anchors, links and detailed methods under docs/. Publication sources, PDF, figures and data remain unchanged.",
+      "original_sha256": "f2772b4c8a33c9960acc7d1342bf3f6fc7befa1809bd374ce533a21ab8278a1f",
+      "original_git_blob": "22ffb2df0c00efd8e8104cdc5c1b423b4f3b3cd9",
+      "expected_sha256": "a2549c5c338e93040a7a8b073b4502605ae42ce7abfe21c1990f618111cf52a9"
     }
   ]
 }
