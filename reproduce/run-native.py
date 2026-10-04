@@ -47,15 +47,21 @@ def evaluate(model, output, expected):
     unchanged()
     before = (output / "final.par").read_bytes()
     controls = BASELINE if model == "reference" else (output / "controls.txt").read_bytes()
+    input_name, output_name = (("10.par", "11.par") if model == "reference"
+                               else ("base.par", "evaluated.par"))
+    with (output / input_name).open("xb") as stream:
+        stream.write(before)
     with (output / "mfcl-native.log").open("xb") as log:
-        result = subprocess.run(["./mfclo64", "bet.frq", "final.par", "evaluated.par", "-file", "-"],
+        result = subprocess.run(["./mfclo64", "bet.frq", input_name, output_name, "-file", "-"],
                                 input=controls, cwd=output, stdout=log, stderr=subprocess.STDOUT,
                                 timeout=600)
     unchanged()
     if result.returncode not in (0, 3):
         raise ValueError(f"Native evaluation failed for {model}: status {result.returncode}")
-    par = (output / "evaluated.par").read_bytes()
-    report = (output / "plot-evaluated.par.rep").read_bytes()
+    if sha((output / input_name).read_bytes()) != sha(before):
+        raise ValueError("Staged final PAR changed for " + model)
+    par = (output / output_name).read_bytes()
+    report = (output / ("plot-" + output_name + ".rep")).read_bytes()
     if not par or not report or sha(report) != expected:
         raise ValueError(f"Native report differs for {model}: {sha(report)}; expected {expected}")
     count = par_number(par, "# The number of parameters")
