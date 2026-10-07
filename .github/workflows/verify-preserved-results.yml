@@ -2,7 +2,7 @@ name: Verify preserved BET results
 
 on:
   push:
-    branches: [rev2]
+    branches: [main, rev2]
   pull_request:
 
 permissions:
@@ -34,11 +34,28 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
       - name: Verify compact native source recipe
         run: python3 reproduce/restore.py --verify
       - name: Regenerate all eight original fishery-impact reports
         shell: bash
         run: |
-          make rerun CASE=all OUT="$RUNNER_TEMP/bet-fishery-impact"
+          make verify
+          unzip -q reproduce/figure66-standalone.zip -d "$RUNNER_TEMP/reader-kit"
+          make --no-print-directory -C "$RUNNER_TEMP/reader-kit/bet-figure66-standalone" rerun CASE=all OUT="$RUNNER_TEMP/bet-fishery-impact"
           python3 ci/verify-preserved-files.py
           git diff --exit-code
+
+      - name: Retain native reader checks
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: figure66-native-checks
+          path: |
+            ${{ runner.temp }}/bet-fishery-impact/native-checks.csv
+            ${{ runner.temp }}/bet-fishery-impact/*/native-check.csv
+            ${{ runner.temp }}/bet-fishery-impact/*/mfcl-native.log
+          retention-days: 14
+          if-no-files-found: error

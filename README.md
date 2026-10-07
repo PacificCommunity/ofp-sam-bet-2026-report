@@ -1,4 +1,4 @@
-[![Preservation checks](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/verify-preserved-results.yml/badge.svg?branch=rev2)](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/verify-preserved-results.yml?query=branch%3Arev2)
+[![Preservation checks](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/verify-preserved-results.yml/badge.svg?branch=main)](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/verify-preserved-results.yml?query=branch%3Amain)
 
 # BET 2026 assessment manuscript
 
@@ -15,9 +15,9 @@
 This repository contains the self-contained Quarto source, figures, tables and
 references for WCPFC-SC22-2026-SA-WP-06. Revision 2, issued 1 October 2026,
 corrects the regional and overall fishery-impact plots in Figure 66.
-The default branch is `rev2`.
+`main` contains the Rev.02 source and native reader; the published `rev2` reference is retained.
 
-From a clone of `rev2`, run the checks and build:
+From a clone of `main`:
 
 ```sh
 make help
@@ -25,6 +25,8 @@ make verify
 make rerun CASE=all OUT=/tmp/bet-figure66
 make build OUT=/tmp/bet-report-build
 ```
+
+The [standalone ZIP](reproduce/figure66-standalone.zip) includes final.par, MFCL and all required native files; see the [R reader guide](reproduce/README.md).
 
 `make rerun` reproduces the eight original Figure 66 REP reports on Linux
 x86-64. `make build` works in a new directory outside the checkout.

@@ -25,8 +25,8 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "git_blob": "2c98a142fbb6584ee818338ed8271304f68fa435",
-      "sha256": "56b066a7f3869c5b7aabd06f30586a1f030df8712e451303ff1d9b2ba2e9228c"
+      "git_blob": "6861ae4e02f18a42e8a84fba367a1dc28e2b29a8",
+      "sha256": "f4fd8313df410df6d8ec71b030476e04ae2acc06efe03966651d39fa3a16fe18"
     },
     {
       "path": "REVISION_CHANGES.md",
@@ -1276,6 +1276,43 @@
       "expected_git_blob": "31f0a68cecf7ed1df18d91be2dcbcf94a2a6725e",
       "exact_added_prefix": "[![Preservation checks](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/verify-preserved-results.yml/badge.svg?branch=rev2)](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/verify-preserved-results.yml?query=branch%3Arev2)\n\n",
       "authorization": "Task-scoped human instruction: CI\ub41c\uac83\ub4e4\uc740 \ub9ac\ub4dc\ubbf8\uc5d0 \uadf8 \uccb4\ud06c\ubc43\uc9c0\ub098 \uc774\ub7f0\uac70\ub3c4 \uc880 \ub123\uc5b4\uc8fc\uba74 \uc88b\uaca0\ub2e4"
+    }
+  ],
+  "approved_additions": [
+    {
+      "path": "reproduce/READER-CASES.csv",
+      "mode": "100644",
+      "sha256": "8638c3e53ea28e1805346c124d62a2e9800166af97a259ced42d452878a60d84"
+    },
+    {
+      "path": "reproduce/READER-FILES.csv",
+      "mode": "100644",
+      "sha256": "f991fdceafdb4309463bbd1d64a607086c47db96d6bb7556cf7da9fb3af710a0"
+    },
+    {
+      "path": "reproduce/READER-PINS.csv",
+      "mode": "100644",
+      "sha256": "96e7229af9860b4c33e89e0b9fe82bfee145e77a5ebe0b8ddc28957fb8b57787"
+    },
+    {
+      "path": "reproduce/READER-PRESERVED.csv",
+      "mode": "100644",
+      "sha256": "60263a1db674648b0800eae81e405289b5972ac0ce3ec31d7dc1d09968026d8c"
+    },
+    {
+      "path": "reproduce/reader.R",
+      "mode": "100644",
+      "sha256": "3a3847d6fef1d99a4efe7174bfebdfcadf068a1d4578b3517894418f44ca288f"
+    },
+    {
+      "path": "reproduce/reader-native.tar.xz",
+      "mode": "100644",
+      "sha256": "e873fe90798d875ed88b92d536e520b96c3070d7044a7b9a8a73278b64abf228"
+    },
+    {
+      "path": "reproduce/figure66-standalone.zip",
+      "mode": "100644",
+      "sha256": "19cf9ff7dabfe37321e7e33f06dcc88180b74295995cd1ab665f68c00f168e41"
     }
   ]
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check Make command routing without running R, MFCL or report builds."""
+"""Check Make routing and file guards without MFCL or report builds."""
 import argparse
 import json
 import os
@@ -41,7 +41,7 @@ def main():
     args = parser.parse_args()
     records = []
     with tempfile.TemporaryDirectory(prefix="bet-make-plan-") as folder:
-        scratch = Path(folder)
+        scratch = Path(folder).resolve()
         tools = scratch / "tools"
         tools.mkdir()
         # Legacy Make variables inspect R configuration even during -n.
@@ -63,7 +63,10 @@ def main():
             case = "constant" if NAME == "diagnostic" and target == "aspm" else CASES[NAME]
             command = ["make", "--no-print-directory"] + (["-n"] if dry else [])
             command += [target, f"CASE={case}", f"OUT={output}", *common]
-            result = subprocess.run(command, cwd=ROOT, env=env, text=True, capture_output=True, timeout=30)
+            run_env = dict(os.environ) if target == "_check-output" and NAME == "report" else env
+            run_env.pop("MAKEFLAGS", None)
+            run_env.pop("MFLAGS", None)
+            result = subprocess.run(command, cwd=ROOT, env=run_env, text=True, capture_output=True, timeout=30)
             ok = result.returncode == 0 if expected == 0 else result.returncode != 0
             if not ok:
                 raise RuntimeError(f"{target}: unexpected exit {result.returncode}\n{result.stdout}\n{result.stderr}")
@@ -87,7 +90,7 @@ def main():
             if (scratch / f"new-{target}").exists():
                 raise RuntimeError(f"Make plan unexpectedly created output for {target}")
 
-    receipt = {"repository": REPOSITORY, "mode": "source_and_make_plans_only", "native_or_R_execution": False, "checks": records}
+    receipt = {"repository": REPOSITORY, "mode": "source_and_make_plans_only", "native_execution": False, "R_file_guard_execution": NAME == "report", "checks": records}
     if args.output:
         args.output.write_text(json.dumps(receipt, indent=2) + "\n")
     print(f"Make entry points passed: {NAME}, {len(records)} checks; no model execution.")
