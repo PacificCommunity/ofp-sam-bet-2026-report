@@ -13,7 +13,7 @@ make rerun CASE=all OUT=/tmp/bet-figure66
 ```
 
 Use Make and base R; native MFCL runs require Linux x86-64. No network or
-additional R packages are needed. System tar/XZ and a SHA-256 utility must be
+additional R packages are needed. System tar/XZ, `stat` and a SHA-256 utility must be
 available. Choose a new absolute output directory; on macOS use `/private/tmp`.
 
 Cases are `reference`, `longline`, `pole_line`, `ps`, `ps_associated`,
