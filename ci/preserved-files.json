@@ -25,8 +25,8 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "git_blob": "6861ae4e02f18a42e8a84fba367a1dc28e2b29a8",
-      "sha256": "f4fd8313df410df6d8ec71b030476e04ae2acc06efe03966651d39fa3a16fe18"
+      "git_blob": "10bb8d95ba99b9b3cab6af64100d889481dc9a00",
+      "sha256": "3adf7d278beed63d0343e41b72471be8f6adc4532c0412560e773ba6a5211162"
     },
     {
       "path": "REVISION_CHANGES.md",
@@ -1276,6 +1276,14 @@
       "expected_git_blob": "31f0a68cecf7ed1df18d91be2dcbcf94a2a6725e",
       "exact_added_prefix": "[![Preservation checks](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/verify-preserved-results.yml/badge.svg?branch=rev2)](https://github.com/PacificCommunity/ofp-sam-bet-2026-report/actions/workflows/verify-preserved-results.yml?query=branch%3Arev2)\n\n",
       "authorization": "Task-scoped human instruction: CI\ub41c\uac83\ub4e4\uc740 \ub9ac\ub4dc\ubbf8\uc5d0 \uadf8 \uccb4\ud06c\ubc43\uc9c0\ub098 \uc774\ub7f0\uac70\ub3c4 \uc880 \ub123\uc5b4\uc8fc\uba74 \uc88b\uaca0\ub2e4"
+    },
+    {
+      "path": "README.md",
+      "reason": "Clarify existing reader commands, runtime requirements and full-fit scope; retain scientific content, result links and heading anchors.",
+      "previous_sha256": "f4fd8313df410df6d8ec71b030476e04ae2acc06efe03966651d39fa3a16fe18",
+      "previous_git_blob": "6861ae4e02f18a42e8a84fba367a1dc28e2b29a8",
+      "expected_sha256": "3adf7d278beed63d0343e41b72471be8f6adc4532c0412560e773ba6a5211162",
+      "expected_git_blob": "10bb8d95ba99b9b3cab6af64100d889481dc9a00"
     }
   ],
   "approved_additions": [
@@ -1292,12 +1300,12 @@
     {
       "path": "reproduce/READER-PINS.csv",
       "mode": "100644",
-      "sha256": "96e7229af9860b4c33e89e0b9fe82bfee145e77a5ebe0b8ddc28957fb8b57787"
+      "sha256": "669159487c115b2ed935d0e4621fd9037d98ad0b4635dc101accdea843666423"
     },
     {
       "path": "reproduce/READER-PRESERVED.csv",
       "mode": "100644",
-      "sha256": "60263a1db674648b0800eae81e405289b5972ac0ce3ec31d7dc1d09968026d8c"
+      "sha256": "1592dfac78525408962696342b61fd0e21924f09ed51b19b1bd098b0f97f49de"
     },
     {
       "path": "reproduce/reader.R",

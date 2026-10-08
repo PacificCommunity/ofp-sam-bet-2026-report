@@ -22,6 +22,7 @@ From a clone of `main`:
 ```sh
 make help
 make verify
+make prepare CASE=reference OUT=/tmp/bet-inputs
 make rerun CASE=all OUT=/tmp/bet-figure66
 make build OUT=/tmp/bet-report-build
 ```
@@ -29,7 +30,11 @@ make build OUT=/tmp/bet-report-build
 The [standalone ZIP](reproduce/figure66-standalone.zip) includes final.par, MFCL and all required native files; see the [R reader guide](reproduce/README.md).
 
 `make rerun` reproduces the eight original Figure 66 REP reports on Linux
-x86-64. `make build` works in a new directory outside the checkout.
+x86-64. Readers use Make, base R and system archive/hash tools;
+`make prepare` copies inputs without executing MFCL.
+`make fullfit CASE=reference OUT=/tmp/bet-fullfit` runs the original Diagnostic
+doitall; removal-case reruns use the archived final PAR. `make build` creates the PDF in a
+new directory outside the checkout and retains its separate Python dependency.
 Use the pinned runtime and PyMuPDF 1.28.2 in
 [build instructions](docs/reproduction.md) for matching publication layout.
 The checked-in figures allow a build without cloning the analysis repositories.
